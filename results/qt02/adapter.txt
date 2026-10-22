@@ -1,0 +1,2 @@
+chat
+prompt tokens without tools 521, with tools 1557

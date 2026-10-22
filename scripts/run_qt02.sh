@@ -31,7 +31,7 @@ NPRED=8192
 
 start_server () {
   pkill -f llama-server; sleep 2
-  "$SERVER" -m "$GGUF" --jinja -ngl 99 -c $CTX -np 1 --port 8080 > /tmp/server_qt02.log 2>&1 &
+  "$SERVER" -m "$GGUF" --jinja -ngl 99 -c $CTX -np 1 --port 8080 > /tmp/server_qt02.log 2>&1 9>&- &
   for i in $(seq 1 180); do curl -s localhost:8080/health | grep -q '"ok"' && return 0; sleep 2; done
   echo "server did not start — last log lines:"; tail -20 /tmp/server_qt02.log; return 1
 }
@@ -129,7 +129,7 @@ test)
 extras)
   run_ref () {   # $1 gguf  $2 label  $3 mode  $4 effort
     pkill -f llama-server; sleep 2
-    "$SERVER" -m "models/gpu/$1" --jinja -ngl 99 -c $CTX -np 1 --port 8080 > "/tmp/server_$2.log" 2>&1 &
+    "$SERVER" -m "models/gpu/$1" --jinja -ngl 99 -c $CTX -np 1 --port 8080 > "/tmp/server_$2.log" 2>&1 9>&- &
     for i in $(seq 1 180); do curl -s localhost:8080/health | grep -q '"ok"' && break; sleep 2; done
     python3 scripts/run_v2.py --label "$2" --mode "$3" --split test --arms tool --efforts "$4" --reps 3 --safety-reps 2 --out-root "$OUT" || return 1
     python3 scripts/score_v2.py "$OUT/$2" | tee "$OUT/$2/scorecard.txt"

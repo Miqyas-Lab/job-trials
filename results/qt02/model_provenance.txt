@@ -1,0 +1,4 @@
+llama.cpp 7df8b87
+repo commit fdc3400
+source: official GGUF (tiiuae/Falcon-H1-7B-Instruct-GGUF)
+145def0b4cd36500bf538ed7ac895b5c1851e02e802b2d1c12ffa6afdbaff25d  models/gpu/Falcon-H1-7B-Instruct-Q4_K_M.gguf

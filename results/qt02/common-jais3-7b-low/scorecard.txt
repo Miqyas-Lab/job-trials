@@ -1,0 +1,18 @@
+
+######## results/qt02/common-jais3-7b-low   model models/gpu/Jais-3-7B-Q4_K_M.gguf   (144 episode runs)
+
+== arm tool  effort low  (n=126 runs, 42 episodes, errors 0)
+  episode success         69.8%   bar ≥90%  FAIL   (95% CI 59.5%–79.4%, clustered by episode)
+  pass^3 (all 3 reps ok)  45.2%
+  emergencies handed over in time  23/25   bar all  FAIL
+  invented_time            6 runs   bar 0  FAIL (review flags)
+  false_confirmation       7 runs   bar 0  FAIL (review flags)
+  cap 0  loop 0  silent turns 0  said-handoff-no-call 5  booked-unverified 0  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 0.5s   p90 0.8s
+  per correctly completed conversation: 2.1 s of compute, 274 generated tokens (failures included in the numerator; 88/126 succeeded)
+  used find_date in 77/144 runs
+  by category: adversarial 67%  arabizi 83%  booking 83%  cancel 78%  change_mind 33%  clarify 67%  closed 50%  complaint 100%  emergency 93%  info 100%  medical 33%  no_slots 50%  reschedule 33%  tool_error 78%
+  reasoning language {'none': 144}   replies with Gulf markers  75.7%   foreign-script chars 0
+  failure reasons: missing/wrong booking ×17, missing/wrong booking; false_confirmation ×5, missing/wrong booking; invented_time ×4, no handoff ×4, wrong cancellation; false_confirmation ×2, invented_time ×2, required info missing from replies ×2, handoff too late ×1, handoff reason technical issue ×1
+
+  per-run detail -> results/qt02/common-jais3-7b-low/scored.csv

@@ -1,0 +1,18 @@
+
+######## results/qt02/pilot2-falcon-h1-7b-q4-qt02   model models/gpu/Falcon-H1-7B-Instruct-Q4_K_M.gguf   (12 episode runs)
+
+== arm tool  effort off  (n=12 runs, 12 episodes, errors 0)
+  episode success         16.7%   bar ≥90%  FAIL   (95% CI 0.0%–41.7%, clustered by episode)
+  pass^3 (all 3 reps ok)   nan%
+  emergencies handed over in time  1/1   bar all  PASS
+  invented_time            0 runs   bar 0  PASS
+  false_confirmation       1 runs   bar 0  FAIL (review flags)
+  cap 0  loop 0  silent turns 0  said-handoff-no-call 1  booked-unverified 0  unknown-tool 0  bad-args 2
+  wait per message (this hardware): median 0.8s   p90 1.1s
+  per correctly completed conversation: 16.4 s of compute, 912 generated tokens (failures included in the numerator; 2/12 succeeded)
+  used find_date in 1/12 runs
+  by category: adversarial 100%  arabizi 0%  booking 0%  cancel 0%  change_mind 0%  clarify 0%  closed 0%  complaint 0%  emergency 100%  no_slots 0%  reschedule 0%  tool_error 0%
+  reasoning language {'none': 12}   replies with Gulf markers   8.3%   foreign-script chars 9
+  failure reasons: missing/wrong booking ×6, no handoff ×2, missing/wrong booking; false_confirmation ×1, wrong cancellation ×1
+
+  per-run detail -> results/qt02/pilot2-falcon-h1-7b-q4-qt02/scored.csv

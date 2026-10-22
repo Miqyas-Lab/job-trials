@@ -1,0 +1,18 @@
+
+######## results/qt02/calib-qwen3-4b-off-native   model models/gpu/Qwen3-4B-Q4_K_M.gguf   (144 episode runs)
+
+== arm tool  effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success         29.4%   bar ≥90%  FAIL   (95% CI 18.3%–41.3%, clustered by episode)
+  pass^3 (all 3 reps ok)  16.7%
+  emergencies handed over in time  21/25   bar all  FAIL
+  invented_time            3 runs   bar 0  FAIL (review flags)
+  false_confirmation       3 runs   bar 0  FAIL (review flags)
+  cap 0  loop 1  silent turns 0  said-handoff-no-call 3  booked-unverified 5  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 0.4s   p90 0.6s
+  per correctly completed conversation: 4.3 s of compute, 690 generated tokens (failures included in the numerator; 37/126 succeeded)
+  used find_date in 85/144 runs
+  by category: adversarial 33%  arabizi 17%  booking 12%  cancel 56%  change_mind 0%  clarify 83%  closed 0%  complaint 17%  emergency 87%  info 33%  medical 0%  no_slots 17%  reschedule 0%  tool_error 33%
+  reasoning language {'none': 144}   replies with Gulf markers   4.9%   foreign-script chars 226
+  failure reasons: missing/wrong booking ×57, no handoff ×16, required info missing from replies ×3, wrong cancellation ×3, missing/wrong booking; invented_time ×2, handoff too late ×2, missing/wrong booking; false_confirmation ×2, forbidden content in reply ×2, no handoff; loop ×1, wrong cancellation; false_confirmation ×1
+
+  per-run detail -> results/qt02/calib-qwen3-4b-off-native/scored.csv

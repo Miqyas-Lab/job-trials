@@ -1,6 +1,6 @@
 id: qt-02-falcon-h1-7b-clinic
 type: quick-trial            # numbers only, no verdict (standard v1.2)
-status: preregistered
+status: run-complete       # results in, publication pending (numbers only)
 approved_by: Mahmoud Deghaim
 approved_on: 2026-10-29
 standard: Job Trial Standard v1.2   # fair shot
@@ -58,3 +58,21 @@ amendments:
       from the reply text. Validated before use: oracle replay in Falcon's text format identical on 162/162
       episode-setups; look-alike text is not read as a call. Pilot 1 kept in results/qt02/pilot-falcon-h1-7b-q4-qt02;
       a second DEV pilot runs before the TEST run. Adapter calibration and reference rows unchanged.
+
+results:                       # TEST split, public test set only; all numbers in findings/qt02-falcon-h1-7b/results.json
+  run_date: 2026-10-29
+  run_commit: 2a223ef          # runner with amendment 1; llama.cpp 7df8b87; official GGUF sha256 in results/qt02/model_provenance.txt
+  falcon_episode_success: {base: 18.3%, table: 21.4%, tool: 14.3%}   # tool = common-setup headline; 95% CI tool 5.6-24.6%
+  falcon_emergencies_in_time: {base: 5/25, table: 6/25, tool: 8/25}
+  falcon_observations: >
+    Tool calls arrive only as text in the template-documented format (0 parsed natively). 5-13 runs per setup contain a
+    malformed call attempt (not read, counted as the model's error); 39-50 runs per setup contain an English-only reply.
+    Typical failures (10 read): says it will transfer an emergency without calling the tool, misses Gulf date words
+    («عقب باجر»), books the wrong weekday, replies in English, stray Japanese text. No invented phone numbers.
+  adapter_calibration: "Qwen3 4B no thinking, same build: native 29.4%, prompted-JSON adapter 35.7% (+6.3 points). The adapter does not handicap; the ALLaM result stands."
+  common_setup: "Jais 3 7B low 69.8% · Qwen3 8B off 68.3% · Qwen3 4B off 29.4% · Jais 3 3.7B low 28.6% (Job Trial #1) · Falcon-H1 7B 14.3% · ALLaM 7B 8.7% (qt-01)"
+  invented_phone_runs_tool_setup: {allam: 21/144, qwen3_4b_native: 2/144, others: 0/144}
+  redaction: "phone-like numbers redacted in qt-02 transcripts (Qwen3 4B calibration only) and, retroactively, in 3 Job Trial #1 Qwen3 4B runs; scores re-computed, identical"
+  licence: "TII Falcon licence (Apache-2.0-based; no restriction on publishing evaluations)"
+  cost_usd: ~2.5             # estimate (~3.3 pod-hours at 0.74); confirm from RunPod billing
+  ops_bug: "test->extras chain blocked by the run lock held by the exiting server; extras started by hand, no data affected"
