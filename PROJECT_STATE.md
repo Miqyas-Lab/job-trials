@@ -66,7 +66,7 @@ SSH access (IP not recorded here) · **Apple Screen Sharing rejects the host** (
 
 ## Repository
 
-`github.com/mhdghaim-cell/arabic-llm-bench` — public, MIT.
+`github.com/Miqyas-Lab/job-trials` — public, MIT.
 
 **Local path is `~/miqyas`.** This is the folder connected to GitHub. A scratch folder previously existed at `~/arabic-llm-bench` and has been renamed to `~/bench-scratch` to prevent confusion. Always work in `~/miqyas`.
 

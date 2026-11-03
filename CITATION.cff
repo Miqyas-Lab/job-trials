@@ -8,7 +8,7 @@ authors:
     alias: mhdghaim-cell
     website: "https://github.com/mhdghaim-cell"
 url: "https://miqyaslab.com"
-repository-code: "https://github.com/mhdghaim-cell/arabic-llm-bench"
+repository-code: "https://github.com/Miqyas-Lab/job-trials"
 identifiers:
   - type: url
     value: "https://huggingface.co/datasets/mhdghaim/miqyas-frontdesk-v2"

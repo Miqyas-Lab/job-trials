@@ -60,8 +60,8 @@
   <div class="meta">
     <span>رابط دائم: <span dir="ltr">/findings/frontdesk-v2/</span></span>
     <a href="#verdict">الحكم ↓</a>
-    <a href="https://github.com/mhdghaim-cell/arabic-llm-bench/blob/main/docs/frontdesk_protocol_v2.md">البروتوكول ↗</a>
-    <a href="https://github.com/mhdghaim-cell/arabic-llm-bench/tree/main/results/frontdesk_v2">البيانات الخام ↗</a>
+    <a href="https://github.com/Miqyas-Lab/job-trials/blob/main/docs/frontdesk_protocol_v2.md">البروتوكول ↗</a>
+    <a href="https://github.com/Miqyas-Lab/job-trials/tree/main/results/frontdesk_v2">البيانات الخام ↗</a>
     <a href="https://huggingface.co/datasets/mhdghaim/miqyas-frontdesk-v2">Hugging Face ↗</a>
     <a href="#en">English ↓</a>
   </div>
@@ -69,7 +69,7 @@
 
 <section class="section-head">
   <h2>السؤال</h2>
-  <p>هل يقدر نموذج مفتوح الأوزان، يعمل على جهاز العيادة من غير إنترنت، أن يدير محادثات واتساب كاملة باللهجة الخليجية: يحجز، يلغي، يغيّر المواعيد، يقول «ما في وقت» بدل أن يخترع، ويحوّل الحالات الطارئة لإنسان فورًا؟ الاختبار السابق (<a href="https://github.com/mhdghaim-cell/arabic-llm-bench/blob/main/docs/frontdesk_protocol_v1.md">v1</a>) قاس الخطوة الأولى فقط. هذا الاختبار يقيس المحادثة كلها، والعيادة تردّ على كل أداة.</p>
+  <p>هل يقدر نموذج مفتوح الأوزان، يعمل على جهاز العيادة من غير إنترنت، أن يدير محادثات واتساب كاملة باللهجة الخليجية: يحجز، يلغي، يغيّر المواعيد، يقول «ما في وقت» بدل أن يخترع، ويحوّل الحالات الطارئة لإنسان فورًا؟ الاختبار السابق (<a href="https://github.com/Miqyas-Lab/job-trials/blob/main/docs/frontdesk_protocol_v1.md">v1</a>) قاس الخطوة الأولى فقط. هذا الاختبار يقيس المحادثة كلها، والعيادة تردّ على كل أداة.</p>
 </section>
 
 <section class="section-head">
@@ -84,7 +84,7 @@
       <tr><td>Qwen3 · 4B</td><td class="num">44.4% <span class="ci">[32–57]</span></td><td class="num">65.1% <span class="ci">[53–76]</span></td><td class="num">59.5% <span class="ci">[47–71]</span></td><td class="num">50%</td></tr>
     </tbody>
   </table>
-  <p class="note"><span class="num">42</span> حلقة اختبار × <span class="num">3</span> محاولات (<span class="num">+2</span> لحلقات السلامة) = <span class="num">144</span> محادثة لكل خلية. كل النماذج بصيغة Q4_K_M على llama.cpp، بجهد تفكير عالٍ (Jais) أو التفكير مفعّل (Qwen)، وبإعدادات العيّنة الموصى بها من كل جهة. النسب بعد المراجعة البشرية لكل إنذار حرج؛ الأرقام الآلية قبلها في <a href="https://github.com/mhdghaim-cell/arabic-llm-bench/tree/main/results/frontdesk_v2">البيانات</a> وتختلف بأقل من نقطة واحدة. بجهد منخفض أو من غير تفكير ينهار الأداء إلى <span class="num">28%</span> للنموذجين.</p>
+  <p class="note"><span class="num">42</span> حلقة اختبار × <span class="num">3</span> محاولات (<span class="num">+2</span> لحلقات السلامة) = <span class="num">144</span> محادثة لكل خلية. كل النماذج بصيغة Q4_K_M على llama.cpp، بجهد تفكير عالٍ (Jais) أو التفكير مفعّل (Qwen)، وبإعدادات العيّنة الموصى بها من كل جهة. النسب بعد المراجعة البشرية لكل إنذار حرج؛ الأرقام الآلية قبلها في <a href="https://github.com/Miqyas-Lab/job-trials/tree/main/results/frontdesk_v2">البيانات</a> وتختلف بأقل من نقطة واحدة. بجهد منخفض أو من غير تفكير ينهار الأداء إلى <span class="num">28%</span> للنموذجين.</p>
   <ul class="tight">
     <li><b>Jais 3 يتفوّق على Qwen3 في كل الإعدادات</b>، والفرق واضح إحصائيًا: Jais 3 3.7B يتقدّم على Qwen3-8B، ضعف حجمه، بـ<span class="num">16</span> إلى <span class="num">29</span> نقطة.</li>
     <li><b>3.7B يساوي 7B</b>: لا فرق واضح بينهما في أي إعداد.</li>
@@ -154,7 +154,7 @@
 <section class="section-head">
   <h2>كيف تحقّقنا</h2>
   <ul class="tight">
-    <li><b>تسجيل مسبق</b>: البروتوكول والحلقات والمصحِّح في git قبل أي تشغيل (<span class="num">9a83bfe</span>)، وثلاثة تعديلات مؤرّخة ومعلّلة (<a href="https://github.com/mhdghaim-cell/arabic-llm-bench/blob/main/docs/frontdesk_protocol_v2_amendment1.md"><span class="num">1</span></a>، <a href="https://github.com/mhdghaim-cell/arabic-llm-bench/blob/main/docs/frontdesk_protocol_v2_amendment2.md"><span class="num">2</span></a>، <a href="https://github.com/mhdghaim-cell/arabic-llm-bench/blob/main/docs/frontdesk_protocol_v2_amendment3.md"><span class="num">3</span></a>). لم يُغيَّر شيء بسبب نتيجة نموذج.</li>
+    <li><b>تسجيل مسبق</b>: البروتوكول والحلقات والمصحِّح في git قبل أي تشغيل (<span class="num">9a83bfe</span>)، وثلاثة تعديلات مؤرّخة ومعلّلة (<a href="https://github.com/Miqyas-Lab/job-trials/blob/main/docs/frontdesk_protocol_v2_amendment1.md"><span class="num">1</span></a>، <a href="https://github.com/Miqyas-Lab/job-trials/blob/main/docs/frontdesk_protocol_v2_amendment2.md"><span class="num">2</span></a>، <a href="https://github.com/Miqyas-Lab/job-trials/blob/main/docs/frontdesk_protocol_v2_amendment3.md"><span class="num">3</span></a>). لم يُغيَّر شيء بسبب نتيجة نموذج.</li>
     <li><b>موظف استقبال مثالي</b> (أوراكل) نجح <span class="num">100%</span> في كل الحلقات والإعدادات، فكل حلقة قابلة للحل. <b>تسعة موظفين سيئين عمدًا</b> (يخترع، يسكت، يحجز بلا سؤال، يتأخر في الطوارئ…) التقطهم المصحِّح كلهم.</li>
     <li><b>تدقيق بشري أعمى</b>: <span class="num">30</span> محادثة قيّمها محمود دغيم من غير معرفة النموذج أو الإعداد أو حكم المصحِّح. اتفاق <span class="num">30</span> من <span class="num">30</span>.</li>
     <li><b>كل إنذار حرج روجع يدويًا</b>: <span class="num">35</span> إنذارًا في الإعدادات الرئيسية، <span class="num">26</span> مؤكَّدة و<span class="num">9</span> إنذارات كاذبة من فاحص النصوص.</li>
@@ -191,14 +191,14 @@
     </ul>
     <h3>Validity</h3>
     <p>Protocol, episodes and scorer committed before any run (<code>9a83bfe</code>), plus three dated amendments, none prompted by a model's score. Oracle replay 100% in every arm; nine negative-control agents all caught. Blind human audit of 30 conversations: 30/30 agreement. All 35 critical flags in the primary configurations reviewed by hand (26 confirmed, 9 regex false positives). Reproducibility: fresh vs fresh server 10/10 identical; main run vs fresh 9/10 same outcome (prompt-cache state changes GPU numerics). Limitations: one clinic, 42 episodes, scripted patient, author-reviewed (non-Emirati) dialect, Q4 only.</p>
-    <p><b>Data and code:</b> <code>results/frontdesk_v2/</code> (every conversation in full), <code>scripts/</code>, <code>corpus/frontdesk_v2.jsonl</code>. Also on Hugging Face: <a href="https://huggingface.co/datasets/mhdghaim/miqyas-frontdesk-v2">mhdghaim/miqyas-frontdesk-v2</a>. Independent work by Mahmoud Deghaim; <a href="https://github.com/mhdghaim-cell/arabic-llm-bench/blob/main/docs/independence.md">independence and funding policy</a>.</p>
+    <p><b>Data and code:</b> <code>results/frontdesk_v2/</code> (every conversation in full), <code>scripts/</code>, <code>corpus/frontdesk_v2.jsonl</code>. Also on Hugging Face: <a href="https://huggingface.co/datasets/mhdghaim/miqyas-frontdesk-v2">mhdghaim/miqyas-frontdesk-v2</a>. Independent work by Mahmoud Deghaim; <a href="https://github.com/Miqyas-Lab/job-trials/blob/main/docs/independence.md">independence and funding policy</a>.</p>
   </div>
 </section>
 
 <footer>
-  <p>مقياس مشروع مستقل أسّسه محمود دغيم (<span dir="ltr">Mahmoud Deghaim</span>). كل محادثة منشورة كاملة في <a href="https://github.com/mhdghaim-cell/arabic-llm-bench/tree/main/results/frontdesk_v2">results/frontdesk_v2</a>.</p>
-  <p>للاستشهاد، راجع <a href="../../المنهجية/">المنهجية</a> و<a href="https://github.com/mhdghaim-cell/arabic-llm-bench/blob/main/CITATION.cff">CITATION.cff</a>.</p>
-  <div class="brandfoot"><span class="b"><img src="../../assets/brand/miqyas-favicon.svg" alt="">مقياس · محمود دغيم</span><span class="repo">github.com/mhdghaim-cell/arabic-llm-bench</span></div>
+  <p>مقياس مشروع مستقل أسّسه محمود دغيم (<span dir="ltr">Mahmoud Deghaim</span>). كل محادثة منشورة كاملة في <a href="https://github.com/Miqyas-Lab/job-trials/tree/main/results/frontdesk_v2">results/frontdesk_v2</a>.</p>
+  <p>للاستشهاد، راجع <a href="../../المنهجية/">المنهجية</a> و<a href="https://github.com/Miqyas-Lab/job-trials/blob/main/CITATION.cff">CITATION.cff</a>.</p>
+  <div class="brandfoot"><span class="b"><img src="../../assets/brand/miqyas-favicon.svg" alt="">مقياس · محمود دغيم</span><span class="repo">github.com/Miqyas-Lab/job-trials</span></div>
 </footer>
 
 </div>
