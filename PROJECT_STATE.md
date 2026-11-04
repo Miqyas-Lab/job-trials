@@ -12,7 +12,7 @@ A 12-week program producing **original measurements** of how locally-run AI mode
 **The strategic premise:** translated tutorials are commodity. Nobody has measured Arabic-specific behaviour — tokenizer efficiency, quantization damage, dialect handling, retrieval accuracy. That data doesn't exist in any language. That gap is the entire differentiation.
 
 **Three compounding assets** come out of it:
-1. **المسرد** (glossary) — Arabic terminology for local inference. Whoever fixes the vocabulary becomes the reference.
+1. **المعجم** (glossary; called المسرد until 4 Nov 2026) — Arabic terminology for local inference. Whoever fixes the vocabulary becomes the reference.
 2. **المعيار** (benchmark) — open Arabic eval set, community-contributable.
 3. **الحاسبة** (calculator) — local-vs-API TCO, calibrated on Arabic token ratios.
 

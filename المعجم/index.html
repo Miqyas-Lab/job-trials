@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>مقياس — المعجم</title>
+<meta name="description" content="معجم مقياس: عشرة مصطلحات على طريق واحد، من سؤالك إلى إجابة النموذج.">
+<link rel="icon" href="../assets/brand/miqyas-favicon.svg" type="image/svg+xml">
+<style>
+@font-face{font-family:"Plex Ar";font-weight:400;font-display:swap;src:url("../assets/fonts/sans-arabic-400.woff2") format("woff2")}
+@font-face{font-family:"Plex Ar";font-weight:500;font-display:swap;src:url("../assets/fonts/sans-arabic-500.woff2") format("woff2")}
+@font-face{font-family:"Plex Ar";font-weight:600;font-display:swap;src:url("../assets/fonts/sans-arabic-600.woff2") format("woff2")}
+@font-face{font-family:"Plex Mono";font-weight:400;font-display:swap;src:url("../assets/fonts/mono-400.woff2") format("woff2")}
+@font-face{font-family:"Plex Mono";font-weight:500;font-display:swap;src:url("../assets/fonts/mono-500.woff2") format("woff2")}
+:root{--ink:#12161C;--paper:#FAF9F6;--red:#EB3B2C;--signal:#C42B1F;--rule:#D8D5CE;--dim:#6E7178;--soft:#EFEDE7;
+  --ar:"Plex Ar",system-ui,sans-serif;--mono:"Plex Mono",ui-monospace,monospace;color-scheme:light}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background-color:var(--paper);background-image:linear-gradient(rgba(18,22,28,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(18,22,28,.045) 1px,transparent 1px);background-size:24px 24px;background-position:-1px -1px;color:var(--ink);font-family:var(--ar);font-size:17px;line-height:1.5}
+a{color:var(--ink);text-underline-offset:4px}a:hover{color:var(--signal)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.mono,.n{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.n{direction:ltr;unicode-bidi:isolate}
+.dim{color:var(--dim)}
+.wrap{max-width:1120px;margin:0 auto;padding:32px 24px 64px;display:flex;flex-direction:column;gap:40px}
+header{display:flex;justify-content:flex-end;border-bottom:1px solid var(--rule);padding-bottom:12px}
+header a{line-height:0}header img{width:170px;height:auto;display:block}
+.intro{display:flex;flex-direction:column;gap:8px;max-width:760px}
+h1{font-size:44px;font-weight:600;line-height:1.3}
+.en{font-family:var(--mono);font-size:14px;color:var(--dim);direction:ltr;text-align:right}
+.lead{margin-top:16px}
+.search{display:flex;flex-direction:column;gap:6px;max-width:560px}
+.search label{font-size:14px;color:var(--dim)}
+.search input{font:inherit;font-size:17px;padding:12px 14px;border:1px solid var(--ink);border-radius:0;background:var(--paper);color:var(--ink)}
+.search p{font-size:13px;color:var(--dim);min-height:20px}
+.ends{display:flex;justify-content:space-between;font-size:14px;color:var(--dim);padding-bottom:8px}
+.line{height:1px;background:var(--ink)}
+.stations{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));background:var(--paper);border-bottom:1px solid var(--rule)}
+.station{display:flex;flex-direction:column;border-inline-start:1px solid var(--rule);padding-bottom:16px}
+.tick{height:14px;position:relative}.tick::before{content:"";position:absolute;inset-inline-start:12px;top:0;width:1px;height:14px;background:var(--ink)}
+.node{display:inline-block;width:10px;height:10px;background:var(--paper);border:1px solid var(--ink);flex-shrink:0}
+[aria-pressed="true"] .node{background:var(--red);border-color:var(--red)}
+.big{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:12px;min-height:44px;border:0;background:transparent;text-align:right}
+.big[aria-pressed="true"]{background:var(--soft)}
+.big .row{display:flex;align-items:center;gap:8px}
+.big .num{font-family:var(--mono);font-size:13px;color:var(--dim);direction:ltr}
+.big .ar{font-size:20px;font-weight:600;line-height:1.3}
+.big .lat,.small .lat{font-family:var(--mono);font-size:13px;color:var(--dim);direction:ltr}
+.inside{margin:4px 12px 0;border-top:1px dashed var(--rule);display:flex;flex-direction:column}
+.inside>span{font-size:13px;color:var(--dim);padding:8px 0 4px}
+.small{display:flex;align-items:baseline;gap:8px;padding:8px 0;min-height:44px;border:0;background:transparent;text-align:right}
+.small .ar{font-size:16px;font-weight:500}
+.small[aria-pressed="true"] .ar{font-weight:600}
+.faded{opacity:.35}
+.before{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding-top:12px;font-size:14px;color:var(--dim)}
+.before .small{color:var(--ink)}
+.reader{background:var(--paper);border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);padding:32px 0;display:flex;flex-direction:column;gap:28px}
+.reader .top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.reader .meta{font-size:14px;color:var(--dim)}
+.reader h2{font-size:40px;font-weight:600;line-height:1.25;color:var(--red)}
+.reader .lat{font-family:var(--mono);font-size:15px;color:var(--dim);direction:ltr;text-align:right}
+.nav{display:flex;gap:8px}
+.nav button{padding:10px 16px;min-height:44px;border:1px solid var(--ink);background:var(--paper);font-size:15px}
+.nav button.next{background:var(--ink);color:var(--paper)}
+.plain{font-size:26px;font-weight:500;line-height:1.5;max-width:820px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px}
+.two h3,.qs h3{font-size:14px;font-weight:500;color:var(--dim);margin-bottom:8px}
+.qs ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.qs li{font-size:15px;padding:6px 12px;border:1px solid var(--rule);background:var(--soft)}
+footer{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;border-top:1px solid var(--rule);padding-top:10px;font-size:14px}
+footer .links{display:flex;gap:16px;flex-wrap:wrap}
+footer .site{font-family:var(--mono);font-size:13px;color:var(--dim);direction:ltr}
+noscript p{padding:16px 0}
+.lt{font-family:var(--mono);font-size:.88em;direction:ltr;unicode-bidi:isolate}
+@media (max-width:560px){h1{font-size:32px}.reader h2{font-size:32px}.plain{font-size:21px}.wrap{padding:24px 16px 48px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header><a href="../" aria-label="مقياس: الصفحة الرئيسية"><img src="../assets/brand/miqyas-lockup-on-light.svg" alt="مقياس · Miqyas" width="170" height="48"></a></header>
+
+<section class="intro">
+  <h1>ماذا يحدث بين سؤالك وإجابة النموذج؟</h1>
+  <p class="en">What happens between your question and the model's answer?</p>
+  <p class="lead">عشرة مصطلحات، كلها على طريق واحد. اتبع السؤال من اليمين إلى اليسار، واضغط أي محطة لتقرأها.</p>
+</section>
+
+<div class="search">
+  <label for="q">ابحث بكلماتك</label>
+  <input id="q" type="search" placeholder="مثلًا: لماذا الملف صغير؟ أو ما معنى Q4؟" autocomplete="off">
+  <p id="note" aria-live="polite"></p>
+</div>
+
+<section aria-label="مسار السؤال">
+  <div class="ends"><span>سؤالك ←</span><span>← الإجابة</span></div>
+  <div class="line"></div>
+  <div class="stations" id="stations"></div>
+  <div class="before" id="before"></div>
+</section>
+
+<article class="reader" id="reader" aria-live="polite">
+  <noscript><p>هذه الصفحة تحتاج إلى JavaScript. البيانات كاملة في <a href="../data/glossary.json">glossary.json</a>.</p></noscript>
+</article>
+
+<footer>
+  <div class="links">
+    <a href="https://github.com/Miqyas-Lab/job-trials/issues/new" target="_blank" rel="noopener">اقترح تصحيحًا ↗</a>
+    <a href="../data/glossary.json">البيانات (JSON)</a>
+  </div>
+  <span class="site">miqyaslab.com</span>
+</footer>
+
+</div>
+
+<!-- Fallback copy of /data/glossary.json for when fetch fails (file://). Regenerated by `npm run build`; edit the JSON file, not this block. -->
+<script type="application/json" id="glossary-data" data-src="/data/glossary.json">
+{
+  "version": "0.1",
+  "updated": "2026-11-04",
+  "tiers": [
+    {
+      "id": 1,
+      "title": "عشرة مصطلحات تكفي للبداية",
+      "note": "إن قرأت هذه العشرة فقط، فأنت تفهم ما يكفي لتشغيل نموذج على جهازك ومتابعة أي نقاش في هذا المجال. لا بأس أن تتوقف هنا."
+    },
+    {
+      "id": 2,
+      "title": "للفهم الأعمق",
+      "note": "تُضاف في النسخة ٠٫٢."
+    },
+    {
+      "id": 3,
+      "title": "المصطلحات المتقدمة",
+      "note": "تُضاف لاحقًا."
+    }
+  ],
+  "terms": [
+    {
+      "ar": "الاستدلال",
+      "en": "Inference",
+      "tier": 1,
+      "plain": "لحظة تشغيل النموذج (Model) فعليًا: تعطيه سؤالًا فيعطيك إجابة.",
+      "analogy": "التدريب (Training) هو سنوات الدراسة. الاستدلال (Inference) هو الامتحان — اللحظة التي يُستخدم فيها ما تعلّمه.",
+      "why": "كل ما نقيسه في هذا المشروع يحدث في هذه اللحظة: السرعة، التكلفة، وجودة الإجابة.",
+      "questions": [
+        "ماذا يحدث حين أسأل النموذج؟",
+        "ما الفرق بين التدريب والتشغيل (Inference)؟",
+        "لماذا يبطئ حين أسأله؟"
+      ],
+      "aliases": [
+        "شنو يصير لما اسأل النموذج",
+        "وش الفرق بين التدريب والتشغيل",
+        "ليش بطيء لما اسأله"
+      ],
+      "id": "inference"
+    },
+    {
+      "ar": "الأوزان",
+      "en": "Weights",
+      "tier": 1,
+      "plain": "الأرقام التي تعلّمها النموذج (Model) أثناء تدريبه (Training). هي كل ما يعرفه، مخزّنًا في ملف.",
+      "analogy": "لو كان النموذج دماغًا، فالأوزان (Weights) هي الروابط بين خلاياه. ملف الأوزان هو الدماغ نفسه، لا برنامج يشغّله.",
+      "why": "حين نقول «نموذج مفتوح الأوزان» (Open-weight model) نعني أن هذا الملف متاح للتنزيل — أي يمكنك تشغيله على جهازك دون إذن أحد.",
+      "questions": [
+        "ما معنى «أوزان مفتوحة»؟",
+        "ما الملف الذي أنزّله؟",
+        "لماذا حجم النموذج كبير؟"
+      ],
+      "aliases": [
+        "وش يعني اوزان مفتوحة",
+        "شنو الملف اللي انزله",
+        "ليش حجم النموذج كبير"
+      ],
+      "id": "weights"
+    },
+    {
+      "ar": "التكميم",
+      "en": "Quantization",
+      "tier": 1,
+      "plain": "تصغير حجم النموذج (Model) ليعمل على جهاز أضعف، مقابل خسارة بسيطة في الدقة (Accuracy).",
+      "analogy": "مثل ضغط (Compression) صورة قبل إرسالها: تصبح أخف بكثير، وتفقد قليلًا من الوضوح لا يلاحظه معظم الناس.",
+      "why": "هو الفرق بين نموذج يعمل على حاسوبك ونموذج لا يعمل إطلاقًا.",
+      "questions": [
+        "لماذا الملف صغير؟",
+        "ما معنى Q4؟",
+        "ما الفرق بين النسخ؟",
+        "أيّ نسخة أنزّل؟"
+      ],
+      "aliases": [
+        "ليش الملف صغير",
+        "شنو يعني Q4",
+        "وش الفرق بين النسخ",
+        "ايش افضل نسخة انزلها"
+      ],
+      "id": "quant"
+    },
+    {
+      "ar": "الرمز",
+      "en": "Token",
+      "tier": 1,
+      "plain": "القطعة الصغيرة التي يقسّم النموذج (Model) النص إليها. ليست حرفًا ولا كلمة، بل شيء بينهما.",
+      "analogy": "مثل تقطيع جملة إلى مقاطع قبل قراءتها بصوت عالٍ. النموذج لا يرى الكلمات، يرى هذه المقاطع.",
+      "why": "كل التسعير وكل الحدود تُحسب بالرموز (Tokens). والعربية تستهلك رموزًا أكثر من الإنجليزية للمعنى نفسه — وهذا ما نقيسه.",
+      "questions": [
+        "ما معنى «توكن» (Token)؟",
+        "لماذا يُحسب كل شيء بالرموز؟",
+        "لماذا تكلّف العربية أكثر؟"
+      ],
+      "aliases": [
+        "شنو يعني توكن",
+        "ليش يحسبون بالرموز",
+        "ليش العربي اغلى"
+      ],
+      "id": "token"
+    },
+    {
+      "ar": "نافذة السياق",
+      "en": "Context window",
+      "tier": 1,
+      "plain": "أقصى كمية نص يستطيع النموذج (Model) أن يأخذها في الاعتبار دفعة واحدة.",
+      "analogy": "مثل طاولة مكتب: مهما كانت المكتبة كبيرة، لا يتسع على الطاولة إلا عدد محدود من الأوراق في وقت واحد.",
+      "why": "إن تجاوز حديثك النافذة (Context window)، ينسى النموذج أوّله. وبما أن العربية تستهلك رموزًا (Tokens) أكثر، فنافذتك عمليًا أصغر.",
+      "questions": [
+        "لماذا نسي النموذج ما قلته له؟",
+        "لماذا لا يقرأ الملف كاملًا؟",
+        "ما معنى 128k؟"
+      ],
+      "aliases": [
+        "ليش نسي كلامي",
+        "ليش ما يقرا الملف كامل",
+        "شنو يعني 128k"
+      ],
+      "id": "context"
+    },
+    {
+      "ar": "المعاملات",
+      "en": "Parameters",
+      "tier": 1,
+      "plain": "عدد الأوزان (Weights) في النموذج (Model). يُكتب عادةً بالمليارات: 7B تعني سبعة مليارات.",
+      "analogy": "مؤشر تقريبي على حجم النموذج، مثل حجم محرّك السيارة. أكبر لا يعني دائمًا أفضل، لكنه يعني دائمًا أثقل.",
+      "why": "هذا الرقم يحدّد مباشرةً هل يعمل النموذج على جهازك أم لا.",
+      "questions": [
+        "ما معنى 7B؟",
+        "ما حجم النموذج المناسب لجهازي؟",
+        "هل الأكبر أفضل دائمًا؟"
+      ],
+      "aliases": [
+        "شنو يعني 7B",
+        "ايش حجم النموذج المناسب لجهازي",
+        "كل ما كبر صار احسن؟"
+      ],
+      "id": "params"
+    },
+    {
+      "ar": "الموجّه",
+      "en": "Prompt",
+      "tier": 1,
+      "plain": "النص الذي تكتبه للنموذج (Model): سؤالك، أو تعليماتك (Instructions)، أو كلاهما.",
+      "analogy": "ليس مجرد سؤال، بل وصف للمهمة. الفرق بين «اكتب» و«اكتب فقرة رسمية من ثلاث جمل» هو الفرق بين إجابتين مختلفتين تمامًا.",
+      "why": "أكبر تحسّن يمكنك الحصول عليه دون تغيير النموذج أو الجهاز (Hardware) يأتي من صياغة الموجّه (Prompt engineering).",
+      "questions": [
+        "كيف أسأل النموذج بالطريقة الصحيحة؟",
+        "لماذا جاءت الإجابة سيئة؟",
+        "ما معنى «برومبت» (Prompt)؟"
+      ],
+      "aliases": [
+        "كيف اسال النموذج صح",
+        "ليش الاجابة سيئة",
+        "شنو يعني برومبت"
+      ],
+      "id": "prompt"
+    },
+    {
+      "ar": "الضبط الدقيق",
+      "en": "Fine-tuning",
+      "tier": 1,
+      "plain": "تدريب (Training) إضافي لنموذج (Model) جاهز على بياناتك أنت، ليتخصّص في مجالك.",
+      "analogy": "طبيب عام يدرس سنتين إضافيتين ليصبح اختصاصيًا. الأساس نفسه، والتخصص جديد.",
+      "why": "الحل الأول الذي يخطر للناس، وغالبًا ليس ما يحتاجونه. في معظم الحالات يكفي موجّه (Prompt) أفضل أو نظام استرجاع (Retrieval, RAG).",
+      "questions": [
+        "كيف أجعله يعرف بياناتي؟",
+        "كيف أحصل على نموذج خاص بي؟",
+        "ما الفرق بين التدريب والضبط الدقيق (Fine-tuning)؟"
+      ],
+      "aliases": [
+        "كيف اخليه يعرف بياناتي",
+        "ابي نموذج خاص فيني",
+        "شنو الفرق بين التدريب والضبط"
+      ],
+      "id": "finetune"
+    },
+    {
+      "ar": "زمن الاستجابة",
+      "en": "Latency",
+      "tier": 1,
+      "plain": "المدة بين ضغطك «إرسال» وظهور أول حرف من الإجابة (First token).",
+      "analogy": "مثل انتظار النادل بعد أن تطلب. لا علاقة له بحجم الطبق، بل بسرعة وصوله.",
+      "why": "هو ما يحدّد إحساسك بأن النظام «سريع» أو «بطيء» — أكثر من أي رقم آخر.",
+      "questions": [
+        "لماذا يتأخر في الرد؟",
+        "ما معنى latency؟",
+        "لماذا يكون بطيئًا في البداية فقط؟"
+      ],
+      "aliases": [
+        "ليش يتاخر يرد",
+        "شنو يعني latency",
+        "ليش بطيء بالبداية بس"
+      ],
+      "id": "latency"
+    },
+    {
+      "ar": "الإنتاجية",
+      "en": "Throughput",
+      "tier": 1,
+      "plain": "كمية العمل التي ينجزها النظام في وقت معيّن. تُقاس عادةً بالرموز في الثانية (Tokens per second).",
+      "analogy": "زمن الاستجابة (Latency) هو سرعة سيارة واحدة. الإنتاجية (Throughput) هي عدد السيارات التي يمرّرها الطريق في الساعة.",
+      "why": "لا يهمّ كثيرًا حين تستخدم النموذج وحدك. يصبح الرقم الأهم حين يستخدمه فريق كامل.",
+      "questions": [
+        "كم شخصًا يخدم في الوقت نفسه؟",
+        "ما معنى «رمز في الثانية»؟",
+        "ما الفرق بينها وبين زمن الاستجابة؟"
+      ],
+      "aliases": [
+        "كم يخدم شخص بنفس الوقت",
+        "شنو يعني رمز بالثانية",
+        "ايش الفرق بينه وبين زمن الاستجابة"
+      ],
+      "id": "throughput"
+    }
+  ],
+  "path": {
+    "note": "The page draws the terms as stations on the path of one question (right to left in Arabic).",
+    "stations": [
+      {
+        "id": "prompt",
+        "where": "تكتب"
+      },
+      {
+        "id": "token",
+        "where": "يُقطَّع النص"
+      },
+      {
+        "id": "context",
+        "where": "يدخل الذاكرة"
+      },
+      {
+        "id": "inference",
+        "where": "يعمل النموذج",
+        "inside": [
+          "weights",
+          "params",
+          "quant"
+        ]
+      },
+      {
+        "id": "latency",
+        "where": "تنتظر"
+      },
+      {
+        "id": "throughput",
+        "where": "يخدم الجميع"
+      }
+    ],
+    "inside_label": "داخل الجهاز",
+    "before": {
+      "id": "finetune",
+      "label": "قبل الطريق كله",
+      "note": "يغيّر النموذج نفسه، لا طريقة تشغيله."
+    }
+  },
+  "_fields": "questions: shown (formal Arabic). aliases: everyday wordings people type; searched, never shown."
+}
+</script>
+
+<script>
+(function () {
+  "use strict";
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const norm = (s) => (s || "")
+    .replace(/[​-‏‪-‮⁦-⁩﻿]/g, "")
+    .replace(/[ً-ْـ]/g, "")
+    .replace(/[أإآ]/g, "ا").replace(/ى/g, "ي").replace(/ة/g, "ه")
+    .replace(/[؟?«»]/g, "").toLowerCase().trim();
+  const pad = (i) => String(i).padStart(2, "0");
+  // English names and numbers inside Arabic text: Plex Mono, left to right (brand book §4)
+  const fmt = (s) => String(s).split(/([A-Za-z0-9][A-Za-z0-9.,\-\/ ]*[A-Za-z0-9]|[A-Za-z0-9])/)
+    .map((p, i) => (i % 2 ? '<span class="lt">' + esc(p) + "</span>" : esc(p))).join("");
+
+  let D, T = {}, ORDER = [], sel = null, hits = null;
+
+  async function load() {
+    try {
+      const r = await fetch("../data/glossary.json", { cache: "no-store" });
+      if (!r.ok) throw new Error(r.status);
+      return await r.json();
+    } catch (e) {
+      return JSON.parse($("glossary-data").textContent);
+    }
+  }
+
+  function search(q) {
+    const n = norm(q);
+    if (!n) return null;
+    const words = n.split(/\s+/);
+    return ORDER.filter((id) => {
+      const t = T[id];
+      const hay = norm([t.ar, t.en, t.plain, t.analogy, t.why, (t.questions || []).join(" "), (t.aliases || []).join(" ")].join(" "));
+      return words.every((w) => hay.includes(w));
+    });
+  }
+
+  function btn(id, kind, num) {
+    const t = T[id];
+    const on = id === sel ? "true" : "false";
+    const fade = hits && !hits.includes(id) ? " faded" : "";
+    if (kind === "big") {
+      return '<button type="button" class="big' + fade + '" data-id="' + id + '" aria-pressed="' + on + '">'
+        + '<span class="row"><span class="node" aria-hidden="true"></span><span class="num">' + num + '</span></span>'
+        + '<span class="ar">' + esc(t.ar) + '</span><span class="lat">' + esc(t.en) + '</span></button>';
+    }
+    return '<button type="button" class="small' + fade + '" data-id="' + id + '" aria-pressed="' + on + '">'
+      + '<span class="node" aria-hidden="true"></span><span class="ar">' + esc(t.ar) + '</span><span class="lat">' + esc(t.en) + '</span></button>';
+  }
+
+  function render() {
+    const P = D.path;
+    $("stations").innerHTML = P.stations.map((s, i) => {
+      let h = '<div class="station"><div class="tick"></div>' + btn(s.id, "big", pad(i + 1));
+      if (s.inside) h += '<div class="inside"><span>' + esc(P.inside_label) + '</span>' + s.inside.map((x) => btn(x, "small")).join("") + '</div>';
+      return h + '</div>';
+    }).join("");
+    $("before").innerHTML = '<span>' + esc(P.before.label) + ':</span>' + btn(P.before.id, "small") + '<span>' + esc(P.before.note) + '</span>';
+
+    const t = T[sel];
+    const si = P.stations.findIndex((s) => s.id === sel);
+    const host = P.stations.find((s) => (s.inside || []).includes(sel));
+    const meta = si >= 0 ? '<span class="n">' + pad(si + 1) + '</span> · ' + esc(P.stations[si].where)
+      : host ? esc(P.inside_label) : esc(P.before.label);
+    $("reader").innerHTML =
+      '<div class="top"><div><p class="meta">' + meta + '</p><h2 id="term">' + esc(t.ar) + '</h2><p class="lat">' + esc(t.en) + '</p></div>'
+      + '<div class="nav"><button type="button" id="prev">→ السابق</button><button type="button" class="next" id="next">التالي ←</button></div></div>'
+      + '<p class="plain">' + fmt(t.plain) + '</p>'
+      + '<div class="two"><div><h3>تشبيه</h3><p>' + fmt(t.analogy) + '</p></div><div><h3>لماذا يهمك؟</h3><p>' + fmt(t.why) + '</p></div></div>'
+      + '<div class="qs"><h3>أسئلة تقودك إلى هنا</h3><ul>' + (t.questions || []).map((q) => '<li>' + fmt(q) + '</li>').join("") + '</ul></div>';
+  }
+
+  function pick(id, push) {
+    if (!T[id]) return;
+    sel = id;
+    render();
+    if (push) history.replaceState(null, "", "#" + id);
+  }
+
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-id]");
+    if (b) { pick(b.dataset.id, true); return; }
+    if (e.target.closest("#prev")) pick(ORDER[(ORDER.indexOf(sel) + ORDER.length - 1) % ORDER.length], true);
+    if (e.target.closest("#next")) pick(ORDER[(ORDER.indexOf(sel) + 1) % ORDER.length], true);
+  });
+
+  $("q").addEventListener("input", (e) => {
+    hits = search(e.target.value);
+    const n = $("note");
+    if (!hits) n.textContent = "";
+    else if (hits.length) { n.textContent = hits.length + " من " + ORDER.length + " · الأقرب: " + T[hits[0]].ar; sel = hits[0]; }
+    else n.textContent = "لا يوجد مصطلح مطابق بعد. اقترحه علينا من الرابط في الأسفل.";
+    render();
+  });
+
+  window.addEventListener("hashchange", () => pick(location.hash.slice(1), false));
+
+  load().then((data) => {
+    D = data;
+    data.terms.forEach((t) => { T[t.id] = t; });
+    const P = data.path;
+    P.stations.forEach((s) => { ORDER.push(s.id); (s.inside || []).forEach((x) => ORDER.push(x)); });
+    ORDER.push(P.before.id);
+    const h = decodeURIComponent(location.hash.slice(1));
+    sel = T[h] ? h : "token";
+    render();
+  });
+})();
+</script>
+</body>
+</html>

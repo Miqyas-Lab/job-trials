@@ -30,8 +30,8 @@ function wrapText(ctx, text, font, maxWidth) {
   return lines;
 }
 
-// label: small mono string top-right (e.g. "مقياس · المسرد   v0.1")
-// footerUrl: LTR string burned in bottom-left (e.g. "miqyas.ai/المسرد")
+// label: small mono string top-right (e.g. "مقياس · المعجم   v0.1")
+// footerUrl: LTR string burned in bottom-left (e.g. "miqyaslab.com/المعجم")
 // draw(ctx, geometry): page-specific content; geometry.wrap(text, font, maxWidth) is bound to this ctx
 async function renderCard({ canvas, label, footerUrl, draw, width = 1200, height = 1200 }) {
   canvas.width = width;
