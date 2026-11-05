@@ -57,4 +57,13 @@ publish: [results page on miqyaslab.com, results.json, redacted raw interactions
 publication_checklist: [redact phone-like numbers and re-score, recompute numbers from raw data, read a random sample of failures, results page and any notes live before the thread, link to the miqyaslab.com page]
 preregistration_commit:       # the commit that adds this file (git log -- trials/qt-03-fanar-2-27b-clinic.yaml)
 
-amendments: []
+amendments:
+  - date: 2026-11-05
+    when: during setup, before the pilot (no model answer read)
+    what: >
+      llama.cpp's Jinja engine rejects Fanar's chat template ("Unknown statement: raw"): the template uses {% raw %}
+      blocks, which only print their contents literally. scripts/fix_raw_template.py replaces each raw block with an
+      equivalent string expression and the server loads the result with --chat-template-file. The converted template
+      is used only if it renders byte-identical to the original (Python jinja2, Hugging Face settings) on test
+      conversations with and without tools, a tool call and result, thinking on and off, with and without a generation
+      prompt; otherwise setup stops. Original and converted templates saved in results/qt03/. Nothing else changes.

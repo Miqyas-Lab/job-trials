@@ -30,7 +30,8 @@ NPRED=8192
 
 start_server () {
   pkill -f llama-server; sleep 2
-  "$SERVER" -m "$GGUF" --jinja -ngl 99 -c $CTX -np 1 --port 8080 > /tmp/server_qt03.log 2>&1 9>&- &
+  TPL=""; [ -f "$OUT/chat_template_llamacpp.jinja" ] && TPL="--chat-template-file $OUT/chat_template_llamacpp.jinja"   # amendment 1
+  "$SERVER" -m "$GGUF" --jinja $TPL -ngl 99 -c $CTX -np 1 --port 8080 > /tmp/server_qt03.log 2>&1 9>&- &
   for i in $(seq 1 240); do curl -s localhost:8080/health | grep -q '"ok"' && return 0; sleep 2; done
   echo "server did not start — last log lines:"; tail -20 /tmp/server_qt03.log
   grep -qi "out of memory\|failed to allocate\|cudaMalloc" /tmp/server_qt03.log && \
@@ -87,6 +88,10 @@ setup)
   cat "$OUT/model_provenance.txt"
   nvidia-smi --query-gpu=name,memory.total --format=csv,noheader | tee "$OUT/gpu.txt"
   python3 scripts/test_v2.py || exit 1
+  if grep -qE "\{%-?\s*raw" models/hf/fanar-2-27b/chat_template.jinja 2>/dev/null; then   # amendment 1
+    python3 scripts/fix_raw_template.py models/hf/fanar-2-27b/chat_template.jinja "$OUT/chat_template_llamacpp.jinja" || { echo "STOP: converted template not identical"; exit 1; }
+    cp models/hf/fanar-2-27b/chat_template.jinja "$OUT/chat_template_original.jinja"
+  fi
   start_server || exit 1; pkill -f llama-server
   echo "SETUP OK (model loads with a 32,768 window) — send the generation_config lines to Claude, then:"
   echo "  setsid nohup bash scripts/run_qt03.sh pilot > qt03_pilot.log 2>&1 < /dev/null &"
