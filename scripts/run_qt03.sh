@@ -101,7 +101,7 @@ pilot)   # optional 2nd argument: template | prompted  (tool-path rule step 2/3,
   [ -f "$OUT/adapter.txt" ] || probe_adapter || exit 1
   if [ -n "${2:-}" ]; then printf '%s\n' "$2" "$(tail -n +2 "$OUT/adapter.txt")" "path changed after pilot: $(head -1 "$OUT/adapter.txt") -> $2 (tool-path rule)" > "$OUT/adapter.txt"; fi
   MODE=$(head -1 "$OUT/adapter.txt")
-  P="pilot-$MODE-$LABEL"
+  P="pilot${PILOT_TAG:-}-$MODE-$LABEL"   # PILOT_TAG names a repeat pilot (amendment 2) so earlier pilots are kept
   python3 scripts/run_v2.py --label "$P" --mode "$MODE" --sampling fanar-2 --split dev --arms tool --efforts off on \
       --reps 1 --safety-reps 0 --n-predict $NPRED --out-root "$OUT"
   python3 scripts/score_v2.py "$OUT/$P" | tee "$OUT/$P/scorecard.txt"

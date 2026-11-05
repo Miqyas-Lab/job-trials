@@ -67,3 +67,16 @@ amendments:
       is used only if it renders byte-identical to the original (Python jinja2, Hugging Face settings) on test
       conversations with and without tools, a tool call and result, thinking on and off, with and without a generation
       prompt; otherwise setup stops. Original and converted templates saved in results/qt03/. Nothing else changes.
+  - date: 2026-11-05
+    when: after two DEV pilots, before any TEST run (no test-split output seen)
+    what: >
+      Tool path, as pre-registered: the probe chose native (569 -> 1,409 prompt tokens with tools), but DEV pilot 1
+      recorded 0 native calls while 56 of 70 replies held calls in the template's documented <tool_call>{name,
+      arguments}</tool_call> format, so pilot 2 used the template reader (rule step 2). Pilot 2 showed silent turns
+      caused by history rendering, not by the model: Fanar's template prints an assistant message's content only and
+      never its tool_calls field, so with the call text removed the model saw an empty turn of its own followed by
+      tool results it had not asked for. Change (scripts/run_v2.py, template mode only): the assistant message in the
+      history keeps the call text exactly as the model wrote it; the patient-facing reply is unchanged (tags and calls
+      removed). Validated: self-tests pass; a third DEV pilot (PILOT_TAG=3) runs before the TEST run. Pilots 1 and 2
+      kept in results/qt03/. Thinking on: the model wrote no reasoning in 100 pilot steps (selective thinking); the
+      thinking-on setup runs as pre-registered and is reported as the model's own choice.

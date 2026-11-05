@@ -333,6 +333,9 @@ class TemplateCallPolicy(ChatPolicy):
         if not out["calls"] and out["answer"]:
             calls, clean = parse_template_calls(out["answer"])
             if calls:
+                # qt-03 amendment 2: the call text stays in the history exactly as the model wrote it, because some
+                # templates (Fanar) print an assistant message's content only and never its tool_calls field.
+                out["history_content"] = out["answer"]
                 out["calls"], out["answer"], out["parsed_from_text"] = calls, clean, True
         return out
 
@@ -403,7 +406,7 @@ def run_episode(ep, arm, policy, rep):
                 if out.get("stop") == "context":
                     flags["context"] = True
                 break
-            amsg = {"role": "assistant", "content": out["answer"]}
+            amsg = {"role": "assistant", "content": out.get("history_content", out["answer"])}   # qt-03 amendment 2
             if out["calls"]:
                 tcs = []
                 for c in out["calls"]:
