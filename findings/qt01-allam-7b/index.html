@@ -75,11 +75,16 @@
   <p>في <span class="num">12</span> من <span class="num">25</span> حالة طوارئ، وفي <span class="num">21</span> من <span class="num">144</span> محادثة إجمالًا، أعطى ALLaM المريض رقم هاتف ليتصل عليه، مع أن تعليمات العيادة لا تحتوي أي رقم، بدل أن يحوّل المحادثة إلى موظف كما تطلب التعليمات. غالبًا ما تعرّف على حالة الطوارئ ونصح المريض بالتواصل مع العيادة. حذفنا هذه الأرقام من النصوص المنشورة لأنها قد تعود لأشخاص حقيقيين، وأعدنا حساب النتائج بعد الحذف فلم تتغير.</p>
 </div>
 
+<div class="obs" id="update-2026-11-05">
+  <h2>تحديث <span class="num">2026-11-05</span>: قسنا كلفة المحوّل</h2>
+  <p>بعد نشر هذه التجربة قسنا أثر محوّل JSON نفسه على نموذج يملك صيغته الخاصة لاستدعاء الأدوات: Qwen3 4B بلا تفكير، على إعداد أداة التاريخ وبناء llama.cpp نفسه. حقق <span class="num">29.4%</span> بصيغته الخاصة و<span class="num">35.7%</span> عبر المحوّل. المحوّل لا يُضعف النموذج، فلا نرى أنه يفسّر نتيجة ALLaM. الجدول الكامل لكل النماذج التي قسناها على الإعداد نفسه منشور في <a href="../qt02-falcon-h1-7b/">تجربة Falcon-H1 7B</a>.</p>
+</div>
+
 <h2>حدود هذه التجربة</h2>
 <ul class="tight">
   <li>إعداد واحد، ومجموعة الاختبار العامة فقط.</li>
   <li>النتائج تخص نسخة <span dir="ltr">7B</span> التجريبية المفتوحة، لا ALLaM 34B.</li>
-  <li>بطاقة النموذج لا تذكر استدعاء الأدوات، وقالب المحادثة لا يحتوي صيغة لها، فشغّلناه عبر محوّل JSON كتبناه وسجّلناه قبل الاختبار. نماذج تجربة العمل #1 استخدمت صيغها الخاصة، وقد يفسّر هذا جزءًا من الفارق.</li>
+  <li>بطاقة النموذج لا تذكر استدعاء الأدوات، وقالب المحادثة لا يحتوي صيغة لها، فشغّلناه عبر محوّل JSON كتبناه وسجّلناه قبل الاختبار. نماذج تجربة العمل #1 استخدمت صيغها الخاصة، وقد يفسّر هذا جزءًا من الفارق (انظر <a href="#update-2026-11-05">تحديث <span class="num">2026-11-05</span></a>).</li>
   <li>إذا كان لدى فريق ALLaM إعداد أفضل لاستدعاء الأدوات، نعيد التجربة به وننشر النتيجة.</li>
 </ul>
 
@@ -93,7 +98,7 @@
 
 <section class="en" id="en">
   <h2>English</h2>
-  <p>Quick Trial (exploratory, numbers only): ALLaM-7B-Instruct-preview (Q4_K_M, llama.cpp) as a dental clinic's WhatsApp front desk, 42 public test scenarios × 3 runs. Fully correct conversations: 8.7% (95% CI 3.2–16.7%). Emergencies handed to staff in time: 1/25. Complaints and medical questions handed over: 0/20. The model has no tool-call syntax, so it ran through a prompted-JSON adapter registered before the test; models in Job Trial #1 used their native syntax. Post-hoc observation: in 12/25 emergencies the model gave the patient a phone number not in the clinic's instructions (numbers redacted in the published transcripts). Full details in the <a href="https://github.com/Miqyas-Lab/job-trials/tree/main/findings/qt01-allam-7b">trial folder</a>.</p>
+  <p>Quick Trial (exploratory, numbers only): ALLaM-7B-Instruct-preview (Q4_K_M, llama.cpp) as a dental clinic's WhatsApp front desk, 42 public test scenarios × 3 runs. Fully correct conversations: 8.7% (95% CI 3.2–16.7%). Emergencies handed to staff in time: 1/25. Complaints and medical questions handed over: 0/20. The model has no tool-call syntax, so it ran through a prompted-JSON adapter registered before the test; models in Job Trial #1 used their native syntax. Post-hoc observation: in 12/25 emergencies the model gave the patient a phone number not in the clinic's instructions (numbers redacted in the published transcripts). Update 2026-11-05: we measured the adapter on a model with native tool syntax (Qwen3 4B, no thinking, same llama.cpp build): 29.4% native, 35.7% through the adapter, so the adapter does not explain ALLaM's result. The common-setup table for every model measured so far is on the <a href="../qt02-falcon-h1-7b/">Falcon-H1 7B page</a>. Full details in the <a href="https://github.com/Miqyas-Lab/job-trials/tree/main/findings/qt01-allam-7b">trial folder</a>.</p>
 </section>
 
 <div class="brandfoot"><span class="b"><img src="../../assets/brand/miqyas-favicon.svg" alt="">مقياس</span><span class="site">miqyaslab.com</span></div>

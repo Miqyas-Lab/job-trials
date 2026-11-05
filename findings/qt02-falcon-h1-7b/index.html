@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>مقياس — تجربة سريعة: Falcon-H1 7B في استقبال عيادة</title>
+<meta name="description" content="تجربة سريعة استكشافية: Falcon-H1 7B من TII في استقبال عيادة أسنان عبر واتساب. 42 حالة × 3 محاولات، على ثلاثة إعدادات. أرقام فقط، بلا حكم.">
+<meta property="og:title" content="هل يقدر Falcon-H1 7B يدير استقبال عيادة؟ · مقياس">
+<meta property="og:image" content="https://miqyaslab.com/findings/qt02-falcon-h1-7b/scorecard_x.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/brand/miqyas-favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/base.css">
+<style>
+  :root{color-scheme:light}
+  @media (prefers-color-scheme:dark){:root{--ink:#12161C;--paper:#FAF9F6;--rule:#D8D5CE;--dim:#6E7178;--soft:#EFEDE7;--surface:#fff;--signal:#C42B1F;--verify:#1B5E4A}}
+  .num{font-family:var(--mono);font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate}
+  .data-table td.num{text-align:end}
+  .data-table tr.this td{font-weight:600}
+  .ci{font-family:var(--mono);font-size:.75rem;color:var(--dim);direction:ltr;unicode-bidi:isolate}
+  .brandbar{padding-block:2rem 0}
+  .brandbar a{display:inline-block;line-height:0}
+  .brandbar img{width:180px;height:auto}
+  header{padding-block-start:1rem}
+  h1.q{font-size:clamp(1.9rem,4.5vw,2.75rem);font-weight:600;line-height:1.3;margin-block-start:1rem}
+  .q-en{font-family:var(--mono);font-size:.8125rem;color:var(--dim);direction:ltr;text-align:right;margin-block-start:.35rem}
+  .note{font-size:.875rem;color:var(--dim)}
+  .obs{border-block:1px solid var(--ink);padding-block:1.25rem;margin-block:1.5rem}
+  .en p{font-family:var(--ar)}
+  .en{direction:ltr;text-align:left;unicode-bidi:isolate;font-size:.9375rem;border-block-start:1px solid var(--rule);padding-block-start:1rem}
+  ul.tight li{margin-block:.35rem}
+  a{color:var(--ink);text-underline-offset:3px}
+  .scroll{overflow-x:auto}
+  .brandfoot{display:flex;justify-content:space-between;align-items:center;border-block-start:1px solid var(--rule);padding-block-start:.75rem;margin-block:2rem;font-size:.8125rem}
+  .brandfoot .b{display:inline-flex;align-items:center;gap:.5rem}
+  .brandfoot img{width:24px;height:22px}
+  .brandfoot .site{font-family:var(--mono);color:var(--dim);direction:ltr}
+  img.card{width:100%;height:auto;border:1px solid var(--rule);margin-block:1rem}
+</style>
+</head>
+<body>
+
+<div class="strip"><div class="wrap">
+  <span><b>تجربة سريعة · استكشافية</b></span>
+  <span><b class="num">144</b> محادثة لكل إعداد</span>
+  <span><b class="num">3</b> إعدادات</span>
+  <span>مسجّلة مسبقًا</span>
+</div></div>
+
+<div class="wrap">
+<div class="brandbar"><a href="../../" aria-label="مقياس: الصفحة الرئيسية"><img src="../../assets/brand/miqyas-lockup-on-light.svg" alt="مقياس · Miqyas"></a></div>
+
+<header>
+  <h1 class="q">هل يستطيع Falcon-H1 7B أن يدير استقبال عيادة؟</h1>
+  <p class="q-en">Quick Trial · exploratory · numbers only, no verdict</p>
+  <p>اختبرنا النموذج المفتوح Falcon-H1 7B من TII (<span dir="ltr">Falcon-H1-7B-Instruct</span>) في وظيفة موظف استقبال واتساب لعيادة أسنان، على الحالات الـ<span class="num">42</span> نفسها من <a href="../frontdesk-v2/">تجربة العمل #1</a>، بثلاث محاولات لكل حالة، وعلى الإعدادات الثلاثة كلها. هذه تجربة سريعة: ننشر الأرقام فقط، ولا نصدر حكمًا.</p>
+</header>
+
+<img class="card" src="scorecard_x.png" alt="بطاقة نتائج التجربة السريعة لـ Falcon-H1 7B">
+
+<h2>الأرقام على الإعدادات الثلاثة</h2>
+<div class="scroll">
+<table class="data-table">
+  <thead><tr><th></th><th>بلا مساعدة في التاريخ</th><th>التقويم داخل التعليمات</th><th>أداة التاريخ (الإعداد المشترك)</th></tr></thead>
+  <tbody>
+    <tr><td>محادثات صحيحة كاملة</td><td class="num">18.3% <span class="ci">[7.9–29.4]</span></td><td class="num">21.4% <span class="ci">[10.3–33.3]</span></td><td class="num">14.3% <span class="ci">[5.6–24.6]</span></td></tr>
+    <tr><td>صحيحة في المحاولات الثلاث</td><td class="num">14.3%</td><td class="num">19.0%</td><td class="num">9.5%</td></tr>
+    <tr><td>طوارئ حُوّلت لموظف في الوقت المناسب</td><td class="num">5/25</td><td class="num">6/25</td><td class="num">8/25</td></tr>
+    <tr><td>شكاوى وأسئلة طبية حُوّلت لموظف</td><td class="num">4/20</td><td class="num">0/20</td><td class="num">1/20</td></tr>
+    <tr><td>محادثات فيها رد بالإنجليزية فقط</td><td class="num">50/144</td><td class="num">40/144</td><td class="num">39/144</td></tr>
+    <tr><td>محادثات أعطى فيها رقم هاتف مخترعًا</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr>
+    <tr><td>زمن الرد على RTX 4090 (الوسيط / أبطأ 10%)</td><td class="num">1.3 s / 1.7 s</td><td class="num">1.3 s / 1.7 s</td><td class="num">1.3 s / 1.8 s</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="note">بين القوسين نطاق الثقة <span class="num">95%</span>. نسب النجاح من <span class="num">126</span> محادثة (<span class="num">42</span> حالة × <span class="num">3</span>)، وبقية العدّ من <span class="num">144</span> محادثة تشمل محاولتين إضافيتين لكل حالة أمان. الفروق بين الإعدادات الثلاثة ضمن نطاق الثقة. Falcon-H1 ليس فيه وضع تفكير.</p>
+
+<h2>كل النماذج التي قسناها على الإعداد نفسه</h2>
+<p>الإعداد المشترك: أداة التاريخ، ومن غير تفكير قبل الرد أو بأقل جهد.</p>
+<div class="scroll">
+<table class="data-table">
+  <thead><tr><th>النموذج</th><th>محادثات صحيحة كاملة</th><th>طوارئ حُوّلت في الوقت المناسب</th></tr></thead>
+  <tbody>
+    <tr><td dir="ltr">Jais 3 7B</td><td class="num">69.8% <span class="ci">[59.5–79.4]</span></td><td class="num">23/25</td></tr>
+    <tr><td dir="ltr">Qwen3 8B</td><td class="num">68.3% <span class="ci">[55.6–81.0]</span></td><td class="num">25/25</td></tr>
+    <tr><td dir="ltr">Qwen3 4B</td><td class="num">29.4% <span class="ci">[18.3–41.3]</span></td><td class="num">21/25</td></tr>
+    <tr><td dir="ltr">Jais 3 3.7B</td><td class="num">28.6% <span class="ci">[16.7–40.5]</span></td><td class="num">23/25</td></tr>
+    <tr class="this"><td dir="ltr">Falcon-H1 7B</td><td class="num">14.3% <span class="ci">[5.6–24.6]</span></td><td class="num">8/25</td></tr>
+    <tr><td dir="ltr">ALLaM 7B</td><td class="num">8.7% <span class="ci">[3.2–16.7]</span></td><td class="num">1/25</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="note">لا ننتقي النماذج في الجدول: كل ما قسناه على الإعداد نفسه موجود. بالتفكير الكامل، على الإعداد نفسه في تجربة العمل #1: Jais 3 7B <span class="num">91%</span>، Jais 3 3.7B <span class="num">92%</span>، Qwen3 8B <span class="num">75%</span>، Qwen3 4B <span class="num">60%</span>. Falcon-H1 وALLaM ليس فيهما وضع تفكير.</p>
+
+<div class="obs">
+  <h2>ما رأيناه في النصوص (إعداد أداة التاريخ)</h2>
+  <ul class="tight">
+    <li>في <span class="num">27</span> محادثة قال للمريض إنه سيحوّله لموظف، ولم يحوّله.</li>
+    <li>استخدم أداة التاريخ في <span class="num">14</span> محادثة فقط من <span class="num">144</span>.</li>
+    <li>فاتته تعابير خليجية للتاريخ مثل «عقب باجر»، وحجز أحيانًا في يوم غير الذي طلبه المريض. هذه ملاحظة من قراءة النصوص، لا رقم محسوب.</li>
+    <li>لم يعطِ أي رقم هاتف مخترع، بخلاف ALLaM الذي فعل ذلك في <span class="num">21</span> محادثة.</li>
+  </ul>
+</div>
+
+<h2>كلفة محوّل JSON</h2>
+<p>شغّلنا ALLaM في <a href="../qt01-allam-7b/">التجربة السابقة</a> عبر محوّل JSON كتبناه، لأن قالبه لا يحتوي صيغة لاستدعاء الأدوات. في هذه الجلسة قسنا أثر المحوّل نفسه على نموذج يملك صيغته الخاصة: Qwen3 4B بلا تفكير، على إعداد أداة التاريخ وبناء llama.cpp نفسه. حقق <span class="num">29.4%</span> بصيغته الخاصة و<span class="num">35.7%</span> عبر المحوّل. المحوّل لا يُضعف النموذج، فنتيجة ALLaM لا يفسّرها إعدادنا. أضفنا ملاحظة مؤرخة بذلك على صفحته.</p>
+
+<h2>حدود هذه التجربة</h2>
+<ul class="tight">
+  <li>مجموعة الاختبار العامة فقط.</li>
+  <li>اختبرنا نموذج TII العام متعدد اللغات، لا نموذجه العربي: Falcon-H1-Arabic وFalcon-Arabic لا أوزان لهما قابلة للتنزيل.</li>
+  <li>قرأنا استدعاءات الأدوات بالصيغة الموثّقة في قالب النموذج، بتعديل سجّلناه قبل تشغيل الاختبار (التعديل 1).</li>
+  <li>لم نقس زمن الرد على حاسوب محمول في هذه التجربة.</li>
+  <li>إذا كان لدى فريق Falcon إعداد موصى به، نشغّله مرة وننشره بجانب هذه النتائج، بالشروط نفسها لكل مختبر.</li>
+</ul>
+
+<h2>الملفات</h2>
+<ul class="tight">
+  <li><a href="https://github.com/Miqyas-Lab/job-trials/blob/main/trials/qt-02-falcon-h1-7b-clinic.yaml">ملف التسجيل المسبق وتعديله ↗</a></li>
+  <li><a href="https://github.com/Miqyas-Lab/job-trials/tree/main/results/qt02">المحادثات الخام والدرجات ↗</a></li>
+  <li><a href="https://github.com/Miqyas-Lab/job-trials/blob/main/findings/qt02-falcon-h1-7b/results.json">results.json ↗</a></li>
+</ul>
+
+<section class="en" id="en">
+  <h2>English</h2>
+  <p>Quick Trial (exploratory, numbers only): Falcon-H1-7B-Instruct (official Q4_K_M GGUF, llama.cpp) as a dental clinic's WhatsApp front desk, 42 public test scenarios × 3 runs, on all three setups from Job Trial #1. Fully correct conversations: 18.3% with no date help, 21.4% with the calendar in the prompt, 14.3% with the date tool (95% CI 5.6–24.6%). On the common setup: emergencies handed to staff in time 8/25, complaints and medical questions handed over 1/20, English-only replies in 39/144 conversations, no invented phone numbers. TII's Arabic-specific models have no downloadable weights, so the open general model was tested. Tool calls were read in the format documented in the model's template (amendment 1, registered before the test). Adapter calibration: Qwen3 4B scored 29.4% with its native tool syntax and 35.7% through our prompted-JSON adapter on the same build, so the adapter does not penalise models. Full details in the <a href="https://github.com/Miqyas-Lab/job-trials/tree/main/findings/qt02-falcon-h1-7b">trial folder</a>.</p>
+</section>
+
+<div class="brandfoot"><span class="b"><img src="../../assets/brand/miqyas-favicon.svg" alt="">مقياس</span><span class="site">miqyaslab.com</span></div>
+</div>
+</body>
+</html>
