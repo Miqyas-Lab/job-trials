@@ -1,0 +1,60 @@
+id: qt-03-fanar-2-27b-clinic
+type: quick-trial            # numbers only, no verdict (standard v1.2)
+status: preregistered        # signed off; commit hash in trials/README or git log
+approved_by: Mahmoud Deghaim
+approved_on: 2026-11-05
+standard: Job Trial Standard v1.2   # fair shot
+job: clinic-frontdesk
+question_ar: هل يستطيع Fanar 2 27B أن يدير استقبال عيادة؟
+models: [fanar-2-27b-instruct]
+model_source: QCRI/Fanar-2-27B-Instruct at revision 074005040e9c3511b1c43b4298bef09908285534 (HF, checked 5 Nov 2026)
+why_this_model: >
+  Neutrality rule: the last three publications were G42/Inception (Jais), HUMAIN/SDAIA (ALLaM) and TII (Falcon);
+  QCRI (Qatar) is untested. Fanar 2 27B is QCRI's open Arabic-English model (Apache-2.0), built by continual
+  pretraining of Google's gemma-3-27b-pt on ~166B Arabic/English/code tokens; the page says it is Gemma-based.
+  The card claims selective thinking with native Arabic reasoning and generic tool calling.
+
+setups:                       # all three Job Trial #1 setups, every one reported, no best-of selection
+  thinking_off: [base, table, tool]   # tool + thinking off = common setup (headline)
+  thinking_on: [tool]                 # the model's own best in the setup that the Job Trial #1 full-thinking line uses
+headline_setup: tool, thinking off
+thinking_switch: >
+  Fanar's template uses chat_template_kwargs {"no_thinking": true|false}; thinking is ON by default. The runner
+  sends both switches (no_thinking and enable_thinking) so each template reads its own; validated in the DEV pilot
+  by checking that thinking-off replies contain no <think> block and thinking-on replies do. Reasoning language
+  (Arabic vs English) is recorded, as in Job Trial #1.
+tool_path_rule: >
+  Decided before any test-split answer is read, in this order: (1) probe: the same first request with and without
+  the tool list (max_tokens 1); if the tools add >= 200 prompt tokens, llama.cpp native tool calling (--mode chat).
+  (2) If the DEV pilot then records 0 native tool calls, the template-documented reader (--mode template, qt-02
+  amendment 1) when the model's template documents a call format. (3) Otherwise the prompted-JSON adapter
+  (--mode prompted; measured cost +6.3 points on Qwen3 4B, qt-02). The path taken is saved in results/qt03/adapter.txt.
+sampling: fanar-2             # README (vLLM example): temperature 0.7, the only value the card gives; other values from
+                              # generation_config.json at the pinned revision if it sets them, else llama.cpp neutral
+                              # (top_p 1.0, top_k off, min_p 0, no penalties). Recorded in meta.json before the pilot.
+window_tokens: 32768          # same as Job Trial #1; equals the model's stated context length
+generation_cap_tokens: 8192   # same as Job Trial #1; a cap counts as a failure
+quant: Q4_K_M                 # no official GGUF from QCRI: self-converted from the pinned safetensors with llama.cpp
+                              # convert_hf_to_gguf.py + llama-quantize; llama.cpp commit and sha256 recorded
+test_set: public_test         # the private held-out set is not written yet; the page says "public test set only"
+repeats: 3                    # + 2 extra reps on safety episodes, as in Job Trial #1, qt-01 and qt-02
+pilot: DEV split, 12 episodes, 1 rep, tool setup, thinking off and on; checks load, first-prompt size, thinking switch, tool calls, parse failures
+
+machines:
+  run: runpod-4090
+  fallback_rule: >
+    If the Q4_K_M model with a 32,768-token window does not load on the 24 GB RTX 4090, the run moves to a 48 GB card
+    (RTX A6000 or L40S), decided at setup before any answer is read. Wait times are reported for the card used.
+  speed: none                 # laptop (floor) wait not measured; a 27B model does not fit 8 GB; stated on the page
+budget_usd: 15                # expected ~7-8 GPU-hours on the RTX 4090 incl. conversion (~USD 5-6); thinking-on runs are the long part
+comparison: common-setup table for every model measured so far (Jais 3 7B/3.7B low, Qwen3 8B/4B off, Falcon-H1 7B, ALLaM 7B, Fanar 2 27B), rows chosen by setup, never by lab; the size difference (27B vs 3.7-8B) stated next to the table
+risks:
+  - size: 27B against 4-8B rows; the page states the size gap and the memory it needs (cannot run on the floor laptop).
+  - thinking default ON; a wrong switch would mislabel setups. The pilot check above stops the run if the switch fails.
+  - card says not suitable for high-stakes medical advice; the job is clinic admin with handover to staff, so the card is quoted on the page.
+  - licence: Apache-2.0 on the card; an open HF discussion asks whether Gemma 3's use policy also applies. Neither restricts publishing an evaluation; noted on the page.
+publish: [results page on miqyaslab.com, results.json, redacted raw interactions, numbers-only scorecard, X thread, Hugging Face discussion]
+publication_checklist: [redact phone-like numbers and re-score, recompute numbers from raw data, read a random sample of failures, results page and any notes live before the thread, link to the miqyaslab.com page]
+preregistration_commit:       # the commit that adds this file (git log -- trials/qt-03-fanar-2-27b-clinic.yaml)
+
+amendments: []
