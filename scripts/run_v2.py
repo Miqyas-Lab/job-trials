@@ -39,6 +39,7 @@ SAMPLING = {
     "allam": {"temperature": 0.6, "top_p": 0.95, "top_k": 50, "min_p": 0.0, "presence_penalty": 0.0, "repeat_penalty": 1.0},
     # Falcon-H1 (TII README: temperature 0.1; other samplers neutral), added for qt-02
     "falcon-h1": {"temperature": 0.1, "top_p": 1.0, "top_k": 0, "min_p": 0.0, "presence_penalty": 0.0, "repeat_penalty": 1.0},
+    "fanar-2": {"temperature": 0.7, "top_p": 1.0, "top_k": 0, "min_p": 0.0, "presence_penalty": 0.0, "repeat_penalty": 1.0},   # qt-03: README vLLM example (temperature only); checked against generation_config.json at setup
 }
 SAMPLING_OVERRIDE = None   # set by --sampling; None keeps the original Job Trial #1 behaviour
 
@@ -139,7 +140,7 @@ class ChatPolicy:
 
     def step(self, messages, tools, seed, ctx):
         body = {"messages": messages, "tools": tools, "max_tokens": self.n_predict, "seed": seed, **self.sampling,
-                "chat_template_kwargs": {"enable_thinking": self.effort == "on"}}
+                "chat_template_kwargs": {"enable_thinking": self.effort == "on", "no_thinking": self.effort != "on"}}   # qt-03: Fanar reads no_thinking (default ON); other templates ignore it
         t0 = time.time()
         try:
             r = post("/v1/chat/completions", body)
@@ -249,7 +250,7 @@ class PromptedPolicy(ChatPolicy):
 
     def step(self, messages, tools, seed, ctx):
         body = {"messages": prompted_messages(messages, tools), "max_tokens": self.n_predict, "seed": seed, **self.sampling,
-                "chat_template_kwargs": {"enable_thinking": self.effort == "on"},   # ignored by templates without a thinking switch (ALLaM)
+                "chat_template_kwargs": {"enable_thinking": self.effort == "on", "no_thinking": self.effort != "on"},   # ignored by templates without a thinking switch (ALLaM); no_thinking for Fanar (qt-03)
                 "response_format": {"type": "json_schema", "json_schema": {"name": "turn", "schema": prompted_schema(tools)}}}
         t0 = time.time()
         try:
