@@ -330,6 +330,13 @@ class TemplateCallPolicy(ChatPolicy):
 
     def step(self, messages, tools, seed, ctx):
         out = super().step(messages, tools, seed, ctx)
+        # qt-03 amendment 3: a <think>...</think> block left in the text (template not recognised by llama.cpp's
+        # reasoning parser) is moved to the reasoning record, as llama.cpp does for recognised templates.
+        if out["answer"] and "<think>" in out["answer"]:
+            th = re.findall(r"<think>(.*?)</think>", out["answer"], flags=re.S)
+            if th:
+                out["reasoning"] = "\n".join([out.get("reasoning") or ""] + [t.strip() for t in th]).strip()
+                out["answer"] = re.sub(r"<think>.*?</think>", "", out["answer"], flags=re.S).strip()
         if not out["calls"] and out["answer"]:
             calls, clean = parse_template_calls(out["answer"])
             if calls:

@@ -80,3 +80,12 @@ amendments:
       removed). Validated: self-tests pass; a third DEV pilot (PILOT_TAG=3) runs before the TEST run. Pilots 1 and 2
       kept in results/qt03/. Thinking on: the model wrote no reasoning in 100 pilot steps (selective thinking); the
       thinking-on setup runs as pre-registered and is reported as the model's own choice.
+  - date: 2026-11-05
+    when: after DEV pilot 3, before any TEST run
+    what: >
+      Pilot 3 (amendment 2 in place) showed <think> blocks in 2 patient replies: Fanar's template prefills the empty
+      thinking block only after a patient message, not after a tool result, and llama.cpp's reasoning parser does not
+      recognise this template, so reasoning stayed in the reply text. Change (template mode only): a closed
+      <think>...</think> block is moved from the reply to the reasoning record, as llama.cpp does for recognised
+      templates. Unclosed blocks are not touched. Validated on sample replies and self-tests; a fourth DEV pilot
+      (PILOT_TAG=4) runs before the TEST run.
