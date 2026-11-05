@@ -89,3 +89,11 @@ amendments:
       <think>...</think> block is moved from the reply to the reasoning record, as llama.cpp does for recognised
       templates. Unclosed blocks are not touched. Validated on sample replies and self-tests; a fourth DEV pilot
       (PILOT_TAG=4) runs before the TEST run.
+  - date: 2026-11-05
+    when: after DEV pilot 4, before any TEST run
+    what: >
+      Correction to amendment 3: the two flagged replies in pilots 3 and 4 were the malformed tag "</think_call>"
+      (Fanar's own garbled closing tool tag), not reasoning. No reasoning reached a patient reply in any pilot.
+      Amendment 3 stays in the runner (it changed nothing in pilot 4, which matches pilot 3 exactly under fixed
+      seeds); the malformed tag is the model's own output and is scored as written. Pilot checks pass; TEST next.
+
