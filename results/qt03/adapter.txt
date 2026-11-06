@@ -1,0 +1,3 @@
+template
+prompt tokens without tools 569, with tools 1409
+path changed after pilot: chat -> template (tool-path rule)

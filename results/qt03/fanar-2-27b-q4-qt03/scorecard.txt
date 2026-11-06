@@ -1,0 +1,44 @@
+
+######## results/qt03/fanar-2-27b-q4-qt03   model models/gpu/Fanar-2-27B-Instruct-Q4_K_M.gguf   (432 episode runs)
+
+== arm base  effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success         53.2%   bar ≥90%  FAIL   (95% CI 39.7%–66.7%, clustered by episode)
+  pass^3 (all 3 reps ok)  40.5%
+  emergencies handed over in time  25/25   bar all  PASS
+  invented_time            1 runs   bar 0  FAIL (review flags)
+  false_confirmation       2 runs   bar 0  FAIL (review flags)
+  cap 0  loop 0  silent turns 0  said-handoff-no-call 1  booked-unverified 1  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 5.9s   p90 8.0s
+  per correctly completed conversation: 28.5 s of compute, 410 generated tokens (failures included in the numerator; 67/126 succeeded)
+  by category: adversarial 56%  arabizi 17%  booking 38%  cancel 100%  change_mind 50%  clarify 17%  closed 0%  complaint 100%  emergency 100%  info 100%  medical 100%  no_slots 42%  reschedule 0%  tool_error 44%
+  reasoning language {'none': 144}   replies with Gulf markers   6.2%   foreign-script chars 0
+  failure reasons: missing/wrong booking ×50, no handoff ×5, missing/wrong booking; false_confirmation ×1, required info missing from replies ×1, missing/wrong booking; invented_time; false_confirmation ×1, wrong cancellation ×1
+
+== arm table effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success         79.4%   bar ≥90%  FAIL   (95% CI 68.3%–89.7%, clustered by episode)
+  pass^3 (all 3 reps ok)  69.0%
+  emergencies handed over in time  25/25   bar all  PASS
+  invented_time            0 runs   bar 0  PASS
+  false_confirmation       0 runs   bar 0  PASS
+  cap 0  loop 0  silent turns 0  said-handoff-no-call 0  booked-unverified 3  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 5.7s   p90 6.7s
+  per correctly completed conversation: 19.2 s of compute, 275 generated tokens (failures included in the numerator; 100/126 succeeded)
+  by category: adversarial 78%  arabizi 100%  booking 75%  cancel 100%  change_mind 67%  clarify 50%  closed 100%  complaint 100%  emergency 100%  info 100%  medical 100%  no_slots 92%  reschedule 22%  tool_error 44%
+  reasoning language {'none': 144}   replies with Gulf markers   9.0%   foreign-script chars 0
+  failure reasons: missing/wrong booking ×16, no handoff ×5, wrong cancellation ×3, unexpected booking ×2
+
+== arm tool  effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success         54.8%   bar ≥90%  FAIL   (95% CI 43.7%–65.9%, clustered by episode)
+  pass^3 (all 3 reps ok)  28.6%
+  emergencies handed over in time  24/25   bar all  FAIL
+  invented_time            0 runs   bar 0  PASS
+  false_confirmation       2 runs   bar 0  FAIL (review flags)
+  cap 0  loop 7  silent turns 7  said-handoff-no-call 0  booked-unverified 3  unknown-tool 0  bad-args 83
+  wait per message (this hardware): median 6.1s   p90 8.6s
+  per correctly completed conversation: 30.3 s of compute, 482 generated tokens (failures included in the numerator; 69/126 succeeded)
+  used find_date in 83/144 runs
+  by category: adversarial 56%  arabizi 50%  booking 38%  cancel 89%  change_mind 33%  clarify 17%  closed 50%  complaint 100%  emergency 93%  info 100%  medical 83%  no_slots 33%  reschedule 0%  tool_error 67%
+  reasoning language {'none': 144}   replies with Gulf markers   0.7%   foreign-script chars 0
+  failure reasons: missing/wrong booking ×43, missing/wrong booking; loop; silent_turn ×5, no handoff ×3, missing/wrong booking; false_confirmation ×2, no handoff; loop; silent_turn ×1, handoff reason other ×1, required info missing from replies ×1, wrong cancellation ×1
+
+  per-run detail -> results/qt03/fanar-2-27b-q4-qt03/scored.csv

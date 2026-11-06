@@ -1,6 +1,6 @@
 id: qt-03-fanar-2-27b-clinic
 type: quick-trial            # numbers only, no verdict (standard v1.2)
-status: preregistered        # signed off; commit hash in trials/README or git log
+status: run-complete         # results in, publication pending (numbers only)
 approved_by: Mahmoud Deghaim
 approved_on: 2026-11-05
 standard: Job Trial Standard v1.2   # fair shot
@@ -55,7 +55,7 @@ risks:
   - licence: Apache-2.0 on the card; an open HF discussion asks whether Gemma 3's use policy also applies. Neither restricts publishing an evaluation; noted on the page.
 publish: [results page on miqyaslab.com, results.json, redacted raw interactions, numbers-only scorecard, X thread, Hugging Face discussion]
 publication_checklist: [redact phone-like numbers and re-score, recompute numbers from raw data, read a random sample of failures, results page and any notes live before the thread, link to the miqyaslab.com page]
-preregistration_commit:       # the commit that adds this file (git log -- trials/qt-03-fanar-2-27b-clinic.yaml)
+preregistration_commit: 10c86b5
 
 amendments:
   - date: 2026-11-05
@@ -96,4 +96,30 @@ amendments:
       (Fanar's own garbled closing tool tag), not reasoning. No reasoning reached a patient reply in any pilot.
       Amendment 3 stays in the runner (it changed nothing in pilot 4, which matches pilot 3 exactly under fixed
       seeds); the malformed tag is the model's own output and is scored as written. Pilot checks pass; TEST next.
+
+results:                       # TEST split, public test set only; all numbers in findings/qt03-fanar-2-27b/results.json
+  run_date: 2026-11-05
+  run_commit: f4423d2          # runner with amendments 1-3; llama.cpp 9c9074e; self-converted Q4_K_M, sha256 in results/qt03/model_provenance.txt
+  machine: RunPod RTX 4090 (24 GB); fits with the 32,768 window, no fallback card needed
+  fanar_episode_success: {base: 53.2%, table: 79.4%, tool: 54.8%, tool_thinking_on: 50.8%}   # tool (thinking off) = common-setup headline; 95% CI 43.7-65.9%
+  fanar_emergencies_in_time: {base: 25/25, table: 25/25, tool: 24/25, tool_thinking_on: 24/25}
+  fanar_complaint_medical_handed_over: {base: 20/20, table: 20/20, tool: 18/20, tool_thinking_on: 19/20}
+  thinking: 0 of 1,416 steps with reasoning when thinking was allowed (selective thinking; the model never chose to think in this job)
+  fanar_observations: >
+    Read 8 random tool-setup failures. Typical: wrong date arithmetic for Gulf day words («الثلاثاء الياي» -> a
+    Thursday), loops repeating the same rejected call (dates in Arabic-Indic digits or a wrong year), books a new
+    reschedule slot without cancelling the old one then says it was cancelled, invents a patient name ("Test User"),
+    tells the patient which tools it used, malformed tags in replies (e.g. "</think_call>"). No invented phone numbers.
+  post_hoc_half_hour: >
+    Not pre-registered, counted after reading failures: after a patient wrote «X ونص», 8 of 31 booking calls (tool
+    setup) used the whole hour (e.g. «7 ونص» -> 19:00); 3 wrote the time in Arabic-Indic digits. Qwen3 8B 0/35 and
+    Jais 3 7B 0/33 in the same setup.
+  falcon_history_check: >
+    Amendment 2 raised whether Falcon (qt-02, same template reader) was also handicapped by history rendering. Falcon's
+    template could not be read from here; behaviourally, Falcon shows 0% empty replies after a tool call (Fanar with
+    hidden call text: 8%) and 3% exact repeat calls (Qwen3 4B native: 3%). No sign of the same handicap; to confirm
+    from Falcon's template at the next pod session.
+  redaction: no phone-like numbers in qt-03 replies (dates excluded); nothing redacted
+  licence: "Apache-2.0 (model card); no restriction on publishing evaluations"
+  cost_usd: ~6                 # estimate (~8 pod-hours at 0.74 incl. build, download and pilots); confirm from RunPod billing
 

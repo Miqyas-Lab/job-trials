@@ -1,0 +1,4 @@
+llama.cpp 9c9074e
+repo commit d94167c
+source: self-converted from QCRI/Fanar-2-27B-Instruct@074005040e9c3511b1c43b4298bef09908285534 (bf16 -> Q4_K_M)
+582453644729b1e1d69cdbc7b37722a06f6ed87b09b135c23468df0591520c00  models/gpu/Fanar-2-27B-Instruct-Q4_K_M.gguf

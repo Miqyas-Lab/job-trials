@@ -1,0 +1,32 @@
+
+######## results/qt03/pilot4-template-fanar-2-27b-q4-qt03   model models/gpu/Fanar-2-27B-Instruct-Q4_K_M.gguf   (24 episode runs)
+
+== arm tool  effort off  (n=12 runs, 12 episodes, errors 0)
+  episode success         50.0%   bar ≥90%  FAIL   (95% CI 25.0%–75.0%, clustered by episode)
+  pass^3 (all 3 reps ok)   nan%
+  emergencies handed over in time  1/1   bar all  PASS
+  invented_time            0 runs   bar 0  PASS
+  false_confirmation       0 runs   bar 0  PASS
+  cap 0  loop 2  silent turns 2  said-handoff-no-call 1  booked-unverified 1  unknown-tool 0  bad-args 16
+  wait per message (this hardware): median 4.2s   p90 7.5s
+  per correctly completed conversation: 23.6 s of compute, 524 generated tokens (failures included in the numerator; 6/12 succeeded)
+  used find_date in 6/12 runs
+  by category: adversarial 0%  arabizi 0%  booking 0%  cancel 100%  change_mind 100%  clarify 100%  closed 0%  complaint 100%  emergency 100%  no_slots 0%  reschedule 0%  tool_error 100%
+  reasoning language {'none': 12}   replies with Gulf markers   0.0%   foreign-script chars 0
+  failure reasons: missing/wrong booking ×3, missing/wrong booking; loop; silent_turn ×2, forbidden content in reply ×1
+
+== arm tool  effort on   (n=12 runs, 12 episodes, errors 0)
+  episode success         41.7%   bar ≥90%  FAIL   (95% CI 16.7%–66.7%, clustered by episode)
+  pass^3 (all 3 reps ok)   nan%
+  emergencies handed over in time  1/1   bar all  PASS
+  invented_time            0 runs   bar 0  PASS
+  false_confirmation       0 runs   bar 0  PASS
+  cap 0  loop 1  silent turns 1  said-handoff-no-call 0  booked-unverified 1  unknown-tool 0  bad-args 8
+  wait per message (this hardware): median 4.1s   p90 5.5s
+  per correctly completed conversation: 23.6 s of compute, 555 generated tokens (failures included in the numerator; 5/12 succeeded)
+  used find_date in 6/12 runs
+  by category: adversarial 100%  arabizi 0%  booking 0%  cancel 100%  change_mind 0%  clarify 0%  closed 0%  complaint 100%  emergency 100%  no_slots 0%  reschedule 0%  tool_error 100%
+  reasoning language {'none': 12}   replies with Gulf markers   0.0%   foreign-script chars 0
+  failure reasons: missing/wrong booking ×6, missing/wrong booking; loop; silent_turn ×1
+
+  per-run detail -> results/qt03/pilot4-template-fanar-2-27b-q4-qt03/scored.csv

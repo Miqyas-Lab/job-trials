@@ -1,0 +1,1 @@
+no LICENSE file in QCRI/Fanar-2-27B-Instruct; card states Apache-2.0
