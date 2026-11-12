@@ -72,28 +72,34 @@
   tool_format: decided by probe (native llama.cpp if tools reach the prompt, else prompted-JSON)
   licence: TII Falcon licence (Apache-2.0-based); read LICENSE before publishing
   sampling: temperature 0.1 (TII README)
-  status: candidate
-  next: qt-02-falcon-h1-7b-clinic
+  status: quick-trial published
+  trials: [qt-02-falcon-h1-7b-clinic]   # common setup 25.4% after the 12 Nov re-run (first run 14.3%, harness fault); numbers only
+  calibration: cal-02-adapter-falcon-h1-7b   # second measurement of the prompted-JSON adapter
 
-- id: fanar
+- id: fanar-2-27b-instruct
   family: Fanar
   publisher: QCRI (Qatar)
-  source: verify (Fanar 2.0, open sizes?)
-  status: candidate
-  verify: true
+  source: QCRI/Fanar-2-27B-Instruct   # self-converted Q4_K_M (no official GGUF); Gemma 3 27B base
+  status: quick-trial published
+  trials: [qt-03-fanar-2-27b-clinic]   # common setup 54.8%; numbers only
 
 - id: silma-9b
   family: SILMA
   publisher: SILMA AI (Saudi Arabia)
-  source: silma-ai/SILMA-9B-Instruct-v1.0
-  status: candidate
-  verify: true
+  source: silma-ai/SILMA-9B-Instruct-v1.0   # revision d8f4d2b; Gemma 2 architecture; released 2024-08-17
+  context: 8192
+  languages: ar, en (card)
+  tool_format: none in the template; prompted-JSON adapter
+  licence: Gemma terms
+  sampling: temperature 1.0 (card example only)
+  status: quick-trial pre-registered
+  next: qt-04-silma-9b-clinic
 
 - id: gemma3
   family: Gemma 3
   publisher: Google
-  source: verify (4B / 12B)
-  status: candidate
+  source: google/gemma-3-12b-it (gated; template refuses tool turns, so prompted-JSON adapter)   # 4B / 12B
+  status: candidate (next after qt-04)
   verify: true
 
 - id: tiny-aya
