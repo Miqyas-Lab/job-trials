@@ -51,6 +51,8 @@ fanar["tool_thinking_on"] = {**card(FT, "tool", "on"), **extras(runs(FT, "tool")
 obs = {"tool": half_hour(runs(F, "tool")), "tool_thinking_on": half_hour(runs(FT, "tool"))}
 
 prev = json.load(open("findings/qt02-falcon-h1-7b/results.json", encoding="utf-8"))["common_setup"]
+for r in prev:   # rows copied from qt-02 say "this trial" there; name the session here (fixed 2026-11-12)
+    r["note"] = r["note"].replace("this trial", "qt-02")
 fan_row = {"model": "Fanar 2 27B (thinking off)", "source": F, **card(F, "tool"),
            "complaint_medical_handed_over": handoffs(runs(F, "tool"), {"complaint", "medical"}),
            "runs_with_invented_phone": 0, "note": "this trial; template-documented call format; 27B (others 3.7-8B)"}

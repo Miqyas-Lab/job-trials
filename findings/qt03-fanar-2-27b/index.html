@@ -128,6 +128,15 @@
   <li>إذا كان لدى فريق Fanar إعداد موصى به، نشغّله مرة وننشره بجانب هذه النتائج، بالشروط نفسها لكل مختبر.</li>
 </ul>
 
+<div class="obs" id="notes-2026-11-12">
+  <h2>ملاحظات مؤرخة <span class="num" dir="ltr">2026-11-12</span></h2>
+  <ul class="tight">
+    <li>في إعداد «التفكير مسموح» لم يستخدم النموذج التفكير في أي خطوة (<span class="num">0</span> من <span class="num">712</span>)، لذلك الفارق بين <span class="num" dir="ltr">54.8%</span> و<span class="num" dir="ltr">50.8%</span> تذبذب تشغيل، لا أثر للتفكير.</li>
+    <li>في إعداد العنوان (أداة التاريخ، التفكير مغلق): <span class="num">7</span> محادثات دخلت حلقة تكرار، و<span class="num">7</span> أدوار بلا رد. الأرقام في results.json.</li>
+    <li>الكلفة: نحو <span class="num">6</span> دولارات من وقت RTX 4090 على RunPod (تقدير، دفعها المؤسّس).</li>
+  </ul>
+</div>
+
 <h2>الملفات</h2>
 <ul class="tight">
   <li><a href="https://github.com/Miqyas-Lab/job-trials/blob/main/trials/qt-03-fanar-2-27b-clinic.yaml">ملف التسجيل المسبق وتعديلاته ↗</a></li>
@@ -137,7 +146,7 @@
 
 <section class="en" id="en">
   <h2>English</h2>
-  <p>Quick Trial (exploratory, numbers only): QCRI's Fanar-2-27B-Instruct (self-converted Q4_K_M, llama.cpp, RTX 4090) as a dental clinic's WhatsApp front desk, 42 public test scenarios × 3 runs. Fully correct conversations: 53.2% with no date help, 79.4% with the calendar in the prompt, 54.8% with the date tool (common setup, 95% CI 43.7–65.9%), 50.8% with the date tool and thinking allowed; the model chose not to think in any of 712 steps. Common setup: emergencies handed over in time 24/25, complaints and medical questions 18/20, median wait 6.1 s. Fanar 2 is 27B (Gemma 3 base); the other models in the common-setup table are 3.7–8B. Post-hoc observation: after «X ونص» (half past), 8 of 31 bookings used the whole hour. Three amendments, all before any test answer was read: an equivalent chat template without {% raw %}, tool calls read in the template-documented format with the call text kept in the history, and reasoning moved out of replies. Full details in the <a href="https://github.com/Miqyas-Lab/job-trials/tree/main/findings/qt03-fanar-2-27b">trial folder</a>.</p>
+  <p>Quick Trial (exploratory, numbers only): QCRI's Fanar-2-27B-Instruct (self-converted Q4_K_M, llama.cpp, RTX 4090) as a dental clinic's WhatsApp front desk, 42 public test scenarios × 3 runs. Fully correct conversations: 53.2% with no date help, 79.4% with the calendar in the prompt, 54.8% with the date tool (common setup, 95% CI 43.7–65.9%), 50.8% with the date tool and thinking allowed; the model chose not to think in any of 712 steps. Common setup: emergencies handed over in time 24/25, complaints and medical questions 18/20, median wait 6.1 s. Fanar 2 is 27B (Gemma 3 base); the other models in the common-setup table are 3.7–8B. Post-hoc observation: after «X ونص» (half past), 8 of 31 bookings used the whole hour. Three amendments, all before any test answer was read: an equivalent chat template without {% raw %}, tool calls read in the template-documented format with the call text kept in the history, and reasoning moved out of replies. Full details in the <a href="https://github.com/Miqyas-Lab/job-trials/tree/main/findings/qt03-fanar-2-27b">trial folder</a>. Dated notes 2026-11-12: the "thinking allowed" setup used no reasoning in any step (0 of 712), so 54.8% vs 50.8% is run-to-run variation, not a thinking effect. The headline setup had 7 runs that looped and 7 silent turns (results.json). Cost: about USD 6 of RTX 4090 time (estimate, paid by the founder).</p>
 </section>
 
 <div class="brandfoot"><span class="b"><img src="../../assets/brand/miqyas-favicon.svg" alt="">مقياس</span><span class="site">miqyaslab.com</span></div>

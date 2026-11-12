@@ -248,7 +248,7 @@
     20
    ],
    "runs_with_invented_phone": 0,
-   "note": "this trial; template-documented call format"
+   "note": "qt-02; template-documented call format"
   },
   {
    "model": "ALLaM 7B (no thinking mode)",
