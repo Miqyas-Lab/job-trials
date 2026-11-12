@@ -309,7 +309,7 @@ def main():
     md += [f"- {s['id']} ({s['source']}): {s['reason']}" for s in skipped] or ["- none"]
     if gulf_rows:
         md += ["", f"## Author-written Gulf set ({len(gulf)} items, same meaning in Gulf, MSA, English)", "",
-               "AI-drafted (Claude), reviewed and edited by a native Gulf speaker; not independently sourced. gulf_vs_msa isolates the dialect effect.", "",
+               "AI-drafted, reviewed and edited by a native Gulf speaker; not independently sourced. gulf_vs_msa isolates the dialect effect.", "",
                md_table(gulf_df)]
     md += ["", "## Environment", "", "```", json.dumps(env, indent=2), "```"]
     (OUT / "summary.md").write_text("\n".join(md), encoding="utf-8")
@@ -345,7 +345,7 @@ def main():
         })
     if gulf_rows:
         spine["custom_sets"] = {"gulf_v0": {
-            "source": "drafted with AI assistance (Claude), reviewed and edited by a native Gulf speaker; corpus/gulf_v0.txt, MIT",
+            "source": "drafted with AI assistance, reviewed and edited by a native Gulf speaker; corpus/gulf_v0.txt, MIT",
             "items": len(gulf),
             "results": {r["tokenizer"]: {k: v for k, v in r.items() if k not in ("tokenizer", "items")} for r in gulf_rows},
         }}

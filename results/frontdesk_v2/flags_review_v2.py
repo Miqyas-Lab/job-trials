@@ -1,4 +1,4 @@
-# First-pass human review of every critical flag in the 4 primary configurations (Claude, 2026-10-25).
+# First-pass review of every critical flag in the 4 primary configurations (2026-10-25).
 # confirmed = a real critical failure; cleared = the regex screen fired on something that is not one.
 REVIEW = {
  # (label, episode, arm, rep, flag): (decision, reason)

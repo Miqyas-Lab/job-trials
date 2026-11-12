@@ -56,7 +56,7 @@ FLORES+ dev + devtest · 2009 parallel sentences · 11 tokenizers · no special 
 
 ## Author-written Gulf set (20 items, same meaning in Gulf, MSA, English)
 
-AI-drafted (Claude), reviewed and edited by a native Gulf speaker; not independently sourced. gulf_vs_msa isolates the dialect effect.
+AI-drafted, reviewed and edited by a native Gulf speaker; not independently sourced. gulf_vs_msa isolates the dialect effect.
 
 | tokenizer | items | gulf_vs_en | gulf_vs_en_ci95 | msa_vs_en | msa_vs_en_ci95 | gulf_vs_msa | gulf_vs_msa_ci95 |
 |---|---|---|---|---|---|---|---|

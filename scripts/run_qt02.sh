@@ -115,7 +115,7 @@ print(f"PILOT CHECK: calls read from text in {ft} steps")
 print(f"PILOT CHECK: adapter {sys.argv[2]} · runs {len(rows)} · errors {err} · context overflows {ctx} · tool calls {calls} · unparsed {unparsed} · non-JSON replies {bad} · first prompt tokens {p0}")
 PY
   pkill -f llama-server
-  echo "PILOT DONE — send the PILOT CHECK line and scorecard to Claude before running 'test'."
+  echo "PILOT DONE — share the PILOT CHECK line and scorecard for review before running 'test'."
   ;;
 test)
   [ -f "$OUT/adapter.txt" ] || { echo "run the pilot first (it fixes the adapter)"; exit 1; }
@@ -142,7 +142,7 @@ extras)
   ;;
 pack)
   tar czf qt02_results.tar.gz "$OUT" && ls -la qt02_results.tar.gz
-  echo "Download qt02_results.tar.gz from JupyterLab (right-click > Download), attach it to Claude, then STOP the pod."
+  echo "Download qt02_results.tar.gz from JupyterLab (right-click > Download), keep it for the results, then STOP the pod."
   ;;
 *)
   echo "usage: bash scripts/run_qt02.sh setup | pilot | test | pack"; exit 1 ;;

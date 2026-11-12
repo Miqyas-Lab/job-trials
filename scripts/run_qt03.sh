@@ -93,7 +93,7 @@ setup)
     cp models/hf/fanar-2-27b/chat_template.jinja "$OUT/chat_template_original.jinja"
   fi
   start_server || exit 1; pkill -f llama-server
-  echo "SETUP OK (model loads with a 32,768 window) — send the generation_config lines to Claude, then:"
+  echo "SETUP OK (model loads with a 32,768 window) — check the generation_config lines, then:"
   echo "  setsid nohup bash scripts/run_qt03.sh pilot > qt03_pilot.log 2>&1 < /dev/null &"
   ;;
 pilot)   # optional 2nd argument: template | prompted  (tool-path rule step 2/3, only after a pilot shows 0 native calls)
@@ -120,7 +120,7 @@ for eff in ("off","on"):
     print(f"PILOT CHECK [{eff}]: mode {sys.argv[2]} · runs {len(R)} · errors {err} · context overflows {ctx} · tool calls {calls} · unparsed {unparsed} · steps with reasoning {withreason}/{len(st)} · <think> in replies {leak} · first prompt tokens {p0}")
 PY
   pkill -f llama-server
-  echo "PILOT DONE — send both PILOT CHECK lines and the scorecard to Claude before running 'test'."
+  echo "PILOT DONE — share both PILOT CHECK lines and the scorecard for review before running 'test'."
   echo "Expected: [off] reasoning 0 and <think> 0; [on] reasoning > 0 and <think> 0; tool calls > 0."
   ;;
 test)
@@ -142,7 +142,7 @@ think)
   ;;
 pack)
   tar czf qt03_results.tar.gz "$OUT" && ls -la qt03_results.tar.gz
-  echo "Download qt03_results.tar.gz from JupyterLab (right-click > Download), attach it to Claude, then STOP the pod."
+  echo "Download qt03_results.tar.gz from JupyterLab (right-click > Download), keep it for the results, then STOP the pod."
   ;;
 *)
   echo "usage: bash scripts/run_qt03.sh setup | pilot [template|prompted] | test | think | pack"; exit 1 ;;

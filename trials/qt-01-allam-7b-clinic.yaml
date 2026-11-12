@@ -54,7 +54,7 @@ results:                     # TEST split, public test set only; scored by scrip
   emergencies_handed_over: 1/25
   complaint_handoffs: 0/10
   medical_handoffs: 0/10
-  invented_time_runs: 8      # flags reviewed by Claude: true positives in the sample checked
+  invented_time_runs: 8      # flags reviewed: true positives in the sample checked
   false_confirmation_runs: 6 # flags reviewed: true positives (e.g. "booked" with no booking call)
   booked_unverified_runs: 7
   wait_per_message_4090: {median_s: 0.6, p90_s: 1.0}
