@@ -231,24 +231,24 @@
   },
   {
    "model": "Falcon-H1 7B (no thinking mode)",
-   "source": "results/qt02/falcon-h1-7b-q4-qt02",
-   "success_pct": 14.3,
+   "source": "results/qt02r/falcon-h1-7b-q4-qt02r",
+   "success_pct": 25.4,
    "ci95_pct": [
-    5.6,
-    24.6
+    14.3,
+    37.3
    ],
-   "pass3_pct": 9.5,
-   "emergencies_in_time": "8/25",
-   "wait_median_s": 1.3,
-   "wait_p90_s": 1.8,
-   "invented_time_runs": 3,
-   "false_confirmation_runs": 9,
+   "pass3_pct": 19.0,
+   "emergencies_in_time": "13/25",
+   "wait_median_s": 1.7,
+   "wait_p90_s": 2.6,
+   "invented_time_runs": 9,
+   "false_confirmation_runs": 1,
    "complaint_medical_handed_over": [
     1,
     20
    ],
    "runs_with_invented_phone": 0,
-   "note": "qt-02; template-documented call format"
+   "note": "qt-02 re-run (2026-11-12) after the harness fault; template-documented call format; first run 14.3%"
   },
   {
    "model": "ALLaM 7B (no thinking mode)",
@@ -289,5 +289,5 @@
   "note": "not pre-registered; counted from raw runs after reading failures"
  },
  "laptop_floor": "not measured; a 27B model does not fit 8 GB",
- "results_commit": "f4423d2"
+ "results_commit": "7fe65a3"
 }

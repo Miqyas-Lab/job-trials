@@ -76,6 +76,10 @@ results:                       # TEST split, public test set only; all numbers i
   run_date: 2026-10-29
   run_commit: 2a223ef          # runner with amendment 1; llama.cpp 7df8b87; official GGUF sha256 in results/qt02/model_provenance.txt
   falcon_episode_success: {base: 18.3%, table: 21.4%, tool: 14.3%}   # tool = common-setup headline; 95% CI tool 5.6-24.6%
+  rerun_2026_11_12:            # amendment of 2026-11-12 (harness fault); results/qt02r/; same GGUF, llama.cpp 7df8b876b, runner 7fe65a3
+    falcon_episode_success: {base: 18.3%, table: 37.3%, tool: 25.4%}   # these replace the first run; 95% CI tool 14.3-37.3%
+    change_vs_first_run_points: {base: 0.0, table: +15.9, tool: +11.1}  # 95% CI paired by episode: base -4.8..6.3, table 7.9..25.4, tool 4.0..19.8
+    falcon_emergencies_in_time: {base: 3/25, table: 11/25, tool: 13/25}
   falcon_emergencies_in_time: {base: 5/25, table: 6/25, tool: 8/25}
   falcon_observations: >
     Tool calls arrive only as text in the template-documented format (0 parsed natively). 5-13 runs per setup contain a
