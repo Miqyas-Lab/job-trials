@@ -84,7 +84,7 @@
       <tr><td>Qwen3 · 4B</td><td class="num">44.4% <span class="ci">[32–57]</span></td><td class="num">65.1% <span class="ci">[53–76]</span></td><td class="num">59.5% <span class="ci">[47–71]</span></td><td class="num">50%</td></tr>
     </tbody>
   </table>
-  <p class="note"><span class="num">42</span> حلقة اختبار × <span class="num">3</span> محاولات (<span class="num">+2</span> لحلقات السلامة) = <span class="num">144</span> محادثة لكل خلية. كل النماذج بصيغة Q4_K_M على llama.cpp، بجهد تفكير عالٍ (Jais) أو التفكير مفعّل (Qwen)، وبإعدادات العيّنة الموصى بها من كل جهة. النسب بعد المراجعة البشرية لكل إنذار حرج؛ الأرقام الآلية قبلها في <a href="https://github.com/Miqyas-Lab/job-trials/tree/main/results/frontdesk_v2">البيانات</a> وتختلف بأقل من نقطة واحدة. بجهد منخفض أو من غير تفكير ينهار الأداء إلى <span class="num">28%</span> للنموذجين.</p>
+  <p class="note"><span class="num">42</span> حلقة اختبار × <span class="num">3</span> محاولات (<span class="num">+2</span> لحلقات السلامة) = <span class="num">144</span> محادثة لكل خلية. كل النماذج بصيغة Q4_K_M على llama.cpp، بجهد تفكير عالٍ (Jais) أو التفكير مفعّل (Qwen)، وبإعدادات العيّنة الموصى بها من كل جهة. النسب بعد المراجعة البشرية لكل إنذار حرج؛ الأرقام الآلية قبلها في <a href="https://github.com/Miqyas-Lab/job-trials/tree/main/results/frontdesk_v2">البيانات</a> وتختلف بأقل من نقطة واحدة. بجهد منخفض أو من غير تفكير ينهار الأداء إلى نحو <span class="num">28%</span>: Jais 3 3.7B بجهد منخفض <span class="num" dir="ltr">28.6%</span>، وQwen3 4B من غير تفكير <span class="num">27.8%</span>.</p>
   <ul class="tight">
     <li><b>Jais 3 يتفوّق على Qwen3 في كل الإعدادات</b>، والفرق واضح إحصائيًا: Jais 3 3.7B يتقدّم على Qwen3-8B، ضعف حجمه، بـ<span class="num">16</span> إلى <span class="num">29</span> نقطة.</li>
     <li><b>3.7B يساوي 7B</b>: لا فرق واضح بينهما في أي إعداد.</li>
@@ -104,7 +104,7 @@
 <section class="section-head">
   <h2>أين تفشل النماذج</h2>
   <ol class="tight">
-    <li><b>تغيير الموعد يكسر الجميع.</b> النموذج يحجز الجديد ويترك القديم (حجز مزدوج)، أو لا يبحث عن موعد المريض أصلًا، أو يقول «تم الإلغاء» من غير أن يلغي. نجح Jais 3 3.7B في <span class="num">10</span> من <span class="num">27</span>، و7B في <span class="num">15</span> من <span class="num">27</span>، وQwen3-8B في <span class="num">8</span>، وQwen3-4B في <span class="num">2</span>. فقط <span class="num">5</span> من <span class="num">108</span> إخفاقات سببها أن المريض المبرمج لم يجب على سؤال تأكيد إضافي.
+    <li><b>تغيير الموعد يكسر الجميع.</b> النموذج يحجز الجديد ويترك القديم (حجز مزدوج)، أو لا يبحث عن موعد المريض أصلًا، أو يقول «تم الإلغاء» من غير أن يلغي. نجح Jais 3 3.7B في <span class="num">10</span> من <span class="num">27</span>، و7B في <span class="num">15</span> من <span class="num">27</span>، وQwen3-8B في <span class="num">8</span>، وQwen3-4B في <span class="num">2</span>. فشلت <span class="num">73</span> من <span class="num">108</span> محاولة لتغيير الموعد، و<span class="num">5</span> فقط من هذه الإخفاقات سببها أن المريض المبرمج لم يجب على سؤال تأكيد إضافي.
       <blockquote>«تم حجز موعد التبييض يوم 12 نوفمبر الساعة 7:00 مساءً. الحين شلون بغيت تلغي موعد 11 نوفمبر الحالي؟» ← المريض: «تمام» ← «تم إلغاء موعد 11 نوفمبر.» <span class="note">(لم تُستدعَ أداة الإلغاء. الموعد القديم ما زال محجوزًا.)</span></blockquote></li>
     <li><b>«قالها ولم يفعلها».</b> ادعاءات «تم الحجز» أو «تم الإلغاء» من غير استدعاء الأداة. نادرة عند Jais، وموجودة عند الجميع.</li>
     <li><b>تحويل الوقت.</b> الأداة تعطي <span class="num">19:00</span> والنموذج يكتب للمريض «<span class="num">6:00</span>». خطأ متكرر عند Qwen3-8B، ونادر عند Jais 3 7B.</li>
@@ -167,6 +167,19 @@
   <p>عيادة واحدة، تعليمات بالعربية، <span class="num">42</span> حلقة اختبار: النتائج اتجاهية لا عامة. المريض مبرمج ولا يتكيّف، والمريض الحقيقي أكثر فوضى. الحلقات كُتبت بمساعدة الذكاء الاصطناعي وراجعها المؤلف (عربي، غير إماراتي). كل النماذج بتكميم Q4_K_M. سرعة الأجهزة الأحدث من لابتوب <span class="num">2020</span> لم تُقَس. فاحص الأوقات المخترعة يقارن الوقت لا التاريخ.</p>
 </section>
 
+<section class="section-head" id="notes-2026-11-12">
+  <h2>ملاحظات وتصويبات مؤرخة</h2>
+  <p><b><span class="num" dir="ltr">2026-11-12</span></b>، بعد مراجعة داخلية لكل ما نشرناه. لم يتغيّر أي رقم من أرقام النتائج.</p>
+  <ul>
+    <li><b>صياغة:</b> كانت الجملة «فقط 5 من 108 إخفاقات». الصحيح: <span class="num">108</span> محاولة لتغيير الموعد فشلت منها <span class="num">73</span>، و<span class="num">5</span> من هذه الإخفاقات سببها المريض المبرمج.</li>
+    <li><b>توضيح:</b> «ينهار الأداء إلى 28% للنموذجين» صارت تذكر النموذجين ونسبتيهما.</li>
+    <li><b>حالات التقويم الفارغ</b> (يوم ممتلئ، وقت محجوز، يوم مسكّر؛ <span class="num">18</span> محاولة لكل نموذج في كل إعداد): مع التقويم في التعليمات نجح Jais 3 بالحجمين في <span class="num">18</span> من <span class="num">18</span>. مع أداة التاريخ: 3.7B <span class="num">17</span> من <span class="num">18</span>، و7B <span class="num">16</span> من <span class="num">18</span> (منها وقت مخترع مرة واحدة). من غير مساعدة: 3.7B <span class="num">18</span> من <span class="num">18</span>، و7B <span class="num">14</span> من <span class="num">18</span> (منها وقت مخترع مرة واحدة). منشورنا على LinkedIn قال «18 من 18 لكل حجم»، وهذا صحيح لإعداد التقويم في التعليمات فقط.</li>
+    <li><b>تنقيح لاحق للنصوص:</b> في <span class="num" dir="ltr">2026-10-30</span>، أثناء تجربة Falcon-H1 7B، أخفينا أرقامًا تشبه أرقام الهواتف في <span class="num">3</span> محادثات لـ Qwen3 4B من هذه التجربة، وأعدنا حساب الدرجات فجاءت مطابقة. كان يجب أن نذكر ذلك هنا يومها.</li>
+    <li><b>الكلفة:</b> لا يمكن فصل كلفة هذه التجربة عن التجارب التمهيدية والتشغيلات المُلغاة. كل ما أنفقناه على وحدات المعالجة الرسومية من <span class="num">19</span> أكتوبر إلى <span class="num">9</span> نوفمبر، لكل الدراسات معًا: <span class="num" dir="ltr">42.98</span> دولارًا، دفعها المؤسّس.</li>
+    <li><b>المستودع:</b> بعض منشوراتنا الأولى تشير إلى mhdghaim-cell/arabic-llm-bench. المستودع الحالي هو <a href="https://github.com/Miqyas-Lab/job-trials">Miqyas-Lab/job-trials</a>.</li>
+  </ul>
+</section>
+
 <section class="section-head" id="en">
   <h2>English technical summary</h2>
   <div class="en">
@@ -191,7 +204,9 @@
     </ul>
     <h3>Validity</h3>
     <p>Protocol, episodes and scorer committed before any run (<code>9a83bfe</code>), plus three dated amendments, none prompted by a model's score. Oracle replay 100% in every arm; nine negative-control agents all caught. Blind human audit of 30 conversations: 30/30 agreement. All 35 critical flags in the primary configurations reviewed by hand (26 confirmed, 9 regex false positives). Reproducibility: fresh vs fresh server 10/10 identical; main run vs fresh 9/10 same outcome (prompt-cache state changes GPU numerics). Limitations: one clinic, 42 episodes, scripted patient, author-reviewed (non-Emirati) dialect, Q4 only.</p>
-    <p><b>Data and code:</b> <code>results/frontdesk_v2/</code> (every conversation in full), <code>scripts/</code>, <code>corpus/frontdesk_v2.jsonl</code>. Also on Hugging Face: <a href="https://huggingface.co/datasets/mhdghaim/miqyas-frontdesk-v2">mhdghaim/miqyas-frontdesk-v2</a>. Independent work by Mahmoud Deghaim; <a href="https://github.com/Miqyas-Lab/job-trials/blob/main/docs/independence.md">independence and funding policy</a>.</p>
+    <h3>Dated notes (2026-11-12)</h3>
+    <p>After an internal review of everything published; no result changed. (1) "Only 5 of 108 failures" corrected: 73 of the 108 reschedule runs failed, and 5 of those failures came from the scripted patient. (2) The 28% low-effort figure now names the models: Jais 3 3.7B low effort 28.6%, Qwen3 4B no thinking 27.8%. (3) Empty-calendar cases (18 runs per model per arm): calendar in the prompt, Jais 3 18/18 at both sizes; date tool, 3.7B 17/18 and 7B 16/18 (one invented time); no help, 3.7B 18/18 and 7B 14/18 (one invented time). Our LinkedIn post's "18 of 18 per size" holds for the calendar-in-prompt arm only. (4) On 2026-10-30, during qt-02, phone-like numbers were redacted in 3 Qwen3 4B transcripts from this trial; scores recomputed, identical; this should have been noted here then. (5) Cost: not separable from pilots and discarded runs; all GPU spend 19 Oct–9 Nov for every study so far was USD 42.98, paid by the founder. (6) Early posts point to mhdghaim-cell/arabic-llm-bench; the current repository is Miqyas-Lab/job-trials.</p>
+    <p><b>Data and code:</b> <code>results/frontdesk_v2/</code> (every conversation in full; phone-like numbers redacted, see note 4), <code>scripts/</code>, <code>corpus/frontdesk_v2.jsonl</code>. Also on Hugging Face: <a href="https://huggingface.co/datasets/mhdghaim/miqyas-frontdesk-v2">mhdghaim/miqyas-frontdesk-v2</a>. Independent work by Mahmoud Deghaim; <a href="https://github.com/Miqyas-Lab/job-trials/blob/main/docs/independence.md">independence and funding policy</a>.</p>
   </div>
 </section>
 

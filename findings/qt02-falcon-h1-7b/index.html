@@ -115,6 +115,16 @@
   <li>إذا كان لدى فريق Falcon إعداد موصى به، نشغّله مرة وننشره بجانب هذه النتائج، بالشروط نفسها لكل مختبر.</li>
 </ul>
 
+<div class="obs" id="notes-2026-11-12">
+  <h2>ملاحظات مؤرخة <span class="num" dir="ltr">2026-11-12</span></h2>
+  <ul class="tight">
+    <li>إعدادات العيّنة، كما سُجّلت مسبقًا من بطاقة TII: درجة الحرارة <span class="num" dir="ltr">0.1</span>، top_p <span class="num" dir="ltr">1.0</span>، من غير top_k، min_p <span class="num">0</span>، ومن غير عقوبات تكرار.</li>
+    <li>صفوف جدول «كل النماذج على الإعداد نفسه» من جلسات مختلفة: Jais 3 3.7B من تجربة العمل #1، وALLaM 7B من التجربة السريعة الأولى عبر محوّل JSON، والباقي من جلستي هذه التجربة وتجربة Fanar. إعادة التشغيل تطابقت في <span class="num">9</span> من <span class="num">10</span>، ففوارق النقاط القليلة بين الصفوف ليست ذات دلالة.</li>
+    <li>قلنا في سلسلة X إن نتيجة ALLaM ليست من إعدادنا. الأدق: قياس المحوّل على نموذج واحد (Qwen3 4B) لم يُظهر أنه يُضعف النماذج.</li>
+    <li>الكلفة: نحو <span class="num" dir="ltr">2.5</span> دولار من وقت RTX 4090 على RunPod (تقدير، دفعها المؤسّس).</li>
+  </ul>
+</div>
+
 <h2>الملفات</h2>
 <ul class="tight">
   <li><a href="https://github.com/Miqyas-Lab/job-trials/blob/main/trials/qt-02-falcon-h1-7b-clinic.yaml">ملف التسجيل المسبق وتعديله ↗</a></li>
@@ -124,7 +134,7 @@
 
 <section class="en" id="en">
   <h2>English</h2>
-  <p>Quick Trial (exploratory, numbers only): Falcon-H1-7B-Instruct (official Q4_K_M GGUF, llama.cpp) as a dental clinic's WhatsApp front desk, 42 public test scenarios × 3 runs, on all three setups from Job Trial #1. Fully correct conversations: 18.3% with no date help, 21.4% with the calendar in the prompt, 14.3% with the date tool (95% CI 5.6–24.6%). On the common setup: emergencies handed to staff in time 8/25, complaints and medical questions handed over 1/20, English-only replies in 39/144 conversations, no invented phone numbers. TII's Arabic-specific models have no downloadable weights, so the open general model was tested. Tool calls were read in the format documented in the model's template (amendment 1, registered before the test). Adapter calibration: Qwen3 4B scored 29.4% with its native tool syntax and 35.7% through our prompted-JSON adapter on the same build, so the adapter does not penalise models. Full details in the <a href="https://github.com/Miqyas-Lab/job-trials/tree/main/findings/qt02-falcon-h1-7b">trial folder</a>.</p>
+  <p>Quick Trial (exploratory, numbers only): Falcon-H1-7B-Instruct (official Q4_K_M GGUF, llama.cpp) as a dental clinic's WhatsApp front desk, 42 public test scenarios × 3 runs, on all three setups from Job Trial #1. Fully correct conversations: 18.3% with no date help, 21.4% with the calendar in the prompt, 14.3% with the date tool (95% CI 5.6–24.6%). On the common setup: emergencies handed to staff in time 8/25, complaints and medical questions handed over 1/20, English-only replies in 39/144 conversations, no invented phone numbers. TII's Arabic-specific models have no downloadable weights, so the open general model was tested. Tool calls were read in the format documented in the model's template (amendment 1, registered before the test). Adapter calibration: Qwen3 4B scored 29.4% with its native tool syntax and 35.7% through our prompted-JSON adapter on the same build, so the adapter does not penalise models. Full details in the <a href="https://github.com/Miqyas-Lab/job-trials/tree/main/findings/qt02-falcon-h1-7b">trial folder</a>. Dated notes 2026-11-12: sampling as pre-registered from TII's card (temperature 0.1, top_p 1.0, top_k off, min_p 0, no penalties). Rows of the common-setup table come from different sessions (Jais 3 3.7B from Job Trial #1, ALLaM from qt-01 through the adapter, the rest from the qt-02 and qt-03 sessions); reproducibility was 9/10, so gaps of a few points are not meaningful. The adapter calibration rests on one model (Qwen3 4B). Cost: about USD 2.5 of RTX 4090 time (estimate, paid by the founder).</p>
 </section>
 
 <div class="brandfoot"><span class="b"><img src="../../assets/brand/miqyas-favicon.svg" alt="">مقياس</span><span class="site">miqyaslab.com</span></div>
