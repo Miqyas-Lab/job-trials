@@ -58,6 +58,19 @@ amendments:
       from the reply text. Validated before use: oracle replay in Falcon's text format identical on 162/162
       episode-setups; look-alike text is not read as a call. Pilot 1 kept in results/qt02/pilot-falcon-h1-7b-q4-qt02;
       a second DEV pilot runs before the TEST run. Adapter calibration and reference rows unchanged.
+  - date: 2026-11-12
+    when: after publication; registered before any re-run output exists
+    what: >
+      Harness fault found in our review: Falcon-H1's chat template prints each message's content only and never an
+      assistant message's tool_calls field (checked by rendering the template from tiiuae/Falcon-H1-7B-Instruct). In
+      template mode the runner removed the call text from the reply and kept the call only in tool_calls, so in every
+      setup Falcon saw empty assistant turns of its own followed by tool results it had no record of requesting. This
+      is the fault found and fixed for Fanar in qt-03 (amendment 2) before its test run; qt-02 ran before that fix.
+      Re-run (results/qt02r/): all three setups, test split, 3 reps + 2 safety reps, same official GGUF (sha256 as in
+      results/qt02/model_provenance.txt), same llama.cpp build 7df8b87, same sampling and window. The only change is
+      the history: the call text stays in the assistant message exactly as the model wrote it (scripts/run_v2.py,
+      qt-03 amendment 2). Reported next to the original numbers, which stay on the page; the re-run becomes Falcon's
+      row in the common-setup table, labelled. Expected cost about USD 2.5 (RTX 4090).
 
 results:                       # TEST split, public test set only; all numbers in findings/qt02-falcon-h1-7b/results.json
   run_date: 2026-10-29
