@@ -58,8 +58,28 @@
 </header>
 
 <img class="card" src="scorecard_x.png" alt="بطاقة نتائج التجربة السريعة لـ Falcon-H1 7B">
+<p class="note">البطاقة من التشغيل الأول، قبل إصلاح خلل الأداة. الأرقام الحالية في الجدول التالي.</p>
 
-<h2>الأرقام على الإعدادات الثلاثة</h2>
+<h2>الأرقام بعد إصلاح خلل الأداة (إعادة التشغيل، <span class="num" dir="ltr">2026-11-12</span>)</h2>
+<p>في التشغيل الأول لم يكن النموذج يرى استدعاءات الأدوات التي كتبها بنفسه (انظر الملاحظات المؤرخة أدناه). أعدنا تشغيل الإعدادات الثلاثة بملف النموذج والإعدادات نفسها، والتغيير الوحيد أن نص الاستدعاء بقي في سجل المحادثة كما كتبه النموذج. هذه الأرقام تحل محل أرقام التشغيل الأول، التي تبقى في الجدول التالي.</p>
+<div class="scroll">
+<table class="data-table">
+  <thead><tr><th></th><th>بلا مساعدة في التاريخ</th><th>التقويم داخل التعليمات</th><th>أداة التاريخ (الإعداد المشترك)</th></tr></thead>
+  <tbody>
+    <tr><td>محادثات صحيحة كاملة</td><td class="num">18.3% <span class="ci">[8.7–29.4]</span></td><td class="num">37.3% <span class="ci">[24.6–50.8]</span></td><td class="num">25.4% <span class="ci">[14.3–37.3]</span></td></tr>
+    <tr><td>التغيّر عن التشغيل الأول (نقاط)</td><td class="num">0.0 <span class="ci">[−4.8, +6.3]</span></td><td class="num">+15.9 <span class="ci">[+7.9, +25.4]</span></td><td class="num">+11.1 <span class="ci">[+4.0, +19.8]</span></td></tr>
+    <tr><td>صحيحة في المحاولات الثلاث</td><td class="num">11.9%</td><td class="num">26.2%</td><td class="num">19.0%</td></tr>
+    <tr><td>طوارئ حُوّلت لموظف في الوقت المناسب</td><td class="num">3/25</td><td class="num">11/25</td><td class="num">13/25</td></tr>
+    <tr><td>شكاوى وأسئلة طبية حُوّلت لموظف</td><td class="num">5/20</td><td class="num">0/20</td><td class="num">1/20</td></tr>
+    <tr><td>محادثات فيها رد بالإنجليزية فقط</td><td class="num">52/144</td><td class="num">31/144</td><td class="num">29/144</td></tr>
+    <tr><td>محادثات أعطى فيها رقم هاتف مخترعًا</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr>
+    <tr><td>زمن الرد على RTX 4090 (الوسيط / أبطأ 10%)</td><td class="num">1.4 s / 2.6 s</td><td class="num">1.3 s / 2.2 s</td><td class="num">1.7 s / 2.6 s</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="note">فترات الثقة 95% بين قوسين، مجمّعة حسب الحالة؛ وفترة التغيّر مقترنة بالحالة نفسها في التشغيلين. الإصلاح رفع النتيجة في الإعدادين اللذين يكثر فيهما استخدام الأدوات، ولم يغيّرها في الإعداد الأول. لا يزال النموذج بعيدًا عن حد الوظيفة (<span class="num">90%</span>) في الإعدادات الثلاثة.</p>
+
+<h2>أرقام التشغيل الأول (قبل إصلاح الخلل)</h2>
 <div class="scroll">
 <table class="data-table">
   <thead><tr><th></th><th>بلا مساعدة في التاريخ</th><th>التقويم داخل التعليمات</th><th>أداة التاريخ (الإعداد المشترك)</th></tr></thead>
@@ -86,7 +106,7 @@
     <tr><td dir="ltr">Qwen3 8B</td><td class="num">68.3% <span class="ci">[55.6–81.0]</span></td><td class="num">25/25</td></tr>
     <tr><td dir="ltr">Qwen3 4B</td><td class="num">29.4% <span class="ci">[18.3–41.3]</span></td><td class="num">21/25</td></tr>
     <tr><td dir="ltr">Jais 3 3.7B</td><td class="num">28.6% <span class="ci">[16.7–40.5]</span></td><td class="num">23/25</td></tr>
-    <tr class="this"><td dir="ltr">Falcon-H1 7B</td><td class="num">14.3% <span class="ci">[5.6–24.6]</span></td><td class="num">8/25</td></tr>
+    <tr class="this"><td><span dir="ltr">Falcon-H1 7B</span> (إعادة التشغيل؛ الأول <span class="num">14.3%</span>)</td><td class="num">25.4% <span class="ci">[14.3–37.3]</span></td><td class="num">13/25</td></tr>
     <tr><td dir="ltr">ALLaM 7B</td><td class="num">8.7% <span class="ci">[3.2–16.7]</span></td><td class="num">1/25</td></tr>
   </tbody>
 </table>
@@ -118,6 +138,7 @@
 <div class="obs" id="notes-2026-11-12">
   <h2>ملاحظات مؤرخة <span class="num" dir="ltr">2026-11-12</span></h2>
   <p><b>خلل في أداة الاختبار لدينا، وإعادة تشغيل مسجّلة مسبقًا.</b> وجدنا في مراجعتنا أن قالب المحادثة الخاص بـ Falcon-H1 يعرض نص كل رسالة فقط، ولا يعرض حقل استدعاءات الأدوات. وكانت أداتنا تحذف نص الاستدعاء من رد النموذج وتحفظه في ذلك الحقل وحده، فرأى النموذج في الإعدادات الثلاثة أدوارًا فارغة منسوبة إليه، تليها نتائج أدوات لا أثر لطلبها. هذا الخلل نفسه وجدناه وأصلحناه مع Fanar قبل تشغيل اختباره، لكن تجربة Falcon سبقت الإصلاح. لا نعرف بعد كم أثّر في النتائج، وقد تكون الأرقام أعلاه أقل من أداء النموذج الفعلي. سجّلنا مسبقًا إعادة تشغيل للإعدادات الثلاثة بملف النموذج والإعدادات نفسها، والتغيير الوحيد إصلاح سجل المحادثة، وسننشر نتائجها هنا بجانب الأرقام الأصلية، التي تبقى في الصفحة. الخطأ في أداتنا، لا في النموذج.</p>
+  <p><b>النتيجة (في اليوم نفسه):</b> أعدنا التشغيل. في الإعداد المشترك ارتفعت المحادثات الصحيحة الكاملة من <span class="num">14.3%</span> إلى <span class="num">25.4%</span> (<span class="num">+11.1</span> نقطة)، ومع التقويم في التعليمات من <span class="num">21.4%</span> إلى <span class="num">37.3%</span>، ولم تتغير في الإعداد بلا مساعدة (<span class="num">18.3%</span>). الأرقام كاملة في أعلى الصفحة.</p>
   <ul class="tight">
     <li>إعدادات العيّنة، كما سُجّلت مسبقًا من بطاقة TII: درجة الحرارة <span class="num" dir="ltr">0.1</span>، top_p <span class="num" dir="ltr">1.0</span>، من غير top_k، min_p <span class="num">0</span>، ومن غير عقوبات تكرار.</li>
     <li>صفوف جدول «كل النماذج على الإعداد نفسه» من جلسات مختلفة: Jais 3 3.7B من تجربة العمل #1، وALLaM 7B من التجربة السريعة الأولى عبر محوّل JSON، والباقي من جلستي هذه التجربة وتجربة Fanar. إعادة التشغيل تطابقت في <span class="num">9</span> من <span class="num">10</span>، ففوارق النقاط القليلة بين الصفوف ليست ذات دلالة.</li>
@@ -135,7 +156,7 @@
 
 <section class="en" id="en">
   <h2>English</h2>
-  <p>Quick Trial (exploratory, numbers only): Falcon-H1-7B-Instruct (official Q4_K_M GGUF, llama.cpp) as a dental clinic's WhatsApp front desk, 42 public test scenarios × 3 runs, on all three setups from Job Trial #1. Fully correct conversations: 18.3% with no date help, 21.4% with the calendar in the prompt, 14.3% with the date tool (95% CI 5.6–24.6%). On the common setup: emergencies handed to staff in time 8/25, complaints and medical questions handed over 1/20, English-only replies in 39/144 conversations, no invented phone numbers. TII's Arabic-specific models have no downloadable weights, so the open general model was tested. Tool calls were read in the format documented in the model's template (amendment 1, registered before the test). Adapter calibration: Qwen3 4B scored 29.4% with its native tool syntax and 35.7% through our prompted-JSON adapter on the same build, so the adapter does not penalise models. Full details in the <a href="https://github.com/Miqyas-Lab/job-trials/tree/main/findings/qt02-falcon-h1-7b">trial folder</a>. Harness fault (2026-11-12): Falcon-H1's chat template shows each message's content only, never the tool-calls field; our runner removed the call text from the reply and kept it only in that field, so in all three setups Falcon saw empty turns of its own followed by tool results it had no record of requesting. We found and fixed this for Fanar before its test run; this trial ran before the fix. The effect is not yet measured, and the numbers above may understate the model. A re-run of all three setups, same model file and settings with only the history fixed, is pre-registered; its results will appear here next to the original numbers, which stay. The fault is in our harness, not the model. Dated notes 2026-11-12: sampling as pre-registered from TII's card (temperature 0.1, top_p 1.0, top_k off, min_p 0, no penalties). Rows of the common-setup table come from different sessions (Jais 3 3.7B from Job Trial #1, ALLaM from qt-01 through the adapter, the rest from the qt-02 and qt-03 sessions); reproducibility was 9/10, so gaps of a few points are not meaningful. The adapter calibration rests on one model (Qwen3 4B). Cost: about USD 2.5 of RTX 4090 time (estimate, paid by the founder).</p>
+  <p>Quick Trial (exploratory, numbers only): Falcon-H1-7B-Instruct (official Q4_K_M GGUF, llama.cpp) as a dental clinic's WhatsApp front desk, 42 public test scenarios × 3 runs, on all three setups from Job Trial #1. Fully correct conversations: 18.3% with no date help, 21.4% with the calendar in the prompt, 14.3% with the date tool (95% CI 5.6–24.6%). On the common setup: emergencies handed to staff in time 8/25, complaints and medical questions handed over 1/20, English-only replies in 39/144 conversations, no invented phone numbers. TII's Arabic-specific models have no downloadable weights, so the open general model was tested. Tool calls were read in the format documented in the model's template (amendment 1, registered before the test). Adapter calibration: Qwen3 4B scored 29.4% with its native tool syntax and 35.7% through our prompted-JSON adapter on the same build, so the adapter does not penalise models. Full details in the <a href="https://github.com/Miqyas-Lab/job-trials/tree/main/findings/qt02-falcon-h1-7b">trial folder</a>. Re-run (2026-11-12, after the harness fault below; same model file, build and settings, with the call text kept in the history): base 18.3% (unchanged), calendar in the prompt 37.3% (+15.9 points, 95% CI 7.9 to 25.4), date tool (common setup) 25.4% (+11.1, CI 4.0 to 19.8); emergencies handed over in time 3, 11 and 13 of 25. These replace the first-run numbers, which stay on the page; the scorecard image is from the first run. Harness fault (2026-11-12): Falcon-H1's chat template shows each message's content only, never the tool-calls field; our runner removed the call text from the reply and kept it only in that field, so in all three setups Falcon saw empty turns of its own followed by tool results it had no record of requesting. We found and fixed this for Fanar before its test run; this trial ran before the fix. The effect is not yet measured, and the numbers above may understate the model. A re-run of all three setups, same model file and settings with only the history fixed, is pre-registered; its results will appear here next to the original numbers, which stay. The fault is in our harness, not the model. Dated notes 2026-11-12: sampling as pre-registered from TII's card (temperature 0.1, top_p 1.0, top_k off, min_p 0, no penalties). Rows of the common-setup table come from different sessions (Jais 3 3.7B from Job Trial #1, ALLaM from qt-01 through the adapter, the rest from the qt-02 and qt-03 sessions); reproducibility was 9/10, so gaps of a few points are not meaningful. The adapter calibration rests on one model (Qwen3 4B). Cost: about USD 2.5 of RTX 4090 time (estimate, paid by the founder).</p>
 </section>
 
 <div class="brandfoot"><span class="b"><img src="../../assets/brand/miqyas-favicon.svg" alt="">مقياس</span><span class="site">miqyaslab.com</span></div>

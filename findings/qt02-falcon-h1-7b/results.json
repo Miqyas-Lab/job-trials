@@ -84,6 +84,107 @@
   }
  },
  "headline_setup": "tool",
+ "harness_fault": "Falcon-H1's chat template shows message content only, never tool_calls; the first run kept calls only in tool_calls, so Falcon saw empty turns of its own (found 2026-11-12). 'falcon' holds the first run, 'falcon_rerun' the re-run with the call text kept in the history.",
+ "falcon_rerun": {
+  "base": {
+   "success_pct": 18.3,
+   "ci95_pct": [
+    8.7,
+    29.4
+   ],
+   "pass3_pct": 11.9,
+   "emergencies_in_time": "3/25",
+   "wait_median_s": 1.4,
+   "wait_p90_s": 2.6,
+   "invented_time_runs": 6,
+   "false_confirmation_runs": 0,
+   "complaint_medical_handed_over": [
+    5,
+    20
+   ],
+   "runs_with_malformed_tool_call": 10,
+   "runs_with_english_only_reply": 52,
+   "runs_with_invented_phone": 0,
+   "tool_calls_read_from_text": 153,
+   "tool_calls_native": 0,
+   "runs": 144
+  },
+  "table": {
+   "success_pct": 37.3,
+   "ci95_pct": [
+    24.6,
+    50.8
+   ],
+   "pass3_pct": 26.2,
+   "emergencies_in_time": "11/25",
+   "wait_median_s": 1.3,
+   "wait_p90_s": 2.2,
+   "invented_time_runs": 7,
+   "false_confirmation_runs": 1,
+   "complaint_medical_handed_over": [
+    0,
+    20
+   ],
+   "runs_with_malformed_tool_call": 8,
+   "runs_with_english_only_reply": 31,
+   "runs_with_invented_phone": 0,
+   "tool_calls_read_from_text": 142,
+   "tool_calls_native": 0,
+   "runs": 144
+  },
+  "tool": {
+   "success_pct": 25.4,
+   "ci95_pct": [
+    14.3,
+    37.3
+   ],
+   "pass3_pct": 19.0,
+   "emergencies_in_time": "13/25",
+   "wait_median_s": 1.7,
+   "wait_p90_s": 2.6,
+   "invented_time_runs": 9,
+   "false_confirmation_runs": 1,
+   "complaint_medical_handed_over": [
+    1,
+    20
+   ],
+   "runs_with_malformed_tool_call": 11,
+   "runs_with_english_only_reply": 29,
+   "runs_with_invented_phone": 0,
+   "tool_calls_read_from_text": 259,
+   "tool_calls_native": 0,
+   "runs": 144
+  }
+ },
+ "rerun_change_vs_first_run": {
+  "base": {
+   "points": 0.0,
+   "ci95_points": [
+    -4.8,
+    6.3
+   ]
+  },
+  "table": {
+   "points": 15.9,
+   "ci95_points": [
+    7.9,
+    25.4
+   ]
+  },
+  "tool": {
+   "points": 11.1,
+   "ci95_points": [
+    4.0,
+    19.8
+   ]
+  }
+ },
+ "rerun_provenance": [
+  "llama.cpp 7df8b876b",
+  "repo commit 7fe65a3",
+  "source: official GGUF (tiiuae/Falcon-H1-7B-Instruct-GGUF), same file as qt-02",
+  "145def0b4cd36500bf538ed7ac895b5c1851e02e802b2d1c12ffa6afdbaff25d  models/gpu/Falcon-H1-7B-Instruct-Q4_K_M.gguf"
+ ],
  "common_setup": [
   {
    "model": "Jais 3 7B (low effort)",
@@ -171,24 +272,24 @@
   },
   {
    "model": "Falcon-H1 7B (no thinking mode)",
-   "source": "results/qt02/falcon-h1-7b-q4-qt02",
-   "success_pct": 14.3,
+   "source": "results/qt02r/falcon-h1-7b-q4-qt02r",
+   "success_pct": 25.4,
    "ci95_pct": [
-    5.6,
-    24.6
+    14.3,
+    37.3
    ],
-   "pass3_pct": 9.5,
-   "emergencies_in_time": "8/25",
-   "wait_median_s": 1.3,
-   "wait_p90_s": 1.8,
-   "invented_time_runs": 3,
-   "false_confirmation_runs": 9,
+   "pass3_pct": 19.0,
+   "emergencies_in_time": "13/25",
+   "wait_median_s": 1.7,
+   "wait_p90_s": 2.6,
+   "invented_time_runs": 9,
+   "false_confirmation_runs": 1,
    "complaint_medical_handed_over": [
     1,
     20
    ],
    "runs_with_invented_phone": 0,
-   "note": "this trial; template-documented call format"
+   "note": "qt-02 re-run (2026-11-12) after the harness fault; template-documented call format; first run 14.3%"
   },
   {
    "model": "ALLaM 7B (no thinking mode)",
@@ -243,5 +344,5 @@
   "adapter_minus_native_points": 6.3
  },
  "laptop_floor": "not measured in this Quick Trial",
- "results_commit": "2a223ef"
+ "results_commit": "7fe65a3"
 }
