@@ -71,7 +71,7 @@ p0=[r['steps'][0]['prompt_n'] for r in rows if r.get('steps')]
 print(f"PILOT CHECK: runs {len(rows)} · errors {err} · context overflows {ctx} · tool calls {calls} · unparsed {unparsed} · non-JSON replies {bad} · first prompt tokens {min(p0) if p0 else '-'}")
 PY
   pkill -f llama-server
-  echo "PILOT DONE — send the PILOT CHECK line and scorecard to Claude before running 'test'."
+  echo "PILOT DONE — share the PILOT CHECK line and scorecard for review before running 'test'."
   ;;
 test)
   start_server || exit 1

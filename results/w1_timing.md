@@ -33,7 +33,7 @@ Three consecutive runs per model via the local Ollama HTTP API. Median reported.
 
 Two machine states were measured:
 
-- **Loaded** — normal working conditions: Claude desktop (~3 GB across five processes), Creative Cloud, Notes, Spotlight, Mail active.
+- **Loaded** — normal working conditions: a desktop AI app (~3 GB across five processes), Creative Cloud, Notes, Spotlight, Mail active.
 - **Clean** — those applications quit.
 
 ---
