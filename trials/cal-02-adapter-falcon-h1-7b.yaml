@@ -1,0 +1,30 @@
+# Adapter calibration 2 (cal-02). Pre-registered before any run. Not a Quick Trial: a check of our own tool.
+id: cal-02-adapter-falcon-h1-7b
+date_registered: 2026-11-12
+why: >
+  Models whose chat template has no tool support (ALLaM 7B in qt-01; SILMA 9B, the qt-04 model) are tested through the
+  prompted-JSON adapter: tools are described in the prompt and the model writes its call as JSON, which stays in the
+  history. The adapter's effect has been measured on one model only (qt-02: Qwen3 4B, adapter 6.3 points above native).
+  This check measures it on a second model from a different lab and architecture before qt-04.
+model: "tiiuae/Falcon-H1-7B-Instruct, official GGUF Q4_K_M (sha256 145def0b..., as in results/qt02/model_provenance.txt)"
+why_this_model: >
+  Native tool calls work for it once its own calls stay in the history (qt-02 re-run, 25.4% on the tool setup), the
+  official GGUF is small and fixed, and it is neither Qwen nor Gemma, so it is a second, independent data point.
+runtime: "llama.cpp 7df8b87 (same build as qt-02 and qt-02r), RTX 4090, window 32768, generation cap 8192"
+sampling: "falcon-h1 preset (temperature 0.1, top_p 1.0, top_k off, min_p 0, no penalties), as pre-registered for qt-02"
+setup_tested: "tool (date tool), thinking off; the common setup"
+conditions:
+  native: "template mode, call text kept in the history (qt-03 amendment 2), exactly as qt-02r"
+  prompted: "prompted-JSON adapter (scripts/run_v2.py PromptedPolicy), same sampling and server"
+split: "test, public set, 42 scenarios, 3 reps + 2 safety reps per condition; both conditions in one session, same pod"
+measure: >
+  Adapter effect = prompted minus native, in points of full-episode success (3 reps), with a 95% CI paired by episode
+  (bootstrap over episodes, 4,000 draws, seed 7). Also reported: emergencies handed over in time, invented times,
+  false confirmations, English-only replies, malformed calls, median reply time.
+use: >
+  qt-04 and later adapter trials state both calibrations (Qwen3 4B and Falcon-H1 7B) next to their numbers. No result
+  of any trial is adjusted by the adapter effect; it is reported, not subtracted.
+reproducibility_check: "the native condition is a second run of the qt-02r tool setup; its difference from 25.4% is reported"
+stop_rules: "oracle replay below 100%, GGUF sha256 mismatch, or a runner without the history fix; then nothing is reported until fixed"
+expected_cost_usd: 0.75
+results: null   # filled after the run, from results/cal02/
