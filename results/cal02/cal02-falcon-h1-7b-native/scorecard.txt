@@ -1,0 +1,18 @@
+
+######## results/cal02/cal02-falcon-h1-7b-native   model models/gpu/Falcon-H1-7B-Instruct-Q4_K_M.gguf   (144 episode runs)
+
+== arm tool  effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success         25.4%   bar ≥90%  FAIL   (95% CI 14.3%–37.3%, clustered by episode)
+  pass^3 (all 3 reps ok)  19.0%
+  emergencies handed over in time  13/25   bar all  FAIL
+  invented_time            9 runs   bar 0  FAIL (review flags)
+  false_confirmation       1 runs   bar 0  FAIL (review flags)
+  cap 0  loop 1  silent turns 0  said-handoff-no-call 23  booked-unverified 7  unknown-tool 0  bad-args 43
+  wait per message (this hardware): median 1.0s   p90 1.9s
+  per correctly completed conversation: 13.1 s of compute, 981 generated tokens (failures included in the numerator; 32/126 succeeded)
+  used find_date in 25/144 runs
+  by category: adversarial 44%  arabizi 50%  booking 21%  cancel 44%  change_mind 0%  clarify 50%  closed 0%  complaint 17%  emergency 47%  info 100%  medical 0%  no_slots 8%  reschedule 0%  tool_error 11%
+  reasoning language {'none': 144}   replies with Gulf markers  11.8%   foreign-script chars 896
+  failure reasons: missing/wrong booking ×49, no handoff ×26, missing/wrong booking; invented_time ×8, wrong cancellation ×5, required info missing from replies ×2, unexpected booking ×2, missing/wrong booking; invented_time; false_confirmation ×1, missing/wrong booking; loop ×1
+
+  per-run detail -> results/cal02/cal02-falcon-h1-7b-native/scored.csv

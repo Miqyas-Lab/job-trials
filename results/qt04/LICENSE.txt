@@ -1,0 +1,1 @@
+no LICENSE file in silma-ai/SILMA-9B-Instruct-v1.0; card states Gemma terms
