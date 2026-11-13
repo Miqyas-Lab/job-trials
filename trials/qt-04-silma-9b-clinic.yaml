@@ -29,8 +29,9 @@ tool_path: >
   in the history, and tool results return as user messages, so turns alternate as the template expects.
   The template keeps the system prompt, printed before the first turn. The adapter's effect is reported from two
   calibrations, Qwen3 4B (qt-02: +6.3 points) and Falcon-H1 7B (cal-02); it is never subtracted from SILMA's numbers.
-sampling: silma               # model card example: temperature 1.0, the only value the card gives; no generation_config.json
-                              # at the pinned revision; other samplers neutral (top_p 1.0, top_k off, min_p 0, no penalties)
+sampling: silma               # model card example: temperature 1.0, the only value the card gives; generation_config.json at
+                              # the pinned revision sets no sampling values (amendment 1); other samplers neutral (top_p 1.0,
+                              # top_k off, min_p 0, no penalties)
 window_tokens: 8192           # the model's stated context length (max_position_embeddings 8192; sliding window 4096)
 generation_cap_tokens: 4096   # half the window, leaving room for the prompt (longest earlier conversations ~2,000 tokens);
                               # a request that no longer fits counts as a failure with flag "context", reported separately
@@ -55,5 +56,11 @@ stop_rules: >
 publish: [results.json, raw interactions (phone-like numbers redacted, re-scored), numbers-only page, X thread]
 preregistration_commit: null  # the commit that adds this file
 
-amendments: []
+amendments:
+  - date: 2026-11-13
+    when: after setup, before the DEV pilot and before any test run (no SILMA output seen)
+    what: >
+      Wording correction: the pinned revision does contain a generation_config.json, but it sets no sampling values
+      (only bos_token_id 2, eos_token_id 1, pad_token_id 0, cache_implementation "hybrid"). The registered sampling
+      is unchanged: temperature 1.0 from the model card example, other samplers neutral.
 results: null
