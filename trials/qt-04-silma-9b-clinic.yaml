@@ -63,4 +63,15 @@ amendments:
       Wording correction: the pinned revision does contain a generation_config.json, but it sets no sampling values
       (only bos_token_id 2, eos_token_id 1, pad_token_id 0, cache_implementation "hybrid"). The registered sampling
       is unchanged: temperature 1.0 from the model card example, other samplers neutral.
+  - date: 2026-11-13
+    when: after the DEV pilot, before any test run (no test-split output seen)
+    what: >
+      The DEV pilot (12 runs, kept in results/qt04/pilot-silma-9b-q4-qt04) showed a first prompt of 13 tokens and 3 tool
+      calls: the system prompt, with the clinic instructions and the tool list, did not reach the model. SILMA's
+      template stores the system prompt in a variable set inside an if block and prints it later; llama.cpp's template
+      engine drops it, while the reference engine (Jinja2, used for the template check) keeps it. Fix, following qt-03
+      amendment 1: llama-server gets a template that prints the system prompt directly (scripts/fix_silma_template.py),
+      checked to render exactly the same text as the original with Jinja2 on six renders, including the adapter's
+      multi-turn shape; both files are saved in results/qt04/. Nothing else changes. A second DEV pilot must show the
+      instructions in the first prompt (hundreds of tokens) before the test; the test step refuses to run without the fix.
 results: null

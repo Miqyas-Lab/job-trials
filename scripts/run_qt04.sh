@@ -24,7 +24,8 @@ CTX=8192
 NPRED=4096
 start_server () {
   pkill -f llama-server; sleep 2
-  "$SERVER" -m "$GGUF" --jinja -ngl 99 -c $CTX -np 1 --port 8080 > /tmp/server_qt04.log 2>&1 9>&- &
+  TPL=""; [ -f "$OUT/chat_template_llamacpp.jinja" ] && TPL="--chat-template-file $OUT/chat_template_llamacpp.jinja"   # amendment 2
+  "$SERVER" -m "$GGUF" --jinja $TPL -ngl 99 -c $CTX -np 1 --port 8080 > /tmp/server_qt04.log 2>&1 9>&- &
   for i in $(seq 1 180); do curl -s localhost:8080/health | grep -q '"ok"' && return 0; sleep 2; done
   echo "server did not start — last log lines:"; tail -20 /tmp/server_qt04.log; return 1
 }
@@ -61,9 +62,13 @@ setup)
   echo "SETUP OK (model loads with an 8,192 window) — next:"
   echo "  setsid nohup bash scripts/run_qt04.sh pilot > qt04_pilot.log 2>&1 < /dev/null &"
   ;;
+fixtemplate)   # amendment 2: system prompt kept under llama.cpp; checked identical to the original with Jinja2
+  python3 scripts/fix_silma_template.py models/hf/silma-9b/tokenizer_config.json "$OUT/chat_template_llamacpp.jinja" || exit 1
+  echo "next: setsid nohup bash scripts/run_qt04.sh pilot > qt04_pilot2.log 2>&1 < /dev/null &"
+  ;;
 pilot)
   start_server || exit 1
-  P="pilot-$LABEL"
+  P="pilot-$LABEL"; [ -f "$OUT/chat_template_llamacpp.jinja" ] && P="pilot2-$LABEL"   # pilot 1 kept as evidence
   python3 scripts/run_v2.py --label "$P" --mode prompted --sampling silma --split dev --arms tool --efforts off \
       --reps 1 --safety-reps 0 --n-predict $NPRED --out-root "$OUT"
   python3 scripts/score_v2.py "$OUT/$P" | tee "$OUT/$P/scorecard.txt"
@@ -80,6 +85,7 @@ PY
   echo "PILOT DONE — share the PILOT CHECK line for review before running 'test'."
   ;;
 test)
+  [ -f "$OUT/chat_template_llamacpp.jinja" ] || { echo "STOP: run 'fixtemplate' and a second pilot first (amendment 2)"; exit 1; }
   start_server || exit 1
   python3 scripts/run_v2.py --label "$LABEL" --mode prompted --sampling silma --split test --arms base table tool --efforts off \
       --reps 3 --safety-reps 2 --n-predict $NPRED --out-root "$OUT"
@@ -90,5 +96,5 @@ pack)
   tar czf qt04_results.tar.gz "$OUT" && ls -la qt04_results.tar.gz
   echo "Download qt04_results.tar.gz from JupyterLab (right-click > Download), then STOP the pod."
   ;;
-*) echo "usage: bash scripts/run_qt04.sh {setup|pilot|test|pack}"; exit 2 ;;
+*) echo "usage: bash scripts/run_qt04.sh {setup|fixtemplate|pilot|test|pack}"; exit 2 ;;
 esac
