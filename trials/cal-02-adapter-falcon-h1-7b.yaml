@@ -26,7 +26,6 @@ use: >
   of any trial is adjusted by the adapter effect; it is reported, not subtracted.
 reproducibility_check: "the native condition is a second run of the qt-02r tool setup; its difference from 25.4% is reported"
 stop_rules: "oracle replay below 100%, GGUF sha256 mismatch, or a runner without the history fix; then nothing is reported until fixed"
-expected_cost_usd: 0.75
 results:                       # results/cal02/; numbers in findings/qt04-silma-9b/results.json (cal02)
   run_date: 2026-11-13
   model_sha256: 145def0b4cd36500bf538ed7ac895b5c1851e02e802b2d1c12ffa6afdbaff25d   # matches results/qt02/model_provenance.txt
