@@ -91,9 +91,9 @@
   languages: ar, en (card)
   tool_format: none in the template; prompted-JSON adapter
   licence: Gemma terms
-  sampling: temperature 1.0 (card example only)
-  status: quick-trial pre-registered
-  next: qt-04-silma-9b-clinic
+  sampling: greedy (card's main examples); temperature 1.0 was a misread of a secondary example (qt-04 amendment 4)
+  status: quick-trial published
+  trials: [qt-04-silma-9b-clinic]   # common setup 7.1% via adapter (greedy re-run); numbers only
 
 - id: gemma3
   family: Gemma 3

@@ -1,0 +1,4 @@
+llama.cpp 7df8b876b
+repo commit f2ccc11
+source: self-converted from silma-ai/SILMA-9B-Instruct-v1.0@d8f4d2b11a71e10f4231d38f0a343ee49715f392 (bf16 -> Q4_K_M)
+71bf624f9277bb7d7c2c69f1c26fc1ed50d6940d8c3de847c0219bbd67c08198  models/gpu/SILMA-9B-Instruct-v1.0-Q4_K_M.gguf

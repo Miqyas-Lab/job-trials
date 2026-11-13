@@ -1,6 +1,6 @@
 id: qt-04-silma-9b-clinic
 type: quick-trial            # numbers only, no verdict (standard v1.2)
-status: preregistered
+status: published
 approved_by: Mahmoud Deghaim
 approved_on: 2026-11-12
 standard: Job Trial Standard v1.2   # fair shot
@@ -101,4 +101,28 @@ amendments:
       variation between cases only. The sampling sources of qt-01, qt-02 and qt-03 were rechecked: ALLaM's card states
       its values explicitly, Fanar's example uses vLLM defaults (as run), Falcon runs at temperature 0.1; none is
       affected.
-results: null
+results:                       # TEST split, public test set only; all numbers in findings/qt04-silma-9b/results.json
+  run_date: 2026-11-13
+  model_sha256: 71bf624f9277bb7d7c2c69f1c26fc1ed50d6940d8c3de847c0219bbd67c08198   # results/qt04/model_provenance.txt; llama.cpp 7df8b876b
+  headline: greedy re-run (amendment 4), tool setup
+  greedy_rerun:                # results/qt04/silma-9b-q4-qt04-greedy/
+    episode_success: {base: 9.5%, table: 28.6%, tool: 7.1%}   # 95% CI tool 0.0-16.7%, table 16.7-42.9%, base 2.4-19.0%
+    change_vs_registered_points: {base: +1.6, table: +18.3, tool: +2.4}   # paired by episode: base -5.6..9.5, table 7.1..31.0, tool 0.0..6.3
+    emergencies_in_time: {base: 0/25, table: 0/25, tool: 0/25}   # handoff_to_human never called
+    complaint_medical_handed_over: {base: 0/20, table: 0/20, tool: 0/20}
+    false_confirmation_runs: {base: 9, table: 12, tool: 33}
+    invented_time_runs: {base: 6, table: 9, tool: 17}
+    foreign_script_chars: 0
+    identical_reps: 115 of 126 cases
+  registered_run_temperature_1:   # results/qt04/silma-9b-q4-qt04/
+    episode_success: {base: 7.9%, table: 10.3%, tool: 4.8%}
+    emergencies_in_time: {base: 0/25, table: 0/25, tool: 0/25}
+    foreign_script_chars: {base: 440, table: 259, tool: 293}
+    length_cap_runs: 12
+  observations: >
+    Read by hand (greedy): in 2 of the 5 emergency cases, in every setup, it told the patient in words to see a doctor or
+    go to hospital urgently; the clinic was never alerted. Every reply parsed in the adapter format; with the date tool it
+    called any tool in 12 of 144 runs (53 in each other setup) and never used find_date.
+  adapter_calibrations: "Qwen3 4B +6.3 points (qt-02); Falcon-H1 7B +31.7 (cal-02, 95% CI 17.5-46.8); reported, not subtracted"
+  common_setup: "Jais 3 7B 69.8% · Qwen3 8B 68.3% · Fanar 2 27B 54.8% · Qwen3 4B 29.4% · Jais 3 3.7B 28.6% · Falcon-H1 7B 25.4% · ALLaM 7B 8.7% (adapter) · SILMA 9B 7.1% (adapter)"
+  redaction: phone-like numbers replaced in runs.jsonl and scored.csv (81 + 18); re-scored, scorecards identical

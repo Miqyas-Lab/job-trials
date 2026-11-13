@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>مقياس — تجربة سريعة: SILMA 9B في استقبال عيادة</title>
+<meta name="description" content="تجربة سريعة استكشافية: SILMA 9B من SILMA AI في استقبال عيادة أسنان عبر واتساب. 42 حالة × 3 محاولات، على ثلاثة إعدادات. أرقام فقط، بلا حكم.">
+<meta property="og:title" content="هل يقدر SILMA 9B يدير استقبال عيادة؟ · مقياس">
+<meta property="og:image" content="https://miqyaslab.com/findings/qt04-silma-9b/scorecard_x.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/brand/miqyas-favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/base.css">
+<style>
+  :root{color-scheme:light}
+  @media (prefers-color-scheme:dark){:root{--ink:#12161C;--paper:#FAF9F6;--rule:#D8D5CE;--dim:#6E7178;--soft:#EFEDE7;--surface:#fff;--signal:#C42B1F;--verify:#1B5E4A}}
+  .num{font-family:var(--mono);font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate}
+  .data-table td.num{text-align:end}
+  .data-table tr.this td{font-weight:600}
+  .ci{font-family:var(--mono);font-size:.75rem;color:var(--dim);direction:ltr;unicode-bidi:isolate}
+  .brandbar{padding-block:2rem 0}
+  .brandbar a{display:inline-block;line-height:0}
+  .brandbar img{width:180px;height:auto}
+  header{padding-block-start:1rem}
+  h1.q{font-size:clamp(1.9rem,4.5vw,2.75rem);font-weight:600;line-height:1.3;margin-block-start:1rem}
+  .q-en{font-family:var(--mono);font-size:.8125rem;color:var(--dim);direction:ltr;text-align:right;margin-block-start:.35rem}
+  .note{font-size:.875rem;color:var(--dim)}
+  .obs{border-block:1px solid var(--ink);padding-block:1.25rem;margin-block:1.5rem}
+  .en p{font-family:var(--ar)}
+  .en{direction:ltr;text-align:left;unicode-bidi:isolate;font-size:.9375rem;border-block-start:1px solid var(--rule);padding-block-start:1rem}
+  ul.tight li{margin-block:.35rem}
+  a{color:var(--ink);text-underline-offset:3px}
+  .scroll{overflow-x:auto}
+  .brandfoot{display:flex;justify-content:space-between;align-items:center;border-block-start:1px solid var(--rule);padding-block-start:.75rem;margin-block:2rem;font-size:.8125rem}
+  .brandfoot .b{display:inline-flex;align-items:center;gap:.5rem}
+  .brandfoot img{width:24px;height:22px}
+  .brandfoot .site{font-family:var(--mono);color:var(--dim);direction:ltr}
+  img.card{width:100%;height:auto;border:1px solid var(--rule);margin-block:1rem}
+</style>
+</head>
+<body>
+
+<div class="strip"><div class="wrap">
+  <span><b>تجربة سريعة · استكشافية</b></span>
+  <span><b class="num">144</b> محادثة لكل إعداد</span>
+  <span><b class="num">3</b> إعدادات</span>
+  <span>مسجّلة مسبقًا</span>
+</div></div>
+
+<div class="wrap">
+<div class="brandbar"><a href="../../" aria-label="مقياس: الصفحة الرئيسية"><img src="../../assets/brand/miqyas-lockup-on-light.svg" alt="مقياس · Miqyas"></a></div>
+
+<header>
+  <h1 class="q">هل يستطيع SILMA 9B أن يدير استقبال عيادة؟</h1>
+  <p class="q-en">Quick Trial · exploratory · numbers only, no verdict</p>
+  <p>اختبرنا النموذج المفتوح SILMA 9B من SILMA AI (<span dir="ltr">SILMA-9B-Instruct-v1.0</span>) في وظيفة موظف استقبال واتساب لعيادة أسنان، على الحالات الـ<span class="num">42</span> نفسها من <a href="../frontdesk-v2/">تجربة العمل #1</a>، بثلاث محاولات لكل حالة، وعلى الإعدادات الثلاثة كلها. هذه تجربة سريعة: ننشر الأرقام فقط، ولا نصدر حكمًا.</p>
+  <p class="note">صدر النموذج في أغسطس <span class="num">2024</span>، فهذه مراجعة لنموذج موجود، لا فحص لإصدار جديد. اخترناه لأننا لم نختبر قبله أي نموذج من SILMA AI.</p>
+</header>
+
+<img class="card" src="scorecard_x.png" alt="بطاقة نتائج التجربة السريعة لـ SILMA 9B">
+
+<h2>الأرقام</h2>
+<p>هذه أرقام إعادة التشغيل بفك الترميز الجشع (درجة الحرارة <span class="num">0</span>)، وهي الإعداد الذي تستخدمه أمثلة البطاقة الرئيسية. التشغيل المسجّل الأول كان بدرجة حرارة <span class="num" dir="ltr">1.0</span> أخذناها خطأً من مثال جانبي، وأرقامه في الجدول التالي (انظر <a href="#sampling">لماذا تشغيلان</a>).</p>
+<div class="scroll">
+<table class="data-table">
+  <thead><tr><th></th><th>بلا مساعدة في التاريخ</th><th>التقويم داخل التعليمات</th><th>أداة التاريخ (الإعداد المشترك)</th></tr></thead>
+  <tbody>
+    <tr><td>محادثات صحيحة كاملة</td><td class="num">9.5% <span class="ci">[2.4–19.0]</span></td><td class="num">28.6% <span class="ci">[16.7–42.9]</span></td><td class="num">7.1% <span class="ci">[0.0–16.7]</span></td></tr>
+    <tr><td>التغيّر عن التشغيل المسجّل (نقاط)</td><td class="num">+1.6 <span class="ci">[−5.6, +9.5]</span></td><td class="num">+18.3 <span class="ci">[+7.1, +31.0]</span></td><td class="num">+2.4 <span class="ci">[0.0, +6.3]</span></td></tr>
+    <tr><td>صحيحة في المحاولات الثلاث</td><td class="num">9.5%</td><td class="num">28.6%</td><td class="num">7.1%</td></tr>
+    <tr><td>طوارئ حُوّلت لموظف في الوقت المناسب</td><td class="num">0/25</td><td class="num">0/25</td><td class="num">0/25</td></tr>
+    <tr><td>شكاوى وأسئلة طبية حُوّلت لموظف</td><td class="num">0/20</td><td class="num">0/20</td><td class="num">0/20</td></tr>
+    <tr><td>محادثات ذكر فيها موعدًا لم يتحقق منه</td><td class="num">6/144</td><td class="num">9/144</td><td class="num">17/144</td></tr>
+    <tr><td>محادثات أكّد فيها حجزًا لم يتم</td><td class="num">9/144</td><td class="num">12/144</td><td class="num">33/144</td></tr>
+    <tr><td>محادثات استدعى فيها أي أداة</td><td class="num">53/144</td><td class="num">53/144</td><td class="num">12/144</td></tr>
+    <tr><td>محادثات أعطى فيها رقم هاتف مخترعًا</td><td class="num">5</td><td class="num">0</td><td class="num">0</td></tr>
+    <tr><td>زمن الرد على RTX 4090 (الوسيط / أبطأ 10%)</td><td class="num">1.6 s / 2.0 s</td><td class="num">1.5 s / 2.1 s</td><td class="num">1.6 s / 1.9 s</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="note">فترات الثقة <span class="num">95%</span> بين قوسين، مجمّعة حسب الحالة؛ وفترة التغيّر مقترنة بالحالة نفسها في التشغيلين. نسب النجاح من <span class="num">126</span> محادثة (<span class="num">42</span> حالة × <span class="num">3</span>)، وبقية العدّ من <span class="num">144</span> محادثة تشمل محاولتين إضافيتين لكل حالة أمان. الفك الجشع شبه حتمي: أعطت <span class="num">115</span> من <span class="num">126</span> حالة الردود نفسها في كل المحاولات، لذلك تعكس الفترات الاختلاف بين الحالات أكثر من الاختلاف بين المحاولات. SILMA ليس فيه وضع تفكير. ذكر موعد لم يُتحقق منه وتأكيد حجز لم يتم يُكشفان بفحص آلي، وكل حالة منهما مدرجة في البيانات للمراجعة.</p>
+
+<h2>أرقام التشغيل المسجّل (درجة الحرارة 1.0)</h2>
+<div class="scroll">
+<table class="data-table">
+  <thead><tr><th></th><th>بلا مساعدة في التاريخ</th><th>التقويم داخل التعليمات</th><th>أداة التاريخ (الإعداد المشترك)</th></tr></thead>
+  <tbody>
+    <tr><td>محادثات صحيحة كاملة</td><td class="num">7.9% <span class="ci">[1.6–15.9]</span></td><td class="num">10.3% <span class="ci">[4.0–18.3]</span></td><td class="num">4.8% <span class="ci">[0.0–11.1]</span></td></tr>
+    <tr><td>صحيحة في المحاولات الثلاث</td><td class="num">2.4%</td><td class="num">2.4%</td><td class="num">2.4%</td></tr>
+    <tr><td>طوارئ حُوّلت لموظف في الوقت المناسب</td><td class="num">0/25</td><td class="num">0/25</td><td class="num">0/25</td></tr>
+    <tr><td>أحرف من خط غير عربي ولا لاتيني في الردود</td><td class="num">440</td><td class="num">259</td><td class="num">293</td></tr>
+    <tr><td>محادثات ذكر فيها موعدًا لم يتحقق منه</td><td class="num">16/144</td><td class="num">17/144</td><td class="num">16/144</td></tr>
+    <tr><td>محادثات أكّد فيها حجزًا لم يتم</td><td class="num">10/144</td><td class="num">3/144</td><td class="num">8/144</td></tr>
+    <tr><td>محادثات أعطى فيها رقم هاتف مخترعًا</td><td class="num">5</td><td class="num">2</td><td class="num">1</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="note">بهذه الإعدادات كانت ردود كثيرة مختلطة وغير مفهومة، فيها كلمات من الصينية والروسية والهندية وغيرها. وفي <span class="num">12</span> محادثة استمر الرد حتى بلغ حد الطول (<span class="num">4096</span> رمزًا). في إعادة التشغيل اختفت هذه الأحرف تمامًا، ولم يبلغ أي رد حد الطول (<span class="num">0</span> في الإعدادات الثلاثة).</p>
+
+<h2>كل النماذج التي قسناها على الإعداد نفسه</h2>
+<p>الإعداد المشترك: أداة التاريخ، ومن غير تفكير قبل الرد أو بأقل جهد.</p>
+<div class="scroll">
+<table class="data-table">
+  <thead><tr><th>النموذج</th><th>طريقة استدعاء الأدوات</th><th>محادثات صحيحة كاملة</th><th>طوارئ حُوّلت في الوقت المناسب</th></tr></thead>
+  <tbody>
+    <tr><td dir="ltr">Jais 3 7B</td><td>صيغة النموذج</td><td class="num">69.8% <span class="ci">[59.5–79.4]</span></td><td class="num">23/25</td></tr>
+    <tr><td dir="ltr">Qwen3 8B</td><td>صيغة النموذج</td><td class="num">68.3% <span class="ci">[55.6–81.0]</span></td><td class="num">25/25</td></tr>
+    <tr><td dir="ltr">Fanar 2 27B</td><td>صيغة النموذج</td><td class="num">54.8% <span class="ci">[43.7–65.9]</span></td><td class="num">24/25</td></tr>
+    <tr><td dir="ltr">Qwen3 4B</td><td>صيغة النموذج</td><td class="num">29.4% <span class="ci">[18.3–41.3]</span></td><td class="num">21/25</td></tr>
+    <tr><td dir="ltr">Jais 3 3.7B</td><td>صيغة النموذج</td><td class="num">28.6% <span class="ci">[16.7–40.5]</span></td><td class="num">23/25</td></tr>
+    <tr><td dir="ltr">Falcon-H1 7B</td><td>صيغة النموذج</td><td class="num">25.4% <span class="ci">[14.3–37.3]</span></td><td class="num">13/25</td></tr>
+    <tr><td dir="ltr">ALLaM 7B</td><td>محوّل JSON (لا صيغة في قالبه)</td><td class="num">8.7% <span class="ci">[3.2–16.7]</span></td><td class="num">1/25</td></tr>
+    <tr class="this"><td><span dir="ltr">SILMA 9B</span> (إعادة التشغيل؛ المسجّل <span class="num">4.8%</span>)</td><td>محوّل JSON (لا صيغة في قالبه)</td><td class="num">7.1% <span class="ci">[0.0–16.7]</span></td><td class="num">0/25</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="note">لا ننتقي النماذج في الجدول: كل ما قسناه على الإعداد نفسه موجود. الصفوف من جلسات مختلفة، ففوارق النقاط القليلة بينها ليست ذات دلالة. قالبا ALLaM وSILMA لا يدعمان استدعاء الأدوات، فاختبرناهما عبر محوّل JSON كتبناه؛ وأثر المحوّل يختلف من نموذج لآخر (القسم التالي).</p>
+
+<div class="obs">
+  <h2>ما رأيناه في النصوص (إعادة التشغيل)</h2>
+  <ul class="tight">
+    <li>لم يحوّل أي محادثة إلى موظف في الإعدادات الثلاثة، ولم يستدعِ أداة التحويل مرة واحدة.</li>
+    <li>في حالتين من حالات الطوارئ الخمس، وفي كل إعداد، نصح المريض بكلامه أن يذهب إلى الطبيب أو المستشفى فورًا. نصيحة في محلها، لكن العيادة لا تعلم بالحالة. في حالة ثالثة قال للمريض أن يأتي بسرعة وأكّد له حجزًا لم يتم. هذه ملاحظة من قراءة الحالات الخمس، لا مقياس مسجّل مسبقًا.</li>
+    <li>كل ردوده كانت بصيغة المحوّل الصحيحة (لم يفشل قراءة أي رد). لكن عند إضافة أداة التاريخ قلّ استدعاؤه للأدوات: استدعى أداة في <span class="num">12</span> محادثة من <span class="num">144</span>، مقابل <span class="num">53</span> في كل من الإعدادين الآخرين، وصار يقترح مواعيد لم يتحقق منها ويؤكد حجوزات لم تتم. لم يستخدم أداة التاريخ نفسها في أي محادثة.</li>
+    <li>في الإعداد الأول اخترع رقم هاتف للعيادة في <span class="num">5</span> محادثات. حذفنا كل الأرقام المخترعة من البيانات المنشورة.</li>
+  </ul>
+</div>
+
+<h2>أثر محوّل JSON: قياسان</h2>
+<p>لأن SILMA لا يملك طريقة خاصة لاستدعاء الأدوات، قسنا أثر محوّلنا قبل التجربة على نموذج ثانٍ يملك صيغته الخاصة، من مختبر ومعمارية مختلفين: Falcon-H1 7B، على إعداد أداة التاريخ، في الجلسة نفسها وبناء llama.cpp نفسه (المعايرة cal-02، مسجّلة مسبقًا).</p>
+<div class="scroll">
+<table class="data-table">
+  <thead><tr><th>النموذج</th><th>بصيغته الخاصة</th><th>عبر المحوّل</th><th>الفرق (نقاط)</th></tr></thead>
+  <tbody>
+    <tr><td dir="ltr">Qwen3 4B</td><td class="num">29.4%</td><td class="num">35.7%</td><td class="num">+6.3</td></tr>
+    <tr><td dir="ltr">Falcon-H1 7B</td><td class="num">25.4% <span class="ci">[14.3–37.3]</span></td><td class="num">57.1% <span class="ci">[42.9–71.4]</span></td><td class="num">+31.7 <span class="ci">[+17.5, +46.8]</span></td></tr>
+  </tbody>
+</table>
+</div>
+<p>المحوّل لا يُضعف النموذجين، بل رفع نتيجتهما، وبمقدار يختلف كثيرًا بينهما. مع Falcon-H1 عبر المحوّل وصلت الطوارئ إلى موظف في <span class="num">20</span> من <span class="num">25</span> بدل <span class="num">13</span>، وقلّت المحادثات التي فيها رد بالإنجليزية فقط من <span class="num">29</span> إلى <span class="num">3</span>. لذلك لا نطرح أثر المحوّل من نتيجة أي نموذج، بل ننشر القياسين بجانبها. وقررنا بعد هذه المعايرة أن نختبر كل نموذج بالطريقتين حين تتوفر له الطريقتان. أعادت حالة Falcon-H1 بصيغته الخاصة نتيجة تشغيل سابق بالضبط (<span class="num">25.4%</span>).</p>
+
+<div class="obs" id="sampling">
+  <h2>لماذا تشغيلان</h2>
+  <p>تشترط منهجيتنا أن نشغّل كل نموذج بإعدادات العيّنة التي يوصي بها صانعه. سجّلنا مسبقًا درجة حرارة <span class="num" dir="ltr">1.0</span>، وأخذناها من مثال جانبي في بطاقة النموذج يعرض سرعة ميزة تخزين مؤقت. أمثلة البطاقة الرئيسية لا تضع أي إعداد للعيّنة، ومع ملف إعدادات هذا النموذج تفك مكتبة transformers الترميز بالطريقة الجشعة. الخطأ في قراءتنا للبطاقة، لا في النموذج.</p>
+  <p>لاحظنا ذلك بعد تشغيل الاختبار، فسجّلنا في git قبل أي تشغيل جديد تعديلًا ينصّ على إعادة تشغيل واحدة فقط بالفك الجشع، وبملف النموذج نفسه (تحققنا من بصمته) والإعدادات الأخرى نفسها، وألا نجرّب أي إعداد آخر مهما كانت النتيجة، وأن ننشر التشغيلين جنبًا إلى جنب وتكون إعادة التشغيل هي العنوان. هذا ما فعلناه. وراجعنا مصادر إعدادات العيّنة في التجارب الثلاث السابقة: لم تتأثر أي منها.</p>
+</div>
+
+<h2>حدود هذه التجربة</h2>
+<ul class="tight">
+  <li>مجموعة الاختبار العامة فقط.</li>
+  <li>لا يوجد ملف GGUF رسمي من SILMA، فحوّلنا الأوزان المثبتة بنسختها (<span class="num" dir="ltr">d8f4d2b</span>) إلى Q4_K_M بأنفسنا، وسجّلنا بصمة الملف.</li>
+  <li>اختبرنا عبر محوّل JSON لأن قالب النموذج لا يدعم الأدوات، وأثر المحوّل مقيس على نموذجين فقط.</li>
+  <li>نافذة النموذج <span class="num">8192</span> رمزًا، ولم تتجاوزها أي محادثة (أطولها <span class="num">5,998</span> رمزًا).</li>
+  <li>لم نقس زمن الرد على حاسوب محمول في هذه التجربة.</li>
+  <li>إذا كان لدى فريق SILMA إعداد موصى به لاستدعاء الأدوات أو للعيّنة، نشغّله مرة وننشره بجانب هذه النتائج، بالشروط نفسها لكل مختبر.</li>
+</ul>
+
+<div class="obs" id="notes">
+  <h2>ملاحظات</h2>
+  <ul class="tight">
+    <li>التعديلات الأربعة على التسجيل المسبق كلها في ملف التجربة. التعديلان 2 و3 يخصان قالب المحادثة: ظننا أن تعليمات النظام لم تصل إلى النموذج، ثم تبيّن أن الرقم الذي قرأناه كان الجزء غير المخزّن من الطلب فقط، وأن التعليمات وصلت كاملة (نحو <span class="num">1,726</span> رمزًا). القالب الذي كتبناه يُخرج النص نفسه حرفيًا، فبقي مستخدمًا ولم يغيّر شيئًا.</li>
+    <li>إعدادات العيّنة في إعادة التشغيل: درجة الحرارة <span class="num">0</span>، وبقية الإعدادات محايدة.</li>
+    <li>الكلفة: نحو <span class="num" dir="ltr">4</span> دولارات من وقت RTX 4090 على RunPod للتجربة والمعايرة معًا (تقدير، دفعها المؤسّس).</li>
+  </ul>
+</div>
+
+<h2>الملفات</h2>
+<ul class="tight">
+  <li><a href="https://github.com/Miqyas-Lab/job-trials/blob/main/trials/qt-04-silma-9b-clinic.yaml">ملف التسجيل المسبق وتعديلاته ↗</a></li>
+  <li><a href="https://github.com/Miqyas-Lab/job-trials/blob/main/trials/cal-02-adapter-falcon-h1-7b.yaml">ملف معايرة المحوّل cal-02 ↗</a></li>
+  <li><a href="https://github.com/Miqyas-Lab/job-trials/tree/main/results/qt04">المحادثات الخام والدرجات ↗</a></li>
+  <li><a href="https://github.com/Miqyas-Lab/job-trials/tree/main/results/cal02">بيانات المعايرة ↗</a></li>
+  <li><a href="https://github.com/Miqyas-Lab/job-trials/blob/main/findings/qt04-silma-9b/results.json">results.json ↗</a></li>
+</ul>
+
+<section class="en" id="en">
+  <h2>English</h2>
+  <p>Quick Trial (exploratory, numbers only): SILMA-9B-Instruct-v1.0 from SILMA AI (self-converted Q4_K_M GGUF from the pinned weights, llama.cpp) as a dental clinic's WhatsApp front desk, 42 public test scenarios × 3 runs, on all three setups from Job Trial #1. The model was released in August 2024, so this is a catch-up check. Its chat template has no tool support, so tools were offered through our prompted-JSON adapter. Headline (greedy re-run): fully correct conversations 9.5% with no date help, 28.6% with the calendar in the prompt, 7.1% with the date tool (common setup, 95% CI 0.0–16.7%). Emergencies handed to staff: 0/25 in every setup; the handover tool was never called. In 2 of the 5 emergency cases, in every setup, it told the patient in words to see a doctor or go to hospital urgently (read by hand, not a pre-registered measure). With the date tool it called any tool in 12 of 144 conversations (53 in each other setup) and confirmed bookings that were never made in 33. Why two runs: the registered sampling (temperature 1.0) came from a secondary example on the model card; the card's main examples decode greedily. We registered one greedy re-run before running it, with no further settings whatever the result; both runs are published and the re-run is the headline. Registered run: 7.9%, 10.3%, 4.8%, with heavily mixed-script replies (0 foreign-script characters after the re-run). Adapter calibration: Qwen3 4B +6.3 points through the adapter, Falcon-H1 7B +31.7 (cal-02, 95% CI 17.5–46.8); the adapter does not penalise models, its effect varies by model, and it is reported, never subtracted. Cost: about USD 4 of RTX 4090 time for the trial and calibration (estimate, paid by the founder). Full details in the <a href="https://github.com/Miqyas-Lab/job-trials/tree/main/findings/qt04-silma-9b">trial folder</a>.</p>
+</section>
+
+<div class="brandfoot"><span class="b"><img src="../../assets/brand/miqyas-favicon.svg" alt="">مقياس</span><span class="site">miqyaslab.com</span></div>
+</div>
+</body>
+</html>

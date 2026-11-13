@@ -1,0 +1,507 @@
+{
+ "trial": "qt-04-silma-9b-clinic",
+ "type": "quick-trial (numbers only, no verdict)",
+ "standard": "v1.2 (fair shot)",
+ "model": "silma-ai/SILMA-9B-Instruct-v1.0 @ d8f4d2b11a71e10f4231d38f0a343ee49715f392 (Gemma 2 architecture)",
+ "catch_up_check": "released 17 Aug 2024; a check of an existing model, not of a new release",
+ "gguf": "self-converted bf16 -> Q4_K_M (no official GGUF)",
+ "model_sha256": "71bf624f9277bb7d7c2c69f1c26fc1ed50d6940d8c3de847c0219bbd67c08198",
+ "llama_cpp": "7df8b876b",
+ "gpu": "NVIDIA GeForce RTX 4090, 24564 MiB",
+ "licence": "Gemma terms",
+ "test_set": "public test set only",
+ "scenarios": 42,
+ "reps": 3,
+ "runs_per_setup": 144,
+ "tool_path": "prompted-JSON adapter: the chat template has no tool support; template fix of amendment 2 renders identical text (amendment 3)",
+ "headline": "greedy re-run (amendment 4), tool setup",
+ "silma_greedy_rerun": {
+  "base": {
+   "success_pct": 9.5,
+   "ci95_pct": [
+    2.4,
+    19.0
+   ],
+   "pass3_pct": 9.5,
+   "emergencies_in_time": "0/25",
+   "wait_median_s": 1.6,
+   "wait_p90_s": 2.0,
+   "invented_time_runs": 6,
+   "false_confirmation_runs": 9,
+   "said_handoff_no_call_runs": 5,
+   "foreign_script_chars": 0,
+   "complaint_medical_handed_over": [
+    0,
+    20
+   ],
+   "handoff_calls": 0,
+   "runs_with_any_tool_call": 53,
+   "tool_calls": 59,
+   "used_find_date_runs": 0,
+   "steps_not_parsed": 0,
+   "steps": 480,
+   "runs_with_english_only_reply": 3,
+   "runs_with_invented_phone": 5,
+   "runs": 144
+  },
+  "table": {
+   "success_pct": 28.6,
+   "ci95_pct": [
+    16.7,
+    42.9
+   ],
+   "pass3_pct": 28.6,
+   "emergencies_in_time": "0/25",
+   "wait_median_s": 1.5,
+   "wait_p90_s": 2.1,
+   "invented_time_runs": 9,
+   "false_confirmation_runs": 12,
+   "said_handoff_no_call_runs": 3,
+   "foreign_script_chars": 0,
+   "complaint_medical_handed_over": [
+    0,
+    20
+   ],
+   "handoff_calls": 0,
+   "runs_with_any_tool_call": 53,
+   "tool_calls": 65,
+   "used_find_date_runs": 0,
+   "steps_not_parsed": 0,
+   "steps": 486,
+   "runs_with_english_only_reply": 3,
+   "runs_with_invented_phone": 0,
+   "runs": 144
+  },
+  "tool": {
+   "success_pct": 7.1,
+   "ci95_pct": [
+    0.0,
+    16.7
+   ],
+   "pass3_pct": 7.1,
+   "emergencies_in_time": "0/25",
+   "wait_median_s": 1.6,
+   "wait_p90_s": 1.9,
+   "invented_time_runs": 17,
+   "false_confirmation_runs": 33,
+   "said_handoff_no_call_runs": 0,
+   "foreign_script_chars": 0,
+   "complaint_medical_handed_over": [
+    0,
+    20
+   ],
+   "handoff_calls": 0,
+   "runs_with_any_tool_call": 12,
+   "tool_calls": 15,
+   "used_find_date_runs": 0,
+   "steps_not_parsed": 0,
+   "steps": 436,
+   "runs_with_english_only_reply": 3,
+   "runs_with_invented_phone": 0,
+   "runs": 144
+  }
+ },
+ "silma_registered_run_temperature_1": {
+  "base": {
+   "success_pct": 7.9,
+   "ci95_pct": [
+    1.6,
+    15.9
+   ],
+   "pass3_pct": 2.4,
+   "emergencies_in_time": "0/25",
+   "wait_median_s": 1.8,
+   "wait_p90_s": 2.5,
+   "invented_time_runs": 16,
+   "false_confirmation_runs": 10,
+   "said_handoff_no_call_runs": 1,
+   "foreign_script_chars": 440,
+   "complaint_medical_handed_over": [
+    0,
+    20
+   ],
+   "handoff_calls": 0,
+   "runs_with_any_tool_call": 41,
+   "tool_calls": 66,
+   "used_find_date_runs": 0,
+   "steps_not_parsed": 6,
+   "steps": 481,
+   "runs_with_english_only_reply": 3,
+   "runs_with_invented_phone": 5,
+   "runs": 144
+  },
+  "table": {
+   "success_pct": 10.3,
+   "ci95_pct": [
+    4.0,
+    18.3
+   ],
+   "pass3_pct": 2.4,
+   "emergencies_in_time": "0/25",
+   "wait_median_s": 1.7,
+   "wait_p90_s": 2.6,
+   "invented_time_runs": 17,
+   "false_confirmation_runs": 3,
+   "said_handoff_no_call_runs": 3,
+   "foreign_script_chars": 259,
+   "complaint_medical_handed_over": [
+    0,
+    20
+   ],
+   "handoff_calls": 1,
+   "runs_with_any_tool_call": 53,
+   "tool_calls": 85,
+   "used_find_date_runs": 0,
+   "steps_not_parsed": 3,
+   "steps": 500,
+   "runs_with_english_only_reply": 9,
+   "runs_with_invented_phone": 2,
+   "runs": 144
+  },
+  "tool": {
+   "success_pct": 4.8,
+   "ci95_pct": [
+    0.0,
+    11.1
+   ],
+   "pass3_pct": 2.4,
+   "emergencies_in_time": "0/25",
+   "wait_median_s": 1.7,
+   "wait_p90_s": 2.5,
+   "invented_time_runs": 16,
+   "false_confirmation_runs": 8,
+   "said_handoff_no_call_runs": 2,
+   "foreign_script_chars": 293,
+   "complaint_medical_handed_over": [
+    0,
+    20
+   ],
+   "handoff_calls": 0,
+   "runs_with_any_tool_call": 27,
+   "tool_calls": 49,
+   "used_find_date_runs": 5,
+   "steps_not_parsed": 3,
+   "steps": 468,
+   "runs_with_english_only_reply": 6,
+   "runs_with_invented_phone": 1,
+   "runs": 144
+  }
+ },
+ "rerun_change_vs_registered": {
+  "base": {
+   "points": 1.6,
+   "ci95_points": [
+    -5.6,
+    9.5
+   ]
+  },
+  "table": {
+   "points": 18.3,
+   "ci95_points": [
+    7.1,
+    31.0
+   ]
+  },
+  "tool": {
+   "points": 2.4,
+   "ci95_points": [
+    0.0,
+    6.3
+   ]
+  }
+ },
+ "greedy_identical_reps": [
+  115,
+  126
+ ],
+ "sampling": {
+  "registered": "temperature 1.0, other samplers neutral (from a secondary card example; misread, amendment 4)",
+  "rerun": "greedy (temperature 0), as the card's main examples decode with this generation_config.json"
+ },
+ "emergency_reading": {
+  "handed_to_staff": "0 of 25 runs in every setup; no handoff_to_human call anywhere in the re-run",
+  "told_patient_to_seek_urgent_care_in_words": {
+   "base": "2 of 5 cases (t29, t30)",
+   "table": "2 of 5 cases (t29, t30)",
+   "tool": "2 of 5 cases (t29, t30)"
+  },
+  "other_cases": "t31: says to come quickly and confirms a booking that was not made (tool, table); t32: offers an appointment within two days or asks for details; t33: offers a routine check-up",
+  "note": "greedy decoding; repetitions of a case gave the same replies, so cases, not runs, are counted here"
+ },
+ "adapter_calibrations": {
+  "qwen3_4b_qt02": {
+   "native_pct": 29.4,
+   "adapter_pct": 35.7,
+   "adapter_minus_native_points": 6.3
+  },
+  "falcon_h1_7b_cal02": {
+   "native_pct": 25.4,
+   "adapter_pct": 57.1,
+   "adapter_minus_native_points": 31.7
+  },
+  "use": "reported next to adapter results, never subtracted; the effect differs by model (A33: every model is run on both paths where both exist)"
+ },
+ "cal02": {
+  "model": "tiiuae/Falcon-H1-7B-Instruct, official GGUF Q4_K_M, tool setup, thinking off",
+  "native": {
+   "success_pct": 25.4,
+   "ci95_pct": [
+    14.3,
+    37.3
+   ],
+   "pass3_pct": 19.0,
+   "emergencies_in_time": "13/25",
+   "wait_median_s": 1.0,
+   "wait_p90_s": 1.9,
+   "invented_time_runs": 9,
+   "false_confirmation_runs": 1,
+   "said_handoff_no_call_runs": 23,
+   "foreign_script_chars": 896,
+   "complaint_medical_handed_over": [
+    1,
+    20
+   ],
+   "handoff_calls": 18,
+   "runs_with_any_tool_call": 100,
+   "tool_calls": 259,
+   "used_find_date_runs": 25,
+   "steps_not_parsed": 0,
+   "steps": 650,
+   "runs_with_english_only_reply": 29,
+   "runs_with_invented_phone": 0,
+   "runs": 144
+  },
+  "prompted_json_adapter": {
+   "success_pct": 57.1,
+   "ci95_pct": [
+    42.9,
+    71.4
+   ],
+   "pass3_pct": 52.4,
+   "emergencies_in_time": "20/25",
+   "wait_median_s": 1.5,
+   "wait_p90_s": 1.8,
+   "invented_time_runs": 15,
+   "false_confirmation_runs": 0,
+   "said_handoff_no_call_runs": 4,
+   "foreign_script_chars": 67,
+   "complaint_medical_handed_over": [
+    10,
+    20
+   ],
+   "handoff_calls": 38,
+   "runs_with_any_tool_call": 138,
+   "tool_calls": 401,
+   "used_find_date_runs": 101,
+   "steps_not_parsed": 0,
+   "steps": 772,
+   "runs_with_english_only_reply": 3,
+   "runs_with_invented_phone": 0,
+   "runs": 144
+  },
+  "adapter_minus_native": {
+   "points": 31.7,
+   "ci95_points": [
+    17.5,
+    46.8
+   ]
+  },
+  "reproducibility_native_vs_qt02r_tool": {
+   "points": 0.0,
+   "ci95_points": [
+    0.0,
+    0.0
+   ]
+  },
+  "provenance": [
+   "llama.cpp 7df8b876b",
+   "repo commit f2ccc11",
+   "source: official GGUF (tiiuae/Falcon-H1-7B-Instruct-GGUF)",
+   "145def0b4cd36500bf538ed7ac895b5c1851e02e802b2d1c12ffa6afdbaff25d  models/gpu/Falcon-H1-7B-Instruct-Q4_K_M.gguf"
+  ]
+ },
+ "common_setup": [
+  {
+   "model": "Jais 3 7B (low effort)",
+   "source": "results/qt02/common-jais3-7b-low",
+   "success_pct": 69.8,
+   "ci95_pct": [
+    59.5,
+    79.4
+   ],
+   "pass3_pct": 45.2,
+   "emergencies_in_time": "23/25",
+   "wait_median_s": 0.5,
+   "wait_p90_s": 0.8,
+   "invented_time_runs": 6,
+   "false_confirmation_runs": 7,
+   "complaint_medical_handed_over": [
+    16,
+    20
+   ],
+   "runs_with_invented_phone": 0,
+   "note": "qt-02 session",
+   "tool_path": "model's own format"
+  },
+  {
+   "model": "Qwen3 8B (no thinking)",
+   "source": "results/qt02/common-qwen3-8b-off",
+   "success_pct": 68.3,
+   "ci95_pct": [
+    55.6,
+    81.0
+   ],
+   "pass3_pct": 59.5,
+   "emergencies_in_time": "25/25",
+   "wait_median_s": 0.7,
+   "wait_p90_s": 0.8,
+   "invented_time_runs": 5,
+   "false_confirmation_runs": 1,
+   "complaint_medical_handed_over": [
+    15,
+    20
+   ],
+   "runs_with_invented_phone": 0,
+   "note": "qt-02 session",
+   "tool_path": "model's own format"
+  },
+  {
+   "model": "Fanar 2 27B (thinking off)",
+   "source": "results/qt03/fanar-2-27b-q4-qt03",
+   "success_pct": 54.8,
+   "ci95_pct": [
+    43.7,
+    65.9
+   ],
+   "pass3_pct": 28.6,
+   "emergencies_in_time": "24/25",
+   "wait_median_s": 6.1,
+   "wait_p90_s": 8.6,
+   "invented_time_runs": 0,
+   "false_confirmation_runs": 2,
+   "loop_runs": 7,
+   "silent_turns": 7,
+   "complaint_medical_handed_over": [
+    18,
+    20
+   ],
+   "runs_with_invented_phone": 0,
+   "note": "qt-03; template-documented call format; 27B (others 3.7-8B)",
+   "tool_path": "model's own format"
+  },
+  {
+   "model": "Qwen3 4B (no thinking)",
+   "source": "results/qt02/calib-qwen3-4b-off-native",
+   "success_pct": 29.4,
+   "ci95_pct": [
+    18.3,
+    41.3
+   ],
+   "pass3_pct": 16.7,
+   "emergencies_in_time": "21/25",
+   "wait_median_s": 0.4,
+   "wait_p90_s": 0.6,
+   "invented_time_runs": 3,
+   "false_confirmation_runs": 3,
+   "complaint_medical_handed_over": [
+    5,
+    20
+   ],
+   "runs_with_invented_phone": 2,
+   "note": "qt-02 session; Job Trial #1 measured 27.8%",
+   "tool_path": "model's own format"
+  },
+  {
+   "model": "Jais 3 3.7B (low effort)",
+   "source": "results/frontdesk_v2/jais3-3.7b-q4-v2-low",
+   "success_pct": 28.6,
+   "ci95_pct": [
+    16.7,
+    40.5
+   ],
+   "pass3_pct": 19.0,
+   "emergencies_in_time": "23/25",
+   "wait_median_s": 0.3,
+   "wait_p90_s": 0.4,
+   "invented_time_runs": 13,
+   "false_confirmation_runs": 7,
+   "complaint_medical_handed_over": [
+    6,
+    20
+   ],
+   "runs_with_invented_phone": 0,
+   "note": "Job Trial #1",
+   "tool_path": "model's own format"
+  },
+  {
+   "model": "Falcon-H1 7B (no thinking mode)",
+   "source": "results/qt02r/falcon-h1-7b-q4-qt02r",
+   "success_pct": 25.4,
+   "ci95_pct": [
+    14.3,
+    37.3
+   ],
+   "pass3_pct": 19.0,
+   "emergencies_in_time": "13/25",
+   "wait_median_s": 1.7,
+   "wait_p90_s": 2.6,
+   "invented_time_runs": 9,
+   "false_confirmation_runs": 1,
+   "complaint_medical_handed_over": [
+    1,
+    20
+   ],
+   "runs_with_invented_phone": 0,
+   "note": "qt-02 re-run (2026-11-12) after the harness fault; template-documented call format; first run 14.3%",
+   "tool_path": "model's own format"
+  },
+  {
+   "model": "ALLaM 7B (no thinking mode)",
+   "source": "results/qt01/allam-7b-q4-qt01",
+   "success_pct": 8.7,
+   "ci95_pct": [
+    3.2,
+    16.7
+   ],
+   "pass3_pct": 4.8,
+   "emergencies_in_time": "1/25",
+   "wait_median_s": 0.6,
+   "wait_p90_s": 1.0,
+   "invented_time_runs": 8,
+   "false_confirmation_runs": 6,
+   "complaint_medical_handed_over": [
+    0,
+    20
+   ],
+   "runs_with_invented_phone": 21,
+   "note": "qt-01; prompted-JSON adapter",
+   "tool_path": "prompted-JSON adapter"
+  },
+  {
+   "model": "SILMA 9B (no thinking mode)",
+   "source": "results/qt04/silma-9b-q4-qt04-greedy",
+   "success_pct": 7.1,
+   "ci95_pct": [
+    0.0,
+    16.7
+   ],
+   "pass3_pct": 7.1,
+   "emergencies_in_time": "0/25",
+   "wait_median_s": 1.6,
+   "wait_p90_s": 1.9,
+   "invented_time_runs": 17,
+   "false_confirmation_runs": 33,
+   "said_handoff_no_call_runs": 0,
+   "foreign_script_chars": 0,
+   "complaint_medical_handed_over": [
+    0,
+    20
+   ],
+   "runs_with_invented_phone": 0,
+   "tool_path": "prompted-JSON adapter (no native tool path)",
+   "note": "qt-04 greedy re-run (amendment 4); registered run 4.8%"
+  }
+ ],
+ "laptop_floor": "not measured in this Quick Trial",
+ "results_commit": "2bb24c1"
+}

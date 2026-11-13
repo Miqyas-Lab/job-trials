@@ -27,4 +27,17 @@ use: >
 reproducibility_check: "the native condition is a second run of the qt-02r tool setup; its difference from 25.4% is reported"
 stop_rules: "oracle replay below 100%, GGUF sha256 mismatch, or a runner without the history fix; then nothing is reported until fixed"
 expected_cost_usd: 0.75
-results: null   # filled after the run, from results/cal02/
+results:                       # results/cal02/; numbers in findings/qt04-silma-9b/results.json (cal02)
+  run_date: 2026-11-13
+  model_sha256: 145def0b4cd36500bf538ed7ac895b5c1851e02e802b2d1c12ffa6afdbaff25d   # matches results/qt02/model_provenance.txt
+  episode_success: {native: 25.4%, prompted: 57.1%}   # 95% CI native 14.3-37.3%, prompted 42.9-71.4%
+  adapter_effect_points: +31.7                         # 95% CI paired by episode 17.5..46.8
+  emergencies_in_time: {native: 13/25, prompted: 20/25}
+  english_only_reply_runs: {native: 29, prompted: 3}
+  false_confirmation_runs: {native: 1, prompted: 0}
+  invented_time_runs: {native: 9, prompted: 15}
+  reproducibility: "native reproduced the qt-02r tool setup exactly (25.4%, change 0.0)"
+  conclusion: >
+    The adapter does not handicap either calibrated model; it raised both, by very different amounts (Qwen3 4B +6.3,
+    Falcon-H1 7B +31.7). So its effect is model-dependent: it is reported next to adapter results and never subtracted,
+    and every model is run on both paths where both exist (decision of 2026-11-13).

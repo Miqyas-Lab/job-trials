@@ -1,0 +1,44 @@
+
+######## results/qt04/silma-9b-q4-qt04   model models/gpu/SILMA-9B-Instruct-v1.0-Q4_K_M.gguf   (432 episode runs)
+
+== arm base  effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success          7.9%   bar ≥90%  FAIL   (95% CI 1.6%–15.9%, clustered by episode)
+  pass^3 (all 3 reps ok)   2.4%
+  emergencies handed over in time  0/25   bar all  FAIL
+  invented_time           16 runs   bar 0  FAIL (review flags)
+  false_confirmation      10 runs   bar 0  FAIL (review flags)
+  cap 6  loop 0  silent turns 8  said-handoff-no-call 1  booked-unverified 4  unknown-tool 0  bad-args 1
+  wait per message (this hardware): median 1.8s   p90 2.5s
+  per correctly completed conversation: 93.6 s of compute, 3832 generated tokens (failures included in the numerator; 10/126 succeeded)
+  by category: adversarial 22%  arabizi 0%  booking 12%  cancel 33%  change_mind 0%  clarify 0%  closed 0%  complaint 0%  emergency 0%  info 67%  medical 0%  no_slots 0%  reschedule 0%  tool_error 0%
+  reasoning language {'none': 144}   replies with Gulf markers  21.5%   foreign-script chars 440
+  failure reasons: missing/wrong booking ×46, no handoff ×31, missing/wrong booking; invented_time ×11, missing/wrong booking; false_confirmation ×7, wrong cancellation ×4, missing/wrong booking; cap; silent_turn ×3, missing/wrong booking; silent_turn ×2, no handoff; invented_time ×2, wrong cancellation; false_confirmation ×2, no handoff; cap; silent_turn ×2, required info missing from replies ×2, required info missing from replies; false_confirmation ×1, forbidden content in reply ×1, required info missing from replies; invented_time ×1, no handoff; invented_time; cap; silent_turn ×1
+
+== arm table effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success         10.3%   bar ≥90%  FAIL   (95% CI 4.0%–18.3%, clustered by episode)
+  pass^3 (all 3 reps ok)   2.4%
+  emergencies handed over in time  0/25   bar all  FAIL
+  invented_time           17 runs   bar 0  FAIL (review flags)
+  false_confirmation       3 runs   bar 0  FAIL (review flags)
+  cap 3  loop 0  silent turns 5  said-handoff-no-call 3  booked-unverified 12  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 1.7s   p90 2.6s
+  per correctly completed conversation: 63.2 s of compute, 2074 generated tokens (failures included in the numerator; 13/126 succeeded)
+  by category: adversarial 0%  arabizi 17%  booking 17%  cancel 33%  change_mind 0%  clarify 33%  closed 0%  complaint 0%  emergency 0%  info 33%  medical 0%  no_slots 17%  reschedule 0%  tool_error 0%
+  reasoning language {'none': 144}   replies with Gulf markers  16.7%   foreign-script chars 259
+  failure reasons: missing/wrong booking ×43, no handoff ×32, missing/wrong booking; invented_time ×11, wrong cancellation ×5, required info missing from replies ×4, missing/wrong booking; cap; silent_turn ×3, no handoff; invented_time ×3, forbidden content in reply ×3, missing/wrong booking; false_confirmation ×2, unexpected booking ×2, missing/wrong booking; silent_turn ×2, missing/wrong booking; invented_time; false_confirmation ×1, required info missing from replies; invented_time ×1, wrong cancellation; invented_time ×1
+
+== arm tool  effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success          4.8%   bar ≥90%  FAIL   (95% CI 0.0%–11.1%, clustered by episode)
+  pass^3 (all 3 reps ok)   2.4%
+  emergencies handed over in time  0/25   bar all  FAIL
+  invented_time           16 runs   bar 0  FAIL (review flags)
+  false_confirmation       8 runs   bar 0  FAIL (review flags)
+  cap 3  loop 0  silent turns 5  said-handoff-no-call 2  booked-unverified 1  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 1.7s   p90 2.5s
+  per correctly completed conversation: 141.6 s of compute, 4261 generated tokens (failures included in the numerator; 6/126 succeeded)
+  used find_date in 5/144 runs
+  by category: adversarial 0%  arabizi 0%  booking 8%  cancel 33%  change_mind 0%  clarify 0%  closed 0%  complaint 0%  emergency 0%  info 33%  medical 0%  no_slots 0%  reschedule 0%  tool_error 0%
+  reasoning language {'none': 144}   replies with Gulf markers  18.1%   foreign-script chars 293
+  failure reasons: missing/wrong booking ×48, no handoff ×33, missing/wrong booking; invented_time ×8, wrong cancellation ×6, missing/wrong booking; false_confirmation ×5, required info missing from replies ×5, no handoff; invented_time ×3, forbidden content in reply ×3, missing/wrong booking; invented_time; false_confirmation ×3, missing/wrong booking; cap; silent_turn ×2, missing/wrong booking; silent_turn ×2, missing/wrong booking; invented_time; cap; silent_turn ×1, invented_time ×1
+
+  per-run detail -> results/qt04/silma-9b-q4-qt04/scored.csv
