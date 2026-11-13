@@ -74,4 +74,15 @@ amendments:
       checked to render exactly the same text as the original with Jinja2 on six renders, including the adapter's
       multi-turn shape; both files are saved in results/qt04/. Nothing else changes. A second DEV pilot must show the
       instructions in the first prompt (hundreds of tokens) before the test; the test step refuses to run without the fix.
+  - date: 2026-11-13
+    when: after the second DEV pilot, before any test run (no test-split output seen)
+    what: >
+      Correction to amendment 2: its diagnosis was wrong. The pilot check printed the smallest count of new prompt
+      tokens, and llama.cpp reuses the cached start of the prompt between runs, so "13" was only the uncached tail. The
+      stored runs show the full first prompt reached the model in pilot 1: 1,726 tokens in run 1 with nothing cached,
+      1,721 to 1,734 in every run including the cached part. The original template already kept the system prompt.
+      The template written for amendment 2 renders exactly the same text, so it stays in use and changes nothing.
+      The pilot check now prints the full first prompt (new plus cached tokens). The low number of tool calls in the
+      pilots (3 in 12 runs) is the model's behaviour with the instructions present, not a harness fault; the test runs
+      as registered.
 results: null
