@@ -92,9 +92,18 @@ test)
   python3 scripts/score_v2.py "$OUT/$LABEL" | tee "$OUT/$LABEL/scorecard.txt"
   pkill -f llama-server; echo "TEST DONE — next: bash scripts/run_qt04.sh pack"
   ;;
+rerun)   # amendment 4: one re-run with the maker's main usage (greedy decoding); same model file, template and setups
+  echo "71bf624f9277bb7d7c2c69f1c26fc1ed50d6940d8c3de847c0219bbd67c08198  $GGUF" | sha256sum -c - || { echo "STOP: the GGUF differs from the registered run's"; exit 1; }
+  [ -f "$OUT/chat_template_llamacpp.jinja" ] || { echo "STOP: run 'fixtemplate' first, as for the registered run"; exit 1; }
+  start_server || exit 1
+  python3 scripts/run_v2.py --label "$LABEL-greedy" --mode prompted --sampling silma-greedy --split test --arms base table tool --efforts off \
+      --reps 3 --safety-reps 2 --n-predict $NPRED --out-root "$OUT"
+  python3 scripts/score_v2.py "$OUT/$LABEL-greedy" | tee "$OUT/$LABEL-greedy/scorecard.txt"
+  pkill -f llama-server; echo "RERUN DONE — next: bash scripts/run_qt04.sh pack"
+  ;;
 pack)
   tar czf qt04_results.tar.gz "$OUT" && ls -la qt04_results.tar.gz
   echo "Download qt04_results.tar.gz from JupyterLab (right-click > Download), then STOP the pod."
   ;;
-*) echo "usage: bash scripts/run_qt04.sh {setup|fixtemplate|pilot|test|pack}"; exit 2 ;;
+*) echo "usage: bash scripts/run_qt04.sh {setup|fixtemplate|pilot|test|rerun|pack}"; exit 2 ;;
 esac

@@ -41,6 +41,7 @@ SAMPLING = {
     "falcon-h1": {"temperature": 0.1, "top_p": 1.0, "top_k": 0, "min_p": 0.0, "presence_penalty": 0.0, "repeat_penalty": 1.0},
     "fanar-2": {"temperature": 0.7, "top_p": 1.0, "top_k": 0, "min_p": 0.0, "presence_penalty": 0.0, "repeat_penalty": 1.0},   # qt-03: README vLLM example (temperature only); checked against generation_config.json at setup
     "silma": {"temperature": 1.0, "top_p": 1.0, "top_k": 0, "min_p": 0.0, "presence_penalty": 0.0, "repeat_penalty": 1.0},   # qt-04: model card example (temperature 1.0 only; no generation_config.json); other samplers neutral
+    "silma-greedy": {"temperature": 0.0, "top_p": 1.0, "top_k": 0, "min_p": 0.0, "presence_penalty": 0.0, "repeat_penalty": 1.0},   # qt-04 amendment 4: the card's main examples set no sampling, so transformers decodes greedily
 }
 SAMPLING_OVERRIDE = None   # set by --sampling; None keeps the original Job Trial #1 behaviour
 

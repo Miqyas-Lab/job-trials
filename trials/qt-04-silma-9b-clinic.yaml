@@ -85,4 +85,20 @@ amendments:
       The pilot check now prints the full first prompt (new plus cached tokens). The low number of tool calls in the
       pilots (3 in 12 runs) is the model's behaviour with the instructions present, not a harness fault; the test runs
       as registered.
+  - date: 2026-11-13
+    when: after the test run (test scores seen); registered before any re-run output exists
+    what: >
+      Sampling misread. The registered setting (temperature 1.0, other samplers off) came from one secondary example on
+      the model card, a speed demonstration of a caching feature ("two warm-up steps ... fast run"). The card's main
+      usage examples, including "Running with the pipeline API", set no sampling options; with this model's
+      generation_config.json (token IDs only) the transformers library then decodes greedily. The Standard requires the
+      maker's recommended sampling (section 2, point 4), so the registered setting did not meet it; the error is ours.
+      One re-run (results/qt04/silma-9b-q4-qt04-greedy/): greedy decoding (temperature 0), same GGUF (sha256 71bf624f,
+      checked), same llama.cpp build, template (amendment 2), adapter, setups, window, cap and repetitions. Exactly one
+      re-run: no further sampling settings are tried, whatever it scores. Both runs are published side by side; the
+      re-run is the headline, as in qt-02, and the registered run stays on the page with this explanation. Greedy
+      decoding is deterministic, so the repetitions of a case are expected to be identical; intervals then reflect
+      variation between cases only. The sampling sources of qt-01, qt-02 and qt-03 were rechecked: ALLaM's card states
+      its values explicitly, Fanar's example uses vLLM defaults (as run), Falcon runs at temperature 0.1; none is
+      affected.
 results: null
