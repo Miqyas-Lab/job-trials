@@ -1,5 +1,4 @@
-# The rental menu. Miqyas does not buy hardware. Prices change: check before each run and log the actual cost in the trial file.
-# Budget cap: USD 100 per month across all rentals (see MIQYAS_OS.md).
+# The rental menu. Miqyas does not buy hardware. Prices are the providers' list prices and change: check before each run.
 
 - id: air-2020
   rung: floor
@@ -12,7 +11,7 @@
   rung: middle
   what: consumer-class GPU with 12-16 GB (e.g. RTX 4060 Ti 16 GB / A4000 16 GB, whichever RunPod has)
   owner: RunPod (rented per second)
-  cost: check console; budget ~USD 0.3-0.5/h
+  cost: check console
   use: speed bench + validation for the middle rung
 
 - id: macly-m4

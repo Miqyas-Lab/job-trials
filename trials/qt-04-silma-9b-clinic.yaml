@@ -48,7 +48,6 @@ dev_pilot: >
 machines:
   run: runpod-4090
   speed: none                 # laptop floor not measured in this Quick Trial; the page says so
-budget_usd: 5                 # expected about USD 3 (conversion + pilot + 3 setups)
 stop_rules: >
   Nothing is published if: the oracle replay is below 100%; the pilot shows 0 tool calls with no documented fix; the
   prompt lacks the instructions or tools; setups are mislabelled; or any change is made after seeing test scores. A

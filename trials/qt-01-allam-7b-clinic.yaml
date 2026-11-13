@@ -13,7 +13,6 @@ repeats: 3
 machines:
   run: runpod-4090
   speed: [air-2020]          # floor wait from the validated speed model; "does not fit" if it doesn't
-budget_usd: 5                # expected ~2 GPU-hours incl. conversion
 risks:
   - 4,096-token window: conversations that exceed it are counted as failures (same rule as the 8,192 cap), and reported as a separate count.
   - no native tool calling: uses the prompted-JSON adapter; the report names the adapter and links its prompt.
@@ -74,7 +73,6 @@ results:                     # TEST split, public test set only; scored by scrip
     jais3-3.7b_high: 92.1%
     jais3-3.7b_low: 28.6%
     qwen3-4b_off: 27.8%
-  cost_usd: ~2               # estimate (~2.5 pod-hours at 0.74); confirm from RunPod billing
   not_done: floor-machine wait (air-2020) not measured; declared on the results page
 publication:
   date: 2026-10-29

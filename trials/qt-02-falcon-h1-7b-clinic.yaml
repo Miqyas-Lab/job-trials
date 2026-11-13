@@ -35,7 +35,6 @@ extras:                      # same pod session, test split, tool setup, 3 reps 
 machines:
   run: runpod-4090
   speed: none                 # laptop (floor) wait not measured in this Quick Trial; stated on the results page
-budget_usd: 6                 # expected ~2.5-3 GPU-hours on the RTX 4090 (~USD 2-2.5)
 comparison: common setup table for every model measured so far (Jais 3 3.7B/7B low, Qwen3 4B/8B off, ALLaM 7B, Falcon-H1 7B), rows chosen by setup, never by lab; Falcon's base/table setups shown next to Job Trial #1's same setups
 risks:
   - hybrid attention + Mamba architecture: needs a recent llama.cpp; the setup step stops if the server fails to load it.
@@ -70,7 +69,7 @@ amendments:
       results/qt02/model_provenance.txt), same llama.cpp build 7df8b87, same sampling and window. The only change is
       the history: the call text stays in the assistant message exactly as the model wrote it (scripts/run_v2.py,
       qt-03 amendment 2). Reported next to the original numbers, which stay on the page; the re-run becomes Falcon's
-      row in the common-setup table, labelled. Expected cost about USD 2.5 (RTX 4090).
+      row in the common-setup table, labelled.
 
 results:                       # TEST split, public test set only; all numbers in findings/qt02-falcon-h1-7b/results.json
   run_date: 2026-10-29
@@ -91,5 +90,4 @@ results:                       # TEST split, public test set only; all numbers i
   invented_phone_runs_tool_setup: {allam: 21/144, qwen3_4b_native: 2/144, others: 0/144}
   redaction: "phone-like numbers redacted in qt-02 transcripts (Qwen3 4B calibration only) and, retroactively, in 3 Job Trial #1 Qwen3 4B runs; scores re-computed, identical"
   licence: "TII Falcon licence (Apache-2.0-based; no restriction on publishing evaluations)"
-  cost_usd: ~2.5             # estimate (~3.3 pod-hours at 0.74); confirm from RunPod billing
   ops_bug: "test->extras chain blocked by the run lock held by the exiting server; extras started by hand, no data affected"
