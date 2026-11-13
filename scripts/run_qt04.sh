@@ -78,8 +78,8 @@ rows=[json.loads(l) for l in open(sys.argv[1])]
 err=sum('error' in r for r in rows); ctx=sum(r.get('flags',{}).get('context',False) for r in rows)
 calls=sum(len(s['calls']) for r in rows if 'steps' in r for s in r['steps'])
 bad=sum(1 for r in rows if 'steps' in r for s in r['steps'] if s.get('parsed') is False)
-p0=[r['steps'][0]['prompt_n'] for r in rows if r.get('steps')]
-print(f"PILOT CHECK: runs {len(rows)} · errors {err} · context overflows {ctx} · tool calls {calls} · non-JSON replies {bad} · first prompt tokens {min(p0) if p0 else '-'}")
+p0=[(r['steps'][0]['prompt_n'] or 0)+(r['steps'][0].get('cached_n') or 0) for r in rows if r.get('steps')]   # new + cached (amendment 3)
+print(f"PILOT CHECK: runs {len(rows)} · errors {err} · context overflows {ctx} · tool calls {calls} · non-JSON replies {bad} · first prompt tokens (new+cached) {min(p0) if p0 else '-'}-{max(p0) if p0 else '-'}")
 PY
   pkill -f llama-server
   echo "PILOT DONE — share the PILOT CHECK line for review before running 'test'."
