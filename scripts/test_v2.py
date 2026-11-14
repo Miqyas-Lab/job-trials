@@ -163,6 +163,12 @@ def main():
     for want, got in [("سالم", "العميل"), ("مريم", "العميل"), ("ريم", "Ali"), ("خالد", "Customer"), ("فاطمة", "")]:
         check(not name_ok(want, got), f"name should NOT match: {want} ~ {got}")
 
+    # adapter-path template switches (bf-01): Jais effort passed as on the native path; Qwen/Fanar switches unchanged
+    from run_v2 import prompted_kwargs
+    check(prompted_kwargs("low") == {"reasoning_effort": "low"}, "Jais effort not passed on the adapter path")
+    check(prompted_kwargs("off") == {"enable_thinking": False, "no_thinking": True}, "thinking-off switches changed")
+    check(prompted_kwargs("on") == {"enable_thinking": True, "no_thinking": False}, "thinking-on switches changed")
+
     if FAILS:
         print(f"{len(FAILS)} FAILURES:")
         for f in FAILS:

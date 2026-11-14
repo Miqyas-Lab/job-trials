@@ -1,0 +1,66 @@
+# Adapter back-fill 1 (bf-01). Pre-registered before any run. Not a Quick Trial: it completes the common-setup table.
+id: bf-01-adapter-backfill
+date_registered: 2026-11-14
+why: >
+  After cal-02 the adapter's effect is known to depend on the model (Qwen3 4B +6.3 points, Falcon-H1 7B +31.7), so a
+  model tested on one tool path only cannot be compared fairly with a model tested on the other. Decision of
+  2026-11-13: every model is run on both paths where both exist, and the common-setup table shows both paths side by
+  side. Four models in the table have been run on their own tool format only. This run adds their adapter path, and
+  repeats their own-format path in the same session so that the two columns are paired.
+models:
+  - id: jais3-3.7b
+    file: "IFM/Jais-3-3.7B-GGUF, Jais-3-3.7B-Q4_K_M.gguf (sha256 d2039e16..., results/frontdesk_v2/models_sha256.txt)"
+    own_format: "jais mode (its own template and control tokens), effort low"
+    sampling: "jais preset (temperature 0.7, top_p 0.95, top_k 20), as in Job Trial #1"
+    published_own_format: "28.6%, results/frontdesk_v2/jais3-3.7b-q4-v2-low"
+  - id: jais3-7b
+    file: "IFM/Jais-3-7B-GGUF, Jais-3-7B-Q4_K_M.gguf (sha256 a8caa7fe..., results/frontdesk_v2/models_sha256.txt)"
+    own_format: "jais mode, effort low"
+    sampling: "jais preset"
+    published_own_format: "69.8%, results/qt02/common-jais3-7b-low"
+  - id: qwen3-8b
+    file: "Qwen/Qwen3-8B-GGUF, Qwen3-8B-Q4_K_M.gguf (sha256 d98cdcbd..., results/frontdesk_v2/models_sha256.txt)"
+    own_format: "chat mode (llama.cpp parses its tool calls), thinking off"
+    sampling: "qwen-nothink preset (temperature 0.7, top_p 0.8, top_k 20, presence penalty 1.5), as in Job Trial #1"
+    published_own_format: "68.3%, results/qt02/common-qwen3-8b-off"
+  - id: fanar-2-27b
+    file: "self-converted from QCRI/Fanar-2-27B-Instruct@074005040e9c3511b1c43b4298bef09908285534, bf16 -> Q4_K_M with llama.cpp 9c9074e; must match sha256 58245364... (results/qt03/model_provenance.txt)"
+    own_format: "template mode (template-documented call format, call text kept in the history), thinking off, chat template as converted for llama.cpp in qt-03 amendment 1 (results/qt03/chat_template_llamacpp.jinja)"
+    sampling: "fanar-2 preset (temperature 0.7), as in qt-03"
+    published_own_format: "54.8%, results/qt03/fanar-2-27b-q4-qt03"
+adapter: >
+  prompted-JSON adapter (scripts/run_v2.py PromptedPolicy): tools described in the prompt, reply constrained to JSON,
+  calls kept in the history; same sampling, effort and server as the own-format path. Harness change registered with
+  this file: on the adapter path, Jais 3's effort level is passed to its template as reasoning_effort, exactly as on
+  its own-format path (before, only the Qwen/Fanar thinking switches were passed). At effort low Jais 3 wrote no
+  reasoning in Job Trial #1 (0 of 590 steps), so the JSON-only reply removes nothing it would otherwise write.
+runtime: >
+  RTX 4090, window 32768, generation cap 8192. llama.cpp 7df8b87 for Jais and Qwen (the qt-02 build); llama.cpp
+  9c9074e for Fanar (its qt-03 build, needed to reproduce the registered GGUF). Both paths of a model run in one
+  session on one build.
+setup_tested: "tool (date tool), the common setup, at each model's common-setup effort"
+split: "test, public set, 42 scenarios, 3 reps + 2 safety reps per path"
+pilot: >
+  Adapter path only, dev split, 1 rep, per model, before any test run. Checked: errors, context overflows, share of
+  replies that parse as adapter JSON, steps with reasoning, first-prompt size (new plus cached tokens). If more than
+  10% of steps fail to parse, or the first prompt is under 1,000 tokens, that model stops and an amendment is written
+  before anything else runs for it.
+measure: >
+  Per model: adapter minus own format, same session, in points of full-episode success (3 reps), with a 95% CI paired
+  by episode (bootstrap over episodes, 4,000 draws, seed 7). Also reported per path: emergencies handed over in time,
+  complaints and medical questions handed over, invented times, false confirmations, English-only replies, malformed
+  calls, median reply time.
+reproducibility_check: >
+  The own-format path repeats a published run. Its difference from the published number is reported with a paired
+  95% CI. If the CI excludes zero, the model's earlier page gets a dated note; its published numbers are not changed.
+table: >
+  The common-setup table gets two columns, own format and adapter, for every model; a model without a native tool
+  path (ALLaM 7B, SILMA 9B) shows "none" in the first column. Rows are sorted by the adapter column, the one path every
+  model has. For the four models here both columns come from this session. Qwen3 4B uses its qt-02 pair, Falcon-H1 7B
+  its cal-02 pair. No number is adjusted by the other path.
+order: "Qwen3 8B, Jais 3 3.7B, Jais 3 7B, then Fanar 2 27B (largest download and conversion last)"
+stop_rules: >
+  Oracle replay below 100%, a GGUF sha256 that differs from the registered one, a converted Fanar template that is not
+  identical to the qt-03 one, or a pilot outside the limits above: that model stops, and nothing is reported for it
+  until an amendment is merged.
+results: null   # filled after the run, from results/bf01/

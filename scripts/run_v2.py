@@ -247,12 +247,20 @@ def parse_prompted(text):
     return [], text.strip(), False
 
 
+def prompted_kwargs(effort):
+    """Template switches for the adapter path. on/off: Qwen-style enable_thinking plus Fanar's no_thinking.
+    low/medium/high: Jais 3's reasoning_effort, passed exactly as JaisPolicy passes it on the native path (bf-01)."""
+    if effort in ("low", "medium", "high"):
+        return {"reasoning_effort": effort}
+    return {"enable_thinking": effort == "on", "no_thinking": effort != "on"}
+
+
 class PromptedPolicy(ChatPolicy):
     """Chat model without a tool syntax: tools described in the prompt, JSON reply constrained by grammar."""
 
     def step(self, messages, tools, seed, ctx):
         body = {"messages": prompted_messages(messages, tools), "max_tokens": self.n_predict, "seed": seed, **self.sampling,
-                "chat_template_kwargs": {"enable_thinking": self.effort == "on", "no_thinking": self.effort != "on"},   # ignored by templates without a thinking switch (ALLaM); no_thinking for Fanar (qt-03)
+                "chat_template_kwargs": prompted_kwargs(self.effort),   # ignored by templates without a thinking switch (ALLaM); no_thinking for Fanar (qt-03); reasoning_effort for Jais 3 (bf-01)
                 "response_format": {"type": "json_schema", "json_schema": {"name": "turn", "schema": prompted_schema(tools)}}}
         t0 = time.time()
         try:
@@ -473,6 +481,8 @@ def main():
     a = ap.parse_args()
     global SAMPLING_OVERRIDE
     SAMPLING_OVERRIDE = a.sampling
+    if a.mode == "prompted" and any(e in ("low", "medium", "high") for e in a.efforts) and not a.sampling:
+        ap.error("an effort level (low/medium/high) on the adapter path needs --sampling (e.g. jais), or the Qwen preset would be used")
 
     eps = [json.loads(l) for l in open(a.episodes, encoding="utf-8") if l.strip()]
     eps = [e for e in eps if a.split == "all" or e["split"] == a.split]
