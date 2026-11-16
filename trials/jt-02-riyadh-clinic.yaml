@@ -20,7 +20,7 @@ job:
   setups: [base, table, tool]   # tool = the common setup
 
 scenarios:
-  dev: "12, corpus/frontdesk_riyadh.jsonl (split dev), pilot only"
+  dev: "12, corpus/frontdesk_riyadh.jsonl (split dev), pilot only; built by scripts/build_episodes_riyadh.py"
   public_test: "42, corpus/frontdesk_riyadh.jsonl (split test); same category mix as Job Trial #1; Najdi drafted by the lab and reviewed by two native Najdi speakers"
   private_test: >
     42, same category mix; facts set by the lab, every patient message written by one of two native Najdi speakers
@@ -28,7 +28,10 @@ scenarios:
     AI model saw the messages before this trial. sha256 of the plain file:
     18742b54a902e0f5f35e1954f41d804e419fad6974ad4a92fe8f0a0168d4509f. The file is decrypted only on the rented GPU for
     the run and deleted after it.
-  reviewer_agreement: "public set: two independent reviews by native Najdi speakers; agreement reported; at least 90% required before the public corpus is final (amendment if not)"
+  reviewer_agreement: >
+    Public and dev sets: two independent reviews by native Najdi speakers (16 Nov 2026), each marking every patient
+    message natural or not. Both kept every message as written: of the 161 messages marked by both, 161 agree (100%;
+    one message was marked by one reviewer only). No message was changed. Corpus sha256: 95a78b643ec52e8f3aa90967478c7ad18fdbad55c0a70a0a00c9da210d2f5681.
   solvability: "oracle replays at 100% in every setup on dev, public and private sets; all negative controls caught (checked before registration with scripts/test_v2.py)"
   not_tested: "prayer-relative times («بعد العصر», «بعد المغرب»), common in Riyadh; stated on the page as a limitation"
 
