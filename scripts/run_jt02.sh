@@ -86,7 +86,7 @@ setup)
   build "$LL_L" 8642541 "llama-quantize"
   convert "$LL_F" QCRI/Fanar-2-27B-Instruct 074005040e9c3511b1c43b4298bef09908285534 bf16 Fanar-2-27B-Instruct-Q4_K_M.gguf
   convert "$LL_A" silma-ai/SILMA-9B-Instruct-v1.0 d8f4d2b11a71e10f4231d38f0a343ee49715f392 bf16 SILMA-9B-Instruct-v1.0-Q4_K_M.gguf
-  convert "$LL_L" ALLaM-AI/ALLaM-7B-Instruct-preview 9c52c12c398b9184511520814d1a44c88f2cc5a9 f16 ALLaM-7B-Instruct-preview-Q4_K_M.gguf
+  convert "$LL_L" humain-ai/ALLaM-7B-Instruct-preview "" f16 ALLaM-7B-Instruct-preview-Q4_K_M.gguf
   for row in "IFM/Jais-3-7B-GGUF Jais-3-7B-Q4_K_M.gguf" "IFM/Jais-3-3.7B-GGUF Jais-3-3.7B-Q4_K_M.gguf" \
              "Qwen/Qwen3-8B-GGUF Qwen3-8B-Q4_K_M.gguf" "Qwen/Qwen3-4B-GGUF Qwen3-4B-Q4_K_M.gguf" \
              "tiiuae/Falcon-H1-7B-Instruct-GGUF Falcon-H1-7B-Instruct-Q4_K_M.gguf"; do
