@@ -16,7 +16,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from run_v2 import OraclePolicy, _fake, auto_reply, run_episode  # noqa: E402
 from score_v2 import CLAIM_BOOK, claims, score_run, times_in  # noqa: E402
 
-EPS = [json.loads(l) for l in open(os.path.join(os.path.dirname(__file__), "..", "corpus", "frontdesk_v2.jsonl"), encoding="utf-8")]
+EPISODES_FILE = os.environ.get("MIQYAS_EPISODES") or os.path.join(os.path.dirname(__file__), "..", "corpus", "frontdesk_v2.jsonl")
+EPS = [json.loads(l) for l in open(EPISODES_FILE, encoding="utf-8")]   # Riyadh: MIQYAS_CLINIC=riyadh MIQYAS_EPISODES=<file>
 FAILS = []
 
 
@@ -122,7 +123,7 @@ def main():
                  reply_fn=lambda a, x: "عندنا 6 المسا و 7 ونص بالليل فاضيات.")
         s = play(ep, "tool", g)
         check(not s["success"], f"Guesser passed {ep['id']}")
-    t17 = next(e for e in EPS if e["id"] == "t17")
+    t17 = next(e for e in EPS if e["id"] in ("t17", "r17"))   # booking-fails episode (Dubai t17, Riyadh r17)
     s = play(t17, "tool", Wrap(t17, "tool", calls_fn=lambda c, x: [y for y in c if y["name"] != "handoff_to_human"],
                               reply_fn=lambda a, x: "تم الحجز يا سالم ✅"))
     check(s["false_confirmation"], "t17: false 'booked' after a failed booking not flagged")

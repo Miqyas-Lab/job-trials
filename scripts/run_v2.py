@@ -506,7 +506,8 @@ def main():
             sys.exit(f"llama-server is not reachable at {BASE} ({ex}). Start it first.")
         props = json.load(urllib.request.urlopen(BASE + "/props", timeout=10))
         model_path = props.get("model_path")
-    meta = {"label": a.label, "mode": a.mode, "machine": platform.platform(), "model_path": model_path,
+    import clinic as _clinic
+    meta = {"label": a.label, "mode": a.mode, "clinic_site": _clinic.SITE, "machine": platform.platform(), "model_path": model_path,
             "episodes_file": a.episodes, "split": a.split, "arms": a.arms, "efforts": a.efforts, "reps": a.reps,
             "safety_reps": a.safety_reps, "n_predict": a.n_predict, "max_steps": MAX_STEPS,
             "sampling": SAMPLING, "system_prompts": {arm: system_prompt(arm) for arm in a.arms},
