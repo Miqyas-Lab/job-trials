@@ -1,0 +1,94 @@
+# Job Trial #2: clinic front desk, Riyadh (Najdi). Pre-registered before any model is run on these scenarios.
+# Two stages, both registered here: stage 1 a Quick Trial (numbers only) of eight models; stage 2 a full Job Trial
+# (verdicts) of the two models that lead stage 1 on the private set, chosen by the rule below.
+id: jt-02-riyadh-clinic
+type: job-trial (stage 1 published as a quick-trial, numbers only, no verdict)
+date_registered: 2026-11-16
+question: «هل يقدر نموذج عربي مفتوح يدير استقبال عيادة أسنان في الرياض، مع مرضى يكتبون بالنجدي؟»
+why: >
+  Job Trial #1 put the clinic in Dubai, with Gulf (Emirati) patient messages, and every trial since has used its
+  public scenarios. This trial moves the same job to Riyadh and to Najdi, and adds the lab's first private held-out
+  set, written by native Najdi speakers and never published, so a model cannot have seen it. Same job, tools, rules
+  and scoring as Job Trial #1, so each model's Dubai and Riyadh numbers can be read side by side.
+
+job:
+  description: WhatsApp front desk of a dental clinic in Riyadh (fictional clinic "ابتسامة")
+  harness: "scripts/clinic.py with MIQYAS_CLINIC=riyadh (same clinic as Job Trial #1; Riyadh opening hours Sun-Thu 14:00-22:00, Sat 11:00-19:00, Fri closed; city in the prompt). Dubai unchanged."
+  clock: "Thursday 5 Nov 2026, 15:30 (tomorrow is Friday, closed; Saturday is the only day with morning hours)"
+  tools: [check_availability, book_appointment, list_my_appointments, cancel_appointment, handoff_to_human, find_date (tool setup only)]
+  scoring: "scripts/score_v2.py, unchanged except the allowed-times list follows the site (Riyadh opening hours); state-based: success, critical failures (invented time, false confirmation, cap or loop, silent turn), emergencies handed over in time, complaints and medical questions handed over"
+  setups: [base, table, tool]   # tool = the common setup
+
+scenarios:
+  dev: "12, corpus/frontdesk_riyadh.jsonl (split dev), pilot only"
+  public_test: "42, corpus/frontdesk_riyadh.jsonl (split test); same category mix as Job Trial #1; Najdi drafted by the lab and reviewed by two native Najdi speakers"
+  private_test: >
+    42, same category mix; facts set by the lab, every patient message written by one of two native Najdi speakers
+    (volunteers, not named) and checked by the other; read, checked and encrypted on the founder's own machine, so no
+    AI model saw the messages before this trial. sha256 of the plain file:
+    18742b54a902e0f5f35e1954f41d804e419fad6974ad4a92fe8f0a0168d4509f. The file is decrypted only on the rented GPU for
+    the run and deleted after it.
+  reviewer_agreement: "public set: two independent reviews by native Najdi speakers; agreement reported; at least 90% required before the public corpus is final (amendment if not)"
+  solvability: "oracle replays at 100% in every setup on dev, public and private sets; all negative controls caught (checked before registration with scripts/test_v2.py)"
+  not_tested: "prayer-relative times («بعد العصر», «بعد المغرب»), common in Riyadh; stated on the page as a limitation"
+
+models:   # the eight models of the common-setup table; both tool paths where both exist (decision of 13 Nov)
+  - {id: jais3-7b, file: "IFM/Jais-3-7B-GGUF Jais-3-7B-Q4_K_M.gguf, sha256 a8caa7fecf38d064f216f66d3d59641c1fbefdca9756af0703f4a872ab852eeb", own_format: "jais mode, effort low", adapter: "prompted, effort low", sampling: "jais preset: temperature 0.7, top_p 0.95, top_k 20 (Jais 3 card), as in Job Trial #1"}
+  - {id: jais3-3.7b, file: "IFM/Jais-3-3.7B-GGUF Jais-3-3.7B-Q4_K_M.gguf, sha256 d2039e169049f0646f79bc27aec82ffc0842ff9af1bf75bfc16628929636e09a", own_format: "jais mode, effort low", adapter: "prompted, effort low", sampling: "jais preset, as in Job Trial #1"}
+  - {id: qwen3-8b, file: "Qwen/Qwen3-8B-GGUF Qwen3-8B-Q4_K_M.gguf, sha256 d98cdcbd03e17ce47681435b5150e34c1417f50b5c0019dd560e4882c5745785", own_format: "chat mode, thinking off", adapter: "prompted, thinking off", sampling: "qwen-nothink: temperature 0.7, top_p 0.8, top_k 20, presence penalty 1.5 (Qwen3 card, non-thinking), as in Job Trial #1"}
+  - {id: qwen3-4b, file: "Qwen/Qwen3-4B-GGUF Qwen3-4B-Q4_K_M.gguf, sha256 7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5", own_format: "chat mode, thinking off", adapter: "prompted, thinking off", sampling: "qwen-nothink, as in Job Trial #1"}
+  - {id: falcon-h1-7b, file: "tiiuae/Falcon-H1-7B-Instruct-GGUF Falcon-H1-7B-Instruct-Q4_K_M.gguf, sha256 145def0b4cd36500bf538ed7ac895b5c1851e02e802b2d1c12ffa6afdbaff25d", own_format: "template mode, call text kept in the history (qt-02 re-run fix)", adapter: "prompted", sampling: "falcon-h1: temperature 0.1 (TII README), as in qt-02"}
+  - {id: fanar-2-27b, file: "self-converted from QCRI/Fanar-2-27B-Instruct@074005040e9c3511b1c43b4298bef09908285534 with llama.cpp 9c9074e, sha256 582453644729b1e1d69cdbc7b37722a06f6ed87b09b135c23468df0591520c00", own_format: "template mode, thinking off, llama.cpp template from qt-03 amendment 1", adapter: "prompted, thinking off", sampling: "fanar-2: temperature 0.7 (README example), as in qt-03"}
+  - {id: allam-7b, file: "self-converted from ALLaM-AI/ALLaM-7B-Instruct-preview@9c52c12c398b9184511520814d1a44c88f2cc5a9 with llama.cpp 8642541, sha256 858e7d3f8573548a79810d96f6164d48d2c6415d4822b5d9b39f5864a42a8544", own_format: "none (template has no tool support)", adapter: "prompted", sampling: "allam: temperature 0.6, top_k 50, top_p 0.95 (model card), as in qt-01"}
+  - {id: silma-9b, file: "self-converted from silma-ai/SILMA-9B-Instruct-v1.0@d8f4d2b11a71e10f4231d38f0a343ee49715f392, sha256 71bf624f9277bb7d7c2c69f1c26fc1ed50d6940d8c3de847c0219bbd67c08198", own_format: "none (template has no tool support)", adapter: "prompted", sampling: "silma-greedy: greedy, as the card's main examples decode (qt-04 amendment 4)"}
+
+runtime: >
+  RTX 4090 on RunPod. llama.cpp 7df8b87 for every model except Fanar 2 27B (9c9074e, its registered build, as in
+  bf-01). Window 32768 and generation cap 8192, except ALLaM 7B (window and cap 4,096, its context; a request that no
+  longer fits is a failure flagged "context", reported separately, as in qt-01) and SILMA 9B (window 8,192, cap 4,096,
+  as in qt-04). Every GGUF is checked against its sha256 before use; a mismatch stops that model.
+
+pilot: >
+  Dev split, 1 rep, tool setup, every model and path, before any test run. Limits per path: 0 errors; not more than
+  10% of steps unparsed on the adapter path; first prompt at least 1,000 tokens (new plus cached); Riyadh hours in the
+  prompt (checked in the stored prompt). A path outside the limits stops, and an amendment is merged before its test.
+
+stage_1:
+  name: Quick Trial, numbers only, no verdict
+  runs: "every model and path, three setups, public and private test sets, 3 reps + 2 safety reps per scenario"
+  measure: >
+    Success over 42 scenarios x 3 reps per set, setup and path, with a 95% CI from a cluster bootstrap over episodes
+    (4,000 draws, seed 7); pass^3; emergencies handed over in time; complaints and medical questions handed over;
+    critical failures as counts; median and p90 reply time on the RTX 4090. Public and private shown side by side; a
+    model much stronger on public than private is flagged as a possible sign of contamination, never accused.
+    Each model's Dubai common-setup number is shown next to its Riyadh number, labelled as different sessions.
+  publish: "page, results.json, scorecard; raw conversations of the public set in full; for the private set, per-scenario scores and categories only (raw messages stay private so the set stays held out)"
+
+stage_2:
+  name: Full Job Trial (verdicts) for two models
+  selection: >
+    The two models with the highest private-set success in the tool setup, each at its better path; ties broken by
+    public-set success in the tool setup, then by fewer critical failures. Fixed now, before any result exists.
+  adds: >
+    Hand review of every automatic critical flag (confirmed and cleared counts); a blind audit of at least 30
+    conversations per model by the two native Najdi reviewers, graded without knowing model, setup or scorer verdict,
+    at least 90% agreement with the scorer on success; a reproduction run (same seeds, fresh server) reported as the
+    share of identical outcomes; the hardware ladder: floor (2020 Intel laptop, 8 GB), middle (Apple-silicon Mac),
+    ceiling (RTX 4090), direct runs or "does not fit".
+  verdict: "per Job Trial Standard R8: one of the three fixed verdicts per model, per sub-task, on named hardware, stated once after the evidence"
+  publish: "the Job Trial publication set (R9), with the private-set exception above disclosed"
+
+deviations_from_standard:
+  - "R9 asks for raw interactions in full: the private set's raw conversations are not published (it must stay held out); its sha256, per-scenario scores and categories are, and an independent auditor can read them under confidentiality."
+
+stop_rules: >
+  Oracle replay below 100% in any setup, a GGUF sha256 mismatch, a private file whose sha256 differs from the one
+  above, a converted template that differs from its registered copy, or a pilot outside the limits: that model or set
+  stops, and nothing is reported for it until an amendment is merged. Reviewer agreement under 90% on the public set:
+  the public set is revised by amendment before any test run.
+
+disclosure: >
+  Patient messages of the private set by two native Najdi speakers (volunteers, not named); public set drafted by the
+  lab and reviewed by them; the author is not a Najdi speaker; licences of models and corpus; independence page.
+
+results: null
