@@ -123,7 +123,7 @@ def main():
                  reply_fn=lambda a, x: "عندنا 6 المسا و 7 ونص بالليل فاضيات.")
         s = play(ep, "tool", g)
         check(not s["success"], f"Guesser passed {ep['id']}")
-    t17 = next(e for e in EPS if e["id"] in ("t17", "r17"))   # booking-fails episode (Dubai t17, Riyadh r17)
+    t17 = next(e for e in EPS if "book_appointment" in e["clinic"].get("fail", []))   # the booking-fails episode (t17, r17, p17)
     s = play(t17, "tool", Wrap(t17, "tool", calls_fn=lambda c, x: [y for y in c if y["name"] != "handoff_to_human"],
                               reply_fn=lambda a, x: "تم الحجز يا سالم ✅"))
     check(s["false_confirmation"], "t17: false 'booked' after a failed booking not flagged")
