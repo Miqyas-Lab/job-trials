@@ -13,7 +13,12 @@ import datetime as dt
 import hashlib
 import json
 
-NOW = dt.datetime(2026, 11, 5, 15, 30)          # Thursday 5 Nov 2026, 3:30 pm (Dubai)
+import os
+
+SITE = os.environ.get("MIQYAS_CLINIC", "dubai")  # "dubai" (Job Trial #1) or "riyadh" (Riyadh clinic job, Najdi)
+if SITE not in ("dubai", "riyadh"):
+    raise SystemExit(f"MIQYAS_CLINIC must be dubai or riyadh, not {SITE!r}")
+NOW = dt.datetime(2026, 11, 5, 15, 30)          # Thursday 5 Nov 2026, 3:30 pm (local time at either site)
 WEEKDAYS_EN = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 WEEKDAYS_AR = ["الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت", "الأحد"]
 SERVICES = ["checkup", "cleaning", "filling", "orthodontics", "whitening"]
@@ -25,8 +30,10 @@ HORIZON_DAYS = 30                               # bookings open up to 30 days ah
 def hours(date):
     """Opening hours (open_min, close_min) or None if closed."""
     wd = date.weekday()                         # Mon=0 … Sun=6
-    if wd == 4:                                 # Friday
+    if wd == 4:                                 # Friday: closed at both sites
         return None
+    if SITE == "riyadh":                        # evening-heavy, as many Riyadh dental clinics
+        return (11 * 60, 19 * 60) if wd == 5 else (14 * 60, 22 * 60)
     if wd == 5:                                 # Saturday
         return (10 * 60, 16 * 60)
     return (9 * 60, 21 * 60)                    # Sun–Thu
@@ -255,10 +262,18 @@ def date_table():
     return "\n".join(rows)
 
 
-PROMPT_HEAD = """أنت موظف الاستقبال الرقمي لعيادة "ابتسامة" لطب الأسنان في دبي، وتردّ على رسائل واتساب.
+PROMPT_HEADS = {
+    "dubai": """أنت موظف الاستقبال الرقمي لعيادة "ابتسامة" لطب الأسنان في دبي، وتردّ على رسائل واتساب.
 الآن: الخميس 2026-11-05، الساعة 3:30 عصرًا.
 ساعات العمل: الأحد إلى الخميس من 9 صباحًا إلى 9 مساءً. السبت من 10 صباحًا إلى 4 عصرًا. الجمعة مغلق.
-الخدمات: فحص عام (checkup)، تنظيف (cleaning)، حشوة (filling)، تقويم (orthodontics)، تبييض (whitening)."""
+الخدمات: فحص عام (checkup)، تنظيف (cleaning)، حشوة (filling)، تقويم (orthodontics)، تبييض (whitening).""",
+    # Riyadh: same clinic text with the city and hours changed (job design v0.1); wording to be checked by the reviewers
+    "riyadh": """أنت موظف الاستقبال الرقمي لعيادة "ابتسامة" لطب الأسنان في الرياض، وتردّ على رسائل واتساب.
+الآن: الخميس 2026-11-05، الساعة 3:30 عصرًا.
+ساعات العمل: الأحد إلى الخميس من 2 ظهرًا إلى 10 مساءً. السبت من 11 صباحًا إلى 7 مساءً. الجمعة مغلق.
+الخدمات: فحص عام (checkup)، تنظيف (cleaning)، حشوة (filling)، تقويم (orthodontics)، تبييض (whitening).""",
+}
+PROMPT_HEAD = PROMPT_HEADS[SITE]
 
 DATE_HELP = {
     "base": "",

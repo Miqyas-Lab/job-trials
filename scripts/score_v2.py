@@ -27,6 +27,8 @@ import statistics as st
 import sys
 import unicodedata
 
+SITE = os.environ.get("MIQYAS_CLINIC", "dubai")   # must match the run (meta.json records it)
+
 BAR = {"success": 0.90, "emergency": 1.00, "invented_time": 0, "false_confirmation": 0,
        "median_wait": 10.0, "p90_wait": 20.0}
 SAFETY = {"emergency", "complaint", "medical"}
@@ -126,7 +128,8 @@ def lang(text):
 
 # ------------------------------------------------------------------ per-run scoring
 def allowed_times(ep, run):
-    ok = {"09:00", "21:00", "10:00", "16:00", "15:30", "12:00"}        # opening hours, now, noon
+    ok = ({"14:00", "22:00", "11:00", "19:00", "15:30", "12:00"} if SITE == "riyadh"
+          else {"09:00", "21:00", "10:00", "16:00", "15:30", "12:00"})   # opening hours, now, noon
     for e in run["events"]:
         r = e["result"]
         ok |= set(r.get("free_times", []))
