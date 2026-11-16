@@ -47,9 +47,16 @@ build () {   # $1 dir  $2 commit  $3 targets
     -DCMAKE_CUDA_ARCHITECTURES=native && cmake --build build -j 16 --target $3) || { echo "STOP: llama.cpp $2 did not build (see the lines above)"; exit 1; }
 }
 
-convert () {   # $1 llama dir  $2 repo  $3 revision ("" = latest)  $4 outtype  $5 gguf name
-  [ -f "models/gpu/$5" ] && return 0
-  local hf="models/hf/${5%.gguf}" rev=""
+sha_ok () {   # $1 gguf name: true if the file exists and matches its registered sha256
+  [ -f "models/gpu/$1" ] && echo "$SHAS" | grep " models/gpu/$1\$" | sha256sum -c --status - 2>/dev/null
+}
+
+convert () {   # $1 llama dir  $2 repo  $3 revision ("" = latest)  $4 outtype  $5 gguf name  $6 download folder name
+  # $6 must be the folder name of the registered conversion: the converter writes the folder name into the file's
+  # metadata (general.name, basename, size label), so another name gives a different sha256 (amendment 3)
+  sha_ok "$5" && return 0
+  rm -f "models/gpu/$5"
+  local hf="models/hf/$6" rev=""
   [ -n "$3" ] && rev="--revision $3"
   pip install -q -r "$1/requirements/requirements-convert_hf_to_gguf.txt" 2>/dev/null || pip install -q gguf sentencepiece safetensors transformers
   hf download "$2" $rev --local-dir "$hf" >/dev/null || { echo "DOWNLOAD FAILED: $2"; exit 1; }
@@ -84,9 +91,9 @@ setup)
   build "$LL_A" 7df8b87 "llama-server llama-quantize"
   build "$LL_F" 9c9074e "llama-server llama-quantize"
   build "$LL_L" 8642541 "llama-quantize"
-  convert "$LL_F" QCRI/Fanar-2-27B-Instruct 074005040e9c3511b1c43b4298bef09908285534 bf16 Fanar-2-27B-Instruct-Q4_K_M.gguf
-  convert "$LL_A" silma-ai/SILMA-9B-Instruct-v1.0 d8f4d2b11a71e10f4231d38f0a343ee49715f392 bf16 SILMA-9B-Instruct-v1.0-Q4_K_M.gguf
-  convert "$LL_L" humain-ai/ALLaM-7B-Instruct-preview "" f16 ALLaM-7B-Instruct-preview-Q4_K_M.gguf
+  convert "$LL_F" QCRI/Fanar-2-27B-Instruct 074005040e9c3511b1c43b4298bef09908285534 bf16 Fanar-2-27B-Instruct-Q4_K_M.gguf fanar-2-27b
+  convert "$LL_A" silma-ai/SILMA-9B-Instruct-v1.0 d8f4d2b11a71e10f4231d38f0a343ee49715f392 bf16 SILMA-9B-Instruct-v1.0-Q4_K_M.gguf silma-9b
+  convert "$LL_L" humain-ai/ALLaM-7B-Instruct-preview "" f16 ALLaM-7B-Instruct-preview-Q4_K_M.gguf allam-7b
   for row in "IFM/Jais-3-7B-GGUF Jais-3-7B-Q4_K_M.gguf" "IFM/Jais-3-3.7B-GGUF Jais-3-3.7B-Q4_K_M.gguf" \
              "Qwen/Qwen3-8B-GGUF Qwen3-8B-Q4_K_M.gguf" "Qwen/Qwen3-4B-GGUF Qwen3-4B-Q4_K_M.gguf" \
              "tiiuae/Falcon-H1-7B-Instruct-GGUF Falcon-H1-7B-Instruct-Q4_K_M.gguf"; do

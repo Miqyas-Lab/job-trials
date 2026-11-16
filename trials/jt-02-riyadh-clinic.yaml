@@ -111,5 +111,13 @@ amendments:
       (the repository's new name) and converts them as in qt-01. The model stays pinned by the converted file's sha256,
       which must equal qt-01's (858e7d3f…); if it differs, ALLaM stops and nothing is reported for it until a further
       amendment. No other change.
+  - date: 2026-11-16
+    before_any_run: true
+    change: >
+      Self-converted models (Fanar 2 27B, SILMA 9B, ALLaM 7B): the first conversions on the rented machine did not
+      match the registered sha256. Cause: the converter writes the download folder's name into the file's metadata
+      (model name, basename, size label), and the script used new folder names. The script now uses the folder names
+      of the registered conversions (fanar-2-27b, silma-9b, allam-7b) and redoes any file whose sha256 does not match.
+      The registered sha256 values are unchanged; a model whose file still differs stops. No other change.
 
 results: null
