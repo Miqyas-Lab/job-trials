@@ -1,7 +1,7 @@
 #!/bin/bash
 # miqyas · Job Trial #2 stage 1 — Riyadh clinic (trials/jt-02-riyadh-clinic.yaml).
 # Eight models, both tool paths where both exist, three setups, public and private Riyadh sets.
-# Pod: RTX 4090, PyTorch template, DISK >= 200 GB (three self-conversions). Run every long step DETACHED:
+# Pod: RTX 4090, PyTorch template, disk >= 150 GB (conversions run first, largest first; peak about 140 GB). Run every long step DETACHED:
 #   setsid nohup bash scripts/run_jt02.sh setup  > jt02_setup.log 2>&1 < /dev/null &   (~1.5 h: 3 builds, downloads, 3 conversions)
 #   (upload the private file, see 'private' below, then)  bash scripts/run_jt02.sh private
 #   setsid nohup bash scripts/run_jt02.sh pilot  > jt02_pilot.log 2>&1 < /dev/null &   (~30 min)  -> share the PILOT CHECK lines
@@ -44,7 +44,7 @@ build () {   # $1 dir  $2 commit  $3 targets
   echo "== building llama.cpp $2 =="
   [ -d "$1" ] || git clone -q https://github.com/ggml-org/llama.cpp "$1"
   (cd "$1" && git checkout -q "$2" && cmake -B build -DGGML_CUDA=ON -DLLAMA_CURL=OFF -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_CUDA_ARCHITECTURES=native >/dev/null && cmake --build build -j 16 --target $3 >/dev/null) || exit 1
+    -DCMAKE_CUDA_ARCHITECTURES=native && cmake --build build -j 16 --target $3) || { echo "STOP: llama.cpp $2 did not build (see the lines above)"; exit 1; }
 }
 
 convert () {   # $1 llama dir  $2 repo  $3 revision ("" = latest)  $4 outtype  $5 gguf name
@@ -54,8 +54,9 @@ convert () {   # $1 llama dir  $2 repo  $3 revision ("" = latest)  $4 outtype  $
   pip install -q -r "$1/requirements/requirements-convert_hf_to_gguf.txt" 2>/dev/null || pip install -q gguf sentencepiece safetensors transformers
   hf download "$2" $rev --local-dir "$hf" >/dev/null || { echo "DOWNLOAD FAILED: $2"; exit 1; }
   python3 "$1/convert_hf_to_gguf.py" "$hf" --outtype "$4" --outfile "models/gpu/tmp-$4.gguf" || exit 1
+  rm -rf "$hf"                                  # free the download before quantizing (disk: Fanar is 54 GB twice)
   "$1/build/bin/llama-quantize" "models/gpu/tmp-$4.gguf" "models/gpu/$5" Q4_K_M >/dev/null || exit 1
-  rm -rf "models/gpu/tmp-$4.gguf" "$hf"
+  rm -f "models/gpu/tmp-$4.gguf"
 }
 
 start_server () {   # $1 build A|F  $2 gguf  $3 window  $4 template file or -
@@ -83,15 +84,15 @@ setup)
   build "$LL_A" 7df8b87 "llama-server llama-quantize"
   build "$LL_F" 9c9074e "llama-server llama-quantize"
   build "$LL_L" 8642541 "llama-quantize"
+  convert "$LL_F" QCRI/Fanar-2-27B-Instruct 074005040e9c3511b1c43b4298bef09908285534 bf16 Fanar-2-27B-Instruct-Q4_K_M.gguf
+  convert "$LL_A" silma-ai/SILMA-9B-Instruct-v1.0 d8f4d2b11a71e10f4231d38f0a343ee49715f392 bf16 SILMA-9B-Instruct-v1.0-Q4_K_M.gguf
+  convert "$LL_L" ALLaM-AI/ALLaM-7B-Instruct-preview 9c52c12c398b9184511520814d1a44c88f2cc5a9 f16 ALLaM-7B-Instruct-preview-Q4_K_M.gguf
   for row in "IFM/Jais-3-7B-GGUF Jais-3-7B-Q4_K_M.gguf" "IFM/Jais-3-3.7B-GGUF Jais-3-3.7B-Q4_K_M.gguf" \
              "Qwen/Qwen3-8B-GGUF Qwen3-8B-Q4_K_M.gguf" "Qwen/Qwen3-4B-GGUF Qwen3-4B-Q4_K_M.gguf" \
              "tiiuae/Falcon-H1-7B-Instruct-GGUF Falcon-H1-7B-Instruct-Q4_K_M.gguf"; do
     set -- $row
     [ -f "models/gpu/$2" ] || hf download "$1" "$2" --local-dir models/gpu >/dev/null || { echo "DOWNLOAD FAILED: $1/$2"; exit 1; }
   done
-  convert "$LL_L" ALLaM-AI/ALLaM-7B-Instruct-preview 9c52c12c398b9184511520814d1a44c88f2cc5a9 f16 ALLaM-7B-Instruct-preview-Q4_K_M.gguf
-  convert "$LL_A" silma-ai/SILMA-9B-Instruct-v1.0 d8f4d2b11a71e10f4231d38f0a343ee49715f392 bf16 SILMA-9B-Instruct-v1.0-Q4_K_M.gguf
-  convert "$LL_F" QCRI/Fanar-2-27B-Instruct 074005040e9c3511b1c43b4298bef09908285534 bf16 Fanar-2-27B-Instruct-Q4_K_M.gguf
   echo "$SHAS" | sha256sum -c - || { echo "STOP: a model file differs from the registered one (that model stops; amendment first)"; exit 1; }
   { for d in "$LL_A" "$LL_F" "$LL_L"; do echo "llama.cpp $(cd "$d" && git rev-parse --short HEAD)"; done
     echo "repo commit $(git rev-parse --short HEAD)"; echo "$SHAS"; } > "$OUT/model_provenance.txt"

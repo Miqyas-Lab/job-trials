@@ -94,4 +94,13 @@ disclosure: >
   Patient messages of the private set by two native Najdi speakers (volunteers, not named); public set drafted by the
   lab and reviewed by them; the author is not a Najdi speaker; licences of models and corpus; independence page.
 
+amendments:
+  - date: 2026-11-16
+    before_any_run: true
+    change: >
+      Run script only (scripts/run_jt02.sh): llama.cpp build messages now go to the log; each model download is
+      deleted before quantizing; conversions run first, largest first, then the official downloads. Reason: the
+      rented machine had 150 GB of disk, and the registered order would have peaked at about 152 GB during the Fanar 2
+      conversion. No change to scenarios, models, files, sampling, setups or scoring.
+
 results: null
