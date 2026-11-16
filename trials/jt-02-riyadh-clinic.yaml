@@ -42,7 +42,7 @@ models:   # the eight models of the common-setup table; both tool paths where bo
   - {id: qwen3-4b, file: "Qwen/Qwen3-4B-GGUF Qwen3-4B-Q4_K_M.gguf, sha256 7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5", own_format: "chat mode, thinking off", adapter: "prompted, thinking off", sampling: "qwen-nothink, as in Job Trial #1"}
   - {id: falcon-h1-7b, file: "tiiuae/Falcon-H1-7B-Instruct-GGUF Falcon-H1-7B-Instruct-Q4_K_M.gguf, sha256 145def0b4cd36500bf538ed7ac895b5c1851e02e802b2d1c12ffa6afdbaff25d", own_format: "template mode, call text kept in the history (qt-02 re-run fix)", adapter: "prompted", sampling: "falcon-h1: temperature 0.1 (TII README), as in qt-02"}
   - {id: fanar-2-27b, file: "self-converted from QCRI/Fanar-2-27B-Instruct@074005040e9c3511b1c43b4298bef09908285534 with llama.cpp 9c9074e, sha256 582453644729b1e1d69cdbc7b37722a06f6ed87b09b135c23468df0591520c00", own_format: "template mode, thinking off, llama.cpp template from qt-03 amendment 1", adapter: "prompted, thinking off", sampling: "fanar-2: temperature 0.7 (README example), as in qt-03"}
-  - {id: allam-7b, file: "self-converted from ALLaM-AI/ALLaM-7B-Instruct-preview@9c52c12c398b9184511520814d1a44c88f2cc5a9 with llama.cpp 8642541, sha256 858e7d3f8573548a79810d96f6164d48d2c6415d4822b5d9b39f5864a42a8544", own_format: "none (template has no tool support)", adapter: "prompted", sampling: "allam: temperature 0.6, top_k 50, top_p 0.95 (model card), as in qt-01"}
+  - {id: allam-7b, file: "self-converted from humain-ai/ALLaM-7B-Instruct-preview (formerly ALLaM-AI) with llama.cpp 8642541, f16 then Q4_K_M, as in qt-01; pinned by the converted file, sha256 858e7d3f8573548a79810d96f6164d48d2c6415d4822b5d9b39f5864a42a8544 (amendment 2)", own_format: "none (template has no tool support)", adapter: "prompted", sampling: "allam: temperature 0.6, top_k 50, top_p 0.95 (model card), as in qt-01"}
   - {id: silma-9b, file: "self-converted from silma-ai/SILMA-9B-Instruct-v1.0@d8f4d2b11a71e10f4231d38f0a343ee49715f392, sha256 71bf624f9277bb7d7c2c69f1c26fc1ed50d6940d8c3de847c0219bbd67c08198", own_format: "none (template has no tool support)", adapter: "prompted", sampling: "silma-greedy: greedy, as the card's main examples decode (qt-04 amendment 4)"}
 
 runtime: >
@@ -102,5 +102,14 @@ amendments:
       deleted before quantizing; conversions run first, largest first, then the official downloads. Reason: the
       rented machine had 150 GB of disk, and the registered order would have peaked at about 152 GB during the Fanar 2
       conversion. No change to scenarios, models, files, sampling, setups or scoring.
+  - date: 2026-11-16
+    before_any_run: true
+    change: >
+      ALLaM 7B: the revision written in the model list (9c52c12…) is not a revision of the model repository (the
+      download was refused: "invalid rev id"); qt-01 recorded no model revision, and that line came from its
+      provenance file by mistake. The run script now downloads the current files of humain-ai/ALLaM-7B-Instruct-preview
+      (the repository's new name) and converts them as in qt-01. The model stays pinned by the converted file's sha256,
+      which must equal qt-01's (858e7d3f…); if it differs, ALLaM stops and nothing is reported for it until a further
+      amendment. No other change.
 
 results: null
