@@ -119,5 +119,22 @@ amendments:
       (model name, basename, size label), and the script used new folder names. The script now uses the folder names
       of the registered conversions (fanar-2-27b, silma-9b, allam-7b) and redoes any file whose sha256 does not match.
       The registered sha256 values are unchanged; a model whose file still differs stops. No other change.
+  - date: 2026-11-17
+    before_any_run: false
+    before_restart: true
+    change: >
+      Stage 1 was interrupted. On 17 Nov the provider ended the rented machine and deleted its disk while the test was
+      running (repo commit 5cd1021). Kept: the 13 public-set parts that had finished and been downloaded before the
+      loss, each complete (432 runs and a scorecard). Lost and run again from the start: the Fanar 2 27B adapter path on
+      the public set (222 of 432 runs had finished; that partial part is discarded and not scored) and all 14 private-set
+      parts (they had not been downloaded; nothing from them had been looked at, and the private conversations were
+      deleted with the disk). The 15 parts left run on three machines at once (groups A, B and C in the run script),
+      each an RTX 4090 as registered, with the same model files (sha256 checked again on each machine), the same
+      llama.cpp builds, the same harness, scenarios, sampling, setups and scoring. The pilot is not repeated: it passed
+      on 16 Nov with the same files and harness; the setup self-tests run on each machine. The private file is uploaded
+      to each machine that runs private parts and deleted there at the end, as before. Run script change only: after
+      every finished part, the machine's results are saved (private results encrypted to the lab key), so a lost
+      machine costs at most the part in progress. The stage-2 selection rule is unchanged. The results page states
+      which parts ran on which machine and when.
 
 results: null

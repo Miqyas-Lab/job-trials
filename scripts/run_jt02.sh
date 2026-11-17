@@ -8,6 +8,16 @@
 #   setsid nohup bash scripts/run_jt02.sh test   > jt02_test.log  2>&1 < /dev/null &   (~15 h; resumable: finished paths are skipped)
 #   bash scripts/run_jt02.sh pack
 # Watch progress:  tail -3 jt02_test.log   or   ls results/jt02/
+#
+# RESTART (amendment 4, after the first pod was lost on 17 Nov): the 13 finished public parts are kept; the 15 parts
+# left run on three pods at once, one group each. Each pod: RTX 4090, PyTorch template, disk >= 150 GB. Per pod (G = A, B or C):
+#   setsid nohup bash scripts/run_jt02.sh setup G > jt02_setup.log 2>&1 < /dev/null &   (A, B ~1.2 h: Fanar conversion; C ~20 min)
+#   (upload the private file, see 'private' below, then)  bash scripts/run_jt02.sh private G
+#   setsid nohup bash scripts/run_jt02.sh test G  > jt02_test.log  2>&1 < /dev/null &   (A ~6 h, B ~5 h, C ~4 h)
+#   bash scripts/run_jt02.sh pack G
+# After EVERY finished part the two result files for the group are rewritten (jt02_results_G.tar.gz and
+# jt02_private_results_G.tar.gz.age), so downloading them at any time keeps everything finished so far. No pilot:
+# the pilot passed on 16 Nov with the same model files (sha256 checked again by setup) and the same harness.
 set -u
 cd "$(dirname "$0")/.."
 exec 9> /tmp/run_jt02.lock
@@ -18,6 +28,17 @@ PUB="corpus/frontdesk_riyadh.jsonl"
 PRIV="private/riyadh_private_test.jsonl"
 PRIV_SHA="18742b54a902e0f5f35e1954f41d804e419fad6974ad4a92fe8f0a0168d4509f"
 LAB_AGE_KEY="age1r8nur5l2rr624ck8mu08e7qdndkwct8rj0z8ml8kcc083kq0rpaspjsc4q"
+G="${2:-}"; SUF=""; PARTS=""   # group of the restart (amendment 4); empty = every part, as first registered
+case "$G" in
+  "") ;;
+  A) PARTS="fanar-2-27b-prompted-public fanar-2-27b-template-private" ;;
+  B) PARTS="fanar-2-27b-prompted-private silma-9b-prompted-private allam-7b-prompted-private" ;;
+  C) PARTS="jais3-7b-jais-private jais3-7b-prompted-private jais3-3.7b-jais-private jais3-3.7b-prompted-private qwen3-8b-chat-private qwen3-8b-prompted-private qwen3-4b-chat-private qwen3-4b-prompted-private falcon-h1-7b-template-private falcon-h1-7b-prompted-private" ;;
+  *) echo "group must be A, B or C"; exit 2 ;;
+esac
+[ -n "$G" ] && SUF="_$G"
+wants () { [ -z "$PARTS" ] || [[ " $PARTS " == *" $1 "* ]]; }          # $1 part label
+needs () { [ -z "$PARTS" ] || [[ " $PARTS " == *" $1-"* ]]; }          # $1 model key
 LL_A="$HOME/llama.cpp-7df8b87"; LL_F="$HOME/llama.cpp-9c9074e"; LL_L="$HOME/llama.cpp-8642541"
 # key | gguf | build | own-format mode ("-" = none) | effort | sampling | window | cap | chat template file ("-" = model's own)
 MODELS=(
@@ -80,6 +101,21 @@ selftest () {   # $1 name  $2 site  $3 episodes file ("" = Job Trial #1 corpus);
     *) echo "STOP: self-test $1 failed (scenario ids: $(MIQYAS_CLINIC="$2" MIQYAS_EPISODES="$3" python3 scripts/test_v2.py 2>&1 | grep -o 'failed [a-z0-9]*' | sort -u | tr '\n' ' '))"; return 1;; esac
 }
 
+snapshot () {   # rewrite this pod's two result files: public results as they are, private results encrypted to the lab key
+  mkdir -p "$OUT" "$POUT"
+  tar czf "jt02_results$SUF.tar.gz.tmp" "$OUT" && mv "jt02_results$SUF.tar.gz.tmp" "jt02_results$SUF.tar.gz"
+  python3 - "$POUT" "$LAB_AGE_KEY" "jt02_private_results$SUF.tar.gz.age" <<'PY'
+import io, os, sys, tarfile
+from pyrage import encrypt, x25519
+buf = io.BytesIO()
+with tarfile.open(fileobj=buf, mode="w:gz") as t:
+    t.add(sys.argv[1], arcname="private_results")
+open(sys.argv[3] + ".tmp", "wb").write(encrypt(buf.getvalue(), [x25519.Recipient.from_str(sys.argv[2])]))
+os.replace(sys.argv[3] + ".tmp", sys.argv[3])
+PY
+  echo "saved: jt02_results$SUF.tar.gz and jt02_private_results$SUF.tar.gz.age (private part encrypted to the lab key)"
+}
+
 paths_of () {   # $1 own-format mode -> the paths to run
   if [ "$1" = "-" ]; then echo "prompted"; else echo "$1 prompted"; fi
 }
@@ -88,31 +124,36 @@ case "${1:-}" in
 setup)
   pip install -q -U cmake huggingface_hub pyrage
   mkdir -p models/gpu "$OUT" private; df -h . | tail -1
-  build "$LL_A" 7df8b87 "llama-server llama-quantize"
-  build "$LL_F" 9c9074e "llama-server llama-quantize"
-  build "$LL_L" 8642541 "llama-quantize"
-  convert "$LL_F" QCRI/Fanar-2-27B-Instruct 074005040e9c3511b1c43b4298bef09908285534 bf16 Fanar-2-27B-Instruct-Q4_K_M.gguf fanar-2-27b
-  convert "$LL_A" silma-ai/SILMA-9B-Instruct-v1.0 d8f4d2b11a71e10f4231d38f0a343ee49715f392 bf16 SILMA-9B-Instruct-v1.0-Q4_K_M.gguf silma-9b
-  convert "$LL_L" humain-ai/ALLaM-7B-Instruct-preview "" f16 ALLaM-7B-Instruct-preview-Q4_K_M.gguf allam-7b
-  for row in "IFM/Jais-3-7B-GGUF Jais-3-7B-Q4_K_M.gguf" "IFM/Jais-3-3.7B-GGUF Jais-3-3.7B-Q4_K_M.gguf" \
-             "Qwen/Qwen3-8B-GGUF Qwen3-8B-Q4_K_M.gguf" "Qwen/Qwen3-4B-GGUF Qwen3-4B-Q4_K_M.gguf" \
-             "tiiuae/Falcon-H1-7B-Instruct-GGUF Falcon-H1-7B-Instruct-Q4_K_M.gguf"; do
+  NEED=""; for row in "${MODELS[@]}"; do IFS='|' read -r key gguf _ <<< "$row"; needs "$key" && NEED="$NEED $gguf"; done
+  BUILT=""
+  if needs fanar-2-27b; then build "$LL_F" 9c9074e "llama-server llama-quantize"; BUILT="$BUILT $LL_F"; fi
+  if [ -n "$(echo "$NEED" | tr ' ' '\n' | grep -v '^Fanar' | grep .)" ]; then build "$LL_A" 7df8b87 "llama-server llama-quantize"; BUILT="$BUILT $LL_A"; fi
+  if needs allam-7b; then build "$LL_L" 8642541 "llama-quantize"; BUILT="$BUILT $LL_L"; fi
+  needs fanar-2-27b && convert "$LL_F" QCRI/Fanar-2-27B-Instruct 074005040e9c3511b1c43b4298bef09908285534 bf16 Fanar-2-27B-Instruct-Q4_K_M.gguf fanar-2-27b
+  needs silma-9b && convert "$LL_A" silma-ai/SILMA-9B-Instruct-v1.0 d8f4d2b11a71e10f4231d38f0a343ee49715f392 bf16 SILMA-9B-Instruct-v1.0-Q4_K_M.gguf silma-9b
+  needs allam-7b && convert "$LL_L" humain-ai/ALLaM-7B-Instruct-preview "" f16 ALLaM-7B-Instruct-preview-Q4_K_M.gguf allam-7b
+  for row in "jais3-7b IFM/Jais-3-7B-GGUF Jais-3-7B-Q4_K_M.gguf" "jais3-3.7b IFM/Jais-3-3.7B-GGUF Jais-3-3.7B-Q4_K_M.gguf" \
+             "qwen3-8b Qwen/Qwen3-8B-GGUF Qwen3-8B-Q4_K_M.gguf" "qwen3-4b Qwen/Qwen3-4B-GGUF Qwen3-4B-Q4_K_M.gguf" \
+             "falcon-h1-7b tiiuae/Falcon-H1-7B-Instruct-GGUF Falcon-H1-7B-Instruct-Q4_K_M.gguf"; do
     set -- $row
-    [ -f "models/gpu/$2" ] || hf download "$1" "$2" --local-dir models/gpu >/dev/null || { echo "DOWNLOAD FAILED: $1/$2"; exit 1; }
+    needs "$1" || continue
+    [ -f "models/gpu/$3" ] || hf download "$2" "$3" --local-dir models/gpu >/dev/null || { echo "DOWNLOAD FAILED: $2/$3"; exit 1; }
   done
-  echo "$SHAS" | sha256sum -c - || { echo "STOP: a model file differs from the registered one (that model stops; amendment first)"; exit 1; }
-  { for d in "$LL_A" "$LL_F" "$LL_L"; do echo "llama.cpp $(cd "$d" && git rev-parse --short HEAD)"; done
-    echo "repo commit $(git rev-parse --short HEAD)"; echo "$SHAS"; } > "$OUT/model_provenance.txt"
-  nvidia-smi --query-gpu=name,memory.total --format=csv,noheader | tee "$OUT/gpu.txt"
+  MYSHAS=$(for f in $NEED; do echo "$SHAS" | grep " models/gpu/$f\$"; done)
+  echo "$MYSHAS" | sha256sum -c - || { echo "STOP: a model file differs from the registered one (that model stops; amendment first)"; exit 1; }
+  { for d in $BUILT; do echo "llama.cpp $(cd "$d" && git rev-parse --short HEAD)"; done
+    echo "repo commit $(git rev-parse --short HEAD)"; echo "group ${G:-all}"; echo "$MYSHAS"; } > "$OUT/model_provenance$SUF.txt"
+  nvidia-smi --query-gpu=name,memory.total --format=csv,noheader | tee "$OUT/gpu$SUF.txt"
   selftest "Dubai (Job Trial #1)" dubai "" || exit 1
   selftest "Riyadh public and dev" riyadh "$PUB" || exit 1
-  echo "SETUP OK — next: upload the private file to $PRIV (see 'private'), then: bash scripts/run_jt02.sh private"
+  echo "SETUP OK — next: upload the private file to $PRIV (see 'private'), then: bash scripts/run_jt02.sh private $G"
   ;;
 private)   # the founder uploads the decrypted private file to private/ (JupyterLab upload); this checks it
   [ -f "$PRIV" ] || { echo "Upload riyadh_private_test.jsonl into the folder 'private' first."; exit 1; }
   echo "$PRIV_SHA  $PRIV" | sha256sum -c - || { echo "STOP: the private file differs from the registered one"; exit 1; }
   selftest "Riyadh private" riyadh "$PRIV" || exit 1
-  echo "PRIVATE OK — next: setsid nohup bash scripts/run_jt02.sh pilot > jt02_pilot.log 2>&1 < /dev/null &"
+  if [ -n "$G" ]; then echo "PRIVATE OK — next: setsid nohup bash scripts/run_jt02.sh test $G > jt02_test.log 2>&1 < /dev/null &"
+  else echo "PRIVATE OK — next: setsid nohup bash scripts/run_jt02.sh pilot > jt02_pilot.log 2>&1 < /dev/null &"; fi
   ;;
 pilot)
   for row in "${MODELS[@]}"; do
@@ -147,6 +188,7 @@ test)
       for set in public private; do
         if [ "$set" = public ]; then root="$OUT"; eps="$PUB"; else root="$POUT"; eps="$PRIV"; fi
         lab="$key-$p-$set"
+        wants "$lab" || continue
         [ -f "$root/$lab/scorecard.txt" ] && { echo "skip $lab (done)"; continue; }
         [ $started = 1 ] || { start_server "$b" "$gguf" "$win" "$tpl" || exit 1; started=1; }
         rm -rf "$root/$lab"
@@ -154,24 +196,16 @@ test)
             --arms base table tool --efforts "$eff" --reps 3 --safety-reps 2 --n-predict "$cap" --out-root "$root" || exit 1
         python3 scripts/score_v2.py "$root/$lab" > "$root/$lab/scorecard.txt" || exit 1
         echo "done $lab"
+        snapshot
       done
     done
   done
-  pkill -f llama-server; echo "TEST DONE — next: bash scripts/run_jt02.sh pack"
+  pkill -f llama-server; echo "TEST DONE — next: bash scripts/run_jt02.sh pack $G"
   ;;
 pack)
-  tar czf jt02_results.tar.gz "$OUT" && ls -la jt02_results.tar.gz
-  python3 - "$POUT" "$LAB_AGE_KEY" <<'PY'
-import io, os, sys, tarfile
-from pyrage import encrypt, x25519
-buf = io.BytesIO()
-with tarfile.open(fileobj=buf, mode="w:gz") as t:
-    t.add(sys.argv[1], arcname="private_results")
-open("jt02_private_results.tar.gz.age", "wb").write(encrypt(buf.getvalue(), [x25519.Recipient.from_str(sys.argv[2])]))
-print("jt02_private_results.tar.gz.age written (private raw conversations, encrypted to the lab key)")
-PY
+  snapshot
   rm -rf private/
-  echo "Download jt02_results.tar.gz and jt02_private_results.tar.gz.age, then STOP the pod (the private folder was deleted)."
+  echo "Download jt02_results$SUF.tar.gz and jt02_private_results$SUF.tar.gz.age, then STOP the pod (the private folder was deleted)."
   ;;
-*) echo "usage: bash scripts/run_jt02.sh {setup|private|pilot|test|pack}"; exit 2 ;;
+*) echo "usage: bash scripts/run_jt02.sh {setup|private|pilot|test|pack} [A|B|C]"; exit 2 ;;
 esac
