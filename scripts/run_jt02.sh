@@ -10,11 +10,12 @@
 # Watch progress:  tail -3 jt02_test.log   or   ls results/jt02/
 #
 # RESTART (amendment 4, after the first pod was lost on 17 Nov): the 13 finished public parts are kept; the 15 parts
-# left run on three pods at once, one group each. Each pod: RTX 4090, PyTorch template, disk >= 150 GB. Per pod (G = A, B or C):
+# left run on three pods at once, one group each. Each pod: RTX 4090 (or L40S, RTX 6000 Ada, A40, RTX A6000, A100, H100: amendment 5), PyTorch template, disk >= 150 GB. Per pod (G = A, B or C):
 #   setsid nohup bash scripts/run_jt02.sh setup G > jt02_setup.log 2>&1 < /dev/null &   (A, B ~1.2 h: Fanar conversion; C ~20 min)
 #   (upload the private file, see 'private' below, then)  bash scripts/run_jt02.sh private G
 #   setsid nohup bash scripts/run_jt02.sh test G  > jt02_test.log  2>&1 < /dev/null &   (A ~6 h, B ~5 h, C ~4 h)
 #   bash scripts/run_jt02.sh pack G
+# ONE MACHINE instead (amendment 5): use G = R, which runs all 15 parts left in a row (setup ~1.5 h, test ~14-15 h).
 # After EVERY finished part the two result files for the group are rewritten (jt02_results_G.tar.gz and
 # jt02_private_results_G.tar.gz.age), so downloading them at any time keeps everything finished so far. No pilot:
 # the pilot passed on 16 Nov with the same model files (sha256 checked again by setup) and the same harness.
@@ -34,7 +35,8 @@ case "$G" in
   A) PARTS="fanar-2-27b-prompted-public fanar-2-27b-template-private" ;;
   B) PARTS="fanar-2-27b-prompted-private silma-9b-prompted-private allam-7b-prompted-private" ;;
   C) PARTS="jais3-7b-jais-private jais3-7b-prompted-private jais3-3.7b-jais-private jais3-3.7b-prompted-private qwen3-8b-chat-private qwen3-8b-prompted-private qwen3-4b-chat-private qwen3-4b-prompted-private falcon-h1-7b-template-private falcon-h1-7b-prompted-private" ;;
-  *) echo "group must be A, B or C"; exit 2 ;;
+  R) PARTS="fanar-2-27b-prompted-public fanar-2-27b-template-private fanar-2-27b-prompted-private silma-9b-prompted-private allam-7b-prompted-private jais3-7b-jais-private jais3-7b-prompted-private jais3-3.7b-jais-private jais3-3.7b-prompted-private qwen3-8b-chat-private qwen3-8b-prompted-private qwen3-4b-chat-private qwen3-4b-prompted-private falcon-h1-7b-template-private falcon-h1-7b-prompted-private" ;;   # one machine, all 15 parts left (amendment 5)
+  *) echo "group must be A, B, C or R"; exit 2 ;;
 esac
 [ -n "$G" ] && SUF="_$G"
 wants () { [ -z "$PARTS" ] || [[ " $PARTS " == *" $1 "* ]]; }          # $1 part label
