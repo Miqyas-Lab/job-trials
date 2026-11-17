@@ -10,7 +10,7 @@
 # Watch progress:  tail -3 jt02_test.log   or   ls results/jt02/
 #
 # RESTART (amendment 4, after the first pod was lost on 17 Nov): the 13 finished public parts are kept; the 15 parts
-# left run on three pods at once, one group each. Each pod: RTX 4090, PyTorch template, disk >= 150 GB. Per pod (G = A, B or C):
+# left run on three pods at once, one group each. Each pod: RTX 4090 (or L40S / RTX 6000 Ada, amendment 5), PyTorch template, disk >= 150 GB. Per pod (G = A, B or C):
 #   setsid nohup bash scripts/run_jt02.sh setup G > jt02_setup.log 2>&1 < /dev/null &   (A, B ~1.2 h: Fanar conversion; C ~20 min)
 #   (upload the private file, see 'private' below, then)  bash scripts/run_jt02.sh private G
 #   setsid nohup bash scripts/run_jt02.sh test G  > jt02_test.log  2>&1 < /dev/null &   (A ~6 h, B ~5 h, C ~4 h)
