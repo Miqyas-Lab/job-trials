@@ -146,6 +146,7 @@ amendments:
       registered llama.cpp builds support it. Each machine records its GPU (gpu_A.txt, gpu_B.txt, gpu_C.txt). Scores are
       not affected by the GPU type and are reported as registered. Reply times do depend on it: they are reported only
       for parts run on an RTX 4090; parts run on another GPU show their reply times separately, labelled with that GPU,
-      and are not compared with the RTX 4090 times. The "does not fit" ceiling stays the RTX 4090's 24 GB. No other change.
+      and are not compared with the RTX 4090 times. The "does not fit" ceiling stays the RTX 4090's 24 GB. The restart may also run on a single machine instead of
+      three: group R in the run script runs the same 15 parts in a row, with the same per-part saving. No other change.
 
 results: null
