@@ -63,4 +63,13 @@ stop_rules: >
   Oracle replay below 100%, a GGUF sha256 that differs from the registered one, a converted Fanar template that is not
   identical to the qt-03 one, or a pilot outside the limits above: that model stops, and nothing is reported for it
   until an amendment is merged.
+amendments:
+  - date: 2026-11-18
+    before_any_run: true
+    change: >
+      Run script only (scripts/run_bf01.sh), from what Job Trial #2 taught (its amendments 4 and 6): each path starts a
+      fresh llama.cpp server with the prompt cache in normal memory turned off (--cache-ram 0); a path that has finished
+      is skipped when a step is run again; the results archive is rewritten after every finished path. The cache only
+      stores earlier conversations to save time and does not change what a model generates. No change to scenarios,
+      models, files, sampling, setups, limits or scoring.
 results: null   # filled after the run, from results/bf01/
