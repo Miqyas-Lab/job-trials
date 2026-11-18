@@ -16,6 +16,9 @@
 #   setsid nohup bash scripts/run_jt02.sh test G  > jt02_test.log  2>&1 < /dev/null &   (A ~6 h, B ~5 h, C ~4 h)
 #   bash scripts/run_jt02.sh pack G
 # ONE MACHINE instead (amendment 5): use G = R, which runs all 15 parts left in a row (setup ~1.5 h, test ~14-15 h).
+# AMENDMENT 6 (18 Nov): each part gets a fresh server, with the server's prompt cache in normal memory off (--cache-ram 0).
+# To continue on the same machine: git pull, then the test command again (finished parts are skipped). On a replacement
+# machine: G = F (the three Fanar 2 parts), same steps as R.
 # After EVERY finished part the two result files for the group are rewritten (jt02_results_G.tar.gz and
 # jt02_private_results_G.tar.gz.age), so downloading them at any time keeps everything finished so far. No pilot:
 # the pilot passed on 16 Nov with the same model files (sha256 checked again by setup) and the same harness.
@@ -36,7 +39,8 @@ case "$G" in
   B) PARTS="fanar-2-27b-prompted-private silma-9b-prompted-private allam-7b-prompted-private" ;;
   C) PARTS="jais3-7b-jais-private jais3-7b-prompted-private jais3-3.7b-jais-private jais3-3.7b-prompted-private qwen3-8b-chat-private qwen3-8b-prompted-private qwen3-4b-chat-private qwen3-4b-prompted-private falcon-h1-7b-template-private falcon-h1-7b-prompted-private" ;;
   R) PARTS="fanar-2-27b-prompted-public fanar-2-27b-template-private fanar-2-27b-prompted-private silma-9b-prompted-private allam-7b-prompted-private jais3-7b-jais-private jais3-7b-prompted-private jais3-3.7b-jais-private jais3-3.7b-prompted-private qwen3-8b-chat-private qwen3-8b-prompted-private qwen3-4b-chat-private qwen3-4b-prompted-private falcon-h1-7b-template-private falcon-h1-7b-prompted-private" ;;   # one machine, all 15 parts left (amendment 5)
-  *) echo "group must be A, B, C or R"; exit 2 ;;
+  F) PARTS="fanar-2-27b-template-private fanar-2-27b-prompted-public fanar-2-27b-prompted-private" ;;   # replacement machine (amendment 6)
+  *) echo "group must be A, B, C, R or F"; exit 2 ;;
 esac
 [ -n "$G" ] && SUF="_$G"
 wants () { [ -z "$PARTS" ] || [[ " $PARTS " == *" $1 "* ]]; }          # $1 part label
@@ -92,7 +96,7 @@ convert () {   # $1 llama dir  $2 repo  $3 revision ("" = latest)  $4 outtype  $
 start_server () {   # $1 build A|F  $2 gguf  $3 window  $4 template file or -
   local ll="$LL_A" tpl=""; [ "$1" = F ] && ll="$LL_F"; [ "$4" != "-" ] && tpl="--chat-template-file $4"
   pkill -f llama-server; sleep 2
-  "$ll/build/bin/llama-server" -m "models/gpu/$2" --jinja $tpl -ngl 99 -c "$3" -np 1 --port 8080 > /tmp/server_jt02.log 2>&1 9>&- &
+  "$ll/build/bin/llama-server" -m "models/gpu/$2" --jinja $tpl -ngl 99 -c "$3" -np 1 --cache-ram 0 --port 8080 > /tmp/server_jt02.log 2>&1 9>&- &
   for i in $(seq 1 300); do curl -s localhost:8080/health | grep -q '"ok"' && return 0; sleep 2; done
   echo "server did not start — last log lines:"; tail -20 /tmp/server_jt02.log; return 1
 }
@@ -185,14 +189,13 @@ test)
   echo "$PRIV_SHA  $PRIV" | sha256sum -c - >/dev/null || { echo "STOP: private file missing or changed"; exit 1; }
   for row in "${MODELS[@]}"; do
     IFS='|' read -r key gguf b mode eff samp win cap tpl <<< "$row"
-    started=0
     for p in $(paths_of "$mode"); do
       for set in public private; do
         if [ "$set" = public ]; then root="$OUT"; eps="$PUB"; else root="$POUT"; eps="$PRIV"; fi
         lab="$key-$p-$set"
         wants "$lab" || continue
         [ -f "$root/$lab/scorecard.txt" ] && { echo "skip $lab (done)"; continue; }
-        [ $started = 1 ] || { start_server "$b" "$gguf" "$win" "$tpl" || exit 1; started=1; }
+        start_server "$b" "$gguf" "$win" "$tpl" || exit 1   # fresh server for every part (amendment 6)
         rm -rf "$root/$lab"
         python3 scripts/run_v2.py --label "$lab" --mode "$p" --sampling "$samp" --episodes "$eps" --split test \
             --arms base table tool --efforts "$eff" --reps 3 --safety-reps 2 --n-predict "$cap" --out-root "$root" || exit 1

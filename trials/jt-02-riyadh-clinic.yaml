@@ -149,4 +149,18 @@ amendments:
       and are not compared with the RTX 4090 times. The "does not fit" ceiling stays the RTX 4090's 24 GB. The restart may also run on a single machine instead of
       three: group R in the run script runs the same 15 parts in a row, with the same per-part saving. No other change.
 
+  - date: 2026-11-18
+    before_any_run: false
+    before_parts: "the three Fanar 2 27B parts still to run: template private, adapter public, adapter private"
+    change: >
+      The restart machine ran the first 12 of the 15 parts. During the Fanar 2 template part on the private set, its
+      prompt handling was several times slower than on 16 Nov, and about 6.6 hours after the Fanar server started, the
+      test processes ended without an error message (run 368 of 432; that partial part is discarded and not scored).
+      Likely cause, not proven: the llama.cpp server's default prompt cache in the machine's normal memory (up to 8 GB of
+      saved conversations, copied to and from the GPU). For the three Fanar 2 parts still to run: that cache is turned off
+      (--cache-ram 0), and each part starts a fresh server. The cache only stores earlier conversations to save time; it
+      does not change what the model generates, and sampling, files, builds, harness, setups and scoring are unchanged.
+      The three parts may run on the same machine or on a replacement machine (group F), GPU as allowed by amendment 5.
+      The results page states the server settings for each part.
+
 results: null
