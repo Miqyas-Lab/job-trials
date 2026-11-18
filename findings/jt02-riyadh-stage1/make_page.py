@@ -78,7 +78,7 @@ page = f"""<!DOCTYPE html>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>مقياس — تجربة العمل #2، المرحلة الأولى: استقبال عيادة في الرياض</title>
 <meta name="description" content="تجربة سريعة استكشافية: ثمانية نماذج مفتوحة في استقبال عيادة أسنان في الرياض، مع مرضى يكتبون بالنجدي. 42 حالة عامة و42 حالة خاصة لم تُنشر، × 3 محاولات. أرقام فقط، بلا حكم.">
-<meta property="og:title" content="هل يقدر نموذج عربي مفتوح يدير استقبال عيادة في الرياض؟ · مقياس">
+<meta property="og:title" content="هل يقدر نموذج عربي مفتوح أن يدير استقبال عيادة في الرياض؟ · مقياس">
 <meta property="og:image" content="https://miqyaslab.com/findings/jt02-riyadh-stage1/scorecard_x.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../../assets/brand/miqyas-favicon.svg" type="image/svg+xml">
@@ -124,7 +124,7 @@ page = f"""<!DOCTYPE html>
 <div class="brandbar"><a href="../../" aria-label="مقياس: الصفحة الرئيسية"><img src="../../assets/brand/miqyas-lockup-on-light.svg" alt="مقياس · Miqyas"></a></div>
 
 <header>
-  <h1 class="q">هل يقدر نموذج عربي مفتوح يدير استقبال عيادة أسنان في الرياض؟</h1>
+  <h1 class="q">هل يقدر نموذج عربي مفتوح أن يدير استقبال عيادة أسنان في الرياض؟</h1>
   <p class="q-en">Job Trial #2 · stage 1 · Quick Trial · exploratory · numbers only, no verdict</p>
   <p>نقلنا وظيفة <a href="../frontdesk-v2/">تجربة العمل #1</a> من دبي إلى الرياض: موظف استقبال على واتساب لعيادة أسنان، بالأدوات والقواعد وطريقة التقييم نفسها، لكن المرضى يكتبون هذه المرة باللهجة النجدية، ومواعيد العيادة مواعيد الرياض. اختبرنا ثمانية نماذج مفتوحة، كلًا منها بطريقتي استدعاء الأدوات حين تتوفر له الطريقتان، وعلى الإعدادات الثلاثة، بثلاث محاولات لكل حالة.</p>
   <p>وأضفنا لأول مرة مجموعة حالات خاصة: {n(42)} حالة كتبها متحدثان أصليان باللهجة النجدية ولم تُنشر، فلا يمكن أن يكون أي نموذج قد رآها. ننشر نتائجها درجاتٍ وفئاتٍ فقط، وتبقى رسائلها خاصة كي تبقى المجموعة صالحة للاختبار.</p>
@@ -254,7 +254,7 @@ body = f"""<body>
     <img src="../../assets/brand/miqyas-lockup-on-light.svg" alt="مقياس">
   </div>
 
-  <h1>هل يقدر نموذج عربي مفتوح يدير استقبال عيادة <span class="model">في الرياض</span>؟</h1>
+  <h1>هل يقدر نموذج عربي مفتوح أن يدير استقبال عيادة <span class="model">في الرياض</span>؟</h1>
   <p class="en">Quick Trial · exploratory · numbers only, no verdict · patients write in Najdi · same setup for every model</p>
 
   <table style="margin-top:14px">
