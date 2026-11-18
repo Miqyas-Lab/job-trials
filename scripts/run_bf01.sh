@@ -10,6 +10,10 @@
 #   setsid nohup bash scripts/run_bf01.sh fanar-test  > bf01_ftest.log  2>&1 < /dev/null &   (~2-3 h)
 #   bash scripts/run_bf01.sh pack
 # Watch progress:  tail -3 bf01_test.log   or   wc -l results/bf01/*/runs.jsonl   (144 lines = one path done)
+# Is it alive?  ps aux | grep -c "[r]un_v2.py"   (1 = running, 0 = stopped: a log line that never changes is not proof)
+# Amendment 1 (before any run): each path starts a fresh server with the prompt cache in normal memory off (--cache-ram 0);
+# finished paths are skipped when a step is run again; bf01_results.tar.gz is rewritten after every finished path, so
+# download it now and then: a lost pod costs at most the path in progress.
 set -u
 cd "$(dirname "$0")/.."
 exec 9> /tmp/run_bf01.lock
@@ -43,7 +47,7 @@ build () {   # $1 dir  $2 commit  $3 targets
 
 start_server () {   # $1 llama dir  $2 gguf  $3 extra args
   pkill -f llama-server; sleep 2
-  "$1/build/bin/llama-server" -m "$2" --jinja $3 -ngl 99 -c $CTX -np 1 --port 8080 > /tmp/server_bf01.log 2>&1 9>&- &
+  "$1/build/bin/llama-server" -m "$2" --jinja $3 -ngl 99 -c $CTX -np 1 --cache-ram 0 --port 8080 > /tmp/server_bf01.log 2>&1 9>&- &
   for i in $(seq 1 240); do curl -s localhost:8080/health | grep -q '"ok"' && return 0; sleep 2; done
   echo "server did not start — last log lines:"; tail -20 /tmp/server_bf01.log; return 1
 }
@@ -61,6 +65,17 @@ ok = err == 0 and ctx == 0 and st and bad / len(st) <= 0.10 and p0 >= 1000
 print(f"PILOT CHECK {sys.argv[1].split('/')[-2]}: runs {len(R)} · errors {err} · context overflows {ctx} · steps {len(st)} · "
       f"not parsed {bad} ({100*bad/max(len(st),1):.0f}%) · steps with reasoning {reason} · first prompt tokens {p0} · {'OK' if ok else 'STOP'}")
 PY
+}
+
+save () { tar czf bf01_results.tar.gz.tmp "$OUT" && mv bf01_results.tar.gz.tmp bf01_results.tar.gz && echo "saved: bf01_results.tar.gz"; }
+
+test_path () {   # $1 llama dir  $2 gguf  $3 server args  then run_path args: skip if done, fresh server, run, save
+  local ll=$1 gguf=$2 sargs=$3; shift 3
+  [ -f "$OUT/$1/scorecard.txt" ] && { echo "skip $1 (done)"; return 0; }
+  rm -rf "$OUT/$1"
+  start_server "$ll" "$gguf" "$sargs" || return 1
+  run_path "$@" || return 1
+  save
 }
 
 run_path () {   # $1 label  $2 mode  $3 effort  $4 split  $5 reps  $6 safety  $7 sampling-flag...
@@ -103,9 +118,8 @@ test)
   for row in "${SMALL[@]}"; do
     read -r key gguf mode eff samp <<< "$row"
     pilot_check "$OUT/pilot-$key-prompted/runs.jsonl" | grep -q " OK$" || { echo "STOP: $key pilot not OK — amendment first"; exit 1; }
-    start_server "$LL_A" "models/gpu/$gguf" "" || exit 1
-    run_path "$key-native" "$mode" "$eff" test 3 2 $samp || exit 1
-    run_path "$key-prompted" prompted "$eff" test 3 2 $samp || exit 1
+    test_path "$LL_A" "models/gpu/$gguf" "" "$key-native" "$mode" "$eff" test 3 2 $samp || exit 1
+    test_path "$LL_A" "models/gpu/$gguf" "" "$key-prompted" prompted "$eff" test 3 2 $samp || exit 1
   done
   pkill -f llama-server
   echo "TEST DONE — next: setsid nohup bash scripts/run_bf01.sh fanar-setup > bf01_fsetup.log 2>&1 < /dev/null &"
@@ -137,13 +151,12 @@ fanar-pilot)
   ;;
 fanar-test)
   pilot_check "$OUT/pilot-fanar-2-27b-prompted/runs.jsonl" | grep -q " OK$" || { echo "STOP: Fanar pilot not OK — amendment first"; exit 1; }
-  start_server "$LL_F" "$FGGUF" "--chat-template-file $FTPL" || exit 1
-  run_path fanar-2-27b-native template off test 3 2 --sampling fanar-2 || exit 1
-  run_path fanar-2-27b-prompted prompted off test 3 2 --sampling fanar-2 || exit 1
+  test_path "$LL_F" "$FGGUF" "--chat-template-file $FTPL" fanar-2-27b-native template off test 3 2 --sampling fanar-2 || exit 1
+  test_path "$LL_F" "$FGGUF" "--chat-template-file $FTPL" fanar-2-27b-prompted prompted off test 3 2 --sampling fanar-2 || exit 1
   pkill -f llama-server; echo "FANAR TEST DONE — next: bash scripts/run_bf01.sh pack"
   ;;
 pack)
-  tar czf bf01_results.tar.gz "$OUT" && ls -la bf01_results.tar.gz
+  save && ls -la bf01_results.tar.gz
   echo "Download bf01_results.tar.gz from JupyterLab (right-click > Download), then STOP the pod."
   ;;
 *) echo "usage: bash scripts/run_bf01.sh {setup|pilot|test|fanar-setup|fanar-pilot|fanar-test|pack}"; exit 2 ;;
