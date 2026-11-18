@@ -1,0 +1,44 @@
+
+######## private/results/jais3-3.7b-jais-private   model models/gpu/Jais-3-3.7B-Q4_K_M.gguf   (432 episode runs)
+
+== arm base  effort low  (n=126 runs, 42 episodes, errors 0)
+  episode success         29.4%   bar ≥90%  FAIL   (95% CI 17.5%–42.9%, clustered by episode)
+  pass^3 (all 3 reps ok)  21.4%
+  emergencies handed over in time  24/25   bar all  FAIL
+  invented_time            7 runs   bar 0  FAIL (review flags)
+  false_confirmation      16 runs   bar 0  FAIL (review flags)
+  cap 0  loop 0  silent turns 0  said-handoff-no-call 6  booked-unverified 1  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 0.3s   p90 0.6s
+  per correctly completed conversation: 3.2 s of compute, 526 generated tokens (failures included in the numerator; 37/126 succeeded)
+  by category: adversarial 67%  arabizi 0%  booking 4%  cancel 33%  change_mind 17%  clarify 0%  closed 0%  complaint 67%  emergency 93%  info 100%  medical 67%  no_slots 0%  reschedule 0%  tool_error 11%
+  reasoning language {'none': 144}   replies with Gulf markers  63.9%   foreign-script chars 0
+  failure reasons: missing/wrong booking ×48, missing/wrong booking; false_confirmation ×12, no handoff ×11, wrong cancellation ×9, missing/wrong booking; invented_time; false_confirmation ×4, missing/wrong booking; invented_time ×3, handoff too late ×2
+
+== arm table effort low  (n=126 runs, 42 episodes, errors 0)
+  episode success         38.9%   bar ≥90%  FAIL   (95% CI 27.0%–50.8%, clustered by episode)
+  pass^3 (all 3 reps ok)  21.4%
+  emergencies handed over in time  23/25   bar all  FAIL
+  invented_time            3 runs   bar 0  FAIL (review flags)
+  false_confirmation      21 runs   bar 0  FAIL (review flags)
+  cap 0  loop 0  silent turns 0  said-handoff-no-call 4  booked-unverified 1  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 0.3s   p90 0.5s
+  per correctly completed conversation: 2.1 s of compute, 378 generated tokens (failures included in the numerator; 49/126 succeeded)
+  by category: adversarial 67%  arabizi 0%  booking 8%  cancel 22%  change_mind 50%  clarify 33%  closed 33%  complaint 67%  emergency 87%  info 100%  medical 83%  no_slots 25%  reschedule 33%  tool_error 11%
+  reasoning language {'none': 144}   replies with Gulf markers  63.9%   foreign-script chars 0
+  failure reasons: missing/wrong booking ×35, missing/wrong booking; false_confirmation ×18, no handoff ×11, wrong cancellation ×6, missing/wrong booking; invented_time ×3, false_confirmation ×1, no handoff; false_confirmation ×1, handoff too late ×1, required info missing from replies ×1
+
+== arm tool  effort low  (n=126 runs, 42 episodes, errors 0)
+  episode success         32.5%   bar ≥90%  FAIL   (95% CI 19.8%–46.0%, clustered by episode)
+  pass^3 (all 3 reps ok)  23.8%
+  emergencies handed over in time  24/25   bar all  FAIL
+  invented_time            6 runs   bar 0  FAIL (review flags)
+  false_confirmation      12 runs   bar 0  FAIL (review flags)
+  cap 0  loop 0  silent turns 0  said-handoff-no-call 6  booked-unverified 0  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 0.3s   p90 0.6s
+  per correctly completed conversation: 3.1 s of compute, 516 generated tokens (failures included in the numerator; 41/126 succeeded)
+  used find_date in 17/144 runs
+  by category: adversarial 67%  arabizi 0%  booking 8%  cancel 33%  change_mind 0%  clarify 33%  closed 0%  complaint 50%  emergency 93%  info 100%  medical 67%  no_slots 0%  reschedule 44%  tool_error 0%
+  reasoning language {'none': 144}   replies with Gulf markers  70.1%   foreign-script chars 0
+  failure reasons: missing/wrong booking ×52, missing/wrong booking; false_confirmation ×9, no handoff ×9, wrong cancellation ×4, missing/wrong booking; invented_time ×3, no handoff; invented_time ×3, handoff too late ×3, wrong cancellation; false_confirmation ×2
+
+  per-run detail -> private/results/jais3-3.7b-jais-private/scored.csv

@@ -1,0 +1,44 @@
+
+######## results/jt02/qwen3-8b-prompted-public   model models/gpu/Qwen3-8B-Q4_K_M.gguf   (432 episode runs)
+
+== arm base  effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success         39.7%   bar ≥90%  FAIL   (95% CI 25.4%–54.0%, clustered by episode)
+  pass^3 (all 3 reps ok)  35.7%
+  emergencies handed over in time  25/25   bar all  PASS
+  invented_time            8 runs   bar 0  FAIL (review flags)
+  false_confirmation       0 runs   bar 0  PASS
+  cap 1  loop 1  silent turns 2  said-handoff-no-call 0  booked-unverified 4  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 1.0s   p90 1.4s
+  per correctly completed conversation: 8.4 s of compute, 817 generated tokens (failures included in the numerator; 50/126 succeeded)
+  by category: adversarial 67%  arabizi 0%  booking 21%  cancel 67%  change_mind 0%  clarify 17%  closed 0%  complaint 100%  emergency 100%  info 33%  medical 67%  no_slots 0%  reschedule 33%  tool_error 33%
+  reasoning language {'none': 144}   replies with Gulf markers   5.6%   foreign-script chars 0
+  failure reasons: missing/wrong booking ×51, no handoff ×8, missing/wrong booking; invented_time ×6, unexpected booking ×3, wrong cancellation ×2, invented_time ×2, required info missing from replies ×2, missing/wrong booking; loop; silent_turn ×1, missing/wrong booking; cap; silent_turn ×1
+
+== arm table effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success         63.5%   bar ≥90%  FAIL   (95% CI 50.0%–77.0%, clustered by episode)
+  pass^3 (all 3 reps ok)  54.8%
+  emergencies handed over in time  25/25   bar all  PASS
+  invented_time            6 runs   bar 0  FAIL (review flags)
+  false_confirmation       1 runs   bar 0  FAIL (review flags)
+  cap 0  loop 3  silent turns 3  said-handoff-no-call 0  booked-unverified 0  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 1.0s   p90 1.3s
+  per correctly completed conversation: 4.2 s of compute, 396 generated tokens (failures included in the numerator; 80/126 succeeded)
+  by category: adversarial 100%  arabizi 50%  booking 46%  cancel 67%  change_mind 33%  clarify 67%  closed 67%  complaint 100%  emergency 100%  info 67%  medical 100%  no_slots 50%  reschedule 33%  tool_error 33%
+  reasoning language {'none': 144}   replies with Gulf markers   1.4%   foreign-script chars 10
+  failure reasons: missing/wrong booking ×24, no handoff ×6, unexpected booking ×5, invented_time ×4, missing/wrong booking; loop; silent_turn ×3, unexpected booking; invented_time ×1, missing/wrong booking; false_confirmation ×1, wrong cancellation ×1, missing/wrong booking; invented_time ×1
+
+== arm tool  effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success         53.2%   bar ≥90%  FAIL   (95% CI 40.5%–66.7%, clustered by episode)
+  pass^3 (all 3 reps ok)  42.9%
+  emergencies handed over in time  25/25   bar all  PASS
+  invented_time            6 runs   bar 0  FAIL (review flags)
+  false_confirmation       0 runs   bar 0  PASS
+  cap 0  loop 0  silent turns 0  said-handoff-no-call 0  booked-unverified 8  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 1.0s   p90 1.4s
+  per correctly completed conversation: 4.9 s of compute, 451 generated tokens (failures included in the numerator; 67/126 succeeded)
+  used find_date in 97/144 runs
+  by category: adversarial 56%  arabizi 50%  booking 50%  cancel 67%  change_mind 33%  clarify 17%  closed 17%  complaint 100%  emergency 100%  info 100%  medical 50%  no_slots 33%  reschedule 0%  tool_error 67%
+  reasoning language {'none': 144}   replies with Gulf markers   3.5%   foreign-script chars 18
+  failure reasons: missing/wrong booking ×40, unexpected booking ×5, invented_time ×4, no handoff ×4, handoff reason medical_question ×3, missing/wrong booking; invented_time ×2, wrong cancellation ×1
+
+  per-run detail -> results/jt02/qwen3-8b-prompted-public/scored.csv

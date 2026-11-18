@@ -1,0 +1,12 @@
+llama.cpp 7df8b876b
+llama.cpp 9c9074e14
+llama.cpp 8642541b2
+repo commit 5cd1021
+a8caa7fecf38d064f216f66d3d59641c1fbefdca9756af0703f4a872ab852eeb  models/gpu/Jais-3-7B-Q4_K_M.gguf
+d2039e169049f0646f79bc27aec82ffc0842ff9af1bf75bfc16628929636e09a  models/gpu/Jais-3-3.7B-Q4_K_M.gguf
+d98cdcbd03e17ce47681435b5150e34c1417f50b5c0019dd560e4882c5745785  models/gpu/Qwen3-8B-Q4_K_M.gguf
+7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5  models/gpu/Qwen3-4B-Q4_K_M.gguf
+145def0b4cd36500bf538ed7ac895b5c1851e02e802b2d1c12ffa6afdbaff25d  models/gpu/Falcon-H1-7B-Instruct-Q4_K_M.gguf
+858e7d3f8573548a79810d96f6164d48d2c6415d4822b5d9b39f5864a42a8544  models/gpu/ALLaM-7B-Instruct-preview-Q4_K_M.gguf
+71bf624f9277bb7d7c2c69f1c26fc1ed50d6940d8c3de847c0219bbd67c08198  models/gpu/SILMA-9B-Instruct-v1.0-Q4_K_M.gguf
+582453644729b1e1d69cdbc7b37722a06f6ed87b09b135c23468df0591520c00  models/gpu/Fanar-2-27B-Instruct-Q4_K_M.gguf

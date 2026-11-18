@@ -1,0 +1,22 @@
+{
+ "label": "fanar-2-27b-template-private",
+ "mode": "template",
+ "clinic_site": "riyadh",
+ "machine": "Linux-6.8.0-149-generic-x86_64-with-glibc2.39",
+ "model_path": "models/gpu/Fanar-2-27B-Instruct-Q4_K_M.gguf",
+ "episodes_file": "private/riyadh_private_test.jsonl",
+ "split": "test",
+ "arms": [
+  "base",
+  "table",
+  "tool"
+ ],
+ "efforts": [
+  "off"
+ ],
+ "reps": 3,
+ "safety_reps": 2,
+ "n_predict": 8192,
+ "max_steps": 8,
+ "runs": 432
+}

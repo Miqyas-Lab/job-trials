@@ -1,0 +1,44 @@
+
+######## private/results/falcon-h1-7b-template-private   model models/gpu/Falcon-H1-7B-Instruct-Q4_K_M.gguf   (432 episode runs)
+
+== arm base  effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success         27.0%   bar ≥90%  FAIL   (95% CI 16.7%–37.3%, clustered by episode)
+  pass^3 (all 3 reps ok)  11.9%
+  emergencies handed over in time  9/25   bar all  FAIL
+  invented_time            6 runs   bar 0  FAIL (review flags)
+  false_confirmation       8 runs   bar 0  FAIL (review flags)
+  cap 1  loop 0  silent turns 1  said-handoff-no-call 14  booked-unverified 13  unknown-tool 1  bad-args 25
+  wait per message (this hardware): median 1.5s   p90 3.3s
+  per correctly completed conversation: 20.2 s of compute, 1124 generated tokens (failures included in the numerator; 34/126 succeeded)
+  by category: adversarial 67%  arabizi 33%  booking 21%  cancel 44%  change_mind 0%  clarify 0%  closed 17%  complaint 33%  emergency 27%  info 100%  medical 17%  no_slots 33%  reschedule 0%  tool_error 22%
+  reasoning language {'none': 144}   replies with Gulf markers  14.6%   foreign-script chars 322
+  failure reasons: missing/wrong booking ×45, no handoff ×23, missing/wrong booking; false_confirmation ×7, missing/wrong booking; invented_time ×6, wrong cancellation ×6, unexpected booking ×2, wrong cancellation; false_confirmation ×1, no handoff; cap; silent_turn ×1, handoff too late ×1
+
+== arm table effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success         33.3%   bar ≥90%  FAIL   (95% CI 23.0%–43.7%, clustered by episode)
+  pass^3 (all 3 reps ok)  11.9%
+  emergencies handed over in time  8/25   bar all  FAIL
+  invented_time            7 runs   bar 0  FAIL (review flags)
+  false_confirmation       8 runs   bar 0  FAIL (review flags)
+  cap 2  loop 0  silent turns 2  said-handoff-no-call 21  booked-unverified 15  unknown-tool 0  bad-args 13
+  wait per message (this hardware): median 1.5s   p90 2.5s
+  per correctly completed conversation: 16.2 s of compute, 930 generated tokens (failures included in the numerator; 42/126 succeeded)
+  by category: adversarial 67%  arabizi 33%  booking 33%  cancel 33%  change_mind 33%  clarify 50%  closed 33%  complaint 0%  emergency 27%  info 100%  medical 33%  no_slots 58%  reschedule 0%  tool_error 0%
+  reasoning language {'none': 144}   replies with Gulf markers  16.7%   foreign-script chars 18499
+  failure reasons: missing/wrong booking ×32, no handoff ×22, wrong cancellation ×8, missing/wrong booking; false_confirmation ×4, missing/wrong booking; invented_time ×3, handoff reason emergency ×2, wrong cancellation; false_confirmation ×2, no handoff; invented_time ×2, unexpected booking; invented_time ×1, handoff too late ×1, unexpected booking ×1, no handoff; false_confirmation ×1, no handoff; cap; silent_turn ×1, handoff reason other ×1, invented_time ×1, unexpected booking; false_confirmation ×1, required info missing from replies ×1
+
+== arm tool  effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success         34.1%   bar ≥90%  FAIL   (95% CI 23.8%–45.2%, clustered by episode)
+  pass^3 (all 3 reps ok)  14.3%
+  emergencies handed over in time  11/25   bar all  FAIL
+  invented_time            5 runs   bar 0  FAIL (review flags)
+  false_confirmation       8 runs   bar 0  FAIL (review flags)
+  cap 4  loop 0  silent turns 4  said-handoff-no-call 33  booked-unverified 18  unknown-tool 0  bad-args 45
+  wait per message (this hardware): median 1.9s   p90 3.2s
+  per correctly completed conversation: 23.5 s of compute, 1644 generated tokens (failures included in the numerator; 43/126 succeeded)
+  used find_date in 37/144 runs
+  by category: adversarial 89%  arabizi 17%  booking 29%  cancel 33%  change_mind 17%  clarify 0%  closed 50%  complaint 0%  emergency 47%  info 100%  medical 0%  no_slots 50%  reschedule 0%  tool_error 44%
+  reasoning language {'none': 144}   replies with Gulf markers  13.2%   foreign-script chars 436
+  failure reasons: missing/wrong booking ×35, no handoff ×23, wrong cancellation ×8, missing/wrong booking; invented_time ×3, missing/wrong booking; false_confirmation ×3, wrong cancellation; false_confirmation ×3, missing/wrong booking; cap; silent_turn ×2, invented_time ×2, false_confirmation ×1, missing/wrong booking; false_confirmation; cap; silent_turn ×1, unexpected booking ×1, no handoff; cap; silent_turn ×1
+
+  per-run detail -> private/results/falcon-h1-7b-template-private/scored.csv

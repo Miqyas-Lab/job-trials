@@ -210,7 +210,7 @@ test)
 pack)
   snapshot
   rm -rf private/
-  echo "Download jt02_results$SUF.tar.gz and jt02_private_results$SUF.tar.gz.age, then STOP the pod (the private folder was deleted)."
+  echo "Download jt02_results$SUF.tar.gz and jt02_private_results$SUF.tar.gz.age, then TERMINATE the pod in the RunPod console (terminate, not stop: stop keeps the disk; the private folder was deleted)."
   ;;
 *) echo "usage: bash scripts/run_jt02.sh {setup|private|pilot|test|pack} [A|B|C]"; exit 2 ;;
 esac

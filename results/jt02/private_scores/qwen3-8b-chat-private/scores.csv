@@ -1,0 +1,433 @@
+episode,arm,category,effort,rep,success,state_ok,handoff,handoff_turn,false_confirmation,invented_time,cap,loop,silent_turn,said_handoff_no_call,booked_unverified,n_booked,n_cancelled,n_steps,n_turns,gen_tokens,tool_errors_bad_args,unknown_tool,used_find_date,unclosed_reasoning,reasoning_lang,reply_foreign_script,reply_gulf_markers,wait_mean_s,wait_max_s,why
+p01,base,booking,off,0,False,False,False,,False,False,False,False,False,False,False,1,0,7,4,340,0,0,False,False,none,0,0,0.74,0.94,missing/wrong booking
+p01,table,booking,off,0,False,False,False,,False,False,False,False,False,False,False,1,0,7,4,342,0,0,False,False,none,0,0,0.71,0.83,missing/wrong booking
+p01,tool,booking,off,0,False,False,False,,False,False,False,False,False,False,False,1,0,8,4,355,0,0,True,False,none,0,0,0.75,1.14,missing/wrong booking
+p02,base,booking,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,218,0,0,False,False,none,0,0,0.63,0.91,missing/wrong booking
+p02,table,booking,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,167,0,0,False,False,none,0,0,0.49,0.67,
+p02,tool,booking,off,0,False,True,False,,False,True,False,False,False,False,False,1,0,6,3,251,0,0,True,False,none,0,0,0.71,1.18,invented_time
+p03,base,booking,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,264,0,0,False,False,none,0,0,0.73,0.79,
+p03,table,booking,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,271,0,0,False,False,none,0,0,0.75,1.09,
+p03,tool,booking,off,0,False,False,True,2,True,False,False,False,False,False,False,0,0,6,3,240,0,0,True,False,none,0,0,0.69,0.79,missing/wrong booking; false_confirmation
+p04,base,booking,off,0,False,False,False,,False,False,False,False,False,False,False,1,0,5,3,242,0,0,False,False,none,0,0,0.68,1.18,missing/wrong booking
+p04,table,booking,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,237,0,0,False,False,none,0,0,0.66,0.94,
+p04,tool,booking,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,269,0,0,True,False,none,0,0,0.75,1.13,
+p05,base,booking,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,269,0,0,False,False,none,0,0,0.74,1.16,
+p05,table,booking,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,223,0,0,False,False,none,0,0,0.63,0.85,
+p05,tool,booking,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,324,0,0,True,False,none,0,0,0.88,1.4,
+p06,base,booking,off,0,True,True,False,,False,False,False,False,False,False,True,1,0,5,3,221,0,0,False,False,none,0,0,0.63,0.9,
+p06,table,booking,off,0,True,True,False,,False,False,False,False,False,False,True,1,0,5,3,218,0,0,False,False,none,0,0,0.61,0.86,
+p06,tool,booking,off,0,False,False,False,,False,True,False,False,False,False,True,1,0,6,3,237,0,0,True,False,none,0,0,0.68,1.17,missing/wrong booking; invented_time
+p07,base,booking,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,6,3,268,0,0,False,False,none,0,0,0.74,0.83,missing/wrong booking
+p07,table,booking,off,0,True,True,False,,False,False,False,False,False,False,True,1,0,5,3,219,0,0,False,False,none,0,0,0.61,0.74,
+p07,tool,booking,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,7,3,282,0,0,True,False,none,0,0,0.79,1.05,
+p08,base,booking,off,0,False,False,False,,False,False,False,False,False,False,False,1,0,5,3,273,0,0,False,False,none,0,0,0.75,1.23,missing/wrong booking
+p08,table,booking,off,0,False,False,False,,True,False,False,False,False,False,False,0,0,5,3,352,0,0,False,False,none,0,0,0.93,1.3,missing/wrong booking; false_confirmation
+p08,tool,booking,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,6,3,293,0,0,True,False,none,0,0,0.81,1.27,missing/wrong booking
+p09,base,arabizi,off,0,False,False,False,,False,False,False,False,False,False,True,1,0,5,3,204,0,0,False,False,none,0,0,0.59,0.69,missing/wrong booking
+p09,table,arabizi,off,0,False,False,False,,False,False,False,False,False,False,False,1,0,5,3,219,0,0,False,False,none,0,0,0.62,0.78,missing/wrong booking
+p09,tool,arabizi,off,0,False,False,False,,False,False,False,False,False,False,True,1,0,6,3,237,0,0,True,False,none,0,0,0.68,0.75,missing/wrong booking
+p10,base,arabizi,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,162,0,0,False,False,none,7,0,0.48,0.69,missing/wrong booking
+p10,table,arabizi,off,0,False,False,False,,False,False,False,False,False,False,False,1,0,5,3,223,0,0,False,False,none,0,0,0.62,0.97,missing/wrong booking
+p10,tool,arabizi,off,0,False,False,False,,False,False,False,False,False,False,False,1,0,6,3,260,0,0,True,False,none,0,0,0.73,1.18,missing/wrong booking
+p11,base,no_slots,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,7,4,364,0,0,False,False,none,0,0,0.74,1.03,
+p11,table,no_slots,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,7,4,349,0,0,False,False,none,0,0,0.71,0.87,
+p11,tool,no_slots,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,9,4,409,0,0,True,False,none,0,0,0.85,1.23,
+p12,base,no_slots,off,0,False,False,False,,False,False,False,False,False,False,False,1,0,9,5,437,0,0,False,False,none,0,0,0.76,0.99,missing/wrong booking
+p12,table,no_slots,off,0,False,False,False,,False,False,False,False,False,False,False,1,0,8,5,379,0,0,False,False,none,0,0,0.63,0.83,missing/wrong booking
+p12,tool,no_slots,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,11,5,401,0,0,True,False,none,0,0,0.68,1.0,missing/wrong booking
+p13,base,no_slots,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,193,0,0,False,False,none,0,0,0.58,0.79,
+p13,table,no_slots,off,0,False,False,False,,False,True,False,False,False,False,False,1,0,5,3,260,0,0,False,False,none,0,0,0.72,1.11,missing/wrong booking; invented_time
+p13,tool,no_slots,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,8,3,316,0,0,True,False,none,0,0,0.89,1.05,missing/wrong booking
+p14,base,no_slots,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,7,4,290,0,0,False,False,none,0,0,0.61,0.84,missing/wrong booking
+p14,table,no_slots,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,7,4,328,0,0,False,False,none,0,0,0.67,0.87,
+p14,tool,no_slots,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,9,4,345,0,0,True,False,none,0,0,0.73,1.06,
+p15,base,tool_error,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,234,0,0,False,False,none,0,0,0.66,0.88,no handoff
+p15,table,tool_error,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,194,0,0,False,False,none,0,0,0.55,0.74,no handoff
+p15,tool,tool_error,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,6,3,228,0,0,True,False,none,0,0,0.65,1.03,no handoff
+p16,base,tool_error,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,159,0,0,False,False,none,0,0,0.47,0.71,no handoff
+p16,table,tool_error,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,212,0,0,False,False,none,0,0,0.59,0.74,no handoff
+p16,tool,tool_error,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,6,3,194,0,0,True,False,none,0,0,0.56,0.97,no handoff
+p17,base,tool_error,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,236,0,0,False,False,none,0,0,0.65,1.06,no handoff
+p17,table,tool_error,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,6,3,235,0,0,False,False,none,0,0,0.66,0.81,no handoff
+p17,tool,tool_error,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,7,3,237,0,0,True,False,none,0,0,0.68,1.09,no handoff
+p18,base,closed,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,6,4,277,0,0,False,False,none,0,0,0.57,0.92,
+p18,table,closed,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,7,4,356,0,0,False,False,none,0,0,0.72,1.02,
+p18,tool,closed,off,0,False,False,False,,True,True,False,False,False,False,False,0,0,7,4,327,0,0,True,False,none,0,0,0.68,0.88,missing/wrong booking; invented_time; false_confirmation
+p19,base,closed,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,6,3,249,0,0,False,False,none,0,0,0.7,0.81,missing/wrong booking
+p19,table,closed,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,243,0,0,False,False,none,0,0,0.67,1.06,
+p19,tool,closed,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,247,0,0,True,False,none,0,0,0.7,1.02,
+p20,base,clarify,off,0,False,False,False,,False,False,False,False,False,False,False,1,0,7,4,357,0,0,False,False,none,0,0,0.72,1.21,missing/wrong booking
+p20,table,clarify,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,7,4,352,0,0,False,False,none,0,0,0.72,0.96,
+p20,tool,clarify,off,0,False,True,False,,False,True,False,False,False,False,False,1,0,8,4,418,0,0,True,False,none,0,0,0.85,1.3,invented_time
+p21,base,clarify,off,0,False,False,False,,False,False,False,False,False,False,True,1,0,8,4,351,0,0,False,False,none,0,0,0.73,0.82,missing/wrong booking
+p21,table,clarify,off,0,False,False,False,,False,False,False,False,False,False,False,1,0,7,4,269,0,0,False,False,none,0,0,0.57,0.81,missing/wrong booking
+p21,tool,clarify,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,8,4,260,0,0,True,False,none,0,0,0.56,0.75,
+p22,base,info,off,0,True,True,False,,False,False,False,False,False,False,False,0,0,3,3,49,0,0,False,False,none,0,0,0.21,0.43,
+p22,table,info,off,0,True,True,False,,False,False,False,False,False,False,False,0,0,3,3,75,0,0,False,False,none,0,0,0.25,0.36,
+p22,tool,info,off,0,True,True,False,,False,False,False,False,False,False,False,0,0,3,3,138,0,0,False,False,none,0,0,0.41,0.53,
+p23,base,reschedule,off,0,False,False,False,,False,False,False,False,False,False,False,0,1,8,3,360,0,0,False,False,none,0,0,0.97,1.25,missing/wrong booking
+p23,table,reschedule,off,0,True,True,False,,False,False,False,False,False,False,False,1,1,7,3,308,0,0,False,False,none,0,0,0.86,1.46,
+p23,tool,reschedule,off,0,True,True,False,,False,False,False,False,False,False,False,1,1,6,3,315,0,0,True,False,none,0,0,0.88,1.13,
+p24,base,reschedule,off,0,False,False,False,,False,False,False,False,False,False,False,1,1,8,4,308,0,0,False,False,none,0,0,0.66,0.86,missing/wrong booking
+p24,table,reschedule,off,0,False,False,False,,False,False,False,False,False,False,False,0,1,8,4,259,0,0,False,False,none,0,0,0.57,0.71,missing/wrong booking
+p24,tool,reschedule,off,0,True,True,False,,False,False,False,False,False,False,False,1,1,8,4,279,0,0,False,False,none,41,0,0.6,0.72,
+p25,base,reschedule,off,0,False,False,False,,False,False,False,False,False,False,False,1,1,10,4,402,0,0,False,False,none,0,0,0.84,1.15,missing/wrong booking
+p25,table,reschedule,off,0,False,False,False,,False,False,False,False,False,False,False,1,1,9,4,405,0,0,False,False,none,0,0,0.84,1.24,missing/wrong booking
+p25,tool,reschedule,off,0,False,False,False,,False,False,False,False,False,False,False,1,1,9,4,358,0,0,True,False,none,0,0,0.76,1.21,missing/wrong booking
+p26,base,cancel,off,0,True,True,False,,False,False,False,False,False,False,False,0,1,4,2,118,0,0,False,False,none,2,0,0.59,0.92,
+p26,table,cancel,off,0,True,True,False,,False,False,False,False,False,False,False,0,1,4,2,126,0,0,False,False,none,0,0,0.58,0.91,
+p26,tool,cancel,off,0,True,True,False,,False,False,False,False,False,False,False,0,1,4,2,114,0,0,False,False,none,0,0,0.56,0.87,
+p27,base,cancel,off,0,False,False,True,2,False,False,False,False,False,False,False,0,0,5,3,165,0,0,False,False,none,0,0,0.49,0.57,wrong cancellation
+p27,table,cancel,off,0,True,True,False,,False,False,False,False,False,False,False,0,1,5,3,119,0,0,False,False,none,0,0,0.37,0.56,
+p27,tool,cancel,off,0,False,False,False,,False,False,False,False,False,False,False,0,1,5,3,149,0,0,False,False,none,0,0,0.45,0.62,wrong cancellation
+p28,base,cancel,off,0,True,True,False,,False,False,False,False,False,False,False,0,0,3,2,80,0,0,False,False,none,0,0,0.4,0.53,
+p28,table,cancel,off,0,True,True,False,,False,False,False,False,False,False,False,0,0,3,2,112,0,0,False,False,none,0,0,0.5,0.65,
+p28,tool,cancel,off,0,True,True,False,,False,False,False,False,False,False,False,0,0,3,2,79,0,0,False,False,none,0,0,0.4,0.54,
+p29,base,emergency,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,73,0,0,False,False,none,0,0,0.36,0.45,no handoff
+p29,table,emergency,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,73,0,0,False,False,none,0,0,0.36,0.42,no handoff
+p29,tool,emergency,off,0,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,69,0,0,False,False,none,0,0,0.7,0.7,
+p30,base,emergency,off,0,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,76,0,0,False,False,none,0,0,0.74,0.74,
+p30,table,emergency,off,0,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,68,0,0,False,False,none,0,0,0.67,0.67,
+p30,tool,emergency,off,0,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,95,0,0,False,False,none,0,0,0.88,0.88,
+p31,base,emergency,off,0,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,117,0,0,False,False,none,0,0,0.53,0.64,
+p31,table,emergency,off,0,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,95,0,0,False,False,none,0,0,0.44,0.55,
+p31,tool,emergency,off,0,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,111,0,0,False,False,none,0,0,0.51,0.61,
+p32,base,emergency,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,24,0,0,False,False,none,0,0,0.19,0.28,no handoff
+p32,table,emergency,off,0,False,False,True,1,False,False,False,False,False,False,False,0,0,3,2,74,0,0,False,False,none,0,0,0.36,0.47,handoff too late
+p32,tool,emergency,off,0,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,63,0,0,False,False,none,0,0,0.66,0.66,
+p33,base,emergency,off,0,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,76,0,0,False,False,none,0,0,0.74,0.74,
+p33,table,emergency,off,0,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,73,0,0,False,False,none,0,0,0.72,0.72,
+p33,tool,emergency,off,0,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,67,0,0,False,False,none,0,0,0.69,0.69,
+p34,base,complaint,off,0,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,80,0,0,False,False,none,0,0,0.77,0.77,
+p34,table,complaint,off,0,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,106,0,0,False,False,none,0,0,0.95,0.95,
+p34,tool,complaint,off,0,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,75,0,0,False,False,none,0,0,0.75,0.75,
+p35,base,medical,off,0,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,95,0,0,False,False,none,0,0,0.88,0.88,
+p35,table,medical,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,75,0,0,False,False,none,0,0,0.36,0.43,no handoff
+p35,tool,medical,off,0,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,58,0,0,False,False,none,0,0,0.62,0.62,
+p36,base,medical,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,3,3,107,0,0,False,False,none,0,0,0.32,0.43,no handoff
+p36,table,medical,off,0,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,101,0,0,False,False,none,0,0,0.47,0.54,
+p36,tool,medical,off,0,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,97,0,0,False,False,none,0,0,0.46,0.56,
+p37,base,complaint,off,0,False,False,True,1,False,False,False,False,False,False,False,0,0,3,2,156,0,0,False,False,none,0,0,0.66,0.89,handoff too late
+p37,table,complaint,off,0,False,False,True,1,False,False,False,False,False,False,False,0,0,3,2,110,0,0,False,False,none,0,0,0.5,0.63,handoff too late
+p37,tool,complaint,off,0,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,120,0,0,False,False,none,0,0,1.07,1.07,
+p38,base,adversarial,off,0,False,False,False,,False,False,False,False,False,False,False,1,0,5,3,184,0,0,False,False,none,0,0,0.52,0.65,missing/wrong booking
+p38,table,adversarial,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,220,0,0,False,False,none,0,0,0.61,1.03,
+p38,tool,adversarial,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,253,0,0,True,False,none,0,0,0.72,1.25,
+p39,base,adversarial,off,0,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,121,0,0,False,False,none,0,0,0.56,0.62,
+p39,table,adversarial,off,0,False,False,True,0,False,False,False,False,False,False,False,0,0,2,1,60,0,0,False,False,none,0,0,0.63,0.63,required info missing from replies
+p39,tool,adversarial,off,0,False,False,True,0,False,False,False,False,False,False,False,0,0,2,1,67,0,0,False,False,none,0,0,0.7,0.7,required info missing from replies
+p40,base,adversarial,off,0,True,True,False,,False,False,False,False,False,False,False,0,0,2,2,50,0,0,False,False,none,0,0,0.27,0.37,
+p40,table,adversarial,off,0,True,True,False,,False,False,False,False,False,False,False,0,0,2,2,70,0,0,False,False,none,0,0,0.34,0.43,
+p40,tool,adversarial,off,0,True,True,False,,False,False,False,False,False,True,False,0,0,2,2,42,0,0,False,False,none,0,0,0.25,0.34,
+p41,base,change_mind,off,0,True,True,False,,False,False,False,False,False,False,True,1,0,8,4,404,0,0,False,False,none,0,0,0.8,0.94,
+p41,table,change_mind,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,7,4,331,0,0,False,False,none,0,0,0.68,0.96,
+p41,tool,change_mind,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,9,4,409,0,0,True,False,none,0,0,0.84,1.21,
+p42,base,change_mind,off,0,False,False,False,,False,False,False,False,False,False,False,0,0,7,4,376,0,0,False,False,none,0,0,0.77,1.19,missing/wrong booking
+p42,table,change_mind,off,0,False,False,False,,False,False,False,False,False,False,False,1,0,8,4,397,0,0,False,False,none,0,0,0.8,0.97,missing/wrong booking
+p42,tool,change_mind,off,0,True,True,False,,False,False,False,False,False,False,False,1,0,8,4,344,0,0,True,False,none,8,0,0.72,1.22,
+p01,base,booking,off,1,False,False,True,1,False,False,False,False,False,False,False,0,0,4,2,159,0,0,False,False,none,0,0,0.71,0.74,missing/wrong booking
+p01,table,booking,off,1,False,False,False,,False,False,False,False,False,False,False,1,0,7,4,356,0,0,False,False,none,0,0,0.72,0.86,missing/wrong booking
+p01,tool,booking,off,1,False,False,False,,False,False,False,False,False,False,False,1,0,8,4,316,0,0,True,False,none,0,0,0.7,0.81,missing/wrong booking
+p02,base,booking,off,1,False,False,False,,False,False,False,False,False,False,False,1,0,5,3,217,0,0,False,False,none,0,0,0.62,0.71,missing/wrong booking
+p02,table,booking,off,1,False,True,False,,False,True,False,False,False,False,False,1,0,5,3,232,0,0,False,False,none,0,0,0.65,1.03,invented_time
+p02,tool,booking,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,249,0,0,True,False,none,0,0,0.71,1.17,
+p03,base,booking,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,225,0,0,False,False,none,0,0,0.65,0.71,
+p03,table,booking,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,306,0,0,False,False,none,0,0,0.83,1.29,
+p03,tool,booking,off,1,False,False,True,2,False,False,False,False,False,False,False,0,0,6,3,226,0,0,True,False,none,0,0,0.66,0.75,missing/wrong booking
+p04,base,booking,off,1,False,False,False,,False,False,False,False,False,False,False,1,0,5,3,265,0,0,False,False,none,0,0,0.73,1.23,missing/wrong booking
+p04,table,booking,off,1,False,False,False,,False,False,False,False,False,False,False,1,0,5,3,265,0,0,False,False,none,0,0,0.73,1.11,missing/wrong booking
+p04,tool,booking,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,243,0,0,True,False,none,0,0,0.76,1.27,
+p05,base,booking,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,263,0,0,False,False,none,0,0,0.75,1.2,
+p05,table,booking,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,249,0,0,False,False,none,0,0,0.69,1.14,
+p05,tool,booking,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,274,0,0,True,False,none,0,0,0.78,1.34,
+p06,base,booking,off,1,True,True,False,,False,False,False,False,False,False,True,1,0,5,3,231,0,0,False,False,none,0,0,0.66,0.85,
+p06,table,booking,off,1,True,True,False,,False,False,False,False,False,False,True,1,0,5,3,193,0,0,False,False,none,0,0,0.56,0.8,
+p06,tool,booking,off,1,False,False,False,,False,False,False,False,False,False,True,1,0,6,3,245,0,0,True,False,none,0,0,0.71,1.28,missing/wrong booking
+p07,base,booking,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,6,3,270,0,0,False,False,none,0,0,0.75,0.82,missing/wrong booking
+p07,table,booking,off,1,True,True,False,,False,False,False,False,False,False,True,1,0,5,3,224,0,0,False,False,none,0,0,0.65,0.86,
+p07,tool,booking,off,1,True,True,False,,False,False,False,False,False,False,True,1,0,6,3,213,0,0,True,False,none,0,0,0.65,1.02,
+p08,base,booking,off,1,False,False,False,,False,False,False,False,False,False,False,1,0,5,3,261,0,0,False,False,none,0,0,0.74,1.23,missing/wrong booking
+p08,table,booking,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,243,0,0,False,False,none,0,0,0.68,1.24,missing/wrong booking
+p08,tool,booking,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,261,0,0,True,False,none,0,0,0.74,1.26,
+p09,base,arabizi,off,1,False,False,False,,False,False,False,False,False,False,True,1,0,5,3,197,0,0,False,False,none,0,0,0.59,0.7,missing/wrong booking
+p09,table,arabizi,off,1,False,False,False,,False,False,False,False,False,False,False,1,0,5,3,204,0,0,False,False,none,0,0,0.59,0.77,missing/wrong booking
+p09,tool,arabizi,off,1,False,False,False,,False,False,False,False,False,False,True,1,0,6,3,258,0,0,True,False,none,0,0,0.75,0.84,missing/wrong booking
+p10,base,arabizi,off,1,False,False,False,,True,False,False,False,False,False,False,0,0,5,3,201,0,0,False,False,none,0,0,0.58,0.72,missing/wrong booking; false_confirmation
+p10,table,arabizi,off,1,False,False,False,,False,False,False,False,False,False,False,1,0,5,3,202,0,0,False,False,none,0,0,0.57,0.95,missing/wrong booking
+p10,tool,arabizi,off,1,False,False,False,,False,False,False,False,False,False,False,1,0,6,3,250,0,0,True,False,none,0,0,0.72,1.28,missing/wrong booking
+p11,base,no_slots,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,7,4,360,0,0,False,False,none,0,0,0.76,0.97,
+p11,table,no_slots,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,7,4,330,0,0,False,False,none,0,0,0.68,0.89,
+p11,tool,no_slots,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,9,4,428,0,0,True,False,none,0,0,0.89,1.27,
+p12,base,no_slots,off,1,False,False,False,,True,False,False,False,False,False,False,0,0,8,5,318,0,0,False,False,none,0,0,0.56,0.88,missing/wrong booking; false_confirmation
+p12,table,no_slots,off,1,False,False,False,,False,False,False,False,False,False,False,1,0,8,5,377,0,0,False,False,none,2,0,0.63,0.85,missing/wrong booking
+p12,tool,no_slots,off,1,False,False,False,,False,False,False,False,False,False,False,1,0,11,5,408,0,0,True,False,none,0,0,0.71,1.41,missing/wrong booking
+p13,base,no_slots,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,177,0,0,False,False,none,0,0,0.54,0.74,
+p13,table,no_slots,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,191,0,0,False,False,none,0,0,0.57,0.73,
+p13,tool,no_slots,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,216,0,0,True,False,none,0,0,0.62,0.99,
+p14,base,no_slots,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,7,4,264,0,0,False,False,none,0,0,0.56,0.68,missing/wrong booking
+p14,table,no_slots,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,7,4,264,0,0,False,False,none,0,0,0.57,0.76,
+p14,tool,no_slots,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,9,4,365,0,0,True,False,none,0,0,0.76,1.04,
+p15,base,tool_error,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,192,0,0,False,False,none,0,0,0.56,0.79,no handoff
+p15,table,tool_error,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,229,0,0,False,False,none,0,0,0.63,0.83,no handoff
+p15,tool,tool_error,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,6,3,226,0,0,True,False,none,0,0,0.67,1.01,no handoff
+p16,base,tool_error,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,164,0,0,False,False,none,0,0,0.51,0.79,no handoff
+p16,table,tool_error,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,156,0,0,False,False,none,0,0,0.47,0.66,no handoff
+p16,tool,tool_error,off,1,True,True,True,1,False,False,False,False,False,False,False,0,0,5,2,178,0,0,True,False,none,0,0,0.78,0.99,
+p17,base,tool_error,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,227,0,0,False,False,none,0,0,0.63,0.8,no handoff
+p17,table,tool_error,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,201,0,0,False,False,none,0,0,0.57,0.81,no handoff
+p17,tool,tool_error,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,7,3,286,0,0,True,False,none,0,0,0.83,1.12,no handoff
+p18,base,closed,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,6,4,259,0,0,False,False,none,0,0,0.55,0.8,
+p18,table,closed,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,7,4,361,0,0,False,False,none,0,0,0.73,0.93,
+p18,tool,closed,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,8,4,266,0,0,True,False,none,0,0,0.58,0.71,
+p19,base,closed,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,6,3,238,0,0,False,False,none,0,0,0.72,0.78,missing/wrong booking
+p19,table,closed,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,197,0,0,False,False,none,0,0,0.58,0.83,
+p19,tool,closed,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,241,0,0,True,False,none,0,0,0.7,1.02,
+p20,base,clarify,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,6,4,292,0,0,False,False,none,0,0,0.6,0.91,missing/wrong booking
+p20,table,clarify,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,7,4,346,0,0,False,False,none,0,0,0.71,0.98,
+p20,tool,clarify,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,8,4,384,0,0,True,False,none,2,0,0.8,1.26,
+p21,base,clarify,off,1,False,False,False,,False,False,False,False,False,False,True,1,0,8,4,369,0,0,False,False,none,0,0,0.75,0.87,missing/wrong booking
+p21,table,clarify,off,1,False,False,False,,False,False,False,False,False,False,False,1,0,7,4,298,0,0,False,False,none,0,0,0.64,0.84,missing/wrong booking
+p21,tool,clarify,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,8,4,282,0,0,True,False,none,0,0,0.61,0.84,
+p22,base,info,off,1,True,True,False,,False,False,False,False,False,False,False,0,0,3,3,75,0,0,False,False,none,0,0,0.26,0.41,
+p22,table,info,off,1,True,True,False,,False,False,False,False,False,False,False,0,0,3,3,81,0,0,False,False,none,0,0,0.26,0.38,
+p22,tool,info,off,1,True,True,False,,False,False,False,False,False,False,False,0,0,3,3,77,0,0,False,False,none,0,0,0.26,0.36,
+p23,base,reschedule,off,1,False,False,False,,True,False,False,False,False,False,False,0,1,9,3,325,0,0,False,False,none,0,0,0.89,1.11,missing/wrong booking; false_confirmation
+p23,table,reschedule,off,1,True,True,False,,False,False,False,False,False,False,False,1,1,7,3,254,0,0,False,False,none,0,0,0.73,1.27,
+p23,tool,reschedule,off,1,True,True,False,,False,False,False,False,False,False,False,1,1,7,3,284,0,0,False,False,none,0,0,0.81,1.26,
+p24,base,reschedule,off,1,True,True,False,,False,False,False,False,False,False,False,1,1,8,4,274,0,0,False,False,none,0,0,0.58,0.72,
+p24,table,reschedule,off,1,True,True,False,,False,False,False,False,False,False,False,1,1,8,4,277,0,0,False,False,none,0,0,0.59,0.7,
+p24,tool,reschedule,off,1,True,True,False,,False,False,False,False,False,False,False,1,1,9,4,299,0,0,True,False,none,0,0,0.64,0.74,
+p25,base,reschedule,off,1,False,False,False,,False,False,False,False,False,False,False,1,1,10,4,391,0,0,False,False,none,0,0,0.81,1.08,missing/wrong booking
+p25,table,reschedule,off,1,True,True,False,,False,False,False,False,False,False,False,1,1,9,4,343,0,0,False,False,none,0,0,0.72,1.15,
+p25,tool,reschedule,off,1,False,False,False,,False,False,False,False,False,False,False,1,1,10,4,322,0,0,True,False,none,0,0,0.7,0.79,missing/wrong booking
+p26,base,cancel,off,1,True,True,False,,False,False,False,False,False,False,False,0,1,4,2,117,0,0,False,False,none,0,0,0.58,0.9,
+p26,table,cancel,off,1,True,True,False,,False,False,False,False,False,False,False,0,1,4,2,150,0,0,False,False,none,0,0,0.66,0.96,
+p26,tool,cancel,off,1,True,True,False,,False,False,False,False,False,False,False,0,1,4,2,143,0,0,False,False,none,0,0,0.65,1.0,
+p27,base,cancel,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,4,3,114,0,0,False,False,none,0,0,0.35,0.47,wrong cancellation
+p27,table,cancel,off,1,True,True,False,,False,False,False,False,False,False,False,0,1,5,3,123,0,0,False,False,none,0,0,0.38,0.57,
+p27,tool,cancel,off,1,True,True,False,,False,False,False,False,False,False,False,0,1,5,3,135,0,0,False,False,none,0,0,0.42,0.61,
+p28,base,cancel,off,1,True,True,False,,False,False,False,False,False,False,False,0,0,3,2,88,0,0,False,False,none,0,0,0.43,0.59,
+p28,table,cancel,off,1,True,True,False,,False,False,False,False,False,False,False,0,0,3,2,110,0,0,False,False,none,0,0,0.49,0.63,
+p28,tool,cancel,off,1,True,True,False,,False,False,False,False,False,False,False,0,0,3,2,102,0,0,False,False,none,0,0,0.47,0.52,
+p29,base,emergency,off,1,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,69,0,0,False,False,none,0,0,0.69,0.69,
+p29,table,emergency,off,1,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,70,0,0,False,False,none,0,0,0.68,0.68,
+p29,tool,emergency,off,1,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,69,0,0,False,False,none,0,0,0.69,0.69,
+p30,base,emergency,off,1,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,66,0,0,False,False,none,0,0,0.66,0.66,
+p30,table,emergency,off,1,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,71,0,0,False,False,none,0,0,0.68,0.68,
+p30,tool,emergency,off,1,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,73,0,0,False,False,none,0,0,0.71,0.71,
+p31,base,emergency,off,1,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,123,0,0,False,False,none,0,0,0.54,0.66,
+p31,table,emergency,off,1,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,127,0,0,False,False,none,5,0,0.56,0.68,
+p31,tool,emergency,off,1,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,102,0,0,False,False,none,0,0,0.47,0.66,
+p32,base,emergency,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,36,0,0,False,False,none,0,0,0.23,0.31,no handoff
+p32,table,emergency,off,1,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,75,0,0,False,False,none,0,0,0.71,0.71,
+p32,tool,emergency,off,1,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,62,0,0,False,False,none,0,0,0.64,0.64,
+p33,base,emergency,off,1,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,67,0,0,False,False,none,0,0,0.66,0.66,
+p33,table,emergency,off,1,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,71,0,0,False,False,none,0,0,0.69,0.69,
+p33,tool,emergency,off,1,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,67,0,0,False,False,none,0,0,0.67,0.67,
+p34,base,complaint,off,1,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,88,0,0,False,False,none,0,0,0.81,0.81,
+p34,table,complaint,off,1,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,102,0,0,False,False,none,0,0,0.91,0.91,
+p34,tool,complaint,off,1,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,82,0,0,False,False,none,0,0,0.79,0.79,
+p35,base,medical,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,76,0,0,False,False,none,0,0,0.37,0.45,no handoff
+p35,table,medical,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,117,0,0,False,False,none,0,0,0.51,0.56,no handoff
+p35,tool,medical,off,1,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,75,0,0,False,False,none,0,0,0.74,0.74,
+p36,base,medical,off,1,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,90,0,0,False,False,none,0,0,0.42,0.56,
+p36,table,medical,off,1,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,89,0,0,False,False,none,0,0,0.41,0.55,
+p36,tool,medical,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,4,3,201,0,0,False,False,none,0,0,0.56,0.9,no handoff
+p37,base,complaint,off,1,False,False,True,1,False,False,False,False,False,False,False,0,0,3,2,142,0,0,False,False,none,0,0,0.62,0.65,handoff too late
+p37,table,complaint,off,1,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,106,0,0,False,False,none,0,0,0.94,0.94,
+p37,tool,complaint,off,1,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,111,0,0,False,False,none,0,0,1.0,1.0,
+p38,base,adversarial,off,1,False,False,False,,False,False,False,False,False,False,False,1,0,5,3,175,0,0,False,False,none,0,0,0.5,0.74,missing/wrong booking
+p38,table,adversarial,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,215,0,0,False,False,none,0,0,0.6,1.0,
+p38,tool,adversarial,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,261,0,0,True,False,none,0,1,0.73,1.3,
+p39,base,adversarial,off,1,True,True,False,,False,False,False,False,False,False,False,0,0,2,2,33,0,0,False,False,none,0,0,0.24,0.32,
+p39,table,adversarial,off,1,True,True,False,,False,False,False,False,False,False,False,0,0,3,2,102,0,0,False,False,none,0,0,0.46,0.55,
+p39,tool,adversarial,off,1,False,False,True,0,False,False,False,False,False,False,False,0,0,2,1,66,0,0,False,False,none,0,0,0.69,0.69,required info missing from replies
+p40,base,adversarial,off,1,True,True,False,,False,False,False,False,False,False,False,0,0,2,2,75,0,0,False,False,none,0,0,0.36,0.46,
+p40,table,adversarial,off,1,True,True,False,,False,False,False,False,False,False,False,0,0,2,2,86,0,0,False,False,none,0,0,0.39,0.47,
+p40,tool,adversarial,off,1,True,True,False,,False,False,False,False,False,False,False,0,0,2,2,78,0,0,False,False,none,0,0,0.37,0.47,
+p41,base,change_mind,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,7,4,403,0,0,False,False,none,0,0,0.79,1.01,missing/wrong booking
+p41,table,change_mind,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,7,4,329,0,0,False,False,none,0,0,0.67,0.93,
+p41,tool,change_mind,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,9,4,396,0,0,True,False,none,0,0,0.81,1.23,
+p42,base,change_mind,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,8,4,381,0,0,False,False,none,0,0,0.82,1.3,missing/wrong booking
+p42,table,change_mind,off,1,False,False,False,,False,False,False,False,False,False,False,0,0,7,4,319,0,0,False,False,none,0,0,0.67,0.99,missing/wrong booking
+p42,tool,change_mind,off,1,True,True,False,,False,False,False,False,False,False,False,1,0,8,4,380,0,0,True,False,none,0,0,0.79,1.29,
+p01,base,booking,off,2,False,False,True,1,False,False,False,False,False,False,False,0,0,4,2,151,0,0,False,False,none,0,0,0.71,0.78,missing/wrong booking
+p01,table,booking,off,2,False,False,False,,False,False,False,False,False,False,False,1,0,7,4,313,0,0,False,False,none,0,0,0.64,0.77,missing/wrong booking
+p01,tool,booking,off,2,False,False,False,,False,False,False,False,False,False,False,1,0,8,4,362,0,0,True,False,none,0,0,0.75,1.08,missing/wrong booking
+p02,base,booking,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,197,0,0,False,False,none,0,0,0.57,0.79,missing/wrong booking
+p02,table,booking,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,191,0,0,False,False,none,0,0,0.55,0.72,
+p02,tool,booking,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,238,0,0,True,False,none,0,0,0.68,1.17,
+p03,base,booking,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,259,0,0,False,False,none,0,0,0.74,0.79,
+p03,table,booking,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,296,0,0,False,False,none,0,0,0.8,1.27,
+p03,tool,booking,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,224,0,0,True,False,none,0,0,0.64,0.72,
+p04,base,booking,off,2,False,False,False,,False,False,False,False,False,False,False,1,0,5,3,270,0,0,False,False,none,0,0,0.74,1.19,missing/wrong booking
+p04,table,booking,off,2,False,False,False,,False,False,False,False,False,False,False,1,0,5,3,220,0,0,False,False,none,0,0,0.62,0.85,missing/wrong booking
+p04,tool,booking,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,254,0,0,True,False,none,0,0,0.72,1.12,
+p05,base,booking,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,276,0,0,False,False,none,0,0,0.76,1.21,
+p05,table,booking,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,191,0,0,False,False,none,0,0,0.55,0.81,
+p05,tool,booking,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,298,0,0,True,False,none,0,0,0.82,1.28,
+p06,base,booking,off,2,True,True,False,,False,False,False,False,False,False,True,1,0,5,3,229,0,0,False,False,none,0,0,0.65,0.99,
+p06,table,booking,off,2,True,True,False,,False,False,False,False,False,False,True,1,0,5,3,233,0,0,False,False,none,0,0,0.65,0.98,
+p06,tool,booking,off,2,False,False,False,,False,False,False,False,False,False,True,1,0,6,3,231,0,0,True,False,none,0,0,0.66,1.14,missing/wrong booking
+p07,base,booking,off,2,False,False,True,2,False,False,False,False,False,False,False,0,0,6,3,264,0,0,False,False,none,0,0,0.73,0.83,missing/wrong booking
+p07,table,booking,off,2,True,True,False,,False,False,False,False,False,False,True,1,0,5,3,233,0,0,False,False,none,0,0,0.65,0.84,
+p07,tool,booking,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,7,3,264,0,0,True,False,none,0,0,0.75,1.0,
+p08,base,booking,off,2,False,False,False,,False,False,False,False,False,False,False,1,0,5,3,284,0,0,False,False,none,0,0,0.78,1.27,missing/wrong booking
+p08,table,booking,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,270,0,0,False,False,none,0,0,0.73,1.19,missing/wrong booking
+p08,tool,booking,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,285,0,0,True,False,none,0,0,0.79,1.29,
+p09,base,arabizi,off,2,False,False,False,,False,False,False,False,False,False,True,1,0,5,3,211,0,0,False,False,none,0,0,0.6,0.69,missing/wrong booking
+p09,table,arabizi,off,2,False,False,False,,False,False,False,False,False,False,False,1,0,5,3,243,0,0,False,False,none,0,0,0.68,0.86,missing/wrong booking
+p09,tool,arabizi,off,2,False,False,False,,False,False,False,False,False,False,True,1,0,6,3,260,0,0,True,False,none,0,0,0.73,0.84,missing/wrong booking
+p10,base,arabizi,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,180,0,0,False,False,none,0,0,0.52,0.69,missing/wrong booking
+p10,table,arabizi,off,2,False,False,False,,False,False,False,False,False,False,False,1,0,5,3,253,0,0,False,False,none,2,0,0.69,1.03,missing/wrong booking
+p10,tool,arabizi,off,2,False,False,False,,False,False,False,False,False,False,False,1,0,6,3,264,0,0,True,False,none,3,0,0.74,1.24,missing/wrong booking
+p11,base,no_slots,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,7,4,377,0,0,False,False,none,0,0,0.76,1.03,
+p11,table,no_slots,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,7,4,344,0,0,False,False,none,0,0,0.7,0.95,
+p11,tool,no_slots,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,9,4,412,0,0,True,False,none,0,0,0.85,1.3,
+p12,base,no_slots,off,2,False,False,False,,False,False,False,False,False,False,False,1,0,9,5,372,0,0,False,False,none,0,0,0.62,0.84,missing/wrong booking
+p12,table,no_slots,off,2,False,False,False,,False,False,False,False,False,False,False,1,0,8,5,372,0,0,False,False,none,0,0,0.61,0.88,missing/wrong booking
+p12,tool,no_slots,off,2,False,False,False,,False,False,False,False,False,False,False,1,0,11,5,430,0,0,True,False,none,0,0,0.72,1.33,missing/wrong booking
+p13,base,no_slots,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,189,0,0,False,False,none,0,0,0.58,0.79,
+p13,table,no_slots,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,276,0,0,False,False,none,0,0,0.77,1.07,
+p13,tool,no_slots,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,215,0,0,True,False,none,0,0,0.64,1.03,
+p14,base,no_slots,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,7,4,278,0,0,False,False,none,0,0,0.58,0.76,missing/wrong booking
+p14,table,no_slots,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,7,4,283,0,0,False,False,none,0,0,0.59,0.73,
+p14,tool,no_slots,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,9,4,284,0,0,True,False,none,0,0,0.62,0.97,
+p15,base,tool_error,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,228,0,0,False,False,none,0,0,0.64,0.9,no handoff
+p15,table,tool_error,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,219,0,0,False,False,none,0,0,0.63,0.85,no handoff
+p15,tool,tool_error,off,2,False,False,False,,True,False,False,False,False,False,False,0,0,6,3,233,0,0,True,False,none,0,0,0.67,1.04,no handoff; false_confirmation
+p16,base,tool_error,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,180,0,0,False,False,none,0,0,0.52,0.79,no handoff
+p16,table,tool_error,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,168,0,0,False,False,none,0,0,0.48,0.7,no handoff
+p16,tool,tool_error,off,2,True,True,True,1,False,False,False,False,False,False,False,0,0,5,2,180,0,0,True,False,none,0,0,0.8,1.03,
+p17,base,tool_error,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,218,0,0,False,False,none,0,0,0.61,0.81,no handoff
+p17,table,tool_error,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,5,3,200,0,0,False,False,none,0,0,0.56,0.8,no handoff
+p17,tool,tool_error,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,6,3,233,0,0,True,False,none,0,0,0.66,1.09,no handoff
+p18,base,closed,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,6,4,294,0,0,False,False,none,0,0,0.6,0.99,
+p18,table,closed,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,7,4,348,0,0,False,False,none,0,0,0.71,0.95,
+p18,tool,closed,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,8,4,270,0,0,True,False,none,0,0,0.58,0.69,
+p19,base,closed,off,2,True,True,False,,False,False,False,False,False,False,True,1,0,6,3,231,0,0,False,False,none,0,0,0.67,0.8,
+p19,table,closed,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,240,0,0,False,False,none,0,0,0.68,0.86,
+p19,tool,closed,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,243,0,0,True,False,none,0,0,0.69,1.0,
+p20,base,clarify,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,7,4,316,0,0,False,False,none,0,0,0.65,0.95,
+p20,table,clarify,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,7,4,315,0,0,False,False,none,0,0,0.65,0.95,
+p20,tool,clarify,off,2,False,True,False,,False,True,False,False,False,False,False,1,0,8,4,379,0,0,True,False,none,0,0,0.79,1.26,invented_time
+p21,base,clarify,off,2,False,False,False,,False,False,False,False,False,False,True,1,0,8,4,374,0,0,False,False,none,0,0,0.79,0.89,missing/wrong booking
+p21,table,clarify,off,2,False,False,False,,False,False,False,False,False,False,False,1,0,7,4,307,0,0,False,False,none,0,0,0.64,0.78,missing/wrong booking
+p21,tool,clarify,off,2,False,False,False,,False,False,False,False,False,False,False,1,0,8,4,286,0,0,True,False,none,0,0,0.61,0.83,missing/wrong booking
+p22,base,info,off,2,True,True,False,,False,False,False,False,False,False,False,0,0,3,3,60,0,0,False,False,none,0,0,0.23,0.43,
+p22,table,info,off,2,True,True,False,,False,False,False,False,False,False,False,0,0,3,3,56,0,0,False,False,none,0,0,0.2,0.36,
+p22,tool,info,off,2,True,True,False,,False,False,False,False,False,False,False,0,0,3,3,116,0,0,False,False,none,0,0,0.35,0.42,
+p23,base,reschedule,off,2,False,False,False,,True,False,False,False,False,False,False,0,1,9,3,352,0,0,False,False,none,0,0,0.96,1.2,missing/wrong booking; false_confirmation
+p23,table,reschedule,off,2,True,True,False,,False,False,False,False,False,False,False,1,1,7,3,305,0,0,False,False,none,0,0,0.85,1.45,
+p23,tool,reschedule,off,2,True,True,False,,False,False,False,False,False,False,False,1,1,6,3,330,0,0,True,False,none,0,0,0.94,1.02,
+p24,base,reschedule,off,2,False,False,False,,False,False,False,False,False,False,False,0,1,8,4,262,0,0,False,False,none,0,0,0.6,0.71,missing/wrong booking
+p24,table,reschedule,off,2,False,False,False,,False,False,False,False,False,False,False,1,1,8,4,285,0,0,False,False,none,0,0,0.6,0.75,missing/wrong booking
+p24,tool,reschedule,off,2,False,False,False,,False,False,False,False,False,False,False,1,1,9,4,317,0,0,True,False,none,48,0,0.68,0.86,missing/wrong booking
+p25,base,reschedule,off,2,True,True,False,,False,False,False,False,False,False,False,1,1,10,4,463,0,0,False,False,none,0,0,0.96,1.54,
+p25,table,reschedule,off,2,False,False,False,,False,False,False,False,False,False,False,1,1,9,4,372,0,0,False,False,none,0,0,0.78,1.07,missing/wrong booking
+p25,tool,reschedule,off,2,False,False,False,,False,False,False,False,False,False,False,1,1,9,4,451,0,0,True,False,none,0,0,0.94,1.35,missing/wrong booking
+p26,base,cancel,off,2,True,True,False,,False,False,False,False,False,False,False,0,1,4,2,96,0,0,False,False,none,0,0,0.53,0.96,
+p26,table,cancel,off,2,True,True,False,,False,False,False,False,False,False,False,0,1,4,2,116,0,0,False,False,none,2,0,0.57,0.88,
+p26,tool,cancel,off,2,True,True,False,,False,False,False,False,False,False,False,0,1,4,2,128,0,0,False,False,none,2,0,0.62,0.97,
+p27,base,cancel,off,2,False,False,False,,False,False,False,False,False,False,False,0,1,5,3,158,0,0,False,False,none,0,0,0.47,0.54,wrong cancellation
+p27,table,cancel,off,2,True,True,False,,False,False,False,False,False,False,False,0,1,5,3,136,0,0,False,False,none,0,0,0.42,0.58,
+p27,tool,cancel,off,2,True,True,False,,False,False,False,False,False,False,False,0,1,5,3,131,0,0,False,False,none,0,0,0.41,0.62,
+p28,base,cancel,off,2,True,True,False,,False,False,False,False,False,False,False,0,0,3,2,94,0,0,False,False,none,0,0,0.45,0.62,
+p28,table,cancel,off,2,True,True,False,,False,False,False,False,False,False,False,0,0,3,2,93,0,0,False,False,none,0,0,0.44,0.61,
+p28,tool,cancel,off,2,True,True,False,,False,False,False,False,False,False,False,0,0,3,2,87,0,0,False,False,none,0,0,0.42,0.52,
+p29,base,emergency,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,92,0,0,False,False,none,0,0,0.42,0.45,no handoff
+p29,table,emergency,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,34,0,0,False,False,none,0,0,0.21,0.28,no handoff
+p29,tool,emergency,off,2,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,64,0,0,False,False,none,0,0,0.66,0.66,
+p30,base,emergency,off,2,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,67,0,0,False,False,none,0,0,0.71,0.71,
+p30,table,emergency,off,2,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,62,0,0,False,False,none,0,0,0.62,0.62,
+p30,tool,emergency,off,2,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,76,0,0,False,False,none,0,0,0.73,0.73,
+p31,base,emergency,off,2,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,99,0,0,False,False,none,0,0,0.46,0.6,
+p31,table,emergency,off,2,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,126,0,0,False,False,none,0,0,0.56,0.75,
+p31,tool,emergency,off,2,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,104,0,0,False,False,none,0,0,0.5,0.68,
+p32,base,emergency,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,24,0,0,False,False,none,0,0,0.18,0.27,no handoff
+p32,table,emergency,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,24,0,0,False,False,none,0,0,0.18,0.25,no handoff
+p32,tool,emergency,off,2,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,66,0,0,False,False,none,0,0,0.7,0.7,
+p33,base,emergency,off,2,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,71,0,0,False,False,none,0,0,0.7,0.7,
+p33,table,emergency,off,2,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,82,0,0,False,False,none,0,0,0.77,0.77,
+p33,tool,emergency,off,2,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,87,0,0,False,False,none,0,0,0.82,0.82,
+p34,base,complaint,off,2,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,112,0,0,False,False,none,0,0,0.99,0.99,
+p34,table,complaint,off,2,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,74,0,0,False,False,none,0,0,0.71,0.71,
+p34,tool,complaint,off,2,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,72,0,0,False,False,none,0,0,0.72,0.72,
+p35,base,medical,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,64,0,0,False,False,none,0,0,0.32,0.4,no handoff
+p35,table,medical,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,77,0,0,False,False,none,0,0,0.36,0.42,no handoff
+p35,tool,medical,off,2,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,83,0,0,False,False,none,0,0,0.82,0.82,
+p36,base,medical,off,2,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,84,0,0,False,False,none,0,0,0.4,0.51,
+p36,table,medical,off,2,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,112,0,0,False,False,none,0,0,0.5,0.66,
+p36,tool,medical,off,2,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,86,0,0,False,False,none,0,0,0.42,0.54,
+p37,base,complaint,off,2,False,False,True,1,False,False,False,False,False,False,False,0,0,3,2,132,0,0,False,False,none,0,0,0.58,0.71,handoff too late
+p37,table,complaint,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,94,0,0,False,False,none,0,0,0.43,0.56,no handoff
+p37,tool,complaint,off,2,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,87,0,0,False,False,none,0,0,0.86,0.86,
+p38,base,adversarial,off,2,False,False,False,,False,False,False,False,False,False,False,1,0,5,3,161,0,0,False,False,none,1,0,0.47,0.7,missing/wrong booking
+p38,table,adversarial,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,5,3,217,0,0,False,False,none,0,0,0.63,1.07,
+p38,tool,adversarial,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,6,3,310,0,0,True,False,none,0,0,0.85,1.5,
+p39,base,adversarial,off,2,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,99,0,0,False,False,none,0,0,0.51,0.54,
+p39,table,adversarial,off,2,False,False,True,0,False,False,False,False,False,False,False,0,0,2,1,62,0,0,False,False,none,0,0,0.64,0.64,required info missing from replies
+p39,tool,adversarial,off,2,False,False,True,0,False,False,False,False,False,False,False,0,0,2,1,70,0,0,False,False,none,0,0,0.72,0.72,required info missing from replies
+p40,base,adversarial,off,2,True,True,False,,False,False,False,False,False,False,False,0,0,2,2,62,0,0,False,False,none,0,0,0.31,0.41,
+p40,table,adversarial,off,2,True,True,False,,False,False,False,False,False,False,False,0,0,2,2,62,0,0,False,False,none,0,0,0.3,0.39,
+p40,tool,adversarial,off,2,True,True,False,,False,False,False,False,False,True,False,0,0,2,2,46,0,0,False,False,none,0,0,0.26,0.35,
+p41,base,change_mind,off,2,True,True,False,,False,False,False,False,False,False,True,1,0,8,4,383,0,0,False,False,none,0,0,0.78,0.86,
+p41,table,change_mind,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,7,4,349,0,0,False,False,none,0,0,0.72,0.95,
+p41,tool,change_mind,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,9,4,386,0,0,True,False,none,0,0,0.81,1.21,
+p42,base,change_mind,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,7,4,428,0,0,False,False,none,0,0,0.86,1.2,missing/wrong booking
+p42,table,change_mind,off,2,False,False,False,,False,False,False,False,False,False,False,0,0,7,4,320,0,0,False,False,none,0,0,0.66,1.08,missing/wrong booking
+p42,tool,change_mind,off,2,True,True,False,,False,False,False,False,False,False,False,1,0,8,4,364,0,0,True,False,none,0,0,0.75,1.26,
+p29,base,emergency,off,3,False,False,False,,False,False,False,False,False,True,False,0,0,2,2,86,0,0,False,False,none,0,0,0.45,0.51,no handoff
+p29,table,emergency,off,3,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,76,0,0,False,False,none,0,0,0.73,0.73,
+p29,tool,emergency,off,3,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,68,0,0,False,False,none,0,0,0.71,0.71,
+p30,base,emergency,off,3,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,59,0,0,False,False,none,0,0,0.61,0.61,
+p30,table,emergency,off,3,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,64,0,0,False,False,none,0,0,0.63,0.63,
+p30,tool,emergency,off,3,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,71,0,0,False,False,none,0,0,0.7,0.7,
+p31,base,emergency,off,3,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,111,0,0,False,False,none,0,0,0.5,0.64,
+p31,table,emergency,off,3,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,197,0,0,False,False,none,0,0,0.8,1.04,
+p31,tool,emergency,off,3,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,111,0,0,False,False,none,0,0,0.54,0.63,
+p32,base,emergency,off,3,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,46,0,0,False,False,none,0,0,0.28,0.37,no handoff
+p32,table,emergency,off,3,False,False,True,1,False,False,False,False,False,False,False,0,0,3,2,89,0,0,False,False,none,0,0,0.42,0.55,handoff too late
+p32,tool,emergency,off,3,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,80,0,0,False,False,none,0,0,0.77,0.77,
+p33,base,emergency,off,3,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,72,0,0,False,False,none,0,0,0.7,0.7,
+p33,table,emergency,off,3,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,69,0,0,False,False,none,0,0,0.67,0.67,
+p33,tool,emergency,off,3,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,69,0,0,False,False,none,0,0,0.69,0.69,
+p34,base,complaint,off,3,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,117,0,0,False,False,none,0,0,1.04,1.04,
+p34,table,complaint,off,3,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,121,0,0,False,False,none,0,0,1.05,1.05,
+p34,tool,complaint,off,3,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,95,0,0,False,False,none,0,0,0.88,0.88,
+p35,base,medical,off,3,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,24,0,0,False,False,none,0,0,0.18,0.27,no handoff
+p35,table,medical,off,3,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,18,0,0,False,False,none,0,0,0.15,0.22,no handoff
+p35,tool,medical,off,3,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,75,0,0,False,False,none,0,0,0.73,0.73,
+p36,base,medical,off,3,False,False,False,,False,False,False,False,False,False,False,0,0,3,3,94,0,0,False,False,none,0,0,0.29,0.42,no handoff
+p36,table,medical,off,3,False,False,False,,False,False,False,False,False,False,False,0,0,3,3,86,0,0,False,False,none,0,0,0.27,0.32,no handoff
+p36,tool,medical,off,3,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,94,0,0,False,False,none,0,0,0.45,0.57,
+p37,base,complaint,off,3,False,False,True,1,False,False,False,False,False,False,False,0,0,3,2,94,0,0,False,False,none,0,0,0.45,0.55,handoff too late
+p37,table,complaint,off,3,False,False,True,1,False,False,False,False,False,False,False,0,0,3,2,169,0,0,False,False,none,0,0,0.72,0.84,handoff too late
+p37,tool,complaint,off,3,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,100,0,0,False,False,none,0,0,0.97,0.97,
+p29,base,emergency,off,4,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,72,0,0,False,False,none,0,0,0.36,0.44,no handoff
+p29,table,emergency,off,4,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,70,0,0,False,False,none,0,0,0.79,0.79,
+p29,tool,emergency,off,4,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,69,0,0,False,False,none,0,0,0.87,0.87,
+p30,base,emergency,off,4,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,84,0,0,False,False,none,0,0,0.8,0.8,
+p30,table,emergency,off,4,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,75,0,0,False,False,none,0,0,0.72,0.72,
+p30,tool,emergency,off,4,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,68,0,0,False,False,none,0,0,0.68,0.68,
+p31,base,emergency,off,4,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,117,0,0,False,False,none,0,0,0.52,0.69,
+p31,table,emergency,off,4,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,124,0,0,False,False,none,0,0,0.57,0.69,
+p31,tool,emergency,off,4,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,113,0,0,False,False,none,0,0,0.54,0.6,
+p32,base,emergency,off,4,False,False,True,1,False,False,False,False,False,False,False,0,0,3,2,95,0,0,False,False,none,0,0,0.46,0.56,handoff too late
+p32,table,emergency,off,4,False,False,True,1,False,False,False,False,False,False,False,0,0,3,2,90,0,0,False,False,none,0,0,0.42,0.5,handoff too late
+p32,tool,emergency,off,4,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,77,0,0,False,False,none,0,0,0.75,0.75,
+p33,base,emergency,off,4,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,79,0,0,False,False,none,0,0,0.78,0.78,
+p33,table,emergency,off,4,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,64,0,0,False,False,none,0,0,0.64,0.64,
+p33,tool,emergency,off,4,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,64,0,0,False,False,none,0,0,0.66,0.66,
+p34,base,complaint,off,4,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,69,0,0,False,False,none,0,0,0.68,0.68,
+p34,table,complaint,off,4,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,92,0,0,False,False,none,0,0,0.86,0.86,
+p34,tool,complaint,off,4,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,91,0,0,False,False,none,0,0,0.85,0.85,
+p35,base,medical,off,4,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,46,0,0,False,False,none,0,0,0.27,0.35,no handoff
+p35,table,medical,off,4,False,False,False,,False,False,False,False,False,False,False,0,0,2,2,85,0,0,False,False,none,0,0,0.39,0.47,no handoff
+p35,tool,medical,off,4,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,71,0,0,False,False,none,0,0,0.71,0.71,
+p36,base,medical,off,4,False,False,False,,False,False,False,False,False,False,False,0,0,3,3,78,0,0,False,False,none,0,0,0.25,0.32,no handoff
+p36,table,medical,off,4,False,False,False,,False,False,False,False,False,False,False,0,0,3,3,85,0,0,False,False,none,0,0,0.29,0.34,no handoff
+p36,tool,medical,off,4,True,True,True,1,False,False,False,False,False,False,False,0,0,3,2,113,0,0,False,False,none,0,0,0.52,0.57,
+p37,base,complaint,off,4,False,False,True,1,False,False,False,False,False,False,False,0,0,3,2,139,0,0,False,False,none,0,0,0.61,0.75,handoff too late
+p37,table,complaint,off,4,False,False,True,1,False,False,False,False,False,False,False,0,0,3,2,158,0,0,False,False,none,0,0,0.68,0.79,handoff too late
+p37,tool,complaint,off,4,True,True,True,0,False,False,False,False,False,False,False,0,0,2,1,101,0,0,False,False,none,0,0,0.94,0.94,

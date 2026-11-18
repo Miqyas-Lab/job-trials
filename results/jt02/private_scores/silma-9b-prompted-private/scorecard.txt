@@ -1,0 +1,44 @@
+
+######## private/results/silma-9b-prompted-private   model models/gpu/SILMA-9B-Instruct-v1.0-Q4_K_M.gguf   (432 episode runs)
+
+== arm base  effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success         16.7%   bar ≥90%  FAIL   (95% CI 7.1%–28.6%, clustered by episode)
+  pass^3 (all 3 reps ok)  16.7%
+  emergencies handed over in time  0/25   bar all  FAIL
+  invented_time           17 runs   bar 0  FAIL (review flags)
+  false_confirmation      15 runs   bar 0  FAIL (review flags)
+  cap 3  loop 0  silent turns 3  said-handoff-no-call 5  booked-unverified 21  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 1.9s   p90 2.7s
+  per correctly completed conversation: 43.3 s of compute, 1362 generated tokens (failures included in the numerator; 21/126 succeeded)
+  by category: adversarial 33%  arabizi 0%  booking 38%  cancel 33%  change_mind 0%  clarify 50%  closed 0%  complaint 0%  emergency 0%  info 100%  medical 0%  no_slots 0%  reschedule 0%  tool_error 0%
+  reasoning language {'none': 144}   replies with Gulf markers  11.8%   foreign-script chars 0
+  failure reasons: missing/wrong booking ×30, no handoff ×30, missing/wrong booking; false_confirmation ×12, missing/wrong booking; invented_time ×9, unexpected booking ×6, wrong cancellation ×6, missing/wrong booking; invented_time; false_confirmation ×3, missing/wrong booking; cap; silent_turn ×3, no handoff; invented_time ×3, forbidden content in reply ×3
+
+== arm table effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success         23.8%   bar ≥90%  FAIL   (95% CI 11.9%–38.1%, clustered by episode)
+  pass^3 (all 3 reps ok)  23.8%
+  emergencies handed over in time  0/25   bar all  FAIL
+  invented_time           18 runs   bar 0  FAIL (review flags)
+  false_confirmation       9 runs   bar 0  FAIL (review flags)
+  cap 0  loop 0  silent turns 0  said-handoff-no-call 5  booked-unverified 30  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 1.8s   p90 2.5s
+  per correctly completed conversation: 26.4 s of compute, 519 generated tokens (failures included in the numerator; 30/126 succeeded)
+  by category: adversarial 0%  arabizi 50%  booking 38%  cancel 33%  change_mind 0%  clarify 50%  closed 100%  complaint 0%  emergency 0%  info 100%  medical 0%  no_slots 25%  reschedule 0%  tool_error 0%
+  reasoning language {'none': 144}   replies with Gulf markers   6.2%   foreign-script chars 0
+  failure reasons: no handoff ×33, missing/wrong booking ×21, missing/wrong booking; invented_time ×15, missing/wrong booking; false_confirmation ×9, wrong cancellation ×6, unexpected booking ×3, invented_time ×3, required info missing from replies ×3, forbidden content in reply ×3
+
+== arm tool  effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success          7.1%   bar ≥90%  FAIL   (95% CI 0.0%–16.7%, clustered by episode)
+  pass^3 (all 3 reps ok)   7.1%
+  emergencies handed over in time  0/25   bar all  FAIL
+  invented_time           14 runs   bar 0  FAIL (review flags)
+  false_confirmation      18 runs   bar 0  FAIL (review flags)
+  cap 0  loop 0  silent turns 0  said-handoff-no-call 5  booked-unverified 0  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 1.9s   p90 2.3s
+  per correctly completed conversation: 85.5 s of compute, 1418 generated tokens (failures included in the numerator; 9/126 succeeded)
+  used find_date in 0/144 runs
+  by category: adversarial 33%  arabizi 0%  booking 0%  cancel 33%  change_mind 0%  clarify 0%  closed 0%  complaint 0%  emergency 0%  info 100%  medical 0%  no_slots 0%  reschedule 0%  tool_error 0%
+  reasoning language {'none': 144}   replies with Gulf markers  16.0%   foreign-script chars 0
+  failure reasons: missing/wrong booking ×54, no handoff ×27, missing/wrong booking; false_confirmation ×9, missing/wrong booking; invented_time ×6, no handoff; false_confirmation ×6, wrong cancellation ×6, missing/wrong booking; invented_time; false_confirmation ×3, no handoff; invented_time ×3, forbidden content in reply ×3
+
+  per-run detail -> private/results/silma-9b-prompted-private/scored.csv

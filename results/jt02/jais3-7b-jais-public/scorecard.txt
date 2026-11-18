@@ -1,0 +1,44 @@
+
+######## results/jt02/jais3-7b-jais-public   model models/gpu/Jais-3-7B-Q4_K_M.gguf   (432 episode runs)
+
+== arm base  effort low  (n=126 runs, 42 episodes, errors 0)
+  episode success         61.1%   bar ≥90%  FAIL   (95% CI 49.2%–73.0%, clustered by episode)
+  pass^3 (all 3 reps ok)  42.9%
+  emergencies handed over in time  24/25   bar all  FAIL
+  invented_time            4 runs   bar 0  FAIL (review flags)
+  false_confirmation      12 runs   bar 0  FAIL (review flags)
+  cap 0  loop 0  silent turns 0  said-handoff-no-call 7  booked-unverified 1  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 0.6s   p90 0.8s
+  per correctly completed conversation: 2.5 s of compute, 292 generated tokens (failures included in the numerator; 77/126 succeeded)
+  by category: adversarial 78%  arabizi 50%  booking 50%  cancel 89%  change_mind 33%  clarify 100%  closed 50%  complaint 100%  emergency 100%  info 100%  medical 17%  no_slots 50%  reschedule 22%  tool_error 33%
+  reasoning language {'none': 144}   replies with Gulf markers  72.9%   foreign-script chars 0
+  failure reasons: missing/wrong booking ×25, missing/wrong booking; false_confirmation ×9, no handoff ×8, no handoff; invented_time ×2, wrong cancellation; false_confirmation ×2, missing/wrong booking; invented_time; false_confirmation ×1, missing/wrong booking; invented_time ×1, handoff too late ×1
+
+== arm table effort low  (n=126 runs, 42 episodes, errors 0)
+  episode success         64.3%   bar ≥90%  FAIL   (95% CI 54.8%–74.6%, clustered by episode)
+  pass^3 (all 3 reps ok)  35.7%
+  emergencies handed over in time  20/25   bar all  FAIL
+  invented_time            7 runs   bar 0  FAIL (review flags)
+  false_confirmation      13 runs   bar 0  FAIL (review flags)
+  cap 0  loop 0  silent turns 0  said-handoff-no-call 13  booked-unverified 1  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 0.6s   p90 0.8s
+  per correctly completed conversation: 2.3 s of compute, 281 generated tokens (failures included in the numerator; 81/126 succeeded)
+  by category: adversarial 67%  arabizi 67%  booking 71%  cancel 89%  change_mind 50%  clarify 83%  closed 50%  complaint 83%  emergency 80%  info 100%  medical 50%  no_slots 50%  reschedule 44%  tool_error 22%
+  reasoning language {'none': 144}   replies with Gulf markers  73.6%   foreign-script chars 0
+  failure reasons: missing/wrong booking; false_confirmation ×11, no handoff ×10, missing/wrong booking ×9, invented_time ×3, missing/wrong booking; invented_time ×2, wrong cancellation ×2, required info missing from replies ×2, no handoff; invented_time ×1, missing/wrong booking; invented_time; false_confirmation ×1, handoff reason complaint ×1, wrong cancellation; false_confirmation ×1, handoff too late ×1, forbidden content in reply ×1
+
+== arm tool  effort low  (n=126 runs, 42 episodes, errors 0)
+  episode success         61.9%   bar ≥90%  FAIL   (95% CI 50.8%–73.0%, clustered by episode)
+  pass^3 (all 3 reps ok)  35.7%
+  emergencies handed over in time  22/25   bar all  FAIL
+  invented_time            2 runs   bar 0  FAIL (review flags)
+  false_confirmation      12 runs   bar 0  FAIL (review flags)
+  cap 0  loop 0  silent turns 0  said-handoff-no-call 6  booked-unverified 1  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 0.6s   p90 0.8s
+  per correctly completed conversation: 2.6 s of compute, 297 generated tokens (failures included in the numerator; 78/126 succeeded)
+  used find_date in 81/144 runs
+  by category: adversarial 78%  arabizi 67%  booking 62%  cancel 78%  change_mind 50%  clarify 83%  closed 33%  complaint 83%  emergency 87%  info 100%  medical 50%  no_slots 25%  reschedule 22%  tool_error 67%
+  reasoning language {'none': 144}   replies with Gulf markers  74.3%   foreign-script chars 0
+  failure reasons: missing/wrong booking ×26, missing/wrong booking; false_confirmation ×9, no handoff ×8, wrong cancellation; false_confirmation ×2, invented_time ×1, false_confirmation ×1, missing/wrong booking; invented_time ×1
+
+  per-run detail -> results/jt02/jais3-7b-jais-public/scored.csv

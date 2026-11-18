@@ -1,0 +1,15 @@
+allam-7b-prompted-private: 432 runs, site riyadh, scored rows 432
+falcon-h1-7b-prompted-private: 432 runs, site riyadh, scored rows 432
+falcon-h1-7b-template-private: 432 runs, site riyadh, scored rows 432
+fanar-2-27b-prompted-private: 432 runs, site riyadh, scored rows 432
+fanar-2-27b-template-private: 432 runs, site riyadh, scored rows 432
+jais3-3.7b-jais-private: 432 runs, site riyadh, scored rows 432
+jais3-3.7b-prompted-private: 432 runs, site riyadh, scored rows 432
+jais3-7b-jais-private: 432 runs, site riyadh, scored rows 432
+jais3-7b-prompted-private: 432 runs, site riyadh, scored rows 432
+qwen3-4b-chat-private: 432 runs, site riyadh, scored rows 432
+qwen3-4b-prompted-private: 432 runs, site riyadh, scored rows 432
+qwen3-8b-chat-private: 432 runs, site riyadh, scored rows 432
+qwen3-8b-prompted-private: 432 runs, site riyadh, scored rows 432
+silma-9b-prompted-private: 432 runs, site riyadh, scored rows 432
+parts 14 of 14 expected; values with Arabic text dropped: 0

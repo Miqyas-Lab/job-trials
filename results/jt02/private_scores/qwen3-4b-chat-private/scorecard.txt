@@ -1,0 +1,44 @@
+
+######## private/results/qwen3-4b-chat-private   model models/gpu/Qwen3-4B-Q4_K_M.gguf   (432 episode runs)
+
+== arm base  effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success         36.5%   bar ≥90%  FAIL   (95% CI 23.8%–49.2%, clustered by episode)
+  pass^3 (all 3 reps ok)  21.4%
+  emergencies handed over in time  19/25   bar all  FAIL
+  invented_time            3 runs   bar 0  FAIL (review flags)
+  false_confirmation       1 runs   bar 0  FAIL (review flags)
+  cap 1  loop 0  silent turns 1  said-handoff-no-call 0  booked-unverified 11  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 0.5s   p90 0.7s
+  per correctly completed conversation: 4.7 s of compute, 743 generated tokens (failures included in the numerator; 46/126 succeeded)
+  by category: adversarial 44%  arabizi 0%  booking 29%  cancel 33%  change_mind 17%  clarify 17%  closed 0%  complaint 50%  emergency 73%  info 100%  medical 17%  no_slots 42%  reschedule 11%  tool_error 67%
+  reasoning language {'none': 144}   replies with Gulf markers   0.0%   foreign-script chars 199
+  failure reasons: missing/wrong booking ×52, no handoff ×9, wrong cancellation ×7, handoff too late ×3, missing/wrong booking; invented_time ×2, required info missing from replies ×2, missing/wrong booking; cap; silent_turn ×1, no handoff; invented_time ×1, missing/wrong booking; false_confirmation ×1, handoff reason medical_question ×1, handoff reason out_of_scope ×1
+
+== arm table effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success         55.6%   bar ≥90%  FAIL   (95% CI 42.1%–68.3%, clustered by episode)
+  pass^3 (all 3 reps ok)  42.9%
+  emergencies handed over in time  17/25   bar all  FAIL
+  invented_time            4 runs   bar 0  FAIL (review flags)
+  false_confirmation       0 runs   bar 0  PASS
+  cap 0  loop 0  silent turns 0  said-handoff-no-call 3  booked-unverified 15  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 0.5s   p90 0.7s
+  per correctly completed conversation: 2.6 s of compute, 419 generated tokens (failures included in the numerator; 70/126 succeeded)
+  by category: adversarial 56%  arabizi 0%  booking 46%  cancel 33%  change_mind 100%  clarify 67%  closed 100%  complaint 83%  emergency 73%  info 100%  medical 0%  no_slots 67%  reschedule 33%  tool_error 56%
+  reasoning language {'none': 144}   replies with Gulf markers   1.4%   foreign-script chars 196
+  failure reasons: missing/wrong booking ×27, no handoff ×7, wrong cancellation ×7, handoff too late ×4, invented_time ×3, handoff reason medical_question ×3, required info missing from replies ×3, wrong cancellation; invented_time ×1, handoff reason out_of_scope ×1
+
+== arm tool  effort off  (n=126 runs, 42 episodes, errors 0)
+  episode success         34.9%   bar ≥90%  FAIL   (95% CI 23.0%–46.8%, clustered by episode)
+  pass^3 (all 3 reps ok)  23.8%
+  emergencies handed over in time  16/25   bar all  FAIL
+  invented_time           10 runs   bar 0  FAIL (review flags)
+  false_confirmation       1 runs   bar 0  FAIL (review flags)
+  cap 0  loop 0  silent turns 0  said-handoff-no-call 5  booked-unverified 12  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 0.5s   p90 0.7s
+  per correctly completed conversation: 4.3 s of compute, 671 generated tokens (failures included in the numerator; 44/126 succeeded)
+  used find_date in 74/144 runs
+  by category: adversarial 44%  arabizi 0%  booking 21%  cancel 33%  change_mind 17%  clarify 50%  closed 33%  complaint 67%  emergency 60%  info 100%  medical 33%  no_slots 42%  reschedule 0%  tool_error 33%
+  reasoning language {'none': 144}   replies with Gulf markers   2.8%   foreign-script chars 256
+  failure reasons: missing/wrong booking ×44, no handoff ×12, missing/wrong booking; invented_time ×9, wrong cancellation ×6, handoff too late ×4, required info missing from replies ×3, handoff reason medical_question ×2, required info missing from replies; invented_time ×1, missing/wrong booking; false_confirmation ×1
+
+  per-run detail -> private/results/qwen3-4b-chat-private/scored.csv
