@@ -72,4 +72,13 @@ amendments:
       is skipped when a step is run again; the results archive is rewritten after every finished path. The cache only
       stores earlier conversations to save time and does not change what a model generates. No change to scenarios,
       models, files, sampling, setups, limits or scoring.
+  - date: 2026-11-20
+    before_any_run: true
+    change: >
+      Run script only (scripts/run_bf01.sh): llama.cpp is built with -DLLAMA_USE_PREBUILT_UI=OFF, so the server is built
+      without its browser chat page. The pinned builds (7df8b87, 9c9074e) fetch that page from Hugging Face at build time;
+      their own version is not there, the newest files now have a layout these builds reject, and the build stops
+      ("missing required asset(s)"). Two attempts on 20 November stopped there, while building, before any model ran.
+      The page is not used: the harness only calls the server's API, which is the same with or without it. No change
+      to scenarios, models, files, sampling, setups, limits or scoring.
 results: null   # filled after the run, from results/bf01/
