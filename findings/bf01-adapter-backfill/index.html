@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>مقياس — استكمال: طريقتا استدعاء الأدوات لأربعة نماذج</title>
+<meta name="description" content="bf-01: أربعة نماذج على طريقتي استدعاء الأدوات في الجلسة نفسها، 42 حالة × 3 محاولات لكل طريقة. يكمل جدول الإعداد المشترك بعمودين. أرقام فقط، بلا حكم.">
+<link rel="icon" href="../../assets/brand/miqyas-favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/base.css">
+<style>
+  :root{color-scheme:light}
+  .num{font-family:var(--mono);font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate}
+  .data-table td.num{text-align:end}
+  .data-table tr.this td{font-weight:600}
+  .ci{font-family:var(--mono);font-size:.75rem;color:var(--dim);direction:ltr;unicode-bidi:isolate}
+  .brandbar{padding-block:2rem 0}
+  .brandbar a{display:inline-block;line-height:0}
+  .brandbar img{width:180px;height:auto}
+  header{padding-block-start:1rem}
+  h1.q{font-size:clamp(1.9rem,4.5vw,2.75rem);font-weight:600;line-height:1.3;margin-block-start:1rem}
+  .q-en{font-family:var(--mono);font-size:.8125rem;color:var(--dim);direction:ltr;text-align:right;margin-block-start:.35rem}
+  .note{font-size:.875rem;color:var(--dim)}
+  .obs{border-block:1px solid var(--ink);padding-block:1.25rem;margin-block:1.5rem}
+  .en{direction:ltr;text-align:left;unicode-bidi:isolate;font-size:.9375rem;border-block-start:1px solid var(--rule);padding-block-start:1rem}
+  ul.tight li{margin-block:.35rem}
+  a{color:var(--ink);text-underline-offset:3px}
+  .scroll{overflow-x:auto}
+  .brandfoot{display:flex;justify-content:space-between;align-items:center;border-block-start:1px solid var(--rule);padding-block-start:.75rem;margin-block:2rem;font-size:.8125rem}
+  .brandfoot .b{display:inline-flex;align-items:center;gap:.5rem}
+  .brandfoot img{width:24px;height:22px}
+  .brandfoot .site{font-family:var(--mono);color:var(--dim);direction:ltr}
+</style>
+</head>
+<body>
+
+<div class="strip"><div class="wrap">
+  <span><b>استكمال bf-01</b></span>
+  <span><b class="num">4</b> نماذج × طريقتان</span>
+  <span><b class="num">144</b> محادثة لكل طريقة</span>
+  <span>مسجّل مسبقًا</span>
+</div></div>
+
+<div class="wrap">
+<div class="brandbar"><a href="../../" aria-label="مقياس: الصفحة الرئيسية"><img src="../../assets/brand/miqyas-lockup-on-light.svg" alt="مقياس · Miqyas"></a></div>
+
+<header>
+  <h1 class="q">طريقتا استدعاء الأدوات، لكل نموذج</h1>
+  <p class="q-en">bf-01 · adapter back-fill · numbers only, no verdict</p>
+  <p>أثر محوّل JSON الذي نستخدمه يختلف من نموذج لآخر، فلا تصح مقارنة نموذج قسناه بطريقة بنموذج قسناه بالأخرى. لذلك قررنا أن نقيس كل نموذج بالطريقتين حين تتوفر له الطريقتان. هنا أربعة نماذج كانت مقيسة بصيغتها الخاصة فقط: قسنا طريقة المحوّل، وأعدنا صيغتها الخاصة في الجلسة نفسها حتى يقترن العمودان. الوظيفة نفسها (استقبال عيادة أسنان عبر واتساب)، والحالات الـ<span class="num">42</span> العامة نفسها، وإعداد أداة التاريخ (الإعداد المشترك).</p>
+</header>
+
+<h2>الأرقام</h2>
+<div class="scroll">
+<table class="data-table">
+  <thead><tr><th>محادثات صحيحة كاملة</th><th dir="ltr">Jais 3 7B</th><th dir="ltr">Qwen3 8B</th><th dir="ltr">Fanar 2 27B</th><th dir="ltr">Jais 3 3.7B</th></tr></thead>
+  <tbody>
+    <tr><td>بصيغة النموذج الخاصة</td><td class="num">69.8% <span class="ci">[59.5–79.4]</span></td><td class="num">68.3% <span class="ci">[55.6–81.0]</span></td><td class="num">55.6% <span class="ci">[45.2–65.9]</span></td><td class="num">29.4% <span class="ci">[18.3–41.3]</span></td></tr>
+    <tr><td>عبر محوّل JSON</td><td class="num">76.2% <span class="ci">[65.1–85.7]</span></td><td class="num">65.1% <span class="ci">[53.2–77.0]</span></td><td class="num">61.1% <span class="ci">[49.2–73.0]</span></td><td class="num">43.7% <span class="ci">[31.7–55.6]</span></td></tr>
+    <tr><td>الفرق: المحوّل ناقص الصيغة الخاصة (نقاط)</td><td class="num">+6.3 <span class="ci">[−4.0, +17.5]</span></td><td class="num">−3.2 <span class="ci">[−15.9, +10.3]</span></td><td class="num">+5.6 <span class="ci">[−2.4, +13.5]</span></td><td class="num">+14.3 <span class="ci">[0.0, +27.8]</span></td></tr>
+  </tbody>
+</table>
+</div>
+<p class="note">فترات الثقة <span class="num">95%</span> بين قوسين، مجمّعة حسب الحالة؛ وفترة الفرق مقترنة بالحالة نفسها في الطريقتين (إعادة معاينة الحالات، <span class="num">4,000</span> سحب). نسب النجاح من <span class="num">126</span> محادثة (<span class="num">42</span> حالة × <span class="num">3</span>)، وبقية العدّ من <span class="num">144</span> محادثة تشمل محاولتين إضافيتين لكل حالة أمان.</p>
+
+<h2>تفاصيل كل طريقة</h2>
+<div class="scroll">
+<table class="data-table">
+  <thead><tr><th></th><th dir="ltr">Jais 3 7B · صيغته</th><th dir="ltr">Jais 3 7B · المحوّل</th><th dir="ltr">Qwen3 8B · صيغته</th><th dir="ltr">Qwen3 8B · المحوّل</th><th dir="ltr">Fanar 2 27B · صيغته</th><th dir="ltr">Fanar 2 27B · المحوّل</th><th dir="ltr">Jais 3 3.7B · صيغته</th><th dir="ltr">Jais 3 3.7B · المحوّل</th></tr></thead>
+  <tbody>
+    <tr><td>صحيحة في المحاولات الثلاث</td><td class="num">45.2%</td><td class="num">59.5%</td><td class="num">59.5%</td><td class="num">52.4%</td><td class="num">26.2%</td><td class="num">40.5%</td><td class="num">19.0%</td><td class="num">23.8%</td></tr>
+    <tr><td>طوارئ حُوّلت لموظف في الوقت المناسب</td><td class="num">23/25</td><td class="num">25/25</td><td class="num">25/25</td><td class="num">25/25</td><td class="num">24/25</td><td class="num">24/25</td><td class="num">22/25</td><td class="num">7/25</td></tr>
+    <tr><td>شكاوى وأسئلة طبية حُوّلت لموظف</td><td class="num">16/20</td><td class="num">20/20</td><td class="num">15/20</td><td class="num">16/20</td><td class="num">18/20</td><td class="num">19/20</td><td class="num">5/20</td><td class="num">13/20</td></tr>
+    <tr><td>محادثات ذكر فيها موعدًا لم يتحقق منه</td><td class="num">6/144</td><td class="num">4/144</td><td class="num">5/144</td><td class="num">4/144</td><td class="num">1/144</td><td class="num">1/144</td><td class="num">13/144</td><td class="num">8/144</td></tr>
+    <tr><td>محادثات أكّد فيها حجزًا لم يتم</td><td class="num">7/144</td><td class="num">2/144</td><td class="num">1/144</td><td class="num">1/144</td><td class="num">4/144</td><td class="num">0/144</td><td class="num">15/144</td><td class="num">0/144</td></tr>
+    <tr><td>محادثات فيها رد بالإنجليزية فقط</td><td class="num">0/144</td><td class="num">0/144</td><td class="num">3/144</td><td class="num">5/144</td><td class="num">16/144</td><td class="num">0/144</td><td class="num">4/144</td><td class="num">2/144</td></tr>
+    <tr><td>استدعاءات أدوات بمعطيات غير صالحة</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">74</td><td class="num">141</td><td class="num">0</td><td class="num">0</td></tr>
+    <tr><td>زمن الرد على RTX 4090 (الوسيط / أبطأ 10%)</td><td class="num">0.5 s / 0.8 s</td><td class="num">0.6 s / 0.9 s</td><td class="num">0.7 s / 0.8 s</td><td class="num">0.8 s / 1.1 s</td><td class="num">3.9 s / 5.9 s</td><td class="num">4.7 s / 8.8 s</td><td class="num">0.2 s / 0.5 s</td><td class="num">0.4 s / 0.5 s</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="note">ذكر موعد لم يُتحقق منه وتأكيد حجز لم يتم يُكشفان بفحص آلي، وكل حالة منهما مدرجة في البيانات للمراجعة. لم يفشل قراءة أي رد في الطرق الثماني (<span class="num">0</span> خطوات غير مقروءة).</p>
+
+<div class="obs">
+  <h2>ما يستحق الانتباه</h2>
+  <ul class="tight">
+    <li>مع <span dir="ltr">Jais 3 3.7B</span> رفع المحوّل المحادثات الصحيحة، لكن الطوارئ التي حُوّلت لموظف في الوقت المناسب نزلت من <span class="num">22/25</span> إلى <span class="num">7/25</span>. نتيجة أعلى في المجموع لا تعني أن الطريقة أفضل في كل شيء.</li>
+    <li>استدعاءات <span dir="ltr">Fanar 2 27B</span> بمعطيات غير صالحة كثيرة بالطريقتين (<span class="num">74</span> بصيغته و<span class="num">141</span> عبر المحوّل)، وكانت ردوده بالإنجليزية فقط في <span class="num">16</span> محادثة بصيغته و<span class="num">0</span> عبر المحوّل.</li>
+  </ul>
+</div>
+
+<h2>كل النماذج التي قسناها على الإعداد المشترك، بالطريقتين</h2>
+<p>مرتبة حسب عمود المحوّل، الطريقة الوحيدة المتاحة لكل النماذج.</p>
+<div class="scroll">
+<table class="data-table">
+  <thead><tr><th>النموذج</th><th>بصيغته الخاصة</th><th>عبر محوّل JSON</th><th>الفرق (نقاط)</th><th>المصدر</th></tr></thead>
+  <tbody>
+    <tr class="this"><td dir="ltr">Jais 3 7B</td><td class="num">69.8% <span class="ci">[59.5–79.4]</span></td><td class="num">76.2% <span class="ci">[65.1–85.7]</span></td><td class="num">+6.3 <span class="ci">[−4.0, +17.5]</span></td><td>هذه الجلسة</td></tr>
+    <tr class="this"><td dir="ltr">Qwen3 8B</td><td class="num">68.3% <span class="ci">[55.6–81.0]</span></td><td class="num">65.1% <span class="ci">[53.2–77.0]</span></td><td class="num">−3.2 <span class="ci">[−15.9, +10.3]</span></td><td>هذه الجلسة</td></tr>
+    <tr class="this"><td dir="ltr">Fanar 2 27B</td><td class="num">55.6% <span class="ci">[45.2–65.9]</span></td><td class="num">61.1% <span class="ci">[49.2–73.0]</span></td><td class="num">+5.6 <span class="ci">[−2.4, +13.5]</span></td><td>هذه الجلسة</td></tr>
+    <tr><td dir="ltr">Falcon-H1 7B</td><td class="num">25.4% <span class="ci">[14.3–37.3]</span></td><td class="num">57.1% <span class="ci">[42.9–71.4]</span></td><td class="num">+31.7 <span class="ci">[+17.5, +46.8]</span></td><td>زوج cal-02</td></tr>
+    <tr class="this"><td dir="ltr">Jais 3 3.7B</td><td class="num">29.4% <span class="ci">[18.3–41.3]</span></td><td class="num">43.7% <span class="ci">[31.7–55.6]</span></td><td class="num">+14.3 <span class="ci">[0.0, +27.8]</span></td><td>هذه الجلسة</td></tr>
+    <tr><td dir="ltr">Qwen3 4B</td><td class="num">29.4% <span class="ci">[18.3–41.3]</span></td><td class="num">35.7% <span class="ci">[23.0–49.2]</span></td><td class="num">+6.3 <span class="ci">[−6.3, +19.8]</span></td><td>زوج qt-02</td></tr>
+    <tr><td dir="ltr">ALLaM 7B</td><td>لا توجد (القالب لا يدعم الأدوات)</td><td class="num">8.7% <span class="ci">[3.2–16.7]</span></td><td>—</td><td>qt-01</td></tr>
+    <tr><td dir="ltr">SILMA 9B</td><td>لا توجد (القالب لا يدعم الأدوات)</td><td class="num">7.1% <span class="ci">[0.0–16.7]</span></td><td>—</td><td>qt-04 (إعادة التشغيل)</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="note">لا ننتقي النماذج: كل ما قسناه على الإعداد نفسه موجود. الصفوف من جلسات مختلفة، ففوارق النقاط القليلة بينها ليست ذات دلالة. لا نعدّل رقم أي طريقة بالطريقة الأخرى. قالبا <span dir="ltr">ALLaM</span> و<span dir="ltr">SILMA</span> لا يدعمان الأدوات، فلهما طريقة المحوّل فقط.</p>
+
+<h2>إعادة القياس</h2>
+<p>الطريقة الخاصة في هذه الجلسة تكرار لتشغيل منشور. سجّلنا مسبقًا أن نضيف ملاحظة مؤرخة إلى صفحة النموذج إذا استبعدت فترة الفرق الصفر. لم يحدث ذلك لأي نموذج، فلا تتغير أي صفحة سابقة.</p>
+<div class="scroll">
+<table class="data-table">
+  <thead><tr><th>النموذج</th><th>المنشور</th><th>هذه الجلسة</th><th>الفرق (نقاط)</th><th>محادثات بالردود نفسها حرفيًا</th><th>التشغيل المنشور</th></tr></thead>
+  <tbody>
+    <tr><td dir="ltr">Jais 3 7B</td><td class="num">69.8%</td><td class="num">69.8%</td><td class="num">0.0 <span class="ci">[0.0, 0.0]</span></td><td class="num">144/144</td><td dir="ltr">results/qt02/common-jais3-7b-low</td></tr>
+    <tr><td dir="ltr">Qwen3 8B</td><td class="num">68.3%</td><td class="num">68.3%</td><td class="num">0.0 <span class="ci">[0.0, 0.0]</span></td><td class="num">144/144</td><td dir="ltr">results/qt02/common-qwen3-8b-off</td></tr>
+    <tr><td dir="ltr">Fanar 2 27B</td><td class="num">54.8%</td><td class="num">55.6%</td><td class="num">+0.8 <span class="ci">[−2.4, +4.0]</span></td><td class="num">39/144</td><td dir="ltr">results/qt03/fanar-2-27b-q4-qt03</td></tr>
+    <tr><td dir="ltr">Jais 3 3.7B</td><td class="num">28.6%</td><td class="num">29.4%</td><td class="num">+0.8 <span class="ci">[−4.0, +5.6]</span></td><td class="num">1/144</td><td dir="ltr">results/frontdesk_v2/jais3-3.7b-q4-v2-low</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="note">مع النسخة نفسها من llama.cpp وملف النموذج نفسه، أعاد <span dir="ltr">Qwen3 8B</span> و<span dir="ltr">Jais 3 7B</span> كل محادثة حرفيًا. تشغيلا <span dir="ltr">Jais 3 3.7B</span> و<span dir="ltr">Fanar 2 27B</span> المنشوران كانا من جلسات أخرى، فاختلفت الردود واقتربت النسب.</p>
+
+<h2>حدود هذا الاستكمال</h2>
+<ul class="tight">
+  <li>مجموعة الاختبار العامة فقط، وإعداد أداة التاريخ فقط.</li>
+  <li>جربنا المحوّل بإعدادات كل نموذج نفسها (العيّنة والجهد والخادم)، ولم نضبطه لأي نموذج.</li>
+  <li>بُني llama.cpp من غير صفحة المحادثة في المتصفح (التعديل 2): نستخدم واجهة الخادم البرمجية فقط، وهي نفسها في الحالتين.</li>
+  <li>نجح فحص التجربة الأولية لطريقة المحوّل للنماذج الأربعة قبل أي اختبار.</li>
+</ul>
+
+<h2>الملفات</h2>
+<ul class="tight">
+  <li><a href="https://github.com/Miqyas-Lab/job-trials/blob/main/trials/bf-01-adapter-backfill.yaml">ملف التسجيل المسبق وتعديلاته ↗</a></li>
+  <li><a href="https://github.com/Miqyas-Lab/job-trials/tree/main/results/bf01">المحادثات الخام والدرجات ↗</a></li>
+  <li><a href="https://github.com/Miqyas-Lab/job-trials/blob/main/findings/bf01-adapter-backfill/results.json">results.json ↗</a></li>
+</ul>
+
+<section class="en" id="en">
+  <h2>English</h2>
+  <p>bf-01 (pre-registered adapter back-fill, numbers only): the effect of our prompted-JSON adapter differs by model, so a model measured on one tool path cannot be compared fairly with one measured on the other. Four models measured on their own tool format only were run on both paths in one session (dental clinic WhatsApp front desk, 42 public scenarios × 3 runs per path, date-tool setup). Fully correct conversations, own format → adapter: Jais 3 7B 69.8% → 76.2% (+6.3 points, paired 95% CI -4.0 to +17.5); Qwen3 8B 68.3% → 65.1% (-3.2 points, paired 95% CI -15.9 to +10.3); Fanar 2 27B 55.6% → 61.1% (+5.6 points, paired 95% CI -2.4 to +13.5); Jais 3 3.7B 29.4% → 43.7% (+14.3 points, paired 95% CI 0.0 to +27.8). For Jais 3 3.7B the adapter raised success but emergencies handed to staff in time fell from 22/25 to 7/25. Reproducibility: each own-format path repeats a published run; no difference excludes zero, and Qwen3 8B and Jais 3 7B reproduced every conversation word for word on the same llama.cpp build. The common-setup table now shows both paths for every model that has both, sorted by the adapter column. Phone-like numbers were redacted after scoring; rescoring gives the same scorecards. Full details in the <a href="https://github.com/Miqyas-Lab/job-trials/tree/main/findings/bf01-adapter-backfill">trial folder</a>.</p>
+</section>
+<div class="brandfoot"><span class="b"><img src="../../assets/brand/miqyas-favicon.svg" alt="">مقياس</span><span class="site">miqyaslab.com</span></div>
+</div>
+</body>
+</html>

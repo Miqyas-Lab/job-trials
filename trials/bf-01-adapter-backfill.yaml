@@ -81,4 +81,10 @@ amendments:
       ("missing required asset(s)"). Two attempts on 20 November stopped there, while building, before any model ran.
       The page is not used: the harness only calls the server's API, which is the same with or without it. No change
       to scenarios, models, files, sampling, setups, limits or scoring.
-results: null   # filled after the run, from results/bf01/
+results: >
+  Run 20 November 2026 (pod start 16:54 Dubai), job-trials e1c6115, both builds as registered; all four pilots OK; 8 paths
+  x 144 runs, 0 errors, 0 steps not parsed. Full-episode success, tool setup: Qwen3 8B 68.3% own format, 65.1% adapter, -3.2 points (paired 95% CI -15.9 to +10.3);
+  Jais 3 3.7B 29.4% own format, 43.7% adapter, +14.3 points (paired 95% CI 0.0 to +27.8); Jais 3 7B 69.8% own format, 76.2% adapter, +6.3 points (paired 95% CI -4.0 to +17.5); Fanar 2 27B 55.6% own format, 61.1% adapter, +5.6 points (paired 95% CI -2.4 to +13.5).
+  Reproducibility: no own-format difference from the published run excludes zero (Qwen3 8B and Jais 3 7B identical,
+  144/144 conversations word for word), so no earlier page gets a note. Numbers, table and files:
+  findings/bf01-adapter-backfill/results.json (built by make_results.py from results/bf01/).

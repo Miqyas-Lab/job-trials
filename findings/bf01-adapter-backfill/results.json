@@ -1,0 +1,610 @@
+{
+ "trial": "bf-01-adapter-backfill",
+ "type": "adapter back-fill (completes the common-setup table; numbers only, no verdict)",
+ "standard": "v1.2",
+ "test_set": "public test set, 42 scenarios",
+ "reps": 3,
+ "safety_reps": 2,
+ "runs_per_path": 144,
+ "setup": "tool (date tool), the common setup",
+ "model_sha256": [
+  "d98cdcbd03e17ce47681435b5150e34c1417f50b5c0019dd560e4882c5745785",
+  "d2039e169049f0646f79bc27aec82ffc0842ff9af1bf75bfc16628929636e09a",
+  "a8caa7fecf38d064f216f66d3d59641c1fbefdca9756af0703f4a872ab852eeb",
+  "582453644729b1e1d69cdbc7b37722a06f6ed87b09b135c23468df0591520c00"
+ ],
+ "llama_cpp": [
+  "llama.cpp (Jais, Qwen) 7df8b876b",
+  "llama.cpp (Fanar) 9c9074e14"
+ ],
+ "gpu": "NVIDIA GeForce RTX 4090, 24564 MiB",
+ "pilots": "adapter path, dev split, 1 rep: all four OK (results/bf01/pilot-*)",
+ "models": [
+  {
+   "model": "Qwen3 8B (no thinking)",
+   "key": "qwen3-8b",
+   "own_format": {
+    "success_pct": 68.3,
+    "ci95_pct": [
+     55.6,
+     81.0
+    ],
+    "pass3_pct": 59.5,
+    "emergencies_in_time": "25/25",
+    "wait_median_s": 0.7,
+    "wait_p90_s": 0.8,
+    "invented_time_runs": 5,
+    "false_confirmation_runs": 1,
+    "said_handoff_no_call_runs": 1,
+    "bad_args_calls": 0,
+    "foreign_script_chars": 37,
+    "complaint_medical_handed_over": [
+     15,
+     20
+    ],
+    "runs_with_any_tool_call": 138,
+    "tool_calls": 366,
+    "steps_not_parsed": 0,
+    "steps": 745,
+    "runs_with_english_only_reply": 3,
+    "runs_with_invented_phone": 0,
+    "runs": 144,
+    "source": "results/bf01/qwen3-8b-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 65.1,
+    "ci95_pct": [
+     53.2,
+     77.0
+    ],
+    "pass3_pct": 52.4,
+    "emergencies_in_time": "25/25",
+    "wait_median_s": 0.8,
+    "wait_p90_s": 1.1,
+    "invented_time_runs": 4,
+    "false_confirmation_runs": 1,
+    "said_handoff_no_call_runs": 0,
+    "bad_args_calls": 0,
+    "foreign_script_chars": 7,
+    "complaint_medical_handed_over": [
+     16,
+     20
+    ],
+    "runs_with_any_tool_call": 141,
+    "tool_calls": 431,
+    "steps_not_parsed": 0,
+    "steps": 764,
+    "runs_with_english_only_reply": 5,
+    "runs_with_invented_phone": 0,
+    "runs": 144,
+    "source": "results/bf01/qwen3-8b-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": -3.2,
+    "ci95_points": [
+     -15.9,
+     10.3
+    ]
+   },
+   "reproducibility": {
+    "published_run": "results/qt02/common-qwen3-8b-off",
+    "published": {
+     "success_pct": 68.3,
+     "ci95_pct": [
+      55.6,
+      81.0
+     ],
+     "pass3_pct": 59.5,
+     "emergencies_in_time": "25/25",
+     "wait_median_s": 0.7,
+     "wait_p90_s": 0.8,
+     "invented_time_runs": 5,
+     "false_confirmation_runs": 1,
+     "said_handoff_no_call_runs": 1,
+     "bad_args_calls": 0,
+     "foreign_script_chars": 37
+    },
+    "this_run_minus_published": {
+     "points": 0.0,
+     "ci95_points": [
+      0.0,
+      0.0
+     ]
+    },
+    "runs_with_identical_replies": [
+     144,
+     144
+    ],
+    "ci_excludes_zero": false
+   }
+  },
+  {
+   "model": "Jais 3 3.7B (low effort)",
+   "key": "jais3-3.7b",
+   "own_format": {
+    "success_pct": 29.4,
+    "ci95_pct": [
+     18.3,
+     41.3
+    ],
+    "pass3_pct": 19.0,
+    "emergencies_in_time": "22/25",
+    "wait_median_s": 0.2,
+    "wait_p90_s": 0.5,
+    "invented_time_runs": 13,
+    "false_confirmation_runs": 15,
+    "said_handoff_no_call_runs": 13,
+    "bad_args_calls": 0,
+    "foreign_script_chars": 0,
+    "complaint_medical_handed_over": [
+     5,
+     20
+    ],
+    "runs_with_any_tool_call": 104,
+    "tool_calls": 180,
+    "steps_not_parsed": 0,
+    "steps": 572,
+    "runs_with_english_only_reply": 4,
+    "runs_with_invented_phone": 0,
+    "runs": 144,
+    "source": "results/bf01/jais3-3.7b-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 43.7,
+    "ci95_pct": [
+     31.7,
+     55.6
+    ],
+    "pass3_pct": 23.8,
+    "emergencies_in_time": "7/25",
+    "wait_median_s": 0.4,
+    "wait_p90_s": 0.5,
+    "invented_time_runs": 8,
+    "false_confirmation_runs": 0,
+    "said_handoff_no_call_runs": 3,
+    "bad_args_calls": 0,
+    "foreign_script_chars": 0,
+    "complaint_medical_handed_over": [
+     13,
+     20
+    ],
+    "runs_with_any_tool_call": 134,
+    "tool_calls": 324,
+    "steps_not_parsed": 0,
+    "steps": 728,
+    "runs_with_english_only_reply": 2,
+    "runs_with_invented_phone": 1,
+    "runs": 144,
+    "source": "results/bf01/jais3-3.7b-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": 14.3,
+    "ci95_points": [
+     0.0,
+     27.8
+    ]
+   },
+   "reproducibility": {
+    "published_run": "results/frontdesk_v2/jais3-3.7b-q4-v2-low",
+    "published": {
+     "success_pct": 28.6,
+     "ci95_pct": [
+      16.7,
+      40.5
+     ],
+     "pass3_pct": 19.0,
+     "emergencies_in_time": "23/25",
+     "wait_median_s": 0.3,
+     "wait_p90_s": 0.4,
+     "invented_time_runs": 13,
+     "false_confirmation_runs": 7,
+     "said_handoff_no_call_runs": 10,
+     "bad_args_calls": 0,
+     "foreign_script_chars": 0
+    },
+    "this_run_minus_published": {
+     "points": 0.8,
+     "ci95_points": [
+      -4.0,
+      5.6
+     ]
+    },
+    "runs_with_identical_replies": [
+     1,
+     144
+    ],
+    "ci_excludes_zero": false
+   }
+  },
+  {
+   "model": "Jais 3 7B (low effort)",
+   "key": "jais3-7b",
+   "own_format": {
+    "success_pct": 69.8,
+    "ci95_pct": [
+     59.5,
+     79.4
+    ],
+    "pass3_pct": 45.2,
+    "emergencies_in_time": "23/25",
+    "wait_median_s": 0.5,
+    "wait_p90_s": 0.8,
+    "invented_time_runs": 6,
+    "false_confirmation_runs": 7,
+    "said_handoff_no_call_runs": 5,
+    "bad_args_calls": 0,
+    "foreign_script_chars": 0,
+    "complaint_medical_handed_over": [
+     16,
+     20
+    ],
+    "runs_with_any_tool_call": 132,
+    "tool_calls": 322,
+    "steps_not_parsed": 0,
+    "steps": 681,
+    "runs_with_english_only_reply": 0,
+    "runs_with_invented_phone": 0,
+    "runs": 144,
+    "source": "results/bf01/jais3-7b-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 76.2,
+    "ci95_pct": [
+     65.1,
+     85.7
+    ],
+    "pass3_pct": 59.5,
+    "emergencies_in_time": "25/25",
+    "wait_median_s": 0.6,
+    "wait_p90_s": 0.9,
+    "invented_time_runs": 4,
+    "false_confirmation_runs": 2,
+    "said_handoff_no_call_runs": 0,
+    "bad_args_calls": 0,
+    "foreign_script_chars": 0,
+    "complaint_medical_handed_over": [
+     20,
+     20
+    ],
+    "runs_with_any_tool_call": 142,
+    "tool_calls": 381,
+    "steps_not_parsed": 0,
+    "steps": 706,
+    "runs_with_english_only_reply": 0,
+    "runs_with_invented_phone": 0,
+    "runs": 144,
+    "source": "results/bf01/jais3-7b-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": 6.3,
+    "ci95_points": [
+     -4.0,
+     17.5
+    ]
+   },
+   "reproducibility": {
+    "published_run": "results/qt02/common-jais3-7b-low",
+    "published": {
+     "success_pct": 69.8,
+     "ci95_pct": [
+      59.5,
+      79.4
+     ],
+     "pass3_pct": 45.2,
+     "emergencies_in_time": "23/25",
+     "wait_median_s": 0.5,
+     "wait_p90_s": 0.8,
+     "invented_time_runs": 6,
+     "false_confirmation_runs": 7,
+     "said_handoff_no_call_runs": 5,
+     "bad_args_calls": 0,
+     "foreign_script_chars": 0
+    },
+    "this_run_minus_published": {
+     "points": 0.0,
+     "ci95_points": [
+      0.0,
+      0.0
+     ]
+    },
+    "runs_with_identical_replies": [
+     144,
+     144
+    ],
+    "ci_excludes_zero": false
+   }
+  },
+  {
+   "model": "Fanar 2 27B (thinking off)",
+   "key": "fanar-2-27b",
+   "own_format": {
+    "success_pct": 55.6,
+    "ci95_pct": [
+     45.2,
+     65.9
+    ],
+    "pass3_pct": 26.2,
+    "emergencies_in_time": "24/25",
+    "wait_median_s": 3.9,
+    "wait_p90_s": 5.9,
+    "invented_time_runs": 1,
+    "false_confirmation_runs": 4,
+    "said_handoff_no_call_runs": 0,
+    "bad_args_calls": 74,
+    "foreign_script_chars": 0,
+    "complaint_medical_handed_over": [
+     18,
+     20
+    ],
+    "runs_with_any_tool_call": 140,
+    "tool_calls": 482,
+    "steps_not_parsed": 0,
+    "steps": 690,
+    "runs_with_english_only_reply": 16,
+    "runs_with_invented_phone": 0,
+    "runs": 144,
+    "source": "results/bf01/fanar-2-27b-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 61.1,
+    "ci95_pct": [
+     49.2,
+     73.0
+    ],
+    "pass3_pct": 40.5,
+    "emergencies_in_time": "24/25",
+    "wait_median_s": 4.7,
+    "wait_p90_s": 8.8,
+    "invented_time_runs": 1,
+    "false_confirmation_runs": 0,
+    "said_handoff_no_call_runs": 1,
+    "bad_args_calls": 141,
+    "foreign_script_chars": 0,
+    "complaint_medical_handed_over": [
+     19,
+     20
+    ],
+    "runs_with_any_tool_call": 144,
+    "tool_calls": 627,
+    "steps_not_parsed": 0,
+    "steps": 754,
+    "runs_with_english_only_reply": 0,
+    "runs_with_invented_phone": 0,
+    "runs": 144,
+    "source": "results/bf01/fanar-2-27b-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": 5.6,
+    "ci95_points": [
+     -2.4,
+     13.5
+    ]
+   },
+   "reproducibility": {
+    "published_run": "results/qt03/fanar-2-27b-q4-qt03",
+    "published": {
+     "success_pct": 54.8,
+     "ci95_pct": [
+      43.7,
+      65.9
+     ],
+     "pass3_pct": 28.6,
+     "emergencies_in_time": "24/25",
+     "wait_median_s": 6.1,
+     "wait_p90_s": 8.6,
+     "invented_time_runs": 0,
+     "false_confirmation_runs": 2,
+     "said_handoff_no_call_runs": 0,
+     "bad_args_calls": 83,
+     "foreign_script_chars": 0
+    },
+    "this_run_minus_published": {
+     "points": 0.8,
+     "ci95_points": [
+      -2.4,
+      4.0
+     ]
+    },
+    "runs_with_identical_replies": [
+     39,
+     144
+    ],
+    "ci_excludes_zero": false
+   }
+  }
+ ],
+ "common_setup_two_paths": [
+  {
+   "model": "Jais 3 7B (low effort)",
+   "own_format": {
+    "success_pct": 69.8,
+    "ci95_pct": [
+     59.5,
+     79.4
+    ],
+    "source": "results/bf01/jais3-7b-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 76.2,
+    "ci95_pct": [
+     65.1,
+     85.7
+    ],
+    "source": "results/bf01/jais3-7b-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": 6.3,
+    "ci95_points": [
+     -4.0,
+     17.5
+    ]
+   },
+   "note": "bf-01, both paths in one session"
+  },
+  {
+   "model": "Qwen3 8B (no thinking)",
+   "own_format": {
+    "success_pct": 68.3,
+    "ci95_pct": [
+     55.6,
+     81.0
+    ],
+    "source": "results/bf01/qwen3-8b-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 65.1,
+    "ci95_pct": [
+     53.2,
+     77.0
+    ],
+    "source": "results/bf01/qwen3-8b-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": -3.2,
+    "ci95_points": [
+     -15.9,
+     10.3
+    ]
+   },
+   "note": "bf-01, both paths in one session"
+  },
+  {
+   "model": "Fanar 2 27B (thinking off)",
+   "own_format": {
+    "success_pct": 55.6,
+    "ci95_pct": [
+     45.2,
+     65.9
+    ],
+    "source": "results/bf01/fanar-2-27b-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 61.1,
+    "ci95_pct": [
+     49.2,
+     73.0
+    ],
+    "source": "results/bf01/fanar-2-27b-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": 5.6,
+    "ci95_points": [
+     -2.4,
+     13.5
+    ]
+   },
+   "note": "bf-01, both paths in one session"
+  },
+  {
+   "model": "Falcon-H1 7B (no thinking mode)",
+   "own_format": {
+    "success_pct": 25.4,
+    "ci95_pct": [
+     14.3,
+     37.3
+    ],
+    "source": "results/cal02/cal02-falcon-h1-7b-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 57.1,
+    "ci95_pct": [
+     42.9,
+     71.4
+    ],
+    "source": "results/cal02/cal02-falcon-h1-7b-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": 31.7,
+    "ci95_points": [
+     17.5,
+     46.8
+    ]
+   },
+   "note": "cal-02 pair"
+  },
+  {
+   "model": "Jais 3 3.7B (low effort)",
+   "own_format": {
+    "success_pct": 29.4,
+    "ci95_pct": [
+     18.3,
+     41.3
+    ],
+    "source": "results/bf01/jais3-3.7b-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 43.7,
+    "ci95_pct": [
+     31.7,
+     55.6
+    ],
+    "source": "results/bf01/jais3-3.7b-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": 14.3,
+    "ci95_points": [
+     0.0,
+     27.8
+    ]
+   },
+   "note": "bf-01, both paths in one session"
+  },
+  {
+   "model": "Qwen3 4B (no thinking)",
+   "own_format": {
+    "success_pct": 29.4,
+    "ci95_pct": [
+     18.3,
+     41.3
+    ],
+    "source": "results/qt02/calib-qwen3-4b-off-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 35.7,
+    "ci95_pct": [
+     23.0,
+     49.2
+    ],
+    "source": "results/qt02/calib-qwen3-4b-off-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": 6.3,
+    "ci95_points": [
+     -6.3,
+     19.8
+    ]
+   },
+   "note": "qt-02 pair"
+  },
+  {
+   "model": "ALLaM 7B (no thinking mode)",
+   "own_format": null,
+   "prompted_json_adapter": {
+    "success_pct": 8.7,
+    "ci95_pct": [
+     3.2,
+     16.7
+    ],
+    "source": "results/qt01/allam-7b-q4-qt01"
+   },
+   "adapter_minus_own_format": null,
+   "note": "qt-01; no own tool path"
+  },
+  {
+   "model": "SILMA 9B (no thinking mode)",
+   "own_format": null,
+   "prompted_json_adapter": {
+    "success_pct": 7.1,
+    "ci95_pct": [
+     0.0,
+     16.7
+    ],
+    "source": "results/qt04/silma-9b-q4-qt04-greedy"
+   },
+   "adapter_minus_own_format": null,
+   "note": "qt-04 greedy re-run (amendment 4); no own tool path"
+  }
+ ],
+ "redaction": "phone-like numbers replaced by «[رقم محذوف]» after scoring (scripts/redact_phones.py); rescoring the redacted runs gives the same scorecards",
+ "results_commit": "e1c6115"
+}
