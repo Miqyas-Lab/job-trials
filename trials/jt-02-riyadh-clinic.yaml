@@ -163,4 +163,14 @@ amendments:
       The three parts may run on the same machine or on a replacement machine (group F), GPU as allowed by amendment 5.
       The results page states the server settings for each part.
 
+  - date: 2026-11-21
+    before_any_run: false
+    change: >
+      Run script only (scripts/run_jt02.sh), for builds on machines started after stage 1: llama.cpp is built with
+      -DLLAMA_USE_PREBUILT_UI=OFF, so the server is built without its browser chat page. The pinned builds fetch that
+      page from Hugging Face at build time; their own version is no longer there, the newest files have a layout these
+      builds reject, and the build stops ("missing required asset(s)"), as two bf-01 machines did on 20 November (bf-01
+      amendment 2). Stage 1 is not affected: its builds finished before this happened. The page is not used: the harness
+      only calls the server's API, which is the same with or without it. No change to scenarios, models, files,
+      sampling, setups, limits, scoring or the stage-2 selection rule.
 results: null
