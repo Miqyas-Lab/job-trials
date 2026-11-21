@@ -71,7 +71,7 @@ build () {   # $1 dir  $2 commit  $3 targets
   echo "== building llama.cpp $2 =="
   [ -d "$1" ] || git clone -q https://github.com/ggml-org/llama.cpp "$1"
   (cd "$1" && git checkout -q "$2" && cmake -B build -DGGML_CUDA=ON -DLLAMA_CURL=OFF -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_CUDA_ARCHITECTURES=native && cmake --build build -j 16 --target $3) || { echo "STOP: llama.cpp $2 did not build (see the lines above)"; exit 1; }
+    -DCMAKE_CUDA_ARCHITECTURES=native -DLLAMA_USE_PREBUILT_UI=OFF && cmake --build build -j 16 --target $3) || { echo "STOP: llama.cpp $2 did not build (see the lines above)"; exit 1; }
 }
 
 sha_ok () {   # $1 gguf name: true if the file exists and matches its registered sha256
