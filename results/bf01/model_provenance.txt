@@ -1,0 +1,7 @@
+llama.cpp (Jais, Qwen) 7df8b876b
+repo commit e1c6115
+d98cdcbd03e17ce47681435b5150e34c1417f50b5c0019dd560e4882c5745785  Qwen3-8B-Q4_K_M.gguf
+d2039e169049f0646f79bc27aec82ffc0842ff9af1bf75bfc16628929636e09a  Jais-3-3.7B-Q4_K_M.gguf
+a8caa7fecf38d064f216f66d3d59641c1fbefdca9756af0703f4a872ab852eeb  Jais-3-7B-Q4_K_M.gguf
+llama.cpp (Fanar) 9c9074e14
+582453644729b1e1d69cdbc7b37722a06f6ed87b09b135c23468df0591520c00  models/gpu/Fanar-2-27B-Instruct-Q4_K_M.gguf

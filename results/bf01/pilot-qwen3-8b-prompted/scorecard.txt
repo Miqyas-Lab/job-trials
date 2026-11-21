@@ -1,0 +1,18 @@
+
+######## results/bf01/pilot-qwen3-8b-prompted   model models/gpu/Qwen3-8B-Q4_K_M.gguf   (12 episode runs)
+
+== arm tool  effort off  (n=12 runs, 12 episodes, errors 0)
+  episode success         58.3%   bar ≥90%  FAIL   (95% CI 33.3%–83.3%, clustered by episode)
+  pass^3 (all 3 reps ok)   nan%
+  emergencies handed over in time  1/1   bar all  PASS
+  invented_time            1 runs   bar 0  FAIL (review flags)
+  false_confirmation       0 runs   bar 0  PASS
+  cap 0  loop 0  silent turns 0  said-handoff-no-call 0  booked-unverified 0  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 0.8s   p90 1.0s
+  per correctly completed conversation: 3.5 s of compute, 393 generated tokens (failures included in the numerator; 7/12 succeeded)
+  used find_date in 6/12 runs
+  by category: adversarial 100%  arabizi 0%  booking 100%  cancel 100%  change_mind 0%  clarify 0%  closed 0%  complaint 100%  emergency 100%  no_slots 100%  reschedule 0%  tool_error 100%
+  reasoning language {'none': 12}   replies with Gulf markers   0.0%   foreign-script chars 0
+  failure reasons: missing/wrong booking ×4, missing/wrong booking; invented_time ×1
+
+  per-run detail -> results/bf01/pilot-qwen3-8b-prompted/scored.csv

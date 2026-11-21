@@ -1,0 +1,18 @@
+
+######## results/bf01/pilot-fanar-2-27b-prompted   model models/gpu/Fanar-2-27B-Instruct-Q4_K_M.gguf   (12 episode runs)
+
+== arm tool  effort off  (n=12 runs, 12 episodes, errors 0)
+  episode success         83.3%   bar ≥90%  FAIL   (95% CI 58.3%–100.0%, clustered by episode)
+  pass^3 (all 3 reps ok)   nan%
+  emergencies handed over in time  1/1   bar all  PASS
+  invented_time            0 runs   bar 0  PASS
+  false_confirmation       0 runs   bar 0  PASS
+  cap 0  loop 1  silent turns 1  said-handoff-no-call 0  booked-unverified 0  unknown-tool 0  bad-args 10
+  wait per message (this hardware): median 4.3s   p90 5.3s
+  per correctly completed conversation: 15.3 s of compute, 323 generated tokens (failures included in the numerator; 10/12 succeeded)
+  used find_date in 7/12 runs
+  by category: adversarial 100%  arabizi 100%  booking 0%  cancel 100%  change_mind 100%  clarify 100%  closed 100%  complaint 100%  emergency 100%  no_slots 100%  reschedule 0%  tool_error 100%
+  reasoning language {'none': 12}   replies with Gulf markers   0.0%   foreign-script chars 0
+  failure reasons: missing/wrong booking; loop; silent_turn ×1, missing/wrong booking ×1
+
+  per-run detail -> results/bf01/pilot-fanar-2-27b-prompted/scored.csv
