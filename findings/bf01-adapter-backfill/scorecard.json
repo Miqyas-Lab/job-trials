@@ -1,0 +1,16 @@
+{
+  "headline": "هل تتغيّر النتيجة إذا غيّرنا طريقة استدعاء الأدوات؟",
+  "context": {"text": "{n} حالة × {reps} محاولات لكل طريقة",
+              "values": {"n": {"path": "test_set", "regex": "(\\d+) scenarios"}, "reps": {"path": "reps"}}},
+  "groups": {"path": "models", "id": "key",
+             "names": {"jais3-7b": "Jais 3 7B", "qwen3-8b": "Qwen3 8B", "fanar-2-27b": "Fanar 2 27B", "jais3-3.7b": "Jais 3 3.7B"}},
+  "series": [{"field": "own_format", "label": "بصيغة النموذج", "colour": "nile"},
+             {"field": "prompted_json_adapter", "label": "عبر محوّل JSON", "colour": "red"}],
+  "value": "success_pct",
+  "interval": "ci95_pct",
+  "rank_by": "prompted_json_adapter",
+  "under_name": {"field": "adapter_minus_own_format", "value": "points", "interval": "ci95_points"},
+  "caveat": {"text": "Jais 3 3.7B: طوارئ وصلت لموظف في الوقت المناسب {own} بصيغته، {ad} عبر المحوّل",
+             "values": {"own": {"path": "models[jais3-3.7b].own_format.emergencies_in_time"},
+                        "ad": {"path": "models[jais3-3.7b].prompted_json_adapter.emergencies_in_time"}}}
+}

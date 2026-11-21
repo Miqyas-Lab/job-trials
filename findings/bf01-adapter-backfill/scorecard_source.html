@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>هل تتغيّر النتيجة إذا غيّرنا طريقة استدعاء الأدوات؟</title>
+<style>
+@font-face { font-family:"PlexAr"; src:url("../../assets/fonts/sans-arabic-400.woff2"); font-weight:400; }
+@font-face { font-family:"PlexAr"; src:url("../../assets/fonts/sans-arabic-500.woff2"); font-weight:500; }
+@font-face { font-family:"PlexAr"; src:url("../../assets/fonts/sans-arabic-600.woff2"); font-weight:600; }
+@font-face { font-family:"PlexMono"; src:url("../../assets/fonts/mono-400.woff2"); font-weight:400; }
+@font-face { font-family:"PlexMono"; src:url("../../assets/fonts/mono-500.woff2"); font-weight:500; }
+@font-face { font-family:"Naskh"; src:url("../../assets/fonts/naskh-arabic-500.woff2"); font-weight:500; }
+@font-face { font-family:"Naskh"; src:url("../../assets/fonts/naskh-arabic-700.woff2"); font-weight:700; }
+@font-face { font-family:"Naskh"; src:url("../../assets/fonts/naskh-latin-700.woff2"); font-weight:700; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1200px; height:675px; background:#FFFFFF; color:#12161C; font-family:"PlexAr", sans-serif; position:relative; overflow:hidden; }
+</style>
+</head>
+<body>
+<div style="position:absolute; left:56px; right:56px; top:30px; display:flex; justify-content:space-between; align-items:center">
+<div style="font-size:15px; font-weight:500; color:#5B6270"><span style="font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">42</span> حالة × <span style="font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">3</span> محاولات لكل طريقة</div>
+<img src="../../assets/brand/miqyas-lockup-on-light.svg" alt="مقياس" style="width:150px; display:block"></div>
+<h1 style="position:absolute; right:56px; left:56px; top:96px; font-family:'Naskh', serif; font-size:50px; line-height:1.3; font-weight:700">هل تتغيّر النتيجة إذا غيّرنا طريقة استدعاء الأدوات؟</h1>
+<div style="position:absolute; right:56px; top:178px; width:64px; height:3px; background:#1F4E8C"></div>
+<div style="position:absolute; left:0; right:0; top:214px; display:flex; justify-content:center; gap:36px; font-size:17px; font-weight:500"><span style="display:flex; align-items:center; gap:10px"><span style="display:inline-block; width:14px; height:14px; border-radius:3px; background:#1F4E8C"></span>بصيغة النموذج</span><span style="display:flex; align-items:center; gap:10px"><span style="display:inline-block; width:14px; height:14px; border-radius:3px; background:#EB3B2C"></span>عبر محوّل <span style="font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">JSON</span></span></div>
+<div style="position:absolute; left:100px; right:56px; top:560px; border-top:1px solid #D5DBE5"></div>
+<div style="position:absolute; left:56px; top:551px; width:36px; text-align:right; font-size:12px; color:#5B6270; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">0</div>
+<div style="position:absolute; left:100px; right:56px; top:495px; border-top:1px dashed #EEF1F5"></div>
+<div style="position:absolute; left:56px; top:486px; width:36px; text-align:right; font-size:12px; color:#5B6270; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">25</div>
+<div style="position:absolute; left:100px; right:56px; top:430px; border-top:1px dashed #EEF1F5"></div>
+<div style="position:absolute; left:56px; top:421px; width:36px; text-align:right; font-size:12px; color:#5B6270; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">50</div>
+<div style="position:absolute; left:100px; right:56px; top:365px; border-top:1px dashed #EEF1F5"></div>
+<div style="position:absolute; left:56px; top:356px; width:36px; text-align:right; font-size:12px; color:#5B6270; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">75</div>
+<div style="position:absolute; left:100px; right:56px; top:300px; border-top:1px dashed #EEF1F5"></div>
+<div style="position:absolute; left:56px; top:291px; width:36px; text-align:right; font-size:12px; color:#5B6270; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">100</div>
+<div style="position:absolute; left:160px; top:379px; width:66px; height:181px; background:#1F4E8C; border-radius:8px 8px 0 0"></div>
+<div style="position:absolute; left:192.8px; top:354px; width:1.5px; height:52px; background:#12161C; box-shadow:0 0 0 2px #FFFFFF"></div>
+<div style="position:absolute; left:186px; top:354px; width:14px; height:1.5px; background:#12161C; box-shadow:0 0 0 2px #FFFFFF"></div>
+<div style="position:absolute; left:140px; top:326px; width:106px; text-align:center; font-size:18px; font-weight:400; color:#1F4E8C; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">69.8</div>
+<div style="position:absolute; left:234px; top:362px; width:66px; height:198px; background:#EB3B2C; border-radius:8px 8px 0 0"></div>
+<div style="position:absolute; left:266.8px; top:337px; width:1.5px; height:54px; background:#12161C; box-shadow:0 0 0 2px #FFFFFF"></div>
+<div style="position:absolute; left:260px; top:337px; width:14px; height:1.5px; background:#12161C; box-shadow:0 0 0 2px #FFFFFF"></div>
+<div style="position:absolute; left:214px; top:309px; width:106px; text-align:center; font-size:18px; font-weight:500; color:#C42B1F; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">76.2</div>
+<div style="position:absolute; left:130px; width:200px; text-align:center; top:572px; font-size:15px; font-weight:500; color:#12161C; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">Jais 3 7B</div>
+<div style="position:absolute; left:130px; width:200px; text-align:center; top:594px; font-size:12px; color:#5B6270; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">+6.3 [−4.0, +17.5]</div>
+<div style="position:absolute; left:422px; top:382px; width:66px; height:178px; background:#1F4E8C; border-radius:8px 8px 0 0"></div>
+<div style="position:absolute; left:453.8px; top:349px; width:1.5px; height:66px; background:#12161C; box-shadow:0 0 0 2px #FFFFFF"></div>
+<div style="position:absolute; left:448px; top:349px; width:14px; height:1.5px; background:#12161C; box-shadow:0 0 0 2px #FFFFFF"></div>
+<div style="position:absolute; left:402px; top:321px; width:106px; text-align:center; font-size:18px; font-weight:500; color:#1F4E8C; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">68.3</div>
+<div style="position:absolute; left:496px; top:391px; width:66px; height:169px; background:#EB3B2C; border-radius:8px 8px 0 0"></div>
+<div style="position:absolute; left:527.8px; top:360px; width:1.5px; height:62px; background:#12161C; box-shadow:0 0 0 2px #FFFFFF"></div>
+<div style="position:absolute; left:522px; top:360px; width:14px; height:1.5px; background:#12161C; box-shadow:0 0 0 2px #FFFFFF"></div>
+<div style="position:absolute; left:476px; top:332px; width:106px; text-align:center; font-size:18px; font-weight:400; color:#C42B1F; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">65.1</div>
+<div style="position:absolute; left:392px; width:200px; text-align:center; top:572px; font-size:15px; font-weight:500; color:#12161C; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">Qwen3 8B</div>
+<div style="position:absolute; left:392px; width:200px; text-align:center; top:594px; font-size:12px; color:#5B6270; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">−3.2 [−15.9, +10.3]</div>
+<div style="position:absolute; left:682px; top:415px; width:66px; height:145px; background:#1F4E8C; border-radius:8px 8px 0 0"></div>
+<div style="position:absolute; left:714.8px; top:389px; width:1.5px; height:54px; background:#12161C; box-shadow:0 0 0 2px #FFFFFF"></div>
+<div style="position:absolute; left:708px; top:389px; width:14px; height:1.5px; background:#12161C; box-shadow:0 0 0 2px #FFFFFF"></div>
+<div style="position:absolute; left:662px; top:361px; width:106px; text-align:center; font-size:18px; font-weight:400; color:#1F4E8C; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">55.6</div>
+<div style="position:absolute; left:756px; top:401px; width:66px; height:159px; background:#EB3B2C; border-radius:8px 8px 0 0"></div>
+<div style="position:absolute; left:788.8px; top:370px; width:1.5px; height:62px; background:#12161C; box-shadow:0 0 0 2px #FFFFFF"></div>
+<div style="position:absolute; left:782px; top:370px; width:14px; height:1.5px; background:#12161C; box-shadow:0 0 0 2px #FFFFFF"></div>
+<div style="position:absolute; left:736px; top:342px; width:106px; text-align:center; font-size:18px; font-weight:500; color:#C42B1F; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">61.1</div>
+<div style="position:absolute; left:652px; width:200px; text-align:center; top:572px; font-size:15px; font-weight:500; color:#12161C; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">Fanar 2 27B</div>
+<div style="position:absolute; left:652px; width:200px; text-align:center; top:594px; font-size:12px; color:#5B6270; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">+5.6 [−2.4, +13.5]</div>
+<div style="position:absolute; left:944px; top:484px; width:66px; height:76px; background:#1F4E8C; border-radius:8px 8px 0 0"></div>
+<div style="position:absolute; left:975.8px; top:453px; width:1.5px; height:60px; background:#12161C; box-shadow:0 0 0 2px #FFFFFF"></div>
+<div style="position:absolute; left:970px; top:453px; width:14px; height:1.5px; background:#12161C; box-shadow:0 0 0 2px #FFFFFF"></div>
+<div style="position:absolute; left:924px; top:425px; width:106px; text-align:center; font-size:18px; font-weight:400; color:#1F4E8C; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">29.4</div>
+<div style="position:absolute; left:1018px; top:446px; width:66px; height:114px; background:#EB3B2C; border-radius:8px 8px 0 0"></div>
+<div style="position:absolute; left:1049.8px; top:415px; width:1.5px; height:62px; background:#12161C; box-shadow:0 0 0 2px #FFFFFF"></div>
+<div style="position:absolute; left:1044px; top:415px; width:14px; height:1.5px; background:#12161C; box-shadow:0 0 0 2px #FFFFFF"></div>
+<div style="position:absolute; left:998px; top:387px; width:106px; text-align:center; font-size:18px; font-weight:500; color:#C42B1F; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">43.7</div>
+<div style="position:absolute; left:914px; width:200px; text-align:center; top:572px; font-size:15px; font-weight:500; color:#12161C; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">Jais 3 3.7B</div>
+<div style="position:absolute; left:914px; width:200px; text-align:center; top:594px; font-size:12px; color:#5B6270; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">+14.3 [0.0, +27.8]</div>
+<div style="position:absolute; left:56px; right:56px; bottom:20px; display:flex; justify-content:space-between; align-items:center">
+<span style="display:inline-flex; align-items:center; gap:10px; color:#C42B1F; font-size:15px; font-weight:500"><span style="font-size:12px">&#9650;</span><span style="font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">Jais 3 3.7B</span>: طوارئ وصلت لموظف في الوقت المناسب <span style="font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">22/25</span> بصيغته، <span style="font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate">7/25</span> عبر المحوّل</span>
+<span style="display:flex; gap:18px; align-items:baseline; font-family: 'PlexMono', monospace; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; font-size:14px"><span>miqyaslab.com</span><span><span style="font-family:'DejaVu Sans', system-ui, sans-serif; font-weight:700">&#x1D54F;</span> @miqyaslab</span></span></div>
+</body>
+</html>
