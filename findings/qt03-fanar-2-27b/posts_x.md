@@ -1,6 +1,6 @@
 # qt-03 · Fanar 2 27B · X thread (Miqyas account), DRAFT for Mahmoud's review · Fusha only (standing rule 6 Nov 2026); patient quotes in «» kept as written
 
-Every number from results.json (results commit 03ac65b). Quick Trial: numbers only, no verdict. Common-setup table, rows chosen by setup. Image on tweet 1: scorecard_x.png.
+Every number from results.json (results commit 03ac65b). Quick Trial: numbers only, no verdict. Common-setup table, rows chosen by setup. Image on tweet 1: scorecard_fanar_x.png.
 Before posting: results page live at the link in 8/8 (push first, then open the link).
 
 ---
