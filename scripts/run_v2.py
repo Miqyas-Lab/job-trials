@@ -42,7 +42,10 @@ SAMPLING = {
     "fanar-2": {"temperature": 0.7, "top_p": 1.0, "top_k": 0, "min_p": 0.0, "presence_penalty": 0.0, "repeat_penalty": 1.0},   # qt-03: README vLLM example (temperature only); checked against generation_config.json at setup
     "silma": {"temperature": 1.0, "top_p": 1.0, "top_k": 0, "min_p": 0.0, "presence_penalty": 0.0, "repeat_penalty": 1.0},   # qt-04: model card example (temperature 1.0 only; no generation_config.json); other samplers neutral
     "silma-greedy": {"temperature": 0.0, "top_p": 1.0, "top_k": 0, "min_p": 0.0, "presence_penalty": 0.0, "repeat_penalty": 1.0},   # qt-04 amendment 4: the card's main examples set no sampling, so transformers decodes greedily
+    "inkling-2-mini": {"temperature": 1.0, "top_p": 1.0, "top_k": 0, "min_p": 0.0, "presence_penalty": 0.0, "repeat_penalty": 1.0},   # qt-05: generation_config.json temperature 1.0 (do_sample); other samplers not stated, so neutral
 }
+# Named effort levels a template reads as reasoning_effort (Jais 3: low/medium/high; Inkling 2 Mini: none ... high)
+EFFORT_LEVELS = ("none", "minimal", "low", "medium", "high")
 SAMPLING_OVERRIDE = None   # set by --sampling; None keeps the original Job Trial #1 behaviour
 
 
@@ -142,7 +145,7 @@ class ChatPolicy:
 
     def step(self, messages, tools, seed, ctx):
         body = {"messages": messages, "tools": tools, "max_tokens": self.n_predict, "seed": seed, **self.sampling,
-                "chat_template_kwargs": {"enable_thinking": self.effort == "on", "no_thinking": self.effort != "on"}}   # qt-03: Fanar reads no_thinking (default ON); other templates ignore it
+                "chat_template_kwargs": prompted_kwargs(self.effort)}   # on/off: enable_thinking + Fanar's no_thinking (qt-03), unchanged; a named level: reasoning_effort (qt-05)
         t0 = time.time()
         try:
             r = post("/v1/chat/completions", body)
@@ -249,8 +252,8 @@ def parse_prompted(text):
 
 def prompted_kwargs(effort):
     """Template switches for the adapter path. on/off: Qwen-style enable_thinking plus Fanar's no_thinking.
-    low/medium/high: Jais 3's reasoning_effort, passed exactly as JaisPolicy passes it on the native path (bf-01)."""
-    if effort in ("low", "medium", "high"):
+    A named level (low/medium/high for Jais 3, bf-01; none/minimal too for Inkling 2 Mini, qt-05): reasoning_effort."""
+    if effort in EFFORT_LEVELS:
         return {"reasoning_effort": effort}
     return {"enable_thinking": effort == "on", "no_thinking": effort != "on"}
 
@@ -481,8 +484,8 @@ def main():
     a = ap.parse_args()
     global SAMPLING_OVERRIDE
     SAMPLING_OVERRIDE = a.sampling
-    if a.mode == "prompted" and any(e in ("low", "medium", "high") for e in a.efforts) and not a.sampling:
-        ap.error("an effort level (low/medium/high) on the adapter path needs --sampling (e.g. jais), or the Qwen preset would be used")
+    if a.mode in ("prompted", "chat") and any(e in EFFORT_LEVELS for e in a.efforts) and not a.sampling:
+        ap.error("a named effort level (none/minimal/low/medium/high) needs --sampling (e.g. jais, inkling-2-mini), or the Qwen preset would be used")
 
     eps = [json.loads(l) for l in open(a.episodes, encoding="utf-8") if l.strip()]
     eps = [e for e in eps if a.split == "all" or e["split"] == a.split]
