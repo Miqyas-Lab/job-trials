@@ -120,5 +120,19 @@ stop_rules: >
 publish: [results.json, raw interactions (phone-like numbers redacted, re-scored), numbers-only page labelled "Quick Trial · exploratory" / «تجربة سريعة · استكشافية», X thread]
 verdict: none                 # Quick Trial: numbers only, no verdict word, label or verdict colour
 preregistration_commit: null  # the commit that adds this file
-amendments: []
+amendments:
+  - date: 2026-11-24
+    when: after setup, before the DEV pilot and before any test run (no Inkling 2 Mini output seen)
+    what: >
+      Setup's records, registered as the file requires. llama.cpp mainline at commit
+      40fe9164f43b4e7b4bf2a261813eed768c367468 (it loads the inkling2_loop architecture). GGUF from
+      ggml-org/Inkling-2-Mini-GGUF at revision e8a2cecf0e78914f07cc27b9be711a9b2c7561d9, the IQ4_NL file; its name and
+      sha256 are written in results/qt05/model_provenance.txt by setup, before the pilot, and published with the
+      results. Model repository thinkingmachines/Inkling-2-Mini at 7a67ae2314b44ef05c87fd1d4d311c58aaeb18f6, as
+      registered. Template check: llama.cpp's render of the chat template equals the reference render (794
+      characters), with the generation block and an earlier tool call sent as a JSON string reaching the template as
+      an object. GPU memory with the model loaded at the registered 32,768-token window: 21,410 MiB on the RTX 4090,
+      so the model fits. The context length and the parameter count from the GGUF metadata did not appear in setup's
+      review lines; they are read from results/qt05/gguf_metadata.txt and the server log before the test starts, as
+      the stop rule requires. Nothing else changes.
 results: null
