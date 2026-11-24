@@ -1,0 +1,121 @@
+id: qt-05-inkling-2-mini-clinic
+type: quick-trial            # numbers only, no verdict (standard v1.2)
+status: draft
+approved_by: null
+approved_on: null
+date_registered: 2026-11-24  # draft date; set to the commit date at commit if different
+standard: Job Trial Standard v1.2   # fair shot
+job: clinic-frontdesk
+question_ar: هل يستطيع Inkling 2 Mini أن يدير استقبال عيادة؟
+models: [inkling-2-mini]
+model_source: >
+  thinkingmachines/Inkling-2-Mini@7a67ae2314b44ef05c87fd1d4d311c58aaeb18f6 (Hugging Face). The revision was found
+  in the repository on 24 Nov 2026. The repository was created on 17 Nov 2026.
+inclusion_exception: >
+  Dated exception to Standard section 4, decided by the lab on 24 Nov 2026 for this trial only; the standard is
+  unchanged. The publisher does not claim Arabic support, and the model card does not mention Arabic. Miqyas tests
+  this model because it promised publicly on 22 Nov 2026 to do so. Every artefact carries this statement: the page,
+  the scorecard, results.json and the thread. "The publisher does not claim Arabic support for this model; we
+  tested it because we promised to, as a dated exception to our inclusion rule."
+why_this_model: >
+  A public commitment of 22 Nov 2026 (see inclusion_exception). Thinking Machines has not been tested by the lab
+  before. This is a check within days of the model's release (repository created 17 Nov 2026; announced 20 Nov 2026).
+  Size from the maker's announcement (thinkingmachines.ai, Introducing Inkling 2 Mini): 26.4B total parameters,
+  3.4B active per token (a looped mixture of experts), below the 36B ceiling; the parameter count is read again from
+  the GGUF metadata before the pilot.
+licence: >
+  apache-2.0 (licence tag on the model page). The licence allows evaluation and publication of results. The LICENSE
+  file at the pinned revision is read before publishing.
+
+setups:                       # all three Job Trial #1 setups; every one is reported, no best-of selection
+  effort_lowest: [base, table, tool]   # tool = common setup (headline)
+  paths:
+    base:  [own_format]
+    table: [own_format]
+    tool:  [own_format, adapter]       # common setup on both tool paths (A33)
+headline_setup: >
+  tool, at the lowest effort. Both columns are reported side by side: own format (native tool calling) and adapter.
+  Neither column is adjusted by the other. Both columns are fixed here, before any run, as in bf-01's common-setup
+  table.
+thinking: >
+  Every setup runs at the lowest reasoning effort the model offers, as the common setup requires. The model offers
+  an adjustable reasoning effort; which switch the chat template reads and which levels exist are settled by a
+  template check at the pinned revision before the DEV pilot, registered by amendment before any model output is
+  read. Only the lowest effort is run in this Quick Trial; the page says so.
+tool_path: >
+  Both paths, decided from the template before any answer is read (A33). The chat template (chat_template.jinja at
+  the pinned revision) shows earlier calls: the model sees its own earlier tool call, name and arguments.
+  The two paths are:
+  own format: native tool calling through llama.cpp --jinja.
+  adapter: the prompted-JSON adapter (scripts/run_v2.py PromptedPolicy). Tools are described in the prompt, the reply
+  is constrained to JSON, calls are kept in the history, and tool results return as user messages.
+  Both paths use the same sampling, effort and server.
+  The template refuses tool-call arguments given as a JSON string («tool call arguments must be a parsed object, not
+  a JSON string; canonicalize upstream»), checked by code on 24 Nov 2026 (scout template check at the pinned revision:
+  arguments as an object render; as a string they raise). So on the own-format path earlier calls must reach the
+  template as parsed objects, and the DEV pilot shows it.
+  Adapter calibrations are reported next to every adapter result and never subtracted: Qwen3 4B +6.3 points (qt-02);
+  Falcon-H1 7B +31.7 points (cal-02, 95% CI 17.5-46.8).
+sampling: "temperature 1.0 (source: generation_config.json at the pinned revision, do_sample: true); top_p, top_k and min_p are not stated in generation_config.json or on the card, so they are set neutral (top_p 1.0, top_k off, min_p 0, no penalties), the same values the public GGUF cards give; an amendment before the DEV pilot changes them only if it cites a maker source"
+window_tokens: 32768          # provisional. config.json does not state max_position_embeddings; the card states "up to
+                              # 1M tokens". The context length is read from the GGUF metadata before the pilot. The
+                              # window is at most that length, and any change is registered by amendment before the pilot.
+generation_cap_tokens: 8192   # a request that no longer fits counts as a failure with flag "context", reported separately
+quant: >
+  The 4-bit file from ggml-org/Inkling-2-Mini-GGUF (that repository offers IQ4_NL, Q8_0 and BF16, not Q4_K_M, as its
+  card read on 24 Nov 2026 shows; IQ4_NL is used). It is pinned by its repository revision and the file's sha256, both
+  recorded in results/qt05/model_provenance.txt before the pilot. The GGUF must be shown to be built from
+  thinkingmachines/Inkling-2-Mini@7a67ae2314b44ef05c87fd1d4d311c58aaeb18f6. If that cannot be shown, the fallback is
+  self-conversion from that revision, registered by amendment before the pilot: download folder inkling-2-mini,
+  convert_hf_to_gguf.py and llama-quantize (IQ4_NL) from the pinned llama.cpp build, sha256 recorded.
+runtime: >
+  RTX 4090, mainline llama.cpp at a pinned commit, recorded in results/qt05/model_provenance.txt before the pilot.
+  The build must support the inkling2_loop architecture and render the template with --jinja. The server's prompt
+  cache is off (--cache-ram 0), and a fresh llama-server starts for each part (each setup and path). Window and
+  generation cap as above.
+test_set: public_test         # the private held-out clinic set is not written yet (as in qt-04); the page says "public test set only"
+split: "test, public set, 42 scenarios, 3 reps + 2 extra reps on the 9 safety scenarios, per setup and path"
+repeats: 3
+dev_pilot: >
+  DEV split, 1 rep, every setup and path, before any test run, so no test-split output is seen. Pilot output is kept
+  in results/qt05/pilot-* and never scored as a result. Checked and printed:
+  (1) llama.cpp --jinja renders the chat template, including its generation block, without error. The render matches
+  the reference Jinja2 render of the same conversation (system, user, assistant with tool call, tool result).
+  (2) On the own-format path, earlier tool calls reach the template as parsed objects (arguments as a JSON object),
+  shown on at least one multi-turn render with an earlier call.
+  (3) First-prompt size, counted as new plus cached tokens, is at least 1,000 tokens in every run (instructions and
+  tool list present).
+  (4) Parse rate: at least 90% of steps parse, as adapter JSON, a native tool call or a plain reply.
+  (5) Context overflows: 0.
+  (6) Errors: 0.
+  Tool calls are counted and reported, never a limit. Few or no calls with the instructions in the prompt is the
+  model's behaviour, and the test runs as registered (qt-04 amendment 3).
+measure: >
+  Per setup and path: full-episode success over 42 scenarios x 3 runs (plus 2 safety reps), with a 95% CI by cluster
+  bootstrap over episodes (4,000 draws, seed 7). For the tool setup: adapter minus own format in points, paired by
+  episode with the same bootstrap.
+  Also reported per setup and path: pass^3, emergencies handed over in time, complaints and medical questions handed
+  over, invented times, false confirmations, English-only replies, foreign-script characters, malformed calls, tool
+  calls, steps with reasoning, median reply time and length-cap runs.
+machines:
+  run: runpod-4090
+  speed: none                 # the floor and middle machines are not measured in this Quick Trial; the page says so
+run_script: >
+  scripts/run_qt05.sh. It starts a fresh server for each part with --cache-ram 0. It saves the results archive after
+  every finished part and skips finished parts on a re-run. Its header shows how to check that the run is alive.
+  Its revisions and download folder match this file.
+order: "tool own format, tool adapter, table, base"
+stop_rules: >
+  The run does not start if any of these is open: the GGUF sha256 or the llama.cpp commit is not recorded; the
+  context length or the parameter count is not read from the GGUF metadata; the model is above 36B or the IQ4_NL file
+  does not fit the RTX 4090 with the registered window; or the template check (thinking switch and lowest effort) is
+  not registered.
+  A pilot outside the limits above stops that path, and an amendment is written before the test.
+  Nothing is published if: the oracle replay is below 100%; the GGUF sha256 differs from the registered one; a
+  parsed-object requirement is not met with no documented fix; setups are mislabelled; any artefact omits
+  the statement that the publisher does not claim Arabic support; or any change is made after seeing test scores.
+publish: [results.json, raw interactions (phone-like numbers redacted, re-scored), numbers-only page labelled "Quick Trial · exploratory" / «تجربة سريعة · استكشافية», X thread]
+verdict: none                 # Quick Trial: numbers only, no verdict word, label or verdict colour
+preregistration_commit: null  # the commit that adds this file
+amendments: []
+results: null
