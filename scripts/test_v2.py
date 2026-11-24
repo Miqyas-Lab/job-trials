@@ -169,6 +169,14 @@ def main():
     check(prompted_kwargs("low") == {"reasoning_effort": "low"}, "Jais effort not passed on the adapter path")
     check(prompted_kwargs("off") == {"enable_thinking": False, "no_thinking": True}, "thinking-off switches changed")
     check(prompted_kwargs("on") == {"enable_thinking": True, "no_thinking": False}, "thinking-on switches changed")
+    check(prompted_kwargs("none") == {"reasoning_effort": "none"}, "qt-05: Inkling's lowest effort not passed")
+    from run_v2 import ChatPolicy, SAMPLING
+    import run_v2
+    run_v2.SAMPLING_OVERRIDE = "inkling-2-mini"
+    cp = ChatPolicy("none", 64)
+    check(cp.sampling == SAMPLING["inkling-2-mini"] and cp.sampling["temperature"] == 1.0, "qt-05 sampling preset not used")
+    run_v2.SAMPLING_OVERRIDE = None
+    check(ChatPolicy("off", 64).sampling == SAMPLING["qwen-nothink"], "Job Trial #1 chat default changed")
 
     if FAILS:
         print(f"{len(FAILS)} FAILURES:")

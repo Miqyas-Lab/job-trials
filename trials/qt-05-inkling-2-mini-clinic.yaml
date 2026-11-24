@@ -1,7 +1,7 @@
 id: qt-05-inkling-2-mini-clinic
 type: quick-trial            # numbers only, no verdict (standard v1.2)
 status: draft
-approved_by: null
+approved_by: Miqyas Lab
 approved_on: null
 date_registered: 2026-11-24  # draft date; set to the commit date at commit if different
 standard: Job Trial Standard v1.2   # fair shot
@@ -38,10 +38,11 @@ headline_setup: >
   Neither column is adjusted by the other. Both columns are fixed here, before any run, as in bf-01's common-setup
   table.
 thinking: >
-  Every setup runs at the lowest reasoning effort the model offers, as the common setup requires. The model offers
-  an adjustable reasoning effort; which switch the chat template reads and which levels exist are settled by a
-  template check at the pinned revision before the DEV pilot, registered by amendment before any model output is
-  read. Only the lowest effort is run in this Quick Trial; the page says so.
+  Every setup runs at the lowest reasoning effort the model offers, as the common setup requires. The chat template
+  at the pinned revision reads reasoning_effort (effort_map: none 0.0, minimal 0.1, low 0.2, medium 0.7, high 0.9,
+  xhigh and max 0.99) and writes «Thinking effort level: <value>» into the prompt; when the switch is not set it
+  uses 0.9. This trial sets reasoning_effort none (0.0) on every request (scout template check --show, 24 Nov 2026).
+  Only the lowest effort is run in this Quick Trial; the page says so, and that the template's own default is 0.9.
 tool_path: >
   Both paths, decided from the template before any answer is read (A33). The chat template (chat_template.jinja at
   the pinned revision) shows earlier calls: the model sees its own earlier tool call, name and arguments.
@@ -101,15 +102,17 @@ machines:
   run: runpod-4090
   speed: none                 # the floor and middle machines are not measured in this Quick Trial; the page says so
 run_script: >
-  scripts/run_qt05.sh. It starts a fresh server for each part with --cache-ram 0. It saves the results archive after
+  scripts/run_qt05.sh (setup, pilot, test, pack). Setup builds llama.cpp, downloads the GGUF and the reference chat
+  template at the pinned revision, records provenance and the GGUF metadata, and runs the template check; its lines
+  are registered by amendment before the pilot. It starts a fresh server for each part with --cache-ram 0. It saves the results archive after
   every finished part and skips finished parts on a re-run. Its header shows how to check that the run is alive.
   Its revisions and download folder match this file.
 order: "tool own format, tool adapter, table, base"
 stop_rules: >
   The run does not start if any of these is open: the GGUF sha256 or the llama.cpp commit is not recorded; the
   context length or the parameter count is not read from the GGUF metadata; the model is above 36B or the IQ4_NL file
-  does not fit the RTX 4090 with the registered window; or the template check (thinking switch and lowest effort) is
-  not registered.
+  does not fit the RTX 4090 with the registered window; or the setup's template check (llama.cpp's render of the
+  chat template equals the reference render, with earlier tool calls as parsed objects) is not OK.
   A pilot outside the limits above stops that path, and an amendment is written before the test.
   Nothing is published if: the oracle replay is below 100%; the GGUF sha256 differs from the registered one; a
   parsed-object requirement is not met with no documented fix; setups are mislabelled; any artefact omits
