@@ -1,0 +1,16 @@
+{
+  "headline": "هل يستطيع Inkling 2 Mini أن يدير استقبال عيادة؟",
+  "context": {"text": "تجربة سريعة · استكشافية · {n} حالة × {reps} محاولات · أداة التاريخ",
+              "values": {"n": {"path": "scenarios"}, "reps": {"path": "reps"}}},
+  "groups": {"path": "scorecard_models", "id": "key",
+             "names": {"jais3-7b": "Jais 3 7B", "inkling-2-mini": "Inkling 2 Mini", "qwen3-8b": "Qwen3 8B",
+                       "fanar-2-27b": "Fanar 2 27B", "falcon-h1-7b": "Falcon-H1 7B", "jais3-3.7b": "Jais 3 3.7B",
+                       "qwen3-4b": "Qwen3 4B"}},
+  "series": [{"field": "own_format", "label": "بصيغة النموذج", "colour": "nile"},
+             {"field": "prompted_json_adapter", "label": "عبر محوّل JSON", "colour": "red"}],
+  "value": "success_pct",
+  "interval": "ci95_pct",
+  "rank_by": "prompted_json_adapter",
+  "under_name": {"field": "adapter_minus_own_format", "value": "points", "interval": "ci95_points"},
+  "caveat": {"text": "الناشر لا يذكر دعم العربية لهذا النموذج؛ اختبرناه لأننا وعدنا بذلك، استثناءً مؤرخًا من قاعدتنا", "values": {}}
+}

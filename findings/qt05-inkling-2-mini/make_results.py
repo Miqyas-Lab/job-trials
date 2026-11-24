@@ -125,6 +125,12 @@ ink = {"model": "Inkling 2 Mini (effort none)",
        "note": "qt-05, both paths in one session; about 26B total parameters (mixture of experts), others 3.7-27B"}
 common = sorted(prev + [ink], key=lambda r: -r["prompted_json_adapter"]["success_pct"])   # by the adapter column, as on bf-01
 
+# The scorecard (Publisher, A74 design) charts the models that have both tool paths; each needs a key.
+KEYS = {"Jais 3 7B": "jais3-7b", "Inkling 2 Mini": "inkling-2-mini", "Qwen3 8B": "qwen3-8b", "Fanar 2 27B": "fanar-2-27b",
+        "Falcon-H1 7B": "falcon-h1-7b", "Jais 3 3.7B": "jais3-3.7b", "Qwen3 4B": "qwen3-4b"}
+scorecard_models = [{"key": KEYS[re.sub(r" \(.*\)", "", r["model"])], **r} for r in common if r["own_format"]]
+assert len(scorecard_models) == len(KEYS)
+
 prov = open(f"{R}/model_provenance.txt").read().strip().split("\n")
 res = {"trial": "qt-05-inkling-2-mini-clinic", "type": "quick-trial (numbers only, no verdict)", "standard": "v1.2 (fair shot)",
        "label": "Quick Trial · exploratory / تجربة سريعة · استكشافية",
@@ -151,7 +157,7 @@ res = {"trial": "qt-05-inkling-2-mini-clinic", "type": "quick-trial (numbers onl
                       "gguf_sha256_matches_registered": True,
                       "pilot_outputs": "DEV split only (d01-d12), kept in results/qt05/pilot-*, not scored as results",
                       "phone_redaction": "0 phone-like numbers found; files unchanged"},
-       "common_setup_two_paths": common,
+       "common_setup_two_paths": common, "scorecard_models": scorecard_models,
        "laptop_floor": "not measured in this Quick Trial",
        "results_commit": subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()}
 assert res["model_sha256"] == "cbdf3fa9dc50a4124977980f37da4f1fa764b0cfe800d275cd43d26ce2a81af4"

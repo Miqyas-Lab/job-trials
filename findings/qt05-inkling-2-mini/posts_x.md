@@ -1,6 +1,6 @@
 # qt-05 · Inkling 2 Mini · X thread (Miqyas account), DRAFT for the lab's review
 
-Numbers from findings/qt05-inkling-2-mini/results.json. Scorecard (scorecard_x.png) on tweet 1. Post after the page is live.
+Numbers from findings/qt05-inkling-2-mini/results.json. Scorecard (scorecard.png) on tweet 1. Post after the page is live.
 Each tweet is under 280 characters (the link counts as 23); checked with a script before handover.
 
 ---
