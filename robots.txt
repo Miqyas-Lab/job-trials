@@ -1,0 +1,8 @@
+# Miqyas Lab: every crawler is welcome, search engines and AI assistants alike.
+User-agent: *
+Allow: /
+# the cost calculator is not launched yet
+Disallow: /%D8%A7%D9%84%D8%AD%D8%A7%D8%B3%D8%A8%D8%A9/
+Disallow: /calc/
+
+Sitemap: https://miqyaslab.com/sitemap.xml

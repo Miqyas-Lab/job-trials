@@ -1,0 +1,31 @@
+# Miqyas (مقياس)
+
+> Miqyas is an independent lab that tests open-weight AI models for Arabic: dialects, deployment reliability and local performance. A leaderboard tells you how a model scored; Miqyas tells you what happens when you try to use it. Site in Arabic, with English notes.
+
+- Job Trials put a model through a real job (for example a clinic front desk over WhatsApp, in Gulf Arabic) and report whether it can do it, for which sub-task, on which hardware.
+- Protocols are committed to git before any run; raw outputs are published in full; numbers that were not measured are marked as not measured.
+- Quick Trials are exploratory and carry no verdict.
+- Independence: Miqyas never accepts cash from a lab whose models it tests; any other support (credits, hardware, services) is disclosed with its source. Policy: https://github.com/Miqyas-Lab/job-trials/blob/main/docs/independence.md
+- Data and code: MIT licence. Repository: https://github.com/Miqyas-Lab/job-trials
+
+## Studies
+
+- [Job Trial #1: clinic front desk](https://miqyaslab.com/findings/frontdesk-v2/): open Arabic models as a clinic receptionist, every conversation published
+- [Tool-calling back-fill for four models](https://miqyaslab.com/findings/bf01-adapter-backfill/): the two ways of calling tools, compared on the same job
+- [Quick Trial: ALLaM 7B](https://miqyaslab.com/findings/qt01-allam-7b/)
+- [Quick Trial: Falcon-H1 7B](https://miqyaslab.com/findings/qt02-falcon-h1-7b/)
+- [Quick Trial: Fanar 2 27B](https://miqyaslab.com/findings/qt03-fanar-2-27b/)
+- [Quick Trial: SILMA 9B](https://miqyaslab.com/findings/qt04-silma-9b/)
+- [The Arabic token tax](https://miqyaslab.com/findings/token-tax/): how many more tokens the same sentence costs in Arabic, per tokenizer
+
+## Standard and method
+
+- [The Job Trial Standard](https://miqyaslab.com/%D8%A7%D9%84%D9%85%D8%B9%D9%8A%D8%A7%D8%B1/)
+- [Methodology](https://miqyaslab.com/%D8%A7%D9%84%D9%85%D9%86%D9%87%D8%AC%D9%8A%D8%A9/)
+
+## Tools and data
+
+- [Arabic tokenizer tool](https://miqyaslab.com/%D8%A7%D9%84%D8%A3%D8%AF%D8%A7%D8%A9/)
+- [Glossary of AI terms in Arabic](https://miqyaslab.com/%D8%A7%D9%84%D9%85%D8%B9%D8%AC%D9%85/)
+- [Job Trial #1 dataset on Hugging Face](https://huggingface.co/datasets/mhdghaim/miqyas-frontdesk-v2)
+- [Failure Atlas: where open Arabic models fail on real jobs](https://huggingface.co/datasets/mhdghaim/miqyas-failure-atlas)
