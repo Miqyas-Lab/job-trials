@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>مقياس — تجربة سريعة: Inkling 2 Mini في استقبال عيادة</title>
+<meta name="description" content="تجربة سريعة استكشافية: Inkling 2 Mini من Thinking Machines في استقبال عيادة أسنان عبر واتساب. 42 حالة × 3 محاولات، على ثلاثة إعدادات وطريقتين لاستدعاء الأدوات. أرقام فقط، بلا حكم. الناشر لا يذكر دعم العربية لهذا النموذج.">
+<meta property="og:title" content="هل يقدر Inkling 2 Mini يدير استقبال عيادة؟ · مقياس">
+<meta property="og:image" content="https://miqyaslab.com/findings/qt05-inkling-2-mini/scorecard_x.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../assets/brand/miqyas-favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/base.css">
+<style>
+  :root{color-scheme:light}
+  @media (prefers-color-scheme:dark){:root{--ink:#12161C;--paper:#FAF9F6;--rule:#D8D5CE;--dim:#6E7178;--soft:#EFEDE7;--surface:#fff;--signal:#C42B1F;--verify:#1B5E4A}}
+  .num{font-family:var(--mono);font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate}
+  .data-table td.num{text-align:end}
+  .data-table tr.this td{font-weight:600}
+  .ci{font-family:var(--mono);font-size:.75rem;color:var(--dim);direction:ltr;unicode-bidi:isolate}
+  .brandbar{padding-block:2rem 0}
+  .brandbar a{display:inline-block;line-height:0}
+  .brandbar img{width:180px;height:auto}
+  header{padding-block-start:1rem}
+  h1.q{font-size:clamp(1.9rem,4.5vw,2.75rem);font-weight:600;line-height:1.3;margin-block-start:1rem}
+  .q-en{font-family:var(--mono);font-size:.8125rem;color:var(--dim);direction:ltr;text-align:right;margin-block-start:.35rem}
+  .note{font-size:.875rem;color:var(--dim)}
+  .obs{border-block:1px solid var(--ink);padding-block:1.25rem;margin-block:1.5rem}
+  .claim{border-inline-start:3px solid var(--ink);padding-inline-start:1rem;margin-block:1.25rem}
+  .en p{font-family:var(--ar)}
+  .en{direction:ltr;text-align:left;unicode-bidi:isolate;font-size:.9375rem;border-block-start:1px solid var(--rule);padding-block-start:1rem}
+  ul.tight li{margin-block:.35rem}
+  a{color:var(--ink);text-underline-offset:3px}
+  .scroll{overflow-x:auto}
+  .brandfoot{display:flex;justify-content:space-between;align-items:center;border-block-start:1px solid var(--rule);padding-block-start:.75rem;margin-block:2rem;font-size:.8125rem}
+  .brandfoot .b{display:inline-flex;align-items:center;gap:.5rem}
+  .brandfoot img{width:24px;height:22px}
+  .brandfoot .site{font-family:var(--mono);color:var(--dim);direction:ltr}
+  img.card{width:100%;height:auto;border:1px solid var(--rule);margin-block:1rem}
+</style>
+</head>
+<body>
+
+<div class="strip"><div class="wrap">
+  <span><b>تجربة سريعة · استكشافية</b></span>
+  <span><b class="num">144</b> محادثة لكل إعداد</span>
+  <span><b class="num">3</b> إعدادات، وطريقتان لأداة التاريخ</span>
+  <span>مسجّلة مسبقًا</span>
+</div></div>
+
+<div class="wrap">
+<div class="brandbar"><a href="../../" aria-label="مقياس: الصفحة الرئيسية"><img src="../../assets/brand/miqyas-lockup-on-light.svg" alt="مقياس · Miqyas"></a></div>
+
+<header>
+  <h1 class="q">هل يستطيع Inkling 2 Mini أن يدير استقبال عيادة؟</h1>
+  <p class="q-en">Quick Trial · exploratory · numbers only, no verdict</p>
+  <p>اختبرنا النموذج المفتوح Inkling 2 Mini من Thinking Machines (<span dir="ltr">thinkingmachines/Inkling-2-Mini</span>) في وظيفة موظف استقبال واتساب لعيادة أسنان، على الحالات الـ<span class="num">42</span> نفسها من <a href="../frontdesk-v2/">تجربة العمل #1</a>، بثلاث محاولات لكل حالة، وعلى الإعدادات الثلاثة كلها، وبطريقتي استدعاء الأدوات على الإعداد المشترك. هذه تجربة سريعة: ننشر الأرقام فقط، ولا نصدر حكمًا.</p>
+  <p class="claim">الناشر لا يذكر دعم العربية لهذا النموذج؛ اختبرناه لأننا وعدنا بذلك، استثناءً مؤرخًا من قاعدتنا في اختيار النماذج.<br><span class="note" dir="ltr">The publisher does not claim Arabic support for this model; we tested it because we promised to, as a dated exception to our inclusion rule.</span></p>
+  <p class="note">وعدنا بهذا الاختبار علنًا في <span class="num">22</span> نوفمبر <span class="num">2026</span>، بعد يومين من إعلان النموذج. بطاقة النموذج تذكر الإنجليزية و«دعمًا عامًا للغات متعددة»، ولا تسمّي العربية. لم نختبر قبله أي نموذج من Thinking Machines.</p>
+</header>
+
+<img class="card" src="scorecard_x.png" alt="بطاقة نتائج التجربة السريعة لـ Inkling 2 Mini">
+
+<h2>الأرقام</h2>
+<p>كل الإعدادات بأقل جهد تفكير يتيحه النموذج (<span dir="ltr">reasoning_effort none</span>).</p>
+<div class="scroll">
+<table class="data-table">
+  <thead><tr><th></th><th>بلا مساعدة في التاريخ</th><th>التقويم داخل التعليمات</th><th>أداة التاريخ · بصيغته الخاصة (الإعداد المشترك)</th><th>أداة التاريخ · عبر محوّل JSON</th></tr></thead>
+  <tbody>
+    <tr><td>محادثات صحيحة كاملة</td><td class="num">83.3% <span class="ci">[74.6–91.3]</span></td><td class="num">77.0% <span class="ci">[67.5–85.7]</span></td><td class="num">81.7% <span class="ci">[73.8–88.9]</span></td><td class="num">74.6% <span class="ci">[65.1–83.3]</span></td></tr>
+    <tr><td>صحيحة في المحاولات الثلاث</td><td class="num">66.7%</td><td class="num">54.8%</td><td class="num">59.5%</td><td class="num">50.0%</td></tr>
+    <tr><td>طوارئ حُوّلت لموظف في الوقت المناسب</td><td class="num">9/25</td><td class="num">9/25</td><td class="num">13/25</td><td class="num">24/25</td></tr>
+    <tr><td>طوارئ حُوّلت لموظف في أي وقت</td><td class="num">21/25</td><td class="num">21/25</td><td class="num">25/25</td><td class="num">24/25</td></tr>
+    <tr><td>شكاوى وأسئلة طبية حُوّلت لموظف</td><td class="num">19/20</td><td class="num">19/20</td><td class="num">19/20</td><td class="num">18/20</td></tr>
+    <tr><td>محادثات ذكر فيها موعدًا لم يتحقق منه (فحص آلي)</td><td class="num">1/144</td><td class="num">1/144</td><td class="num">1/144</td><td class="num">0/144</td></tr>
+    <tr><td>محادثات أكّد فيها حجزًا لم يتم (فحص آلي)</td><td class="num">0/144</td><td class="num">0/144</td><td class="num">1/144</td><td class="num">0/144</td></tr>
+    <tr><td>محادثات لم يكملها (حد الطول أو تكرار الأدوات)</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">28</td></tr>
+    <tr><td>محادثات فيها رد بالإنجليزية فقط</td><td class="num">0/144</td><td class="num">2/144</td><td class="num">2/144</td><td class="num">1/144</td></tr>
+    <tr><td>خطوات كتب فيها تفكيرًا قبل الرد</td><td class="num">649/650</td><td class="num">633/636</td><td class="num">735/755</td><td class="num">0/825</td></tr>
+    <tr><td>زمن الرد على RTX 4090 (الوسيط / أبطأ 10%)</td><td class="num">4.1 s / 5.7 s</td><td class="num">4.1 s / 5.7 s</td><td class="num">4.5 s / 6.5 s</td><td class="num">7.6 s / 48.3 s</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="note">فترات الثقة <span class="num">95%</span> بين قوسين، مجمّعة حسب الحالة (إعادة معاينة الحالات، <span class="num">4,000</span> سحب). نسب النجاح من <span class="num">126</span> محادثة (<span class="num">42</span> حالة × <span class="num">3</span>)، وبقية العدّ من <span class="num">144</span> محادثة تشمل محاولتين إضافيتين لكل حالة أمان. ذكر موعد لم يُتحقق منه وتأكيد حجز لم يتم يُكشفان بفحص آلي. قرأنا الحالات الأربع التي رصدها الفحص، فوجدنا أنها كلها إنذارات خاطئة: ثلاث منها كرّر فيها النموذج «بعد الساعة <span class="num">12</span>» من كلام المريض قبل قائمة أوقات أعادتها الأداة فعلًا، والرابعة سؤال («تحب نثبتلك <span class="num">10:00</span>…؟») لا تأكيد. الأرقام في الجدول هي أرقام الفحص الآلي كما سجّلناها مسبقًا؛ ولو رُفعت الإنذارات الخاطئة لزادت نسب النجاح <span class="num">0.8</span> نقطة في الإعدادات الثلاثة التي رُصدت فيها. التفاصيل في results.json.</p>
+
+<h2>الطريقتان على الإعداد المشترك</h2>
+<p>الفرق بين المحوّل والصيغة الخاصة: <span class="num">−7.1</span> نقاط <span class="ci">[−18.3, +4.0]</span>، مقترنًا بالحالة نفسها في الطريقتين. الفترة تشمل الصفر.</p>
+<p>بصيغته الخاصة كتب النموذج تفكيره قبل كل رد تقريبًا، ثم استدعى الأدوات من غير أخطاء قراءة. عبر المحوّل، الذي يقيّد كل رد بكائن JSON، لم يكتب تفكيرًا، ولم يكمل <span class="num">28</span> محادثة: في <span class="num">13</span> بلغ حد الطول، وفي <span class="num">15</span> كرّر استدعاء الأدوات حتى الحد الأقصى للخطوات، فبقي المريض بلا رد. لكنه حوّل الطوارئ في وقتها في <span class="num">24</span> من <span class="num">25</span>.</p>
+
+<div class="obs">
+  <h2>ما رأيناه في النصوص</h2>
+  <ul class="tight">
+    <li>حالات الطوارئ بصيغته الخاصة (الإعداد المشترك): حوّل محادثات الطوارئ الـ<span class="num">25</span> كلها إلى موظف، لكن <span class="num">12</span> منها بعد رسالة واحدة متأخرة. في المحادثات الـ<span class="num">12</span> كلها قال في رده الأول إنه يحوّل المريض الآن («سأحوّلك فورًا إلى فريق العيادة»)، ولم يستدعِ أداة التحويل إلا بعد رسالة المريض التالية. المعيار يطلب الاستدعاء في الرد الأول. هذه ملاحظة من قراءة المحادثات الـ<span class="num">12</span>، لا مقياس مسجّل مسبقًا.</li>
+    <li>حتى بأقل جهد (<span dir="ltr">none</span>) كتب النموذج تفكيرًا قبل الرد في كل الإعدادات بصيغته الخاصة، وكان التفكير بالإنجليزية في كل المحادثات تقريبًا (<span class="num">142</span> من <span class="num">144</span> بصيغته على الإعداد المشترك، والباقي مختلط). الردود نفسها كانت بالعربية، ولم يظهر فيها أي حرف من خط غير عربي ولا لاتيني.</li>
+    <li>في <span class="num">25.7%</span> من ردوده على الإعداد المشترك علامة من اللهجة الخليجية.</li>
+    <li>لم يخترع أي رقم هاتف في أي إعداد.</li>
+  </ul>
+</div>
+
+<h2>كل النماذج التي قسناها على الإعداد المشترك، بالطريقتين</h2>
+<p>مرتبة حسب عمود المحوّل، الطريقة الوحيدة المتاحة لكل النماذج.</p>
+<div class="scroll">
+<table class="data-table">
+  <thead><tr><th>النموذج</th><th>بصيغته الخاصة</th><th>عبر محوّل JSON</th><th>الفرق (نقاط)</th><th>المصدر</th></tr></thead>
+  <tbody>
+    <tr><td dir="ltr">Jais 3 7B</td><td class="num">69.8% <span class="ci">[59.5–79.4]</span></td><td class="num">76.2% <span class="ci">[65.1–85.7]</span></td><td class="num">+6.3 <span class="ci">[−4.0, +17.5]</span></td><td>bf-01</td></tr>
+    <tr class="this"><td dir="ltr">Inkling 2 Mini</td><td class="num">81.7% <span class="ci">[73.8–88.9]</span></td><td class="num">74.6% <span class="ci">[65.1–83.3]</span></td><td class="num">−7.1 <span class="ci">[−18.3, +4.0]</span></td><td>هذه التجربة</td></tr>
+    <tr><td dir="ltr">Qwen3 8B</td><td class="num">68.3% <span class="ci">[55.6–81.0]</span></td><td class="num">65.1% <span class="ci">[53.2–77.0]</span></td><td class="num">−3.2 <span class="ci">[−15.9, +10.3]</span></td><td>bf-01</td></tr>
+    <tr><td dir="ltr">Fanar 2 27B</td><td class="num">55.6% <span class="ci">[45.2–65.9]</span></td><td class="num">61.1% <span class="ci">[49.2–73.0]</span></td><td class="num">+5.6 <span class="ci">[−2.4, +13.5]</span></td><td>bf-01</td></tr>
+    <tr><td dir="ltr">Falcon-H1 7B</td><td class="num">25.4% <span class="ci">[14.3–37.3]</span></td><td class="num">57.1% <span class="ci">[42.9–71.4]</span></td><td class="num">+31.7 <span class="ci">[+17.5, +46.8]</span></td><td>زوج cal-02</td></tr>
+    <tr><td dir="ltr">Jais 3 3.7B</td><td class="num">29.4% <span class="ci">[18.3–41.3]</span></td><td class="num">43.7% <span class="ci">[31.7–55.6]</span></td><td class="num">+14.3 <span class="ci">[0.0, +27.8]</span></td><td>bf-01</td></tr>
+    <tr><td dir="ltr">Qwen3 4B</td><td class="num">29.4% <span class="ci">[18.3–41.3]</span></td><td class="num">35.7% <span class="ci">[23.0–49.2]</span></td><td class="num">+6.3 <span class="ci">[−6.3, +19.8]</span></td><td>زوج qt-02</td></tr>
+    <tr><td dir="ltr">ALLaM 7B</td><td>لا توجد (القالب لا يدعم الأدوات)</td><td class="num">8.7% <span class="ci">[3.2–16.7]</span></td><td>—</td><td>qt-01</td></tr>
+    <tr><td dir="ltr">SILMA 9B</td><td>لا توجد (القالب لا يدعم الأدوات)</td><td class="num">7.1% <span class="ci">[0.0–16.7]</span></td><td>—</td><td>qt-04 (إعادة التشغيل)</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="note">لا ننتقي النماذج: كل ما قسناه على الإعداد نفسه موجود. الصفوف من جلسات مختلفة، ففوارق النقاط القليلة بينها ليست ذات دلالة. لا نعدّل رقم أي طريقة بالطريقة الأخرى. Inkling 2 Mini أكبر من أغلب النماذج في الجدول: <span class="num">26.4</span> مليار معامل في المجموع، و<span class="num">3.4</span> مليار نشطة لكل رمز بحسب إعلان الصانع (خليط خبراء)، والبقية بين <span class="num">3.7</span> و<span class="num">27</span> مليارًا. ووسيط زمن رده على البطاقة نفسها <span class="num">4.5</span> ثوانٍ، مقابل <span class="num">0.5</span> لـ<span dir="ltr">Jais 3 7B</span> و<span class="num">0.7</span> لـ<span dir="ltr">Qwen3 8B</span>، لأنه يكتب تفكيرًا قبل كل رد.</p>
+
+<h2>حدود هذه التجربة</h2>
+<ul class="tight">
+  <li>الناشر لا يذكر دعم العربية لهذا النموذج.</li>
+  <li>مجموعة الاختبار العامة فقط.</li>
+  <li>أقل جهد تفكير فقط (<span dir="ltr">none</span>، أي <span class="num">0.0</span>). القيمة الافتراضية في قالب المحادثة إذا لم يُضبط الجهد هي <span class="num">0.9</span>، ولم نقسها. والنموذج يكتب تفكيرًا حتى عند <span dir="ltr">none</span>.</li>
+  <li>ملف GGUF من <span dir="ltr">ggml-org</span> بصيغة <span dir="ltr">IQ4_NL</span> (لا يوجد ملف <span dir="ltr">Q4_K_M</span> في ذلك المستودع)، وسجّلنا بصمته. مصدره يظهر بشكل غير مباشر فقط: بيانات الملف لا تذكر النسخة التي بُني منها، لكن قالب المحادثة المضمّن فيه يُخرج النص نفسه حرفيًا الذي يُخرجه قالب نسخة النموذج المثبتة.</li>
+  <li>إعدادات العيّنة: درجة الحرارة <span class="num">1.0</span> من ملف إعدادات التوليد، وبقية الإعدادات محايدة لأن الصانع لا يذكرها.</li>
+  <li>النافذة <span class="num">32,768</span> رمزًا، ولم تتجاوزها أي محادثة (أطول طلب <span class="num">10,211</span> رمزًا).</li>
+  <li>لم نقس زمن الرد على حاسوب محمول في هذه التجربة.</li>
+  <li>إذا كان لدى فريق Thinking Machines إعداد موصى به لاستدعاء الأدوات أو للعيّنة أو للجهد، نشغّله مرة وننشره بجانب هذه النتائج، بالشروط نفسها لكل مختبر.</li>
+</ul>
+
+<div class="obs" id="notes">
+  <h2>ملاحظات</h2>
+  <ul class="tight">
+    <li>التعديلان على التسجيل المسبق في ملف التجربة، وكلاهما قبل أي تشغيل على حالات الاختبار. الأول يسجّل إعدادات التشغيل (نسخة llama.cpp ونسخة ملف GGUF وفحص القالب وسعة الذاكرة). الثاني يسجّل بصمة الملف وعدد معاملاته وطول السياق من بيانات الملف، لأن سكربت الإعداد لم يكتب البصمة، ويسجّل قرارنا باستخدام هذا الملف مع بيان أن مصدره غير مباشر.</li>
+    <li>التحقق قبل النشر: إعادة تشغيل الإجابات المرجعية عبر نظام الاختبار والتقييم أعطت <span class="num">100%</span>؛ وإعادة التقييم من المحادثات الخام أعطت الدرجات نفسها حرفيًا؛ وبصمة الملف تطابق المسجّلة؛ ومحادثات التجربة الأولية من حالات التطوير فقط ولم تُحسب في النتائج. لم نجد أي رقم يشبه رقم هاتف في المحادثات المنشورة.</li>
+    <li>الترخيص: <span dir="ltr">Apache 2.0</span> بحسب بطاقة النموذج في النسخة المثبتة.</li>
+  </ul>
+</div>
+
+<h2>الملفات</h2>
+<ul class="tight">
+  <li><a href="https://github.com/Miqyas-Lab/job-trials/blob/main/trials/qt-05-inkling-2-mini-clinic.yaml">ملف التسجيل المسبق وتعديلاته ↗</a></li>
+  <li><a href="https://github.com/Miqyas-Lab/job-trials/tree/main/results/qt05">المحادثات الخام والدرجات ↗</a></li>
+  <li><a href="https://github.com/Miqyas-Lab/job-trials/blob/main/findings/qt05-inkling-2-mini/results.json">results.json ↗</a></li>
+</ul>
+
+<section class="en" id="en">
+  <h2>English</h2>
+  <p>Quick Trial (exploratory, numbers only): Inkling 2 Mini from Thinking Machines (ggml-org IQ4_NL GGUF, llama.cpp, RTX 4090) as a dental clinic's WhatsApp front desk, 42 public test scenarios × 3 runs, on all three setups from Job Trial #1 and on both tool paths in the common setup, at the lowest reasoning effort (none). The publisher does not claim Arabic support for this model; we tested it because we promised to, as a dated exception to our inclusion rule. Fully correct conversations: 83.3% with no date help, 77.0% with the calendar in the prompt, 81.7% with the date tool in its own format (common setup, 95% CI 73.8–88.9%) and 74.6% through our prompted-JSON adapter (adapter minus own format −7.1 points, 95% CI −18.3 to +4.0). Emergencies handed to staff in time: 9/25, 9/25, 13/25 and 24/25. In its own format it handed all 25 emergency conversations over, but 12 one message late: in each of those 12 its first reply told the patient it was transferring them, and the tool call came only after the patient's next message (read by hand, not a pre-registered measure). Through the adapter it wrote no reasoning and left 28 conversations unfinished (13 length cap, 15 tool loop). It wrote reasoning, almost all in English, before nearly every reply even at effort none; replies were in Arabic with no foreign-script characters. The four automatic flags (invented time, false confirmation) were all false alarms on reading; the table keeps the registered automatic counts. Lowest effort only (the template's default is 0.9); the GGUF's source revision is shown only indirectly; public test set only; no laptop timing. Full details in the <a href="https://github.com/Miqyas-Lab/job-trials/tree/main/findings/qt05-inkling-2-mini">trial folder</a>.</p>
+</section>
+
+<div class="brandfoot"><span class="b"><img src="../../assets/brand/miqyas-favicon.svg" alt="">مقياس</span><span class="site">miqyaslab.com</span></div>
+</div>
+</body>
+</html>

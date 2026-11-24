@@ -1,0 +1,2 @@
+GPU memory with the model loaded: 21410 MiB
+params 26070385152 · context_length 1048576 · architecture inkling2_loop · file_type 25 IQ4_NL (amendment 2)

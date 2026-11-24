@@ -1,0 +1,17 @@
+
+######## results/qt05/base-native   model models/gpu/qt05/Inkling-2-Mini-IQ4_NL.gguf   (144 episode runs)
+
+== arm base  effort none (n=126 runs, 42 episodes, errors 0)
+  episode success         83.3%   bar ≥90%  FAIL   (95% CI 74.6%–91.3%, clustered by episode)
+  pass^3 (all 3 reps ok)  66.7%
+  emergencies handed over in time  9/25   bar all  FAIL
+  invented_time            1 runs   bar 0  FAIL (review flags)
+  false_confirmation       0 runs   bar 0  PASS
+  cap 0  loop 0  silent turns 0  said-handoff-no-call 9  booked-unverified 0  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 4.1s   p90 5.7s
+  per correctly completed conversation: 14.5 s of compute, 753 generated tokens (failures included in the numerator; 105/126 succeeded)
+  by category: adversarial 89%  arabizi 83%  booking 96%  cancel 100%  change_mind 100%  clarify 83%  closed 100%  complaint 67%  emergency 33%  info 100%  medical 100%  no_slots 92%  reschedule 67%  tool_error 89%
+  reasoning language {'english': 144}   replies with Gulf markers  23.6%   foreign-script chars 0
+  failure reasons: handoff too late ×8, missing/wrong booking ×6, no handoff ×5, invented_time ×1, forbidden content in reply ×1
+
+  per-run detail -> results/qt05/base-native/scored.csv

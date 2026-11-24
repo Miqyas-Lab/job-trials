@@ -1,0 +1,5 @@
+llama.cpp 40fe9164f43b4e7b4bf2a261813eed768c367468
+repo commit 917f098
+gguf repo ggml-org/Inkling-2-Mini-GGUF@e8a2cecf0e78914f07cc27b9be711a9b2c7561d9
+model repo thinkingmachines/Inkling-2-Mini@7a67ae2314b44ef05c87fd1d4d311c58aaeb18f6
+cbdf3fa9dc50a4124977980f37da4f1fa764b0cfe800d275cd43d26ce2a81af4  models/gpu/qt05/Inkling-2-Mini-IQ4_NL.gguf

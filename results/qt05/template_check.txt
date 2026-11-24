@@ -1,0 +1,2 @@
+TEMPLATE CHECK: llama.cpp render = reference render (794 chars), generation block and arguments as an object OK · OK
+effort line: <|message_system|><|content_text|>Thinking effort level: 0
