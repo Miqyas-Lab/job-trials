@@ -12,5 +12,5 @@
   "interval": "ci95_pct",
   "rank_by": "prompted_json_adapter",
   "under_name": {"field": "adapter_minus_own_format", "value": "points", "interval": "ci95_points"},
-  "caveat": {"text": "الناشر لا يذكر دعم العربية لهذا النموذج؛ اختبرناه لأننا وعدنا بذلك، استثناءً مؤرخًا من قاعدتنا", "values": {}}
+  "caveat": {"text": "الناشر لا يذكر دعم العربية لهذا النموذج؛ اختبرناه لأننا وعدنا بذلك، استثناءً مؤرخًا من قاعدتنا في اختيار النماذج", "values": {}}
 }
