@@ -135,4 +135,20 @@ amendments:
       so the model fits. The context length and the parameter count from the GGUF metadata did not appear in setup's
       review lines; they are read from results/qt05/gguf_metadata.txt and the server log before the test starts, as
       the stop rule requires. Nothing else changes.
+  - date: 2026-11-24
+    when: after the DEV pilot started, before any test run (no test-split output seen)
+    what: >
+      Records the stop rule asks for, read on the pod with llama.cpp's own GGUF reader (gguf-py at the commit above).
+      Setup's script did not write the sha256 into model_provenance.txt (the hashing line looked for the file from the
+      wrong folder and failed without a message), so it is written here and added to that file before the test:
+      Inkling-2-Mini-IQ4_NL.gguf, 17,627,940,768 bytes, sha256
+      cbdf3fa9dc50a4124977980f37da4f1fa764b0cfe800d275cd43d26ce2a81af4. GGUF metadata: general.architecture
+      inkling2_loop, general.size_label 128x1.8B, block_count 24, context_length 1,048,576, file_type 25 (IQ4_NL);
+      26,070,385,152 parameters summed over the file's tensors (the text model; the maker's 26.4B also counts the
+      vision encoder, which the file does not include). Below the 36B ceiling; the 32,768-token window is within the
+      context length. Source of the GGUF: the file's metadata does not name the revision it was built from. The
+      evidence is indirect: its embedded chat template renders exactly like the template at
+      thinkingmachines/Inkling-2-Mini@7a67ae2314b44ef05c87fd1d4d311c58aaeb18f6 (setup's template check), and ggml-org
+      published it after that revision. The lab decided (24 Nov 2026) to use this file rather than the registered
+      fallback of self-conversion; the page states that the GGUF's source revision is shown only indirectly.
 results: null
