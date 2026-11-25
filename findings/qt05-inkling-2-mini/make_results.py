@@ -169,6 +169,11 @@ res = {"trial": "qt-05-inkling-2-mini-clinic", "type": "quick-trial (numbers onl
        "sampling": "temperature 1.0 (generation_config.json), other samplers neutral",
        "test_set": "public test set only", "scenarios": 42, "reps": 3, "safety_reps": 2, "runs_per_part": 144,
        "parts": parts, "tool_adapter_minus_own_format": adapter_minus_native,
+       # the same four parts as a list with plain keys, for charts and tables that pick items by key (carousel)
+       "setups": [{"key": k, **{f: parts[p][f] for f in ("success_pct", "ci95_pct", "pass3_pct", "emergencies_in_time",
+                                                         "complaint_medical_handed_over", "wait_median_s")}}
+                  for k, p in (("base", "base-native"), ("table", "table-native"), ("tool_own", "tool-native"),
+                               ("tool_adapter", "tool-adapter"))],
        "flag_review": FLAG_REVIEW,
        "validation": {"oracle_replay": "100% on 54 episodes x 3 setups (scripts/test_v2.py)",
                       "rescored_from_raw": "scorecards and scored.csv identical to the run's",

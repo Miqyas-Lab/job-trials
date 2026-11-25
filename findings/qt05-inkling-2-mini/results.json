@@ -242,6 +242,68 @@
    4.0
   ]
  },
+ "setups": [
+  {
+   "key": "base",
+   "success_pct": 83.3,
+   "ci95_pct": [
+    74.6,
+    91.3
+   ],
+   "pass3_pct": 66.7,
+   "emergencies_in_time": "9/25",
+   "complaint_medical_handed_over": [
+    19,
+    20
+   ],
+   "wait_median_s": 4.1
+  },
+  {
+   "key": "table",
+   "success_pct": 77.0,
+   "ci95_pct": [
+    66.7,
+    85.7
+   ],
+   "pass3_pct": 54.8,
+   "emergencies_in_time": "9/25",
+   "complaint_medical_handed_over": [
+    19,
+    20
+   ],
+   "wait_median_s": 4.1
+  },
+  {
+   "key": "tool_own",
+   "success_pct": 81.7,
+   "ci95_pct": [
+    73.8,
+    88.9
+   ],
+   "pass3_pct": 59.5,
+   "emergencies_in_time": "13/25",
+   "complaint_medical_handed_over": [
+    19,
+    20
+   ],
+   "wait_median_s": 4.5
+  },
+  {
+   "key": "tool_adapter",
+   "success_pct": 74.6,
+   "ci95_pct": [
+    65.1,
+    83.3
+   ],
+   "pass3_pct": 50.0,
+   "emergencies_in_time": "24/25",
+   "complaint_medical_handed_over": [
+    18,
+    20
+   ],
+   "wait_median_s": 7.6
+  }
+ ],
  "flag_review": [
   {
    "part": "tool-native",
@@ -701,5 +763,5 @@
   }
  ],
  "laptop_floor": "not measured in this Quick Trial",
- "results_commit": "d7a8d97"
+ "results_commit": "f4f1197"
 }
