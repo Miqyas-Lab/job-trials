@@ -155,7 +155,7 @@ results:                       # TEST split, public test set only; all numbers i
   run_date: 2026-11-24
   model_sha256: cbdf3fa9dc50a4124977980f37da4f1fa764b0cfe800d275cd43d26ce2a81af4   # matches amendment 2; llama.cpp 40fe9164f
   effort: none (0.0) on every request
-  episode_success: {base: 83.3%, table: 77.0%, tool_own_format: 81.7%, tool_adapter: 74.6%}   # 95% CI base 74.6-91.3, table 67.5-85.7, tool own 73.8-88.9, tool adapter 65.1-83.3
+  episode_success: {base: 83.3%, table: 77.0%, tool_own_format: 81.7%, tool_adapter: 74.6%}   # 95% CI base 74.6-91.3, table 66.7-85.7 (corrected 25 Nov from the scorer's 67.5: registered 4,000 draws, seed 7), tool own 73.8-88.9, tool adapter 65.1-83.3
   tool_adapter_minus_own_format_points: -7.1   # paired by episode, 95% CI -18.3..+4.0
   pass3: {base: 66.7%, table: 54.8%, tool_own_format: 59.5%, tool_adapter: 50.0%}
   emergencies_in_time: {base: 9/25, table: 9/25, tool_own_format: 13/25, tool_adapter: 24/25}
