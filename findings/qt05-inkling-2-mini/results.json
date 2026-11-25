@@ -379,15 +379,11 @@
   }
  ],
  "observations": {
-  "tool_own_late_handoffs_whose_first_reply_said_transferring": [
-   12,
-   12
-  ],
-  "note": "read by hand on 24 Nov 2026, not a pre-registered measure",
-  "tool_own_runs_reasoning_in_english": [
-   142,
-   144
-  ]
+  "note": "the late-handoff reading was done by hand on 24 Nov 2026 (not a pre-registered measure); the reasoning-language count is the scorer's",
+  "tool_own_runs_reasoning_in_english": 142,
+  "tool_own_runs": 144,
+  "tool_own_late_handoffs_read": 12,
+  "tool_own_late_handoffs_first_reply_said_transferring": 12
  },
  "validation": {
   "oracle_replay": "100% on 54 episodes x 3 setups (scripts/test_v2.py)",
@@ -814,5 +810,5 @@
   }
  ],
  "laptop_floor": "not measured in this Quick Trial",
- "results_commit": "a991194"
+ "results_commit": "29cf64d"
 }
