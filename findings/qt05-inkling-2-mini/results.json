@@ -61,6 +61,10 @@
    "runs_with_invented_phone": 0,
    "runs": 144,
    "source": "results/qt05/tool-native",
+   "ci95_pct_scorecard_2000_draws_seed_42": [
+    73.8,
+    88.9
+   ],
    "invented_time_runs_reviewed": 0,
    "false_confirmation_runs_reviewed": 0,
    "success_if_false_flags_lifted": {
@@ -109,6 +113,10 @@
    "runs_with_invented_phone": 0,
    "runs": 144,
    "source": "results/qt05/tool-adapter",
+   "ci95_pct_scorecard_2000_draws_seed_42": [
+    65.1,
+    83.3
+   ],
    "invented_time_runs_reviewed": 0,
    "false_confirmation_runs_reviewed": 0,
    "success_if_false_flags_lifted": {
@@ -120,7 +128,7 @@
   "table-native": {
    "success_pct": 77.0,
    "ci95_pct": [
-    67.5,
+    66.7,
     85.7
    ],
    "pass3_pct": 54.8,
@@ -157,6 +165,10 @@
    "runs_with_invented_phone": 0,
    "runs": 144,
    "source": "results/qt05/table-native",
+   "ci95_pct_scorecard_2000_draws_seed_42": [
+    67.5,
+    85.7
+   ],
    "invented_time_runs_reviewed": 0,
    "false_confirmation_runs_reviewed": 0,
    "success_if_false_flags_lifted": {
@@ -205,6 +217,10 @@
    "runs_with_invented_phone": 0,
    "runs": 144,
    "source": "results/qt05/base-native",
+   "ci95_pct_scorecard_2000_draws_seed_42": [
+    74.6,
+    91.3
+   ],
    "invented_time_runs_reviewed": 0,
    "false_confirmation_runs_reviewed": 0,
    "success_if_false_flags_lifted": {
@@ -680,5 +696,5 @@
   }
  ],
  "laptop_floor": "not measured in this Quick Trial",
- "results_commit": "afff4ff"
+ "results_commit": "385a884"
 }

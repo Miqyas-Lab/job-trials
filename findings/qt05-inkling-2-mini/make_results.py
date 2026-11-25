@@ -88,6 +88,20 @@ def reviewed(folder, arm, part):
     return {"success_pct": round(100 * ok / n, 1), "runs_lifted": lifted, "of": n}
 
 
+def registered_ci(folder, arm):
+    """Success with the registered interval: cluster bootstrap over episodes, 4,000 draws, seed 7, 3 reps per episode
+    (score_v2.py's scorecard uses 2,000 draws, seed 42; corrected 25 Nov 2026, Validator V03)."""
+    by = {}
+    for r in csv.DictReader(open(f"{folder}/scored.csv", encoding="utf-8-sig")):
+        if r["arm"] == arm and int(r["rep"]) < 3:
+            by.setdefault(r["episode"], []).append(r["success"] == "True")
+    eps = sorted(by)
+    rate = lambda es: 100 * sum(v for e in es for v in by[e]) / sum(len(by[e]) for e in es)
+    rng = random.Random(7)
+    bs = sorted(rate([rng.choice(eps) for _ in eps]) for _ in range(4000))
+    return round(rate(eps), 1), [round(bs[100], 1), round(bs[3899], 1)]
+
+
 def paired(old, new, arm="tool"):
     """Change new - old in points of full-episode success (3 reps), 95% CI paired by episode (bootstrap, 4,000 draws, seed 7)."""
     def load(folder):
@@ -110,6 +124,9 @@ for p, arm in PARTS:
     f = f"{R}/{p}"
     flags_ok = sum(1 for x in FLAG_REVIEW if x["part"] == p)
     b = {**card(f, arm), **extras(runs(f, arm)), "source": f}
+    v, ci = registered_ci(f, arm)
+    assert v == b["success_pct"], (p, v, b["success_pct"])
+    b["ci95_pct_scorecard_2000_draws_seed_42"], b["ci95_pct"] = b["ci95_pct"], ci
     b["invented_time_runs_reviewed"] = b["invented_time_runs_auto"] - sum(1 for x in FLAG_REVIEW if x["part"] == p and x["flag"] == "invented_time")
     b["false_confirmation_runs_reviewed"] = b["false_confirmation_runs_auto"] - sum(1 for x in FLAG_REVIEW if x["part"] == p and x["flag"] == "false_confirmation")
     b["success_if_false_flags_lifted"] = reviewed(f, arm, p)
