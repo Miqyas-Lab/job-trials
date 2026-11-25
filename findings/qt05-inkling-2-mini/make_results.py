@@ -171,10 +171,20 @@ res = {"trial": "qt-05-inkling-2-mini-clinic", "type": "quick-trial (numbers onl
        "parts": parts, "tool_adapter_minus_own_format": adapter_minus_native,
        # the same four parts as a list with plain keys, for charts and tables that pick items by key (carousel)
        "setups": [{"key": k, **{f: parts[p][f] for f in ("success_pct", "ci95_pct", "pass3_pct", "emergencies_in_time",
-                                                         "complaint_medical_handed_over", "wait_median_s")}}
+                                                         "complaint_medical_handed_over", "wait_median_s", "wait_p90_s",
+                                                         "steps_with_reasoning", "steps", "cap_runs", "loop_runs",
+                                                         "runs_with_english_only_reply", "replies_with_gulf_markers_pct")},
+                  "emergencies_handed_over_any_time": "/".join(map(str, parts[p]["emergencies_handed_over_at_any_point"])),
+                  "emergencies_handed_over_late": parts[p]["emergencies_handed_over_at_any_point"][0]
+                                                  - int(parts[p]["emergencies_in_time"].split("/")[0]),
+                  "unfinished_runs": parts[p]["cap_runs"] + parts[p]["loop_runs"]}
                   for k, p in (("base", "base-native"), ("table", "table-native"), ("tool_own", "tool-native"),
                                ("tool_adapter", "tool-adapter"))],
        "flag_review": FLAG_REVIEW,
+       "observations": {"tool_own_late_handoffs_whose_first_reply_said_transferring": [12, 12],
+                        "note": "read by hand on 24 Nov 2026, not a pre-registered measure",
+                        "tool_own_runs_reasoning_in_english": [int(re.search(r"'english': (\d+)", parts["tool-native"]["reasoning_language"]).group(1)),
+                                                               parts["tool-native"]["runs"]]},
        "validation": {"oracle_replay": "100% on 54 episodes x 3 setups (scripts/test_v2.py)",
                       "rescored_from_raw": "scorecards and scored.csv identical to the run's",
                       "gguf_sha256_matches_registered": True,
