@@ -95,6 +95,18 @@
   status: quick-trial published
   trials: [qt-04-silma-9b-clinic]   # common setup 7.1% via adapter (greedy re-run); numbers only
 
+- id: inkling-2-mini
+  family: Inkling
+  publisher: Thinking Machines (USA)
+  source: thinkingmachines/Inkling-2-Mini   # revision 7a67ae2; GGUF ggml-org IQ4_NL; 26.4B total, 3.4B active (maker)
+  context: 1048576   # GGUF metadata; run at a 32,768-token window
+  languages: en, general multilingual (card; Arabic not named). Tested as a dated exception to the inclusion rule (qt-05)
+  tool_format: own (template) and prompted-JSON adapter
+  licence: apache-2.0
+  sampling: temperature 1.0 (generation_config.json), other samplers neutral; effort none
+  status: quick-trial published
+  trials: [qt-05-inkling-2-mini-clinic]   # common setup 81.7% own format, 74.6% adapter; numbers only
+
 - id: gemma3
   family: Gemma 3
   publisher: Google

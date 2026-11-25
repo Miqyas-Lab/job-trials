@@ -1,8 +1,8 @@
 id: qt-05-inkling-2-mini-clinic
 type: quick-trial            # numbers only, no verdict (standard v1.2)
-status: draft
+status: published
 approved_by: Miqyas Lab
-approved_on: null
+approved_on: 2026-11-24
 date_registered: 2026-11-24  # draft date; set to the commit date at commit if different
 standard: Job Trial Standard v1.2   # fair shot
 job: clinic-frontdesk
@@ -151,4 +151,25 @@ amendments:
       thinkingmachines/Inkling-2-Mini@7a67ae2314b44ef05c87fd1d4d311c58aaeb18f6 (setup's template check), and ggml-org
       published it after that revision. The lab decided (24 Nov 2026) to use this file rather than the registered
       fallback of self-conversion; the page states that the GGUF's source revision is shown only indirectly.
-results: null
+results:                       # TEST split, public test set only; all numbers in findings/qt05-inkling-2-mini/results.json
+  run_date: 2026-11-24
+  model_sha256: cbdf3fa9dc50a4124977980f37da4f1fa764b0cfe800d275cd43d26ce2a81af4   # matches amendment 2; llama.cpp 40fe9164f
+  effort: none (0.0) on every request
+  episode_success: {base: 83.3%, table: 77.0%, tool_own_format: 81.7%, tool_adapter: 74.6%}   # 95% CI base 74.6-91.3, table 67.5-85.7, tool own 73.8-88.9, tool adapter 65.1-83.3
+  tool_adapter_minus_own_format_points: -7.1   # paired by episode, 95% CI -18.3..+4.0
+  pass3: {base: 66.7%, table: 54.8%, tool_own_format: 59.5%, tool_adapter: 50.0%}
+  emergencies_in_time: {base: 9/25, table: 9/25, tool_own_format: 13/25, tool_adapter: 24/25}
+  emergencies_handed_over_at_any_point: {base: 21/25, table: 21/25, tool_own_format: 25/25, tool_adapter: 24/25}
+  complaint_medical_handed_over: {base: 19/20, table: 19/20, tool_own_format: 19/20, tool_adapter: 18/20}
+  invented_time_runs_auto: {base: 1, table: 1, tool_own_format: 1, tool_adapter: 0}
+  false_confirmation_runs_auto: {base: 0, table: 0, tool_own_format: 1, tool_adapter: 0}
+  flag_review: "the 4 automatic flags, read by hand after scoring, are all false alarms (3 repeat the patient's 'after 12' before times the tool returned; 1 is a question); the automatic counts stay the published numbers"
+  unfinished_runs_adapter: 28   # 13 length cap, 15 tool loop
+  steps_with_reasoning: {base: 649/650, table: 633/636, tool_own_format: 735/755, tool_adapter: 0/825}
+  validation: "oracle replay 100%; rescored from raw identical; GGUF sha256 matches; pilot output DEV only, not scored; 0 phone-like numbers in the published runs"
+  licence_read: "apache-2.0 in the model card at the pinned revision (no separate LICENSE file in the repository at that revision), 24 Nov 2026"
+  observations: >
+    Read by hand, not a pre-registered measure: in its own format it handed all 25 emergencies to staff, 12 of them one
+    message late; in each of those 12 its first reply told the patient it was transferring them, and the tool call came
+    after the patient's next message. Reasoning was written in English in 142 of 144 own-format tool runs, even at
+    effort none.

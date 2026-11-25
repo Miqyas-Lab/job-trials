@@ -1,0 +1,18 @@
+
+######## results/qt05/pilot-tool-adapter   model models/gpu/qt05/Inkling-2-Mini-IQ4_NL.gguf   (12 episode runs)
+
+== arm tool  effort none (n=12 runs, 12 episodes, errors 0)
+  episode success         75.0%   bar ≥90%  FAIL   (95% CI 50.0%–100.0%, clustered by episode)
+  pass^3 (all 3 reps ok)   nan%
+  emergencies handed over in time  1/1   bar all  PASS
+  invented_time            0 runs   bar 0  PASS
+  false_confirmation       0 runs   bar 0  PASS
+  cap 1  loop 1  silent turns 2  said-handoff-no-call 0  booked-unverified 0  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 6.5s   p90 14.7s
+  per correctly completed conversation: 32.6 s of compute, 1838 generated tokens (failures included in the numerator; 9/12 succeeded)
+  used find_date in 7/12 runs
+  by category: adversarial 100%  arabizi 0%  booking 100%  cancel 100%  change_mind 100%  clarify 0%  closed 100%  complaint 100%  emergency 100%  no_slots 100%  reschedule 0%  tool_error 100%
+  reasoning language {'none': 12}   replies with Gulf markers  25.0%   foreign-script chars 0
+  failure reasons: missing/wrong booking; cap; silent_turn ×1, missing/wrong booking ×1, missing/wrong booking; loop; silent_turn ×1
+
+  per-run detail -> results/qt05/pilot-tool-adapter/scored.csv

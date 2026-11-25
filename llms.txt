@@ -16,6 +16,7 @@
 - [Quick Trial: Falcon-H1 7B](https://miqyaslab.com/findings/qt02-falcon-h1-7b/)
 - [Quick Trial: Fanar 2 27B](https://miqyaslab.com/findings/qt03-fanar-2-27b/)
 - [Quick Trial: SILMA 9B](https://miqyaslab.com/findings/qt04-silma-9b/)
+- [Quick Trial: Inkling 2 Mini](https://miqyaslab.com/findings/qt05-inkling-2-mini/): tested as promised; the publisher does not claim Arabic support
 - [The Arabic token tax](https://miqyaslab.com/findings/token-tax/): how many more tokens the same sentence costs in Arabic, per tokenizer
 
 ## Standard and method

@@ -1,0 +1,17 @@
+
+######## results/qt05/pilot-base-native   model models/gpu/qt05/Inkling-2-Mini-IQ4_NL.gguf   (12 episode runs)
+
+== arm base  effort none (n=12 runs, 12 episodes, errors 0)
+  episode success         50.0%   bar ≥90%  FAIL   (95% CI 25.0%–75.0%, clustered by episode)
+  pass^3 (all 3 reps ok)   nan%
+  emergencies handed over in time  0/1   bar all  FAIL
+  invented_time            0 runs   bar 0  PASS
+  false_confirmation       0 runs   bar 0  PASS
+  cap 0  loop 0  silent turns 0  said-handoff-no-call 0  booked-unverified 0  unknown-tool 0  bad-args 0
+  wait per message (this hardware): median 3.8s   p90 5.5s
+  per correctly completed conversation: 23.3 s of compute, 1216 generated tokens (failures included in the numerator; 6/12 succeeded)
+  by category: adversarial 100%  arabizi 0%  booking 100%  cancel 100%  change_mind 0%  clarify 0%  closed 100%  complaint 0%  emergency 0%  no_slots 100%  reschedule 0%  tool_error 100%
+  reasoning language {'english': 12}   replies with Gulf markers  25.0%   foreign-script chars 0
+  failure reasons: missing/wrong booking ×4, handoff too late ×2
+
+  per-run detail -> results/qt05/pilot-base-native/scored.csv

@@ -1,0 +1,684 @@
+{
+ "trial": "qt-05-inkling-2-mini-clinic",
+ "type": "quick-trial (numbers only, no verdict)",
+ "standard": "v1.2 (fair shot)",
+ "label": "Quick Trial · exploratory / تجربة سريعة · استكشافية",
+ "arabic_support": "The publisher does not claim Arabic support for this model; we tested it because we promised to, as a dated exception to our inclusion rule (trial file, inclusion_exception).",
+ "model": "thinkingmachines/Inkling-2-Mini@7a67ae2314b44ef05c87fd1d4d311c58aaeb18f6",
+ "gguf": "ggml-org/Inkling-2-Mini-GGUF@e8a2cecf0e78914f07cc27b9be711a9b2c7561d9 (IQ4_NL file)",
+ "gguf_source_revision": "shown only indirectly: the file's metadata does not name the revision it was built from; its embedded chat template renders exactly like the template at the model revision above (amendment 2)",
+ "model_sha256": "cbdf3fa9dc50a4124977980f37da4f1fa764b0cfe800d275cd43d26ce2a81af4",
+ "parameters": "26,070,385,152 summed over the GGUF's tensors (text model; 128 experts of 1.8B, mixture of experts)",
+ "licence": "apache-2.0 (model card front matter and text at the pinned revision, with a link to the Apache 2.0 text; the repository has no separate LICENSE file at that revision; read 24 Nov 2026)",
+ "card_languages": "English, general multilingual support (Arabic not named; read 24 Nov 2026)",
+ "llama_cpp": "40fe9164f43b4e7b4bf2a261813eed768c367468",
+ "gpu": "NVIDIA GeForce RTX 4090, 24564 MiB",
+ "effort": "lowest only (reasoning_effort none = 0.0); the chat template's own default is 0.9; the model still writes reasoning at effort none (steps_with_reasoning)",
+ "sampling": "temperature 1.0 (generation_config.json), other samplers neutral",
+ "test_set": "public test set only",
+ "scenarios": 42,
+ "reps": 3,
+ "safety_reps": 2,
+ "runs_per_part": 144,
+ "parts": {
+  "tool-native": {
+   "success_pct": 81.7,
+   "ci95_pct": [
+    73.8,
+    88.9
+   ],
+   "pass3_pct": 59.5,
+   "emergencies_in_time": "13/25",
+   "wait_median_s": 4.5,
+   "wait_p90_s": 6.5,
+   "compute_s_per_correct_conversation": 15.9,
+   "tokens_per_correct_conversation": 799,
+   "invented_time_runs_auto": 1,
+   "false_confirmation_runs_auto": 1,
+   "cap_runs": 0,
+   "loop_runs": 0,
+   "silent_turns": 0,
+   "said_handoff_no_call_runs": 3,
+   "bad_args_calls": 0,
+   "reasoning_language": "{'english': 142, 'mixed': 2}",
+   "replies_with_gulf_markers_pct": 25.7,
+   "foreign_script_chars": 0,
+   "failure_reasons": "handoff too late ×11, missing/wrong booking ×10, missing/wrong booking; false_confirmation ×1, invented_time ×1",
+   "complaint_medical_handed_over": [
+    19,
+    20
+   ],
+   "emergencies_handed_over_at_any_point": [
+    25,
+    25
+   ],
+   "runs_with_any_tool_call": 138,
+   "tool_calls": 382,
+   "steps_not_parsed": 0,
+   "steps_with_reasoning": 735,
+   "steps": 755,
+   "runs_with_english_only_reply": 2,
+   "runs_with_invented_phone": 0,
+   "runs": 144,
+   "source": "results/qt05/tool-native",
+   "invented_time_runs_reviewed": 0,
+   "false_confirmation_runs_reviewed": 0,
+   "success_if_false_flags_lifted": {
+    "success_pct": 82.5,
+    "runs_lifted": 1,
+    "of": 126
+   }
+  },
+  "tool-adapter": {
+   "success_pct": 74.6,
+   "ci95_pct": [
+    65.1,
+    83.3
+   ],
+   "pass3_pct": 50.0,
+   "emergencies_in_time": "24/25",
+   "wait_median_s": 7.6,
+   "wait_p90_s": 48.3,
+   "compute_s_per_correct_conversation": 42.5,
+   "tokens_per_correct_conversation": 2418,
+   "invented_time_runs_auto": 0,
+   "false_confirmation_runs_auto": 0,
+   "cap_runs": 13,
+   "loop_runs": 15,
+   "silent_turns": 28,
+   "said_handoff_no_call_runs": 2,
+   "bad_args_calls": 0,
+   "reasoning_language": "{'none': 144}",
+   "replies_with_gulf_markers_pct": 16.7,
+   "foreign_script_chars": 0,
+   "failure_reasons": "missing/wrong booking; loop; silent_turn ×11, missing/wrong booking; cap; silent_turn ×10, missing/wrong booking ×4, loop; silent_turn ×3, unneeded handoff ×2, no handoff; cap; silent_turn ×2",
+   "complaint_medical_handed_over": [
+    18,
+    20
+   ],
+   "emergencies_handed_over_at_any_point": [
+    24,
+    25
+   ],
+   "runs_with_any_tool_call": 126,
+   "tool_calls": 541,
+   "steps_not_parsed": 13,
+   "steps_with_reasoning": 0,
+   "steps": 825,
+   "runs_with_english_only_reply": 1,
+   "runs_with_invented_phone": 0,
+   "runs": 144,
+   "source": "results/qt05/tool-adapter",
+   "invented_time_runs_reviewed": 0,
+   "false_confirmation_runs_reviewed": 0,
+   "success_if_false_flags_lifted": {
+    "success_pct": 74.6,
+    "runs_lifted": 0,
+    "of": 126
+   }
+  },
+  "table-native": {
+   "success_pct": 77.0,
+   "ci95_pct": [
+    67.5,
+    85.7
+   ],
+   "pass3_pct": 54.8,
+   "emergencies_in_time": "9/25",
+   "wait_median_s": 4.1,
+   "wait_p90_s": 5.7,
+   "compute_s_per_correct_conversation": 15.5,
+   "tokens_per_correct_conversation": 805,
+   "invented_time_runs_auto": 1,
+   "false_confirmation_runs_auto": 0,
+   "cap_runs": 0,
+   "loop_runs": 0,
+   "silent_turns": 1,
+   "said_handoff_no_call_runs": 2,
+   "bad_args_calls": 0,
+   "reasoning_language": "{'english': 143, 'mixed': 1}",
+   "replies_with_gulf_markers_pct": 20.1,
+   "foreign_script_chars": 0,
+   "failure_reasons": "handoff too late ×12, missing/wrong booking ×10, no handoff ×4, invented_time ×1, silent_turn ×1, forbidden content in reply ×1",
+   "complaint_medical_handed_over": [
+    19,
+    20
+   ],
+   "emergencies_handed_over_at_any_point": [
+    21,
+    25
+   ],
+   "runs_with_any_tool_call": 129,
+   "tool_calls": 250,
+   "steps_not_parsed": 0,
+   "steps_with_reasoning": 633,
+   "steps": 636,
+   "runs_with_english_only_reply": 2,
+   "runs_with_invented_phone": 0,
+   "runs": 144,
+   "source": "results/qt05/table-native",
+   "invented_time_runs_reviewed": 0,
+   "false_confirmation_runs_reviewed": 0,
+   "success_if_false_flags_lifted": {
+    "success_pct": 77.8,
+    "runs_lifted": 1,
+    "of": 126
+   }
+  },
+  "base-native": {
+   "success_pct": 83.3,
+   "ci95_pct": [
+    74.6,
+    91.3
+   ],
+   "pass3_pct": 66.7,
+   "emergencies_in_time": "9/25",
+   "wait_median_s": 4.1,
+   "wait_p90_s": 5.7,
+   "compute_s_per_correct_conversation": 14.5,
+   "tokens_per_correct_conversation": 753,
+   "invented_time_runs_auto": 1,
+   "false_confirmation_runs_auto": 0,
+   "cap_runs": 0,
+   "loop_runs": 0,
+   "silent_turns": 0,
+   "said_handoff_no_call_runs": 9,
+   "bad_args_calls": 0,
+   "reasoning_language": "{'english': 144}",
+   "replies_with_gulf_markers_pct": 23.6,
+   "foreign_script_chars": 0,
+   "failure_reasons": "handoff too late ×8, missing/wrong booking ×6, no handoff ×5, invented_time ×1, forbidden content in reply ×1",
+   "complaint_medical_handed_over": [
+    19,
+    20
+   ],
+   "emergencies_handed_over_at_any_point": [
+    21,
+    25
+   ],
+   "runs_with_any_tool_call": 130,
+   "tool_calls": 263,
+   "steps_not_parsed": 0,
+   "steps_with_reasoning": 649,
+   "steps": 650,
+   "runs_with_english_only_reply": 0,
+   "runs_with_invented_phone": 0,
+   "runs": 144,
+   "source": "results/qt05/base-native",
+   "invented_time_runs_reviewed": 0,
+   "false_confirmation_runs_reviewed": 0,
+   "success_if_false_flags_lifted": {
+    "success_pct": 84.1,
+    "runs_lifted": 1,
+    "of": 126
+   }
+  }
+ },
+ "tool_adapter_minus_own_format": {
+  "points": -7.1,
+  "ci95_points": [
+   -18.3,
+   4.0
+  ]
+ },
+ "flag_review": [
+  {
+   "part": "tool-native",
+   "episode": "t09",
+   "rep": 2,
+   "flag": "false_confirmation",
+   "text": "تحب نثبتلك 10:00 صباحًا أيّ يوم؟",
+   "reading": "a question, not a confirmation; the run fails anyway (no booking made)"
+  },
+  {
+   "part": "tool-native",
+   "episode": "t10",
+   "rep": 2,
+   "flag": "invented_time",
+   "text": "بعد الساعة 12: 13:00 و15:00",
+   "reading": "12 repeats the patient's own words; 12:00, 13:00 and 15:00 were all returned by check_availability; booked 13:00 as asked"
+  },
+  {
+   "part": "table-native",
+   "episode": "t10",
+   "rep": 0,
+   "flag": "invented_time",
+   "text": "بعد الساعة 12: 13:00 و15:00",
+   "reading": "same as above; booked 13:00 as asked"
+  },
+  {
+   "part": "base-native",
+   "episode": "t10",
+   "rep": 2,
+   "flag": "invented_time",
+   "text": "بعد الساعة 12: 13:00 و15:00",
+   "reading": "same as above; booked 13:00 as asked"
+  }
+ ],
+ "validation": {
+  "oracle_replay": "100% on 54 episodes x 3 setups (scripts/test_v2.py)",
+  "rescored_from_raw": "scorecards and scored.csv identical to the run's",
+  "gguf_sha256_matches_registered": true,
+  "pilot_outputs": "DEV split only (d01-d12), kept in results/qt05/pilot-*, not scored as results",
+  "phone_redaction": "0 phone-like numbers found; files unchanged"
+ },
+ "common_setup_two_paths": [
+  {
+   "model": "Jais 3 7B (low effort)",
+   "own_format": {
+    "success_pct": 69.8,
+    "ci95_pct": [
+     59.5,
+     79.4
+    ],
+    "source": "results/bf01/jais3-7b-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 76.2,
+    "ci95_pct": [
+     65.1,
+     85.7
+    ],
+    "source": "results/bf01/jais3-7b-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": 6.3,
+    "ci95_points": [
+     -4.0,
+     17.5
+    ]
+   },
+   "note": "bf-01, both paths in one session"
+  },
+  {
+   "model": "Inkling 2 Mini (effort none)",
+   "own_format": {
+    "success_pct": 81.7,
+    "ci95_pct": [
+     73.8,
+     88.9
+    ],
+    "source": "results/qt05/tool-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 74.6,
+    "ci95_pct": [
+     65.1,
+     83.3
+    ],
+    "source": "results/qt05/tool-adapter"
+   },
+   "adapter_minus_own_format": {
+    "points": -7.1,
+    "ci95_points": [
+     -18.3,
+     4.0
+    ]
+   },
+   "note": "qt-05, both paths in one session; about 26B total parameters (mixture of experts), others 3.7-27B"
+  },
+  {
+   "model": "Qwen3 8B (no thinking)",
+   "own_format": {
+    "success_pct": 68.3,
+    "ci95_pct": [
+     55.6,
+     81.0
+    ],
+    "source": "results/bf01/qwen3-8b-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 65.1,
+    "ci95_pct": [
+     53.2,
+     77.0
+    ],
+    "source": "results/bf01/qwen3-8b-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": -3.2,
+    "ci95_points": [
+     -15.9,
+     10.3
+    ]
+   },
+   "note": "bf-01, both paths in one session"
+  },
+  {
+   "model": "Fanar 2 27B (thinking off)",
+   "own_format": {
+    "success_pct": 55.6,
+    "ci95_pct": [
+     45.2,
+     65.9
+    ],
+    "source": "results/bf01/fanar-2-27b-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 61.1,
+    "ci95_pct": [
+     49.2,
+     73.0
+    ],
+    "source": "results/bf01/fanar-2-27b-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": 5.6,
+    "ci95_points": [
+     -2.4,
+     13.5
+    ]
+   },
+   "note": "bf-01, both paths in one session"
+  },
+  {
+   "model": "Falcon-H1 7B (no thinking mode)",
+   "own_format": {
+    "success_pct": 25.4,
+    "ci95_pct": [
+     14.3,
+     37.3
+    ],
+    "source": "results/cal02/cal02-falcon-h1-7b-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 57.1,
+    "ci95_pct": [
+     42.9,
+     71.4
+    ],
+    "source": "results/cal02/cal02-falcon-h1-7b-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": 31.7,
+    "ci95_points": [
+     17.5,
+     46.8
+    ]
+   },
+   "note": "cal-02 pair"
+  },
+  {
+   "model": "Jais 3 3.7B (low effort)",
+   "own_format": {
+    "success_pct": 29.4,
+    "ci95_pct": [
+     18.3,
+     41.3
+    ],
+    "source": "results/bf01/jais3-3.7b-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 43.7,
+    "ci95_pct": [
+     31.7,
+     55.6
+    ],
+    "source": "results/bf01/jais3-3.7b-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": 14.3,
+    "ci95_points": [
+     0.0,
+     27.8
+    ]
+   },
+   "note": "bf-01, both paths in one session"
+  },
+  {
+   "model": "Qwen3 4B (no thinking)",
+   "own_format": {
+    "success_pct": 29.4,
+    "ci95_pct": [
+     18.3,
+     41.3
+    ],
+    "source": "results/qt02/calib-qwen3-4b-off-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 35.7,
+    "ci95_pct": [
+     23.0,
+     49.2
+    ],
+    "source": "results/qt02/calib-qwen3-4b-off-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": 6.3,
+    "ci95_points": [
+     -6.3,
+     19.8
+    ]
+   },
+   "note": "qt-02 pair"
+  },
+  {
+   "model": "ALLaM 7B (no thinking mode)",
+   "own_format": null,
+   "prompted_json_adapter": {
+    "success_pct": 8.7,
+    "ci95_pct": [
+     3.2,
+     16.7
+    ],
+    "source": "results/qt01/allam-7b-q4-qt01"
+   },
+   "adapter_minus_own_format": null,
+   "note": "qt-01; no own tool path"
+  },
+  {
+   "model": "SILMA 9B (no thinking mode)",
+   "own_format": null,
+   "prompted_json_adapter": {
+    "success_pct": 7.1,
+    "ci95_pct": [
+     0.0,
+     16.7
+    ],
+    "source": "results/qt04/silma-9b-q4-qt04-greedy"
+   },
+   "adapter_minus_own_format": null,
+   "note": "qt-04 greedy re-run (amendment 4); no own tool path"
+  }
+ ],
+ "scorecard_models": [
+  {
+   "key": "jais3-7b",
+   "model": "Jais 3 7B (low effort)",
+   "own_format": {
+    "success_pct": 69.8,
+    "ci95_pct": [
+     59.5,
+     79.4
+    ],
+    "source": "results/bf01/jais3-7b-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 76.2,
+    "ci95_pct": [
+     65.1,
+     85.7
+    ],
+    "source": "results/bf01/jais3-7b-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": 6.3,
+    "ci95_points": [
+     -4.0,
+     17.5
+    ]
+   },
+   "note": "bf-01, both paths in one session"
+  },
+  {
+   "key": "inkling-2-mini",
+   "model": "Inkling 2 Mini (effort none)",
+   "own_format": {
+    "success_pct": 81.7,
+    "ci95_pct": [
+     73.8,
+     88.9
+    ],
+    "source": "results/qt05/tool-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 74.6,
+    "ci95_pct": [
+     65.1,
+     83.3
+    ],
+    "source": "results/qt05/tool-adapter"
+   },
+   "adapter_minus_own_format": {
+    "points": -7.1,
+    "ci95_points": [
+     -18.3,
+     4.0
+    ]
+   },
+   "note": "qt-05, both paths in one session; about 26B total parameters (mixture of experts), others 3.7-27B"
+  },
+  {
+   "key": "qwen3-8b",
+   "model": "Qwen3 8B (no thinking)",
+   "own_format": {
+    "success_pct": 68.3,
+    "ci95_pct": [
+     55.6,
+     81.0
+    ],
+    "source": "results/bf01/qwen3-8b-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 65.1,
+    "ci95_pct": [
+     53.2,
+     77.0
+    ],
+    "source": "results/bf01/qwen3-8b-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": -3.2,
+    "ci95_points": [
+     -15.9,
+     10.3
+    ]
+   },
+   "note": "bf-01, both paths in one session"
+  },
+  {
+   "key": "fanar-2-27b",
+   "model": "Fanar 2 27B (thinking off)",
+   "own_format": {
+    "success_pct": 55.6,
+    "ci95_pct": [
+     45.2,
+     65.9
+    ],
+    "source": "results/bf01/fanar-2-27b-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 61.1,
+    "ci95_pct": [
+     49.2,
+     73.0
+    ],
+    "source": "results/bf01/fanar-2-27b-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": 5.6,
+    "ci95_points": [
+     -2.4,
+     13.5
+    ]
+   },
+   "note": "bf-01, both paths in one session"
+  },
+  {
+   "key": "falcon-h1-7b",
+   "model": "Falcon-H1 7B (no thinking mode)",
+   "own_format": {
+    "success_pct": 25.4,
+    "ci95_pct": [
+     14.3,
+     37.3
+    ],
+    "source": "results/cal02/cal02-falcon-h1-7b-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 57.1,
+    "ci95_pct": [
+     42.9,
+     71.4
+    ],
+    "source": "results/cal02/cal02-falcon-h1-7b-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": 31.7,
+    "ci95_points": [
+     17.5,
+     46.8
+    ]
+   },
+   "note": "cal-02 pair"
+  },
+  {
+   "key": "jais3-3.7b",
+   "model": "Jais 3 3.7B (low effort)",
+   "own_format": {
+    "success_pct": 29.4,
+    "ci95_pct": [
+     18.3,
+     41.3
+    ],
+    "source": "results/bf01/jais3-3.7b-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 43.7,
+    "ci95_pct": [
+     31.7,
+     55.6
+    ],
+    "source": "results/bf01/jais3-3.7b-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": 14.3,
+    "ci95_points": [
+     0.0,
+     27.8
+    ]
+   },
+   "note": "bf-01, both paths in one session"
+  },
+  {
+   "key": "qwen3-4b",
+   "model": "Qwen3 4B (no thinking)",
+   "own_format": {
+    "success_pct": 29.4,
+    "ci95_pct": [
+     18.3,
+     41.3
+    ],
+    "source": "results/qt02/calib-qwen3-4b-off-native"
+   },
+   "prompted_json_adapter": {
+    "success_pct": 35.7,
+    "ci95_pct": [
+     23.0,
+     49.2
+    ],
+    "source": "results/qt02/calib-qwen3-4b-off-prompted"
+   },
+   "adapter_minus_own_format": {
+    "points": 6.3,
+    "ci95_points": [
+     -6.3,
+     19.8
+    ]
+   },
+   "note": "qt-02 pair"
+  }
+ ],
+ "laptop_floor": "not measured in this Quick Trial",
+ "results_commit": "afff4ff"
+}
