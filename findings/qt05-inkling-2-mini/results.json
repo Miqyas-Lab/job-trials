@@ -242,6 +242,108 @@
    4.0
   ]
  },
+ "setups": [
+  {
+   "key": "base",
+   "success_pct": 83.3,
+   "ci95_pct": [
+    74.6,
+    91.3
+   ],
+   "pass3_pct": 66.7,
+   "emergencies_in_time": "9/25",
+   "complaint_medical_handed_over": [
+    19,
+    20
+   ],
+   "wait_median_s": 4.1,
+   "wait_p90_s": 5.7,
+   "steps_with_reasoning": 649,
+   "steps": 650,
+   "cap_runs": 0,
+   "loop_runs": 0,
+   "runs_with_english_only_reply": 0,
+   "replies_with_gulf_markers_pct": 23.6,
+   "emergencies_handed_over_any_time": "21/25",
+   "emergencies_handed_over_late": 12,
+   "unfinished_runs": 0
+  },
+  {
+   "key": "table",
+   "success_pct": 77.0,
+   "ci95_pct": [
+    66.7,
+    85.7
+   ],
+   "pass3_pct": 54.8,
+   "emergencies_in_time": "9/25",
+   "complaint_medical_handed_over": [
+    19,
+    20
+   ],
+   "wait_median_s": 4.1,
+   "wait_p90_s": 5.7,
+   "steps_with_reasoning": 633,
+   "steps": 636,
+   "cap_runs": 0,
+   "loop_runs": 0,
+   "runs_with_english_only_reply": 2,
+   "replies_with_gulf_markers_pct": 20.1,
+   "emergencies_handed_over_any_time": "21/25",
+   "emergencies_handed_over_late": 12,
+   "unfinished_runs": 0
+  },
+  {
+   "key": "tool_own",
+   "success_pct": 81.7,
+   "ci95_pct": [
+    73.8,
+    88.9
+   ],
+   "pass3_pct": 59.5,
+   "emergencies_in_time": "13/25",
+   "complaint_medical_handed_over": [
+    19,
+    20
+   ],
+   "wait_median_s": 4.5,
+   "wait_p90_s": 6.5,
+   "steps_with_reasoning": 735,
+   "steps": 755,
+   "cap_runs": 0,
+   "loop_runs": 0,
+   "runs_with_english_only_reply": 2,
+   "replies_with_gulf_markers_pct": 25.7,
+   "emergencies_handed_over_any_time": "25/25",
+   "emergencies_handed_over_late": 12,
+   "unfinished_runs": 0
+  },
+  {
+   "key": "tool_adapter",
+   "success_pct": 74.6,
+   "ci95_pct": [
+    65.1,
+    83.3
+   ],
+   "pass3_pct": 50.0,
+   "emergencies_in_time": "24/25",
+   "complaint_medical_handed_over": [
+    18,
+    20
+   ],
+   "wait_median_s": 7.6,
+   "wait_p90_s": 48.3,
+   "steps_with_reasoning": 0,
+   "steps": 825,
+   "cap_runs": 13,
+   "loop_runs": 15,
+   "runs_with_english_only_reply": 1,
+   "replies_with_gulf_markers_pct": 16.7,
+   "emergencies_handed_over_any_time": "24/25",
+   "emergencies_handed_over_late": 0,
+   "unfinished_runs": 28
+  }
+ ],
  "flag_review": [
   {
    "part": "tool-native",
@@ -276,6 +378,13 @@
    "reading": "same as above; booked 13:00 as asked"
   }
  ],
+ "observations": {
+  "note": "the late-handoff reading was done by hand on 24 Nov 2026 (not a pre-registered measure); the reasoning-language count is the scorer's",
+  "tool_own_runs_reasoning_in_english": 142,
+  "tool_own_runs": 144,
+  "tool_own_late_handoffs_read": 12,
+  "tool_own_late_handoffs_first_reply_said_transferring": 12
+ },
  "validation": {
   "oracle_replay": "100% on 54 episodes x 3 setups (scripts/test_v2.py)",
   "rescored_from_raw": "scorecards and scored.csv identical to the run's",
@@ -701,5 +810,5 @@
   }
  ],
  "laptop_floor": "not measured in this Quick Trial",
- "results_commit": "d7a8d97"
+ "results_commit": "29cf64d"
 }
