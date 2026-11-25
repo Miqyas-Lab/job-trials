@@ -9,6 +9,11 @@
  "gguf_source_revision": "shown only indirectly: the file's metadata does not name the revision it was built from; its embedded chat template renders exactly like the template at the model revision above (amendment 2)",
  "model_sha256": "cbdf3fa9dc50a4124977980f37da4f1fa764b0cfe800d275cd43d26ce2a81af4",
  "parameters": "26,070,385,152 summed over the GGUF's tensors (text model; 128 experts of 1.8B, mixture of experts)",
+ "size_maker": {
+  "total_b": 26.4,
+  "active_per_token_b": 3.4,
+  "source": "maker's announcement (trial file, model)"
+ },
  "licence": "apache-2.0 (model card front matter and text at the pinned revision, with a link to the Apache 2.0 text; the repository has no separate LICENSE file at that revision; read 24 Nov 2026)",
  "card_languages": "English, general multilingual support (Arabic not named; read 24 Nov 2026)",
  "llama_cpp": "40fe9164f43b4e7b4bf2a261813eed768c367468",
@@ -696,5 +701,5 @@
   }
  ],
  "laptop_floor": "not measured in this Quick Trial",
- "results_commit": "385a884"
+ "results_commit": "d7a8d97"
 }

@@ -159,6 +159,7 @@ res = {"trial": "qt-05-inkling-2-mini-clinic", "type": "quick-trial (numbers onl
                                "embedded chat template renders exactly like the template at the model revision above (amendment 2)",
        "model_sha256": [l for l in prov if l.endswith(".gguf")][0].split()[0],
        "parameters": "26,070,385,152 summed over the GGUF's tensors (text model; 128 experts of 1.8B, mixture of experts)",
+       "size_maker": {"total_b": 26.4, "active_per_token_b": 3.4, "source": "maker's announcement (trial file, model)"},
        "licence": "apache-2.0 (model card front matter and text at the pinned revision, with a link to the Apache 2.0 text; "
                   "the repository has no separate LICENSE file at that revision; read 24 Nov 2026)",
        "card_languages": "English, general multilingual support (Arabic not named; read 24 Nov 2026)",
