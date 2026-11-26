@@ -1,0 +1,143 @@
+# What the site shows, and where each number comes from. scripts/build_site_data.py reads this file and the
+# trials' results.json and writes assets/site-data.json, which the home page and the trials index draw from.
+# No number is typed here: every value is a path into a results.json ("slug:path"; [key=value] picks a list item).
+# A new trial = one entry under trials (and, if it adds a model to the shared setup, one under explorer.paths).
+
+models:            # display colour per model, the same in every chart (site amendment, 26 Nov 2026)
+  Jais 3 7B: {lab: IFM, colour: "#2563EB"}
+  Jais 3 3.7B: {lab: IFM, colour: "#60A5FA"}
+  Qwen3 8B: {lab: Qwen, colour: "#7C3AED"}
+  Qwen3 4B: {lab: Qwen, colour: "#A78BFA"}
+  Fanar 2 27B: {lab: QCRI, colour: "#059669"}
+  Falcon-H1 7B: {lab: TII, colour: "#F59E0B"}
+  Inkling 2 Mini: {lab: Thinking Machines, colour: "#EC4899"}
+  SILMA 9B: {lab: SILMA, colour: "#0891B2"}
+  ALLaM 7B: {lab: ALLaM, colour: "#65A30D"}
+
+types:
+  job: تجربة عمل
+  quick: تجربة سريعة
+  fill: استكمال
+  meas: قياس
+
+explorer:
+  - id: paths
+    label: طريقتا استدعاء الأدوات
+    text: سبعة نماذج على الإعداد المشترك في استقبال عيادة أسنان عبر واتساب. النسبة هي المحادثات المكتملة بنجاح.
+    source: findings/qt05-inkling-2-mini/results.json
+    latest: Inkling 2 Mini
+    cards:
+      - {title: عبر محوّل JSON, sub: الطريقة المتاحة لكل النماذج. الأعلى أفضل., field: prompted_json_adapter}
+      - {title: بصيغة النموذج, sub: بصيغة كل نموذج الخاصة لاستدعاء الأدوات. الأعلى أفضل., field: own_format}
+      - {title: أثر المحوّل, sub: المحوّل ناقص صيغة النموذج، بالنقاط. فوق الخط ساعده المحوّل., field: adapter_minus_own_format, diff: true}
+    rows:
+      Jais 3 7B: "qt05-inkling-2-mini:scorecard_models[key=jais3-7b]"
+      Inkling 2 Mini: "qt05-inkling-2-mini:scorecard_models[key=inkling-2-mini]"
+      Qwen3 8B: "qt05-inkling-2-mini:scorecard_models[key=qwen3-8b]"
+      Fanar 2 27B: "qt05-inkling-2-mini:scorecard_models[key=fanar-2-27b]"
+      Falcon-H1 7B: "qt05-inkling-2-mini:scorecard_models[key=falcon-h1-7b]"
+      Jais 3 3.7B: "qt05-inkling-2-mini:scorecard_models[key=jais3-3.7b]"
+      Qwen3 4B: "qt05-inkling-2-mini:scorecard_models[key=qwen3-4b]"
+  - id: jt1
+    label: "تجربة العمل #1: الإعدادات الثلاثة"
+    text: أربعة نماذج في تجربة العمل الأولى، بجهد التفكير المرتفع، على بطاقة RTX 4090. النسبة هي المحادثات المكتملة بنجاح.
+    source: findings/frontdesk-v2/results.json
+    cards:
+      - {title: بلا مساعدة في التاريخ, sub: النموذج وحده، بلا تقويم ولا أداة. الأعلى أفضل., field: arms.base}
+      - {title: التقويم داخل التعليمات, sub: جدول التواريخ في التعليمات. الأعلى أفضل., field: arms.table}
+      - {title: أداة التاريخ, sub: أداة تحسب التواريخ، يستدعيها النموذج. الأعلى أفضل., field: arms.tool}
+    rows:
+      Jais 3 3.7B: "frontdesk-v2:models[key=jais3-3.7b-q4-v2]"
+      Jais 3 7B: "frontdesk-v2:models[key=jais3-7b-q4-v2]"
+      Qwen3 8B: "frontdesk-v2:models[key=qwen3-8b-q4-v2]"
+      Qwen3 4B: "frontdesk-v2:models[key=qwen3-4b-q4-v2]"
+  - id: er
+    label: "تجربة العمل #1: الطوارئ"
+    text: حالات الطوارئ التي حوّلها النموذج إلى موظف في الوقت المناسب، من 25 حالة، في كل إعداد.
+    source: findings/frontdesk-v2/results.json
+    count: emergencies_in_time
+    cards:
+      - {title: بلا مساعدة في التاريخ, sub: طوارئ حُوّلت في الوقت., field: arms.base}
+      - {title: التقويم داخل التعليمات, sub: طوارئ حُوّلت في الوقت., field: arms.table}
+      - {title: أداة التاريخ, sub: طوارئ حُوّلت في الوقت., field: arms.tool}
+    rows:
+      Jais 3 3.7B: "frontdesk-v2:models[key=jais3-3.7b-q4-v2]"
+      Jais 3 7B: "frontdesk-v2:models[key=jais3-7b-q4-v2]"
+      Qwen3 8B: "frontdesk-v2:models[key=qwen3-8b-q4-v2]"
+      Qwen3 4B: "frontdesk-v2:models[key=qwen3-4b-q4-v2]"
+
+trials:            # newest first
+  - slug: qt05-inkling-2-mini
+    type: quick
+    date: "2026-11-24"
+    title: هل يستطيع Inkling 2 Mini أن يدير استقبال عيادة؟
+    metric: محادثات مكتملة، لكل إعداد
+    model: Inkling 2 Mini
+    bars:
+      بلا مساعدة: "qt05-inkling-2-mini:setups[key=base].success_pct"
+      تقويم: "qt05-inkling-2-mini:setups[key=table].success_pct"
+      أداة: "qt05-inkling-2-mini:setups[key=tool_own].success_pct"
+      محوّل: "qt05-inkling-2-mini:setups[key=tool_adapter].success_pct"
+  - slug: bf01-adapter-backfill
+    type: fill
+    date: "2026-11-20"
+    title: طريقتا استدعاء الأدوات لأربعة نماذج
+    metric: عبر المحوّل، لكل نموذج
+    bars:
+      Jais 3 7B: "qt05-inkling-2-mini:scorecard_models[key=jais3-7b].prompted_json_adapter.success_pct"
+      Qwen3 8B: "qt05-inkling-2-mini:scorecard_models[key=qwen3-8b].prompted_json_adapter.success_pct"
+      Fanar 2 27B: "qt05-inkling-2-mini:scorecard_models[key=fanar-2-27b].prompted_json_adapter.success_pct"
+      Jais 3 3.7B: "qt05-inkling-2-mini:scorecard_models[key=jais3-3.7b].prompted_json_adapter.success_pct"
+  - slug: qt04-silma-9b
+    type: quick
+    date: "2026-11-13"
+    title: هل يستطيع SILMA 9B أن يدير استقبال عيادة؟
+    metric: التشغيل المسجّل، لكل إعداد
+    model: SILMA 9B
+    bars:
+      بلا مساعدة: "qt04-silma-9b:silma_registered_run_temperature_1.base.success_pct"
+      تقويم: "qt04-silma-9b:silma_registered_run_temperature_1.table.success_pct"
+      أداة: "qt04-silma-9b:silma_registered_run_temperature_1.tool.success_pct"
+  - slug: qt03-fanar-2-27b
+    type: quick
+    date: "2026-11-06"
+    title: هل يستطيع Fanar 2 27B أن يدير استقبال عيادة؟
+    metric: محادثات مكتملة، لكل إعداد
+    model: Fanar 2 27B
+    bars:
+      بلا مساعدة: "qt03-fanar-2-27b:fanar.base.success_pct"
+      تقويم: "qt03-fanar-2-27b:fanar.table.success_pct"
+      أداة: "qt03-fanar-2-27b:fanar.tool.success_pct"
+  - slug: qt02-falcon-h1-7b
+    type: quick
+    date: "2026-11-05"
+    title: هل يستطيع Falcon-H1 7B أن يدير استقبال عيادة؟
+    metric: بعد إصلاح الأداة، لكل إعداد
+    model: Falcon-H1 7B
+    bars:
+      بلا مساعدة: "qt02-falcon-h1-7b:falcon_rerun.base.success_pct"
+      تقويم: "qt02-falcon-h1-7b:falcon_rerun.table.success_pct"
+      أداة: "qt02-falcon-h1-7b:falcon_rerun.tool.success_pct"
+  - slug: frontdesk-v2
+    type: job
+    date: "2026-10-22"
+    title: هل يقدر نموذج عربي مفتوح يدير استقبال عيادة على واتساب؟
+    metric: مع التقويم، لكل نموذج
+    bars:
+      Jais 3 7B: "frontdesk-v2:models[key=jais3-7b-q4-v2].arms.table.success_pct"
+      Jais 3 3.7B: "frontdesk-v2:models[key=jais3-3.7b-q4-v2].arms.table.success_pct"
+      Qwen3 8B: "frontdesk-v2:models[key=qwen3-8b-q4-v2].arms.table.success_pct"
+      Qwen3 4B: "frontdesk-v2:models[key=qwen3-4b-q4-v2].arms.table.success_pct"
+  - slug: qt01-allam-7b
+    type: quick
+    date: "2026-10-22"
+    title: هل يستطيع ALLaM 7B أن يدير استقبال عيادة؟
+    metric: أول تجربة سريعة
+    model: ALLaM 7B
+    bars: {}
+  - slug: token-tax
+    type: meas
+    date: "2026-08-17"
+    title: كم تكلّف الجملة نفسها بالعربية؟ ضريبة الرموز
+    metric: لكل مجزّئ نصوص
+    bars: {}

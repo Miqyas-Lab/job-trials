@@ -1,7 +1,7 @@
 # The Miqyas Job Trial Standard, v1.2
 
 **Status:** v1 adopted 26 October 2026; v1.1 adopted 28 October 2026 (private held-out test set, Quick Trials); v1.2 adopted 29 October 2026 (fair shot). Licence: CC BY 4.0. Anyone may run a Job Trial under this standard and say so, provided the trial meets every requirement below and the report says which version of the standard it follows.
-**Maintainer:** Miqyas (مقياس), Mahmoud Deghaim. Changes to the standard are versioned; a trial is judged against the version named in its protocol.
+**Maintainer:** Miqyas Lab (مقياس). Changes to the standard are versioned; a trial is judged against the version named in its protocol.
 **Reference implementation:** Job Trial #1, `findings/frontdesk-v2/`, protocol `docs/frontdesk_protocol_v2.md`.
 
 ## 1. What a Job Trial is

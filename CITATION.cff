@@ -3,10 +3,9 @@ title: "مقياس (miqyas) — Arabic LLM Benchmark"
 message: "If you use these measurements, please cite them."
 type: dataset
 authors:
-  - family-names: Deghaim
-    given-names: Mahmoud
-    alias: mhdghaim-cell
-    website: "https://github.com/mhdghaim-cell"
+  - name: "Miqyas Lab"
+    email: "hello@miqyaslab.com"
+    website: "https://miqyaslab.com"
 url: "https://miqyaslab.com"
 repository-code: "https://github.com/Miqyas-Lab/job-trials"
 identifiers:

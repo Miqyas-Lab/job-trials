@@ -5,11 +5,12 @@
 - Job Trials put a model through a real job (for example a clinic front desk over WhatsApp, in Gulf Arabic) and report whether it can do it, for which sub-task, on which hardware.
 - Protocols are committed to git before any run; raw outputs are published in full; numbers that were not measured are marked as not measured.
 - Quick Trials are exploratory and carry no verdict.
-- Independence: Miqyas never accepts cash from a lab whose models it tests; any other support (credits, hardware, services) is disclosed with its source. Policy: https://github.com/Miqyas-Lab/job-trials/blob/main/docs/independence.md
+- Independence: Miqyas never accepts cash from a lab whose models it tests; any other support (credits, hardware, services) is disclosed with its source. Policy: https://miqyaslab.com/%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%82%D9%84%D8%A7%D9%84%D9%8A%D8%A9/
 - Data and code: MIT licence. Repository: https://github.com/Miqyas-Lab/job-trials
 
 ## Studies
 
+- [All trials](https://miqyaslab.com/%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D8%A8/): every published trial, newest first
 - [Job Trial #1: clinic front desk](https://miqyaslab.com/findings/frontdesk-v2/): open Arabic models as a clinic receptionist, every conversation published
 - [Tool-calling back-fill for four models](https://miqyaslab.com/findings/bf01-adapter-backfill/): the two ways of calling tools, compared on the same job
 - [Quick Trial: ALLaM 7B](https://miqyaslab.com/findings/qt01-allam-7b/)
@@ -23,6 +24,10 @@
 
 - [The Job Trial Standard](https://miqyaslab.com/%D8%A7%D9%84%D9%85%D8%B9%D9%8A%D8%A7%D8%B1/)
 - [Methodology](https://miqyaslab.com/%D8%A7%D9%84%D9%85%D9%86%D9%87%D8%AC%D9%8A%D8%A9/)
+
+## Contact
+
+- [Contact](https://miqyaslab.com/%D8%AA%D9%88%D8%A7%D8%B5%D9%84/): organisations deploying local AI, labs and developers asking for a test, press and researchers. Email: hello@miqyaslab.com
 
 ## Tools and data
 

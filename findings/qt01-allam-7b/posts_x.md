@@ -1,4 +1,4 @@
-# qt-01 · ALLaM 7B · X thread (Miqyas account) — DRAFT for Mahmoud's review
+# qt-01 · ALLaM 7B · X thread (Miqyas account) — DRAFT for review
 
 Every number from results.json. Quick Trial: numbers only, no verdict. Image on tweet 1: scorecard_x.png.
 
