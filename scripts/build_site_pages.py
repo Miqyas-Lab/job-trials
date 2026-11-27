@@ -8,9 +8,12 @@ other page.
 New pages: / (home), /التجارب/ (trials), /الاستقلالية/ (independence and funding), /تواصل/ (contact).
 Older pages keep their content; the header goes right after <body> and the footer right before </body>, between
 <!-- mq:header --> / <!-- mq:footer --> markers, so a second run changes nothing. Redirect pages are left alone.
+Findings pages also get assets/findings.css right before </head> (<!-- mq:skin -->), after their own styles.
+site/frame.json holds the same header, footer and skin, for Najm's page renderer, so a new findings page arrives framed.
 """
 from __future__ import annotations
 
+import json
 import re
 import sys
 from pathlib import Path
@@ -193,7 +196,16 @@ FRAMED = ["المعيار/index.html", "المعيار/مساهمون/index.html
           "الحاسبة/index.html"]
 
 
-def framed(text: str) -> str:
+SKIN = """<!-- mq:skin -->
+<link rel="stylesheet" href="/assets/findings.css">
+<!-- /mq:skin -->"""
+
+
+def framed(text: str, skin: bool = False) -> str:
+    text = re.sub(r"\n?<!-- mq:skin -->.*?<!-- /mq:skin -->", "", text, flags=re.S)
+    if skin:
+        i = text.find("</head>")
+        text = text[:i] + SKIN + "\n" + text[i:]
     text = re.sub(r"\n?<!-- mq:header -->.*?<!-- /mq:header -->", "", text, flags=re.S)
     text = re.sub(r"\n?<!-- mq:footer -->.*?<!-- /mq:footer -->", "", text, flags=re.S)
     text = re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + "\n" + HEADER, text, count=1)
@@ -205,7 +217,9 @@ def targets() -> dict[Path, str]:
     out = {ROOT / f: page(*v) for f, v in NEW.items()}
     for f in FRAMED + sorted(str(p.relative_to(ROOT)) for p in (ROOT / "findings").glob("*/index.html")):
         p = ROOT / f
-        out[p] = framed(p.read_text(encoding="utf-8"))
+        out[p] = framed(p.read_text(encoding="utf-8"), skin=f.startswith("findings/"))
+    out[ROOT / "site" / "frame.json"] = json.dumps({"header": HEADER, "footer": FOOTER, "skin": SKIN},
+                                                   ensure_ascii=False, indent=1) + "\n"
     return out
 
 
@@ -221,7 +235,7 @@ def main(argv) -> int:
     if "--check" in argv:
         print("pages up to date" if not bad else "not up to date: " + ", ".join(bad))
         return 1 if bad else 0
-    print(f"wrote {len(NEW)} new pages and framed the others")
+    print(f"wrote {len(NEW)} new pages, framed the others and wrote site/frame.json")
     return 0
 
 
