@@ -18,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 EMAIL = "hello@miqyaslab.com"
 GITHUB = "https://github.com/Miqyas-Lab/job-trials"
-HF = "https://huggingface.co/mhdghaim"
+HF = "https://huggingface.co/Miqyas-Lab"
 CSP = ("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; "
        "font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'none'")
 

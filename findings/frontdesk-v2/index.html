@@ -60,7 +60,7 @@
       <a href="/" aria-label="مقياس: الصفحة الرئيسية"><img src="/assets/brand/miqyas-lockup-on-light.svg" alt="مقياس · Miqyas"></a>
       <span class="mq-sep"></span>
       <a class="mq-ext" href="https://github.com/Miqyas-Lab/job-trials">GitHub</a>
-      <a class="mq-ext" href="https://huggingface.co/mhdghaim">Hugging Face</a>
+      <a class="mq-ext" href="https://huggingface.co/Miqyas-Lab">Hugging Face</a>
     </div>
   </div>
 </header>
@@ -86,7 +86,7 @@
     <a href="#verdict">الحكم ↓</a>
     <a href="https://github.com/Miqyas-Lab/job-trials/blob/main/docs/frontdesk_protocol_v2.md">البروتوكول ↗</a>
     <a href="https://github.com/Miqyas-Lab/job-trials/tree/main/results/frontdesk_v2">البيانات الخام ↗</a>
-    <a href="https://huggingface.co/datasets/mhdghaim/miqyas-frontdesk-v2">Hugging Face ↗</a>
+    <a href="https://huggingface.co/datasets/Miqyas-Lab/miqyas-frontdesk-v2">Hugging Face ↗</a>
     <a href="#en">English ↓</a>
   </div>
 </header>
@@ -248,7 +248,7 @@
     <p>Every failing conversation in this trial (541 of 2,016) is tagged with its cause by rules written in code, under a published taxonomy (<code>atlas/taxonomy_v1.yaml</code>); a conversation can carry several causes. Across the trial: wrong date or time 230, left the task unfinished 210, safety handover 98, tool-use error 51, claimed what it did not do 26, lost track of state 26, missing information 23, wrong details 11, forbidden content 1. Tags: <code>findings/frontdesk-v2/failures.jsonl</code>; rebuilt from the raw runs by <code>scripts/atlas_v1.py</code>.</p>
     <h3>Dated notes (2026-11-12)</h3>
     <p>After an internal review of everything published; no result changed. (1) "Only 5 of 108 failures" corrected: 73 of the 108 reschedule runs failed, and 5 of those failures came from the scripted patient. (2) The 28% low-effort figure now names the models: Jais 3 3.7B low effort 28.6%, Qwen3 4B no thinking 27.8%. (3) Empty-calendar cases (18 runs per model per arm): calendar in the prompt, Jais 3 18/18 at both sizes; date tool, 3.7B 17/18 and 7B 16/18 (one invented time); no help, 3.7B 18/18 and 7B 14/18 (one invented time). Our LinkedIn post's "18 of 18 per size" holds for the calendar-in-prompt arm only. (4) On 2026-10-30, during qt-02, phone-like numbers were redacted in 3 Qwen3 4B transcripts from this trial; scores recomputed, identical; this should have been noted here then. (5) Early posts point to mhdghaim-cell/arabic-llm-bench; the current repository is Miqyas-Lab/job-trials.</p>
-    <p><b>Data and code:</b> <code>results/frontdesk_v2/</code> (every conversation in full; phone-like numbers redacted, see note 4), <code>scripts/</code>, <code>corpus/frontdesk_v2.jsonl</code>. Also on Hugging Face: <a href="https://huggingface.co/datasets/mhdghaim/miqyas-frontdesk-v2">mhdghaim/miqyas-frontdesk-v2</a>. Independent work by Miqyas Lab; <a href="https://github.com/Miqyas-Lab/job-trials/blob/main/docs/independence.md">independence and funding policy</a>.</p>
+    <p><b>Data and code:</b> <code>results/frontdesk_v2/</code> (every conversation in full; phone-like numbers redacted, see note 4), <code>scripts/</code>, <code>corpus/frontdesk_v2.jsonl</code>. Also on Hugging Face: <a href="https://huggingface.co/datasets/Miqyas-Lab/miqyas-frontdesk-v2">Miqyas-Lab/miqyas-frontdesk-v2</a>. Independent work by Miqyas Lab; <a href="https://github.com/Miqyas-Lab/job-trials/blob/main/docs/independence.md">independence and funding policy</a>.</p>
   </div>
 </section>
 
@@ -263,7 +263,7 @@
 <footer class="mq-footer">
   <div class="mq-bar">
     <span class="mq-n">miqyaslab.com</span>
-    <span><a href="https://github.com/Miqyas-Lab/job-trials">GitHub</a><a href="https://huggingface.co/mhdghaim">Hugging Face</a><a href="https://x.com/miqyaslab">X @miqyaslab</a></span>
+    <span><a href="https://github.com/Miqyas-Lab/job-trials">GitHub</a><a href="https://huggingface.co/Miqyas-Lab">Hugging Face</a><a href="https://x.com/miqyaslab">X @miqyaslab</a></span>
   </div>
 </footer>
 <script src="/assets/site.js" defer></script>
