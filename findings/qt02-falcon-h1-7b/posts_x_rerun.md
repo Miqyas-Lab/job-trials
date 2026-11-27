@@ -1,4 +1,4 @@
-# qt-02 · Falcon-H1 7B · correction thread (Miqyas X account), DRAFT for Mahmoud's review
+# qt-02 · Falcon-H1 7B · correction thread (Miqyas X account), DRAFT for review
 
 Numbers from results.json (falcon_rerun, rerun_change_vs_first_run) and results/qt02r/.../scorecard.txt. Post after the
 re-run page is live (PR #3 merged). Quote-post or reply to tweet 1/8 of the original qt-02 thread so readers of the old

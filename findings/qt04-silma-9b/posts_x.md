@@ -1,4 +1,4 @@
-# qt-04 · SILMA 9B · X thread (Miqyas account), DRAFT for Mahmoud's review
+# qt-04 · SILMA 9B · X thread (Miqyas account), DRAFT for review
 
 Numbers from findings/qt04-silma-9b/results.json. Scorecard (scorecard_x.png) on tweet 1. Post after the page is live.
 Each tweet is under 280 characters (the link counts as 23).

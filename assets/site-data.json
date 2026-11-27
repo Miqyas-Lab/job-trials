@@ -1,0 +1,579 @@
+{
+ "models": {
+  "Jais 3 7B": {
+   "lab": "IFM",
+   "colour": "#2563EB"
+  },
+  "Jais 3 3.7B": {
+   "lab": "IFM",
+   "colour": "#60A5FA"
+  },
+  "Qwen3 8B": {
+   "lab": "Qwen",
+   "colour": "#7C3AED"
+  },
+  "Qwen3 4B": {
+   "lab": "Qwen",
+   "colour": "#A78BFA"
+  },
+  "Fanar 2 27B": {
+   "lab": "QCRI",
+   "colour": "#059669"
+  },
+  "Falcon-H1 7B": {
+   "lab": "TII",
+   "colour": "#F59E0B"
+  },
+  "Inkling 2 Mini": {
+   "lab": "Thinking Machines",
+   "colour": "#EC4899"
+  },
+  "SILMA 9B": {
+   "lab": "SILMA",
+   "colour": "#0891B2"
+  },
+  "ALLaM 7B": {
+   "lab": "ALLaM",
+   "colour": "#65A30D"
+  }
+ },
+ "types": {
+  "job": "تجربة عمل",
+  "quick": "تجربة سريعة",
+  "fill": "استكمال",
+  "meas": "قياس"
+ },
+ "explorer": [
+  {
+   "id": "paths",
+   "label": "طريقتا استدعاء الأدوات",
+   "text": "سبعة نماذج على الإعداد المشترك في استقبال عيادة أسنان عبر واتساب. النسبة هي المحادثات المكتملة بنجاح.",
+   "kind": "pct",
+   "latest": "Inkling 2 Mini",
+   "note": "المصدر: findings/qt05-inkling-2-mini/results.json",
+   "cards": [
+    {
+     "title": "عبر محوّل JSON",
+     "sub": "الطريقة المتاحة لكل النماذج. الأعلى أفضل.",
+     "diff": false,
+     "bars": [
+      {
+       "name": "Jais 3 7B",
+       "v": 76.2,
+       "lo": 65.1,
+       "hi": 85.7
+      },
+      {
+       "name": "Inkling 2 Mini",
+       "v": 74.6,
+       "lo": 65.1,
+       "hi": 83.3
+      },
+      {
+       "name": "Qwen3 8B",
+       "v": 65.1,
+       "lo": 53.2,
+       "hi": 77.0
+      },
+      {
+       "name": "Fanar 2 27B",
+       "v": 61.1,
+       "lo": 49.2,
+       "hi": 73.0
+      },
+      {
+       "name": "Falcon-H1 7B",
+       "v": 57.1,
+       "lo": 42.9,
+       "hi": 71.4
+      },
+      {
+       "name": "Jais 3 3.7B",
+       "v": 43.7,
+       "lo": 31.7,
+       "hi": 55.6
+      },
+      {
+       "name": "Qwen3 4B",
+       "v": 35.7,
+       "lo": 23.0,
+       "hi": 49.2
+      }
+     ]
+    },
+    {
+     "title": "بصيغة النموذج",
+     "sub": "بصيغة كل نموذج الخاصة لاستدعاء الأدوات. الأعلى أفضل.",
+     "diff": false,
+     "bars": [
+      {
+       "name": "Jais 3 7B",
+       "v": 69.8,
+       "lo": 59.5,
+       "hi": 79.4
+      },
+      {
+       "name": "Inkling 2 Mini",
+       "v": 81.7,
+       "lo": 73.8,
+       "hi": 88.9
+      },
+      {
+       "name": "Qwen3 8B",
+       "v": 68.3,
+       "lo": 55.6,
+       "hi": 81.0
+      },
+      {
+       "name": "Fanar 2 27B",
+       "v": 55.6,
+       "lo": 45.2,
+       "hi": 65.9
+      },
+      {
+       "name": "Falcon-H1 7B",
+       "v": 25.4,
+       "lo": 14.3,
+       "hi": 37.3
+      },
+      {
+       "name": "Jais 3 3.7B",
+       "v": 29.4,
+       "lo": 18.3,
+       "hi": 41.3
+      },
+      {
+       "name": "Qwen3 4B",
+       "v": 29.4,
+       "lo": 18.3,
+       "hi": 41.3
+      }
+     ]
+    },
+    {
+     "title": "أثر المحوّل",
+     "sub": "المحوّل ناقص صيغة النموذج، بالنقاط. فوق الخط ساعده المحوّل.",
+     "diff": true,
+     "bars": [
+      {
+       "name": "Jais 3 7B",
+       "v": 6.3,
+       "lo": -4.0,
+       "hi": 17.5
+      },
+      {
+       "name": "Inkling 2 Mini",
+       "v": -7.1,
+       "lo": -18.3,
+       "hi": 4.0
+      },
+      {
+       "name": "Qwen3 8B",
+       "v": -3.2,
+       "lo": -15.9,
+       "hi": 10.3
+      },
+      {
+       "name": "Fanar 2 27B",
+       "v": 5.6,
+       "lo": -2.4,
+       "hi": 13.5
+      },
+      {
+       "name": "Falcon-H1 7B",
+       "v": 31.7,
+       "lo": 17.5,
+       "hi": 46.8
+      },
+      {
+       "name": "Jais 3 3.7B",
+       "v": 14.3,
+       "lo": 0.0,
+       "hi": 27.8
+      },
+      {
+       "name": "Qwen3 4B",
+       "v": 6.3,
+       "lo": -6.3,
+       "hi": 19.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "jt1",
+   "label": "تجربة العمل #1: الإعدادات الثلاثة",
+   "text": "أربعة نماذج في تجربة العمل الأولى، بجهد التفكير المرتفع، على بطاقة RTX 4090. النسبة هي المحادثات المكتملة بنجاح.",
+   "kind": "pct",
+   "latest": null,
+   "note": "المصدر: findings/frontdesk-v2/results.json",
+   "cards": [
+    {
+     "title": "بلا مساعدة في التاريخ",
+     "sub": "النموذج وحده، بلا تقويم ولا أداة. الأعلى أفضل.",
+     "diff": false,
+     "bars": [
+      {
+       "name": "Jais 3 3.7B",
+       "v": 92.1,
+       "lo": 83.3,
+       "hi": 98.4
+      },
+      {
+       "name": "Jais 3 7B",
+       "v": 86.5,
+       "lo": 78.6,
+       "hi": 93.7
+      },
+      {
+       "name": "Qwen3 8B",
+       "v": 63.5,
+       "lo": 51.6,
+       "hi": 74.6
+      },
+      {
+       "name": "Qwen3 4B",
+       "v": 44.4,
+       "lo": 31.7,
+       "hi": 57.1
+      }
+     ]
+    },
+    {
+     "title": "التقويم داخل التعليمات",
+     "sub": "جدول التواريخ في التعليمات. الأعلى أفضل.",
+     "diff": false,
+     "bars": [
+      {
+       "name": "Jais 3 3.7B",
+       "v": 93.7,
+       "lo": 86.5,
+       "hi": 99.2
+      },
+      {
+       "name": "Jais 3 7B",
+       "v": 95.2,
+       "lo": 88.9,
+       "hi": 99.2
+      },
+      {
+       "name": "Qwen3 8B",
+       "v": 77.8,
+       "lo": 66.7,
+       "hi": 87.3
+      },
+      {
+       "name": "Qwen3 4B",
+       "v": 65.1,
+       "lo": 53.2,
+       "hi": 76.2
+      }
+     ]
+    },
+    {
+     "title": "أداة التاريخ",
+     "sub": "أداة تحسب التواريخ، يستدعيها النموذج. الأعلى أفضل.",
+     "diff": false,
+     "bars": [
+      {
+       "name": "Jais 3 3.7B",
+       "v": 92.1,
+       "lo": 84.1,
+       "hi": 98.4
+      },
+      {
+       "name": "Jais 3 7B",
+       "v": 91.3,
+       "lo": 85.7,
+       "hi": 96.0
+      },
+      {
+       "name": "Qwen3 8B",
+       "v": 75.4,
+       "lo": 62.7,
+       "hi": 86.5
+      },
+      {
+       "name": "Qwen3 4B",
+       "v": 59.5,
+       "lo": 46.8,
+       "hi": 71.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "er",
+   "label": "تجربة العمل #1: الطوارئ",
+   "text": "حالات الطوارئ التي حوّلها النموذج إلى موظف في الوقت المناسب، من 25 حالة، في كل إعداد.",
+   "kind": "count",
+   "latest": null,
+   "note": "المصدر: findings/frontdesk-v2/results.json",
+   "cards": [
+    {
+     "title": "بلا مساعدة في التاريخ",
+     "sub": "طوارئ حُوّلت في الوقت.",
+     "diff": false,
+     "bars": [
+      {
+       "name": "Jais 3 3.7B",
+       "v": 25,
+       "of": 25
+      },
+      {
+       "name": "Jais 3 7B",
+       "v": 25,
+       "of": 25
+      },
+      {
+       "name": "Qwen3 8B",
+       "v": 23,
+       "of": 25
+      },
+      {
+       "name": "Qwen3 4B",
+       "v": 24,
+       "of": 25
+      }
+     ]
+    },
+    {
+     "title": "التقويم داخل التعليمات",
+     "sub": "طوارئ حُوّلت في الوقت.",
+     "diff": false,
+     "bars": [
+      {
+       "name": "Jais 3 3.7B",
+       "v": 25,
+       "of": 25
+      },
+      {
+       "name": "Jais 3 7B",
+       "v": 25,
+       "of": 25
+      },
+      {
+       "name": "Qwen3 8B",
+       "v": 25,
+       "of": 25
+      },
+      {
+       "name": "Qwen3 4B",
+       "v": 25,
+       "of": 25
+      }
+     ]
+    },
+    {
+     "title": "أداة التاريخ",
+     "sub": "طوارئ حُوّلت في الوقت.",
+     "diff": false,
+     "bars": [
+      {
+       "name": "Jais 3 3.7B",
+       "v": 25,
+       "of": 25
+      },
+      {
+       "name": "Jais 3 7B",
+       "v": 25,
+       "of": 25
+      },
+      {
+       "name": "Qwen3 8B",
+       "v": 24,
+       "of": 25
+      },
+      {
+       "name": "Qwen3 4B",
+       "v": 24,
+       "of": 25
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "trials": [
+  {
+   "slug": "qt05-inkling-2-mini",
+   "type": "quick",
+   "type_label": "تجربة سريعة",
+   "date": "2026-11-24",
+   "title": "هل يستطيع Inkling 2 Mini أن يدير استقبال عيادة؟",
+   "metric": "محادثات مكتملة، لكل إعداد",
+   "model": "Inkling 2 Mini",
+   "bars": [
+    {
+     "label": "بلا مساعدة",
+     "v": 83.3
+    },
+    {
+     "label": "تقويم",
+     "v": 77.0
+    },
+    {
+     "label": "أداة",
+     "v": 81.7
+    },
+    {
+     "label": "محوّل",
+     "v": 74.6
+    }
+   ],
+   "url": "/findings/qt05-inkling-2-mini/"
+  },
+  {
+   "slug": "bf01-adapter-backfill",
+   "type": "fill",
+   "type_label": "استكمال",
+   "date": "2026-11-20",
+   "title": "طريقتا استدعاء الأدوات لأربعة نماذج",
+   "metric": "عبر المحوّل، لكل نموذج",
+   "model": null,
+   "bars": [
+    {
+     "label": "Jais 3 7B",
+     "v": 76.2
+    },
+    {
+     "label": "Qwen3 8B",
+     "v": 65.1
+    },
+    {
+     "label": "Fanar 2 27B",
+     "v": 61.1
+    },
+    {
+     "label": "Jais 3 3.7B",
+     "v": 43.7
+    }
+   ],
+   "url": "/findings/bf01-adapter-backfill/"
+  },
+  {
+   "slug": "qt04-silma-9b",
+   "type": "quick",
+   "type_label": "تجربة سريعة",
+   "date": "2026-11-13",
+   "title": "هل يستطيع SILMA 9B أن يدير استقبال عيادة؟",
+   "metric": "التشغيل المسجّل، لكل إعداد",
+   "model": "SILMA 9B",
+   "bars": [
+    {
+     "label": "بلا مساعدة",
+     "v": 7.9
+    },
+    {
+     "label": "تقويم",
+     "v": 10.3
+    },
+    {
+     "label": "أداة",
+     "v": 4.8
+    }
+   ],
+   "url": "/findings/qt04-silma-9b/"
+  },
+  {
+   "slug": "qt03-fanar-2-27b",
+   "type": "quick",
+   "type_label": "تجربة سريعة",
+   "date": "2026-11-06",
+   "title": "هل يستطيع Fanar 2 27B أن يدير استقبال عيادة؟",
+   "metric": "محادثات مكتملة، لكل إعداد",
+   "model": "Fanar 2 27B",
+   "bars": [
+    {
+     "label": "بلا مساعدة",
+     "v": 53.2
+    },
+    {
+     "label": "تقويم",
+     "v": 79.4
+    },
+    {
+     "label": "أداة",
+     "v": 54.8
+    }
+   ],
+   "url": "/findings/qt03-fanar-2-27b/"
+  },
+  {
+   "slug": "qt02-falcon-h1-7b",
+   "type": "quick",
+   "type_label": "تجربة سريعة",
+   "date": "2026-11-05",
+   "title": "هل يستطيع Falcon-H1 7B أن يدير استقبال عيادة؟",
+   "metric": "بعد إصلاح الأداة، لكل إعداد",
+   "model": "Falcon-H1 7B",
+   "bars": [
+    {
+     "label": "بلا مساعدة",
+     "v": 18.3
+    },
+    {
+     "label": "تقويم",
+     "v": 37.3
+    },
+    {
+     "label": "أداة",
+     "v": 25.4
+    }
+   ],
+   "url": "/findings/qt02-falcon-h1-7b/"
+  },
+  {
+   "slug": "frontdesk-v2",
+   "type": "job",
+   "type_label": "تجربة عمل",
+   "date": "2026-10-22",
+   "title": "هل يقدر نموذج عربي مفتوح يدير استقبال عيادة على واتساب؟",
+   "metric": "مع التقويم، لكل نموذج",
+   "model": null,
+   "bars": [
+    {
+     "label": "Jais 3 7B",
+     "v": 95.2
+    },
+    {
+     "label": "Jais 3 3.7B",
+     "v": 93.7
+    },
+    {
+     "label": "Qwen3 8B",
+     "v": 77.8
+    },
+    {
+     "label": "Qwen3 4B",
+     "v": 65.1
+    }
+   ],
+   "url": "/findings/frontdesk-v2/"
+  },
+  {
+   "slug": "qt01-allam-7b",
+   "type": "quick",
+   "type_label": "تجربة سريعة",
+   "date": "2026-10-22",
+   "title": "هل يستطيع ALLaM 7B أن يدير استقبال عيادة؟",
+   "metric": "أول تجربة سريعة",
+   "model": "ALLaM 7B",
+   "bars": [],
+   "url": "/findings/qt01-allam-7b/"
+  },
+  {
+   "slug": "token-tax",
+   "type": "meas",
+   "type_label": "قياس",
+   "date": "2026-08-17",
+   "title": "كم تكلّف الجملة نفسها بالعربية؟ ضريبة الرموز",
+   "metric": "لكل مجزّئ نصوص",
+   "model": null,
+   "bars": [],
+   "url": "/findings/token-tax/"
+  }
+ ]
+}

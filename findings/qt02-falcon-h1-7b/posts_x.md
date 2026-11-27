@@ -1,4 +1,4 @@
-# qt-02 · Falcon-H1 7B · X thread (Miqyas account), DRAFT for Mahmoud's review
+# qt-02 · Falcon-H1 7B · X thread (Miqyas account), DRAFT for review
 
 Every number from results.json (results commit a43dc14) and scorecard.txt. Quick Trial: numbers only, no verdict. Option A (standard v1.2): full common-setup table, rows chosen by setup. Image on tweet 1: scorecard_x.png (draft 30 Oct, source scorecard_x_source.html).
 Before posting: results page live at the link in 8/8; dated adapter note live on the ALLaM page (tweet 7 says it is there).

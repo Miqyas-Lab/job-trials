@@ -10,7 +10,7 @@
 الأدوات في مهام حقيقية، والسرعة على أجهزة يملكها الناس فعلًا. البروتوكولات تُسجَّل
 في git قبل التشغيل، والمخرجات الخام تُنشر كاملة.
 
-الموقع: https://miqyaslab.com · المؤسّس: **محمود دغيم** (Mahmoud Deghaim). سياسة [الاستقلالية والتمويل](docs/independence.md).
+الموقع: https://miqyaslab.com · سياسة [الاستقلالية والتمويل](docs/independence.md).
 
 ## النتائج المنشورة
 
@@ -80,7 +80,7 @@ tokenizer cost, dialect handling, tool use in real workflows, and speed on
 hardware people actually own. Protocols are committed to git before any run;
 raw outputs are published in full.
 
-Founder: **Mahmoud Deghaim**. [Independence and funding policy](docs/independence.md).
+Website: https://miqyaslab.com · [Independence and funding policy](docs/independence.md).
 
 ### Published findings
 
