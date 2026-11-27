@@ -1,1 +1,3 @@
-FROM /Users/mahmouddeghaim/miqyas/models/Llama-3.2-1B-Instruct-Q5_K_M.gguf
+# The GGUF path is relative to this file: models/ at the repository root (not committed). Ollama accepts a path relative
+# to the Modelfile. Edited 2026-11-27 from an absolute path on the maintainer's machine; the model file is unchanged.
+FROM ../models/Llama-3.2-1B-Instruct-Q5_K_M.gguf

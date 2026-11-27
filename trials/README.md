@@ -6,3 +6,9 @@ One file per trial. A trial picks a job, models and machines from `registry/` an
 - `qt-NN-<model>-<job>.yaml`: a Quick Trial (numbers only, no verdict, labelled exploratory; standard v1.1).
 
 Lifecycle: `planned → preregistered (commit hash recorded) → run → scored → validated → published`. The file is committed before the run; later changes are amendments with a date and a reason.
+
+## Dated note, 2026-11-27: who approved
+
+The `approved_by` line in qt-01 to qt-04 records, as written at pre-registration, the person who approved each trial.
+Pre-registration files are frozen records, so those lines stay as they are. From qt-05 onward, approval is recorded as
+Miqyas Lab, and the site and the README name the lab only.
