@@ -33,5 +33,5 @@
 
 - [Arabic tokenizer tool](https://miqyaslab.com/%D8%A7%D9%84%D8%A3%D8%AF%D8%A7%D8%A9/)
 - [Glossary of AI terms in Arabic](https://miqyaslab.com/%D8%A7%D9%84%D9%85%D8%B9%D8%AC%D9%85/)
-- [Job Trial #1 dataset on Hugging Face](https://huggingface.co/datasets/mhdghaim/miqyas-frontdesk-v2)
-- [Failure Atlas: where open Arabic models fail on real jobs](https://huggingface.co/datasets/mhdghaim/miqyas-failure-atlas)
+- [Job Trial #1 dataset on Hugging Face](https://huggingface.co/datasets/Miqyas-Lab/miqyas-frontdesk-v2)
+- [Failure Atlas: where open Arabic models fail on real jobs](https://huggingface.co/datasets/Miqyas-Lab/miqyas-failure-atlas)
